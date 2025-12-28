@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - PortoBlknszzz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bb.css">
+    <style>
+        #content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 60px;
+            flex: 1;
+        }
+        .projects-heading {
+            font-size: 48px;
+            font-weight: 700;
+            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #0b0b0b;
+            margin-bottom: 40px;
+        }
+        .projects-btn {
+            width: 97px;
+            height: 44px;
+            background-color: #e9e9e9;
+            border: none;
+            border-radius: 0 100px 100px 0;
+            font-size: 16px;
+            font-weight: 400;
+            font-family: "Google Sans", sans-serif;
+            color: #0b0b0b;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .projects-grid {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            cursor: pointer;
+            width: 360px;
+            height: 288px;
+        }
+        .project-card:nth-child(1) {
+            background: #87B069;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .project-card:nth-child(3) {
+            background: #FFC9D7;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .project-card-inner {
+            width: 348px;
+            height: 276px;
+            border: 1.2px solid #356B4A;
+            border-radius: 12px;
+        }
+        .project-card:nth-child(3) .project-card-inner {
+            border: 1.2px solid #D91D4C;
+        }
+        .project-card:nth-child(5) {
+            background: #EAB308;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .project-card:nth-child(5) .project-card-inner {
+            border: 1.2px solid #000000;
+        }
+        .project-description-box {
+            width: 346px;
+            height: 288px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .project-description-box p {
+            font-size: 20px;
+            color: #666666;
+            line-height: 1.6;
+            font-family: Satoshi, sans-serif;
+            font-weight: 300;
+            text-align: left;
+            margin: 0;
+        }
+        .view-button {
+            width: 100.8px;
+            height: 40.8px;
+            background: rgba(215, 215, 216, 0.8);
+            color: #0b0b0b;
+            border: none;
+            border-radius: 36px;
+            font-family: Satoshi, sans-serif;
+            font-size: 21px;
+            font-weight: 400;
+            cursor: pointer;
+            margin: 0;
+            backdrop-filter: blur(15px);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .view-button img {
+            width: 26px;
+            height: 26px;
+        }
+        .project-name {
+            font-size: 25px;
+            font-weight: 500;
+            font-family: Satoshi, sans-serif;
+            color: #0b0b0b;
+            margin: 0 0 5px 0;
+        }
+        .project-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0b0b0b;
+            font-family: Satoshi, sans-serif;
+        }
+        .project-description {
+            font-size: 16px;
+            color: #666666;
+            line-height: 1.6;
+            font-family: Satoshi, sans-serif;
+        }
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .project-tag {
+            background: #f0f0f0;
+            color: #0b0b0b;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: Satoshi, sans-serif;
+        }
+        .projects-section {
+            width: 100%;
+            max-width: 730px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .projects-button {
+            width: 97px;
+            padding: 10px 20px;
+            background: #e9e9e9;
+            color: #0b0b0b;
+            border: none;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: normal;
+            font-family: Satoshi, sans-serif;
+            transition: all 0.3s ease;
+            text-align: left;
+            border-radius: 0 100px 100px 0;
+        }
+        .projects-button:hover {
+            background: #d0d0d0;
+        }
+        body.dark-mode .projects-heading {
+            color: #ffffff;
+        }
+        body.dark-mode .project-card {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+        }
+        body.dark-mode .project-card:hover {
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+        }
+        body.dark-mode .project-title {
+            color: #ffffff;
+        }
+        body.dark-mode .project-description {
+            color: #b0b0b0;
+        }
+        body.dark-mode .project-tag {
+            background: #000000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
+            <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="BB.html">Home</a></li>
+            <li class="nav-item-active"><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.svg" alt="Logo" />
+            </div>
+            <div class="button-row">
+                <button id="btn-1" class="book-a-call">Book a Call</button>
+                <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
+            </div>
+        </div>
+        <div class="projects-container">
+            <div class="projects-section">
+                <button class="projects-btn">Projects</button>
+                <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-inner" style="background-image: url('leafbg.svg'); background-size: cover; background-position: center;">
+                    </div>
+                </div>
+                <div class="project-description-box">
+                    <h3 class="project-name">LeafAi</h3>
+                    <p>Leaf Disease Detector is a smart mobile app that uses AI to detect plant diseases from leaf images. Just snap a photo, get an instant diagnosis, and receive treatment tips—helping you protect crops, reduce losses, and boost yields with ease.</p>
+                    <button class="view-button">View <img src="arrow.up.right.svg" alt="Arrow"></button>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-inner" style="background-image: url('protohand.svg'); background-size: cover; background-position: center;">
+                    </div>
+                </div>
+                <div class="project-description-box">
+                    <h3 class="project-name">Lign</h3>
+                    <p>Description of your second project goes here. Share what you built and the impact it had.</p>
+                    <button class="view-button">View <img src="arrow.up.right.svg" alt="Arrow"></button>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-inner" style="background-image: url('frame 86.svg'); background-size: cover; background-position: center;">
+                    </div>
+                </div>
+                <div class="project-description-box">
+                    <h3 class="project-name">Clostra</h3>
+                    <p>Description of your second project goes here. Share what you built and the impact it had.</p>
+                    <button class="view-button">View <img src="arrow.up.right.svg" alt="Arrow"></button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2025 · Nyame Dua Inc · the body is finally at rest.</p>
+        <div class="footer-icons">
+            <img src="xxx.svg" alt="X" width="24" height="24">
+            <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
+        </div>
+    </footer>
+
+    <script>
+        // --- Click sound effect ---
+        function playClickSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const now = audioContext.currentTime;
+            const duration = 0.5;
+            
+            // Create a bell notification sound with multiple harmonics
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const osc3 = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc1.connect(gain);
+            osc2.connect(gain);
+            osc3.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            // Main frequency (bright bell tone)
+            osc1.type = 'sine';
+            osc1.frequency.setValueAtTime(800, now);
+            
+            // Second harmonic
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(1200, now);
+            
+            // Third harmonic for richness
+            osc3.type = 'sine';
+            osc3.frequency.setValueAtTime(1600, now);
+            
+            // Volume envelope - quick attack, long decay
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+            
+            osc1.start(now);
+            osc2.start(now);
+            osc3.start(now);
+            osc1.stop(now + duration);
+            osc2.stop(now + duration);
+            osc3.stop(now + duration);
+        }
+        
+        // Add click sound to all buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
+                playClickSound();
+            }
+        });
+
+        // --- Standard page scripts ---
+        function updateTime() {
+            const now = new Date();
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const day = days[now.getDay()];
+            const date = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear().toString().slice(-2);
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const hoursStr = String(hours).padStart(2, '0');
+            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
+            const locationString = `Accra,Ghana.`;
+            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Mode switching
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        
+        // Check for theme in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const theme = urlParams.get('theme');
+
+        if (theme === 'default') {
+            modeButtons[2].classList.add('active');
+        } else {
+            modeButtons[1].classList.add('active'); // Light mode active
+        }
+        
+        modeButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                playClickSound();
+                modeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                setTimeout(() => {
+                    if (index === 0) window.location.href = 'projectsDark.html';
+                    else if (index === 1) window.location.href = 'projects.html';
+                    else if (index === 2) window.location.href = 'projectsDefault.html';
+                }, 100);
+            });
+        });
+
+        // Book a Call button functionality
+        const bookACallBtn = document.getElementById('btn-1');
+        if (bookACallBtn) {
+            bookACallBtn.addEventListener('click', function() {
+                // Add your booking functionality here
+                alert('Booking functionality to be implemented');
+            });
+        }
+    </script>
+</body>
+</html>

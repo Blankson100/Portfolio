@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortoBlknszzz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bb.css">
+</head>
+<body>
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
+            <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li class="nav-item-active"><a href="BB.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.svg" alt="Logo" />
+            </div>
+            <div class="button-row">
+                <button id="btn-1" class="book-a-call">Book a Call</button>
+                <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
+            </div>
+        </div>
+        <div class="introduction">
+            <div class="intro-inner">
+                <h1 class="intro-heading">Hello, I am Blankson.</h1>
+                <p class="intro-sub">A Product Designer who is interested in challenges. I feel like I am the missing piece of your team. Currently studying Human computer interaction for masters. Building research and user driven designs and concepts I find cool and helpful. Always chasing perfection.</p>
+                <div class="intro-actions">
+                    <button class="intro-cta">Hireeee(in cowboy voice)</button>
+                </div>
+                <div class="extra-action">
+                    <div class="featured-section">
+
+                        <div class="featured-content-box">
+                            <button class="projects-btn">Featured Projects</button>
+                            <div class="grid-container">
+                                <div class="leafAi">
+                                    <div class="grid-container"></div>
+                                </div>
+                                <div class="Lign">
+                                    <div class="grid-container"></div>
+                                </div>
+                                <div class="IncFig">
+                                    <div class="grid-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>© 2025 · Nyame Dua Inc · the body is finally at rest.</p>
+            <div class="footer-icons">
+                <img src="xxx.svg" alt="X" width="24" height="24">
+                <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
+            </div>
+        </footer>
+    </div>
+    <script>
+        // --- Click sound effect ---
+        function playClickSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const now = audioContext.currentTime;
+            const duration = 0.5;
+            
+            // Create a bell notification sound with multiple harmonics
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const osc3 = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc1.connect(gain);
+            osc2.connect(gain);
+            osc3.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            // Main frequency (bright bell tone)
+            osc1.type = 'sine';
+            osc1.frequency.setValueAtTime(800, now);
+            
+            // Second harmonic
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(1200, now);
+            
+            // Third harmonic for richness
+            osc3.type = 'sine';
+            osc3.frequency.setValueAtTime(1600, now);
+            
+            // Volume envelope - quick attack, long decay
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+            
+            osc1.start(now);
+            osc2.start(now);
+            osc3.start(now);
+            osc1.stop(now + duration);
+            osc2.stop(now + duration);
+            osc3.stop(now + duration);
+        }
+        
+        // Add click sound to all buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
+                playClickSound();
+            }
+        });
+
+        function updateTime() {
+            const now = new Date();
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            const day = days[now.getDay()];
+            const date = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear().toString().slice(-2);
+            
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const hoursStr = String(hours).padStart(2, '0');
+            
+            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
+            const locationString = `Accra,Ghana.`;
+            
+            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Mode switching
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        
+        // Check for theme in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const theme = urlParams.get('theme');
+
+        if (theme === 'default') {
+            modeButtons[2].classList.add('active');
+            // Update nav links to preserve default theme
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                if (!link.href.includes('#')) {
+                    link.href = link.href.split('?')[0] + '?theme=default';
+                }
+            });
+        } else {
+            modeButtons[1].classList.add('active'); // Default to light active
+        }
+        
+        modeButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                playClickSound();
+                modeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                setTimeout(() => {
+                    if(index === 0) {
+                        // Dark mode - redirect to dark mode page
+                        window.location.href = 'BBDark.html';
+                    } else if(index === 1) {
+                        // Light mode - stay on this page
+                        window.location.href = 'BB.html';
+                    } else {
+                        // Default mode - redirect to default detection page
+                        window.location.href = 'BBDefault.html';
+                    }
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

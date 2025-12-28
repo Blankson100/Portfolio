@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - PortoBlknszzz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bb.css">
+    <style>
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            width: 100%;
+        }
+        #content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .introduction {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .contact-space-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1035px;
+            height: 434px;
+            background: rgba(11, 11, 11, 0.5);
+            backdrop-filter: blur(15px);
+            border-radius: 65px;
+        }
+        .chat-messages {
+            width: 100%;
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .input-wrapper {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 19.75px;
+            padding-bottom: 30px;
+        }
+        .message-bubble {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 70%;
+            word-wrap: break-word;
+            align-self: flex-end;
+            font-family: Satoshi, sans-serif;
+            font-size: 14px;
+        }
+        .typebox-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .typebox {
+            background-color: #000000;
+            border: none;
+            padding: 12px 16px;
+            font-size: 16px;
+            color: #ffffff;
+            border-radius: 35px;
+            font-family: Satoshi, sans-serif;
+            width: 825px;
+            height: 60px;
+            outline: none;
+            padding-right: 80px;
+        }
+        .typebox:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .typebox::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .circle-buttons {
+            position: absolute;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+        }
+        .circle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle-btn-dark {
+            background-color: #292929;
+        }
+        .circle-btn-white {
+            background-color: #ffffff;
+        }
+        .send-btn {
+            width: 115px;
+            height: 60px;
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 35px;
+            font-family: Satoshi, sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        #content > .footer {
+            margin-top: 300px;
+            margin-bottom: 30px;
+        }
+        .contact-heading {
+            font-size: 32px;
+            font-weight: 700;
+            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #0b0b0b;
+            margin-bottom: 20px;
+        }
+        body.dark-mode .contact-heading {
+            color: #e0e0e0;
+        }
+        .contact-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #0b0b0b;
+            margin-bottom: 30px;
+        }
+        body.dark-mode .contact-text {
+            color: #e0e0e0;
+        }
+        .contact-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
+            <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="BB.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="nav-item-active"><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.svg" alt="Logo" />
+            </div>
+            <div class="button-row">
+                <button id="btn-1" class="book-a-call">Book a Call</button>
+                <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
+            </div>
+        </div>
+        <div class="contact-container">
+            <div class="contact-content">
+                <div class="contact-space-container">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="input-wrapper">
+                        <div class="typebox-wrapper">
+                            <input type="text" class="typebox" id="messageInput" placeholder="hey,talk to me.">
+                            <div class="circle-buttons">
+                                <button class="circle-btn circle-btn-dark attach-files-btn"><img src="plus.svg" alt="Attach" style="width:28px;height:28px;"></button>
+                                <button class="circle-btn circle-btn-white voice-note-btn"><img src="waveform.svg" alt="Voice" style="width:28px;height:28px;"></button>
+                            </div>
+                        </div>
+                        <button class="send-btn" id="sendBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2025 · Nyame Dua Inc · the body is finally at rest.</p>
+        <div class="footer-icons">
+            <img src="xxx.svg" alt="X" width="24" height="24">
+            <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
+        </div>
+    </footer>
+
+    <script>
+        // --- Click sound effect ---
+        function playClickSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const now = audioContext.currentTime;
+            const duration = 0.5;
+            
+            // Create a bell notification sound with multiple harmonics
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const osc3 = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc1.connect(gain);
+            osc2.connect(gain);
+            osc3.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            // Main frequency (bright bell tone)
+            osc1.type = 'sine';
+            osc1.frequency.setValueAtTime(800, now);
+            
+            // Second harmonic
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(1200, now);
+            
+            // Third harmonic for richness
+            osc3.type = 'sine';
+            osc3.frequency.setValueAtTime(1600, now);
+            
+            // Volume envelope - quick attack, long decay
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+            
+            osc1.start(now);
+            osc2.start(now);
+            osc3.start(now);
+            osc1.stop(now + duration);
+            osc2.stop(now + duration);
+            osc3.stop(now + duration);
+        }
+        
+        // Add click sound to all buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
+                playClickSound();
+            }
+        });
+
+        // --- Standard page scripts ---
+        function updateTime() {
+            const now = new Date();
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const day = days[now.getDay()];
+            const date = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear().toString().slice(-2);
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const hoursStr = String(hours).padStart(2, '0');
+            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
+            const locationString = `Accra,Ghana.`;
+            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Mode switching
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        
+        // Check for theme in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const theme = urlParams.get('theme');
+
+        if (theme === 'default') {
+            modeButtons[2].classList.add('active');
+            // Update nav links to preserve default theme
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                if (!link.href.includes('#')) {
+                    link.href = link.href.split('?')[0] + '?theme=default';
+                }
+            });
+        } else {
+            modeButtons[1].classList.add('active'); // Default to light active
+        }
+        
+        modeButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                playClickSound();
+                modeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                setTimeout(() => {
+                    if(index === 0) {
+                        // Dark mode - redirect to dark mode page
+                        window.location.href = 'contactDark.html';
+                    } else if(index === 1) {
+                        // Light mode - stay on this page
+                        window.location.href = 'contact.html';
+                    } else {
+                        // Default mode - redirect to default detection page
+                        window.location.href = 'contactDefault.html';
+                    }
+                }, 100);
+            });
+        });
+
+        // Chat message functionality
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chatMessages');
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message === '') return;
+
+            const messageBubble = document.createElement('div');
+            messageBubble.classList.add('message-bubble');
+            messageBubble.textContent = message;
+            chatMessages.appendChild(messageBubble);
+            
+            // Send to WhatsApp
+            const whatsappUrl = 'https://wa.me/233257431398?text=' + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+            
+            messageInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

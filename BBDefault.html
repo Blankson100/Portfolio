@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #f0f0f0;
+            }
+        }
+    </style>
+    <script>
+        (function() {
+            // Check if the user has a preference for dark mode
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (prefersDark) {
+                // If they prefer dark mode, redirect to the dark version
+                window.location.href = 'BBDark.html?theme=default';
+            } else {
+                // Otherwise, redirect to the light version
+                window.location.href = 'BB.html?theme=default';
+            }
+        })();
+    </script>
+</head>
+<body>
+    <p>Detecting your system theme and redirecting...</p>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - PortoBlknszzz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bb.css">
+    <style>
+        #content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: visible;
+        }
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+        .avatar-image {
+            display: none; /* Hide the avatar */
+        }
+        .star-shape {
+            stroke: #0b0b0b;
+            stroke-width: 2;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            fill: url(#face-pattern);
+        }
+        body.dark-mode .star-shape {
+            stroke: #ffffff;
+        }
+        .about-text {
+            margin-top: 0;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #0b0b0b;
+        }
+        .content-box {
+            width: 430px;
+            height: 510px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 20px;
+            padding-left: 20px;
+            overflow: hidden;
+        }
+        .star-svg {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            min-height: 100px;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+        }
+        body.dark-mode .about-text {
+            color: #e0e0e0;
+        }
+        #content > .footer {
+            width: 100%;
+            margin-top: 200px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
+            <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="BB.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li class="nav-item-active"><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.svg" alt="Logo" />
+            </div>
+            <div class="button-row">
+                <button id="btn-1" class="book-a-call">Book a Call</button>
+                <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
+            </div>
+        </div>
+        <div class="about-container">
+            <div class="content-box">
+                <img src="logo.svg" alt="Avatar" class="avatar-image">
+                <svg id="star" class="star-svg" viewBox="0 0 200 200">
+                    <defs>
+                        <pattern id="face-pattern" patternUnits="objectBoundingBox" width="1" height="1">
+                            <image href="face.jpeg" width="200" height="200" preserveAspectRatio="xMidYMid slice"/>
+                        </pattern>
+                    </defs>
+                    <polygon id="star-polygon" class="star-shape" />
+                </svg>
+                <p class="about-text">I was really thinking of using AI to write this but hey; that won't be cool. I am Blankson, used to be a student. Still a student, because i am always learning. Welcome to my portfolio website. Hope you enjoy and go through as i enjoyed researching and making these projects. I am mostly focused on Rural area systems and systems that will be easy to navigate and accessible to all. I use AI very much though i just don't think its cool to write about yourself with AI. Lastly I am extremely introverted but i am trying more to be extroverted shoot me a Dm on my socials for any Job or lets talk about cool stuffs.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2025 · Nyame Dua Inc · the body is finally at rest.</p>
+        <div class="footer-icons">
+            <img src="xxx.svg" alt="X" width="24" height="24">
+            <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
+        </div>
+    </footer>
+
+    <script>
+        // Function to generate points for a star
+        function generateStarPoints(sides, outerRadius, innerRadius) {
+            let points = "";
+            const angleStep = (Math.PI * 2) / (sides * 2);
+            const centerX = 100;
+            const centerY = 100;
+
+            for (let i = 0; i < sides * 2; i++) {
+                const radius = i % 2 === 0 ? outerRadius : innerRadius;
+                const angle = i * angleStep - Math.PI / 2;
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+                points += `${x},${y} `;
+            }
+            return points.trim();
+        }
+
+        // User specifications
+        const sides = 28;
+        const outerRadius = 95; // Outer radius of the star
+        const cornerRatio = 0.93; // 93%
+        const innerRadius = outerRadius * cornerRatio;
+
+        const starPolygon = document.getElementById('star-polygon');
+        const points = generateStarPoints(sides, outerRadius, innerRadius);
+        starPolygon.setAttribute('points', points);
+
+        // --- Click sound effect ---
+        function playClickSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const now = audioContext.currentTime;
+            const duration = 0.5;
+            
+            // Create a bell notification sound with multiple harmonics
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const osc3 = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc1.connect(gain);
+            osc2.connect(gain);
+            osc3.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            // Main frequency (bright bell tone)
+            osc1.type = 'sine';
+            osc1.frequency.setValueAtTime(800, now);
+            
+            // Second harmonic
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(1200, now);
+            
+            // Third harmonic for richness
+            osc3.type = 'sine';
+            osc3.frequency.setValueAtTime(1600, now);
+            
+            // Volume envelope - quick attack, long decay
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+            
+            osc1.start(now);
+            osc2.start(now);
+            osc3.start(now);
+            osc1.stop(now + duration);
+            osc2.stop(now + duration);
+            osc3.stop(now + duration);
+        }
+        
+        // Add click sound to all buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
+                playClickSound();
+            }
+        });
+
+        // --- Standard page scripts ---
+        function updateTime() {
+            const now = new Date();
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const day = days[now.getDay()];
+            const date = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear().toString().slice(-2);
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const hoursStr = String(hours).padStart(2, '0');
+            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
+            const locationString = `Accra,Ghana.`;
+            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Mode switching
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        
+        // Check for theme in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const theme = urlParams.get('theme');
+
+        if (theme === 'default') {
+            modeButtons[2].classList.add('active');
+            // Update nav links to preserve default theme
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                if (!link.href.includes('#')) {
+                    link.href = link.href.split('?')[0] + '?theme=default';
+                }
+            });
+        } else {
+            modeButtons[1].classList.add('active'); // Default to light active
+        }
+        
+        modeButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                playClickSound();
+                modeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                setTimeout(() => {
+                    if (index === 0) window.location.href = 'aboutDark.html';
+                    else if (index === 1) window.location.href = 'about.html';
+                    else if (index === 2) window.location.href = 'aboutDefault.html';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
