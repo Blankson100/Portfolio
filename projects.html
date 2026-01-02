@@ -20,7 +20,8 @@
             align-items: center;
             width: 100%;
             margin: 0 auto;
-            margin-top: 60px;
+            margin-top: 145px;
+            margin-bottom: 100px;
             flex: 1;
         }
         .projects-heading {
@@ -41,7 +42,10 @@
             font-family: "Google Sans", sans-serif;
             color: #0b0b0b;
             cursor: pointer;
-            margin-bottom: 20px;
+            position: absolute;
+            left: -153px;
+            top: -80px;
+            z-index: 50;
         }
         .projects-grid {
             display: flex;
@@ -110,15 +114,15 @@
             margin: 0;
         }
         .view-button {
-            width: 100.8px;
-            height: 40.8px;
-            background: rgba(215, 215, 216, 0.8);
-            color: #0b0b0b;
+            width: 100px;
+            height: 40px;
+            background: rgba(215, 215, 215, 0.8);
+            color: #000000;
             border: none;
             border-radius: 36px;
             font-family: Satoshi, sans-serif;
             font-size: 21px;
-            font-weight: 400;
+            font-weight: 300;
             cursor: pointer;
             margin: 0;
             backdrop-filter: blur(15px);
@@ -133,6 +137,7 @@
         .view-button img {
             width: 26px;
             height: 26px;
+            filter: brightness(0) invert(1);
         }
         .project-name {
             font-size: 25px;
@@ -174,6 +179,7 @@
             flex-direction: column;
             gap: 20px;
             align-items: flex-start;
+            position: relative;
         }
         .projects-button {
             width: 97px;
