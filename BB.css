@@ -91,7 +91,7 @@ body{
 .time-location-display{
     position:fixed;
     bottom:40px;
-    left:20%;
+    left:5%;
     z-index:100;
     font-family:Satoshi, sans-serif;
     font-weight:400;
@@ -103,7 +103,7 @@ body{
 .right-pill{
     position:fixed;
     bottom:40px;
-    right:20%;
+    right:5%;
     z-index:100;
     width:68px;
     height:152px;
@@ -235,7 +235,7 @@ body{
     display:flex;
     align-items:center;
     position:fixed;
-    left:20%;
+    left:5%;
     top:20px;
     z-index:101;
 }
@@ -255,7 +255,7 @@ body{
     align-items:center;
     margin-right:0;
     position:fixed;
-    right:20%;
+    right:5%;
     top:20px;
     z-index:101;
 }
