@@ -17,19 +17,17 @@
         .project-page-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 900px;
+            align-items: flex-start;
+            width: 730px;
             margin: 0 auto;
             margin-top: 120px;
             margin-bottom: 100px;
-            padding: 0 20px;
             flex: 1;
         }
         .project-hero {
-            width: 100%;
-            height: 400px;
-            background: #87B069;
+            width: 730px;
+            height: 431px;
+            background: transparent;
             border-radius: 24px;
             display: flex;
             align-items: center;
@@ -37,23 +35,62 @@
             margin-bottom: 40px;
             overflow: hidden;
         }
+        .back-button {
+            width: 100px;
+            height: 45px;
+            background: #e9e9e9;
+            border: none;
+            border-radius: 50px;
+            padding: 0;
+            font-size: 16px;
+            font-weight: 300;
+            font-family: "Google Sans", sans-serif;
+            color: #000000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .title-button {
+            background: #e9e9e9;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            padding: 0 20px;
+            height: 45px;
+            font-size: 16px;
+            font-weight: 300;
+            font-family: "Google Sans", sans-serif;
+            color: #000000;
+        }
         .project-hero-inner {
-            width: calc(100% - 20px);
-            height: calc(100% - 20px);
-            background: url('leafBG.svg') center/cover no-repeat;
+            width: 100%;
+            height: 100%;
             border-radius: 18px;
-            border: 1.5px solid #356B4A;
+            overflow: hidden;
+        }
+        .project-hero-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .project-header {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
         }
         .project-title {
-            font-size: 48px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 900;
             font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
             color: #0b0b0b;
             margin: 0;
@@ -74,9 +111,24 @@
         }
         .project-meta {
             display: flex;
-            gap: 30px;
+            flex-direction: column;
+            gap: 15px;
             margin-bottom: 40px;
             width: 100%;
+        }
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+        .meta-row .meta-item:first-child {
+            flex: 1;
+        }
+        .meta-row .meta-item:last-child {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
         }
         .meta-item {
             display: flex;
@@ -84,16 +136,24 @@
             gap: 5px;
         }
         .meta-label {
-            font-size: 14px;
+            font-size: 18px;
+            color: #0b0b0b;
+            font-family: Satoshi, sans-serif;
+            font-weight: 700;
+        }
+        .meta-value {
+            font-size: 16px;
             color: #666666;
             font-family: Satoshi, sans-serif;
             font-weight: 400;
         }
-        .meta-value {
+        .meta-value-content {
             font-size: 16px;
-            color: #0b0b0b;
+            line-height: 1.8;
+            color: #666666;
             font-family: Satoshi, sans-serif;
-            font-weight: 500;
+            font-weight: 400;
+            margin: 0;
         }
         .project-section {
             width: 100%;
@@ -107,11 +167,12 @@
             margin-bottom: 15px;
         }
         .section-content {
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1.8;
-            color: #444444;
+            color: #666666;
             font-family: Satoshi, sans-serif;
-            font-weight: 300;
+            font-weight: 400;
+            margin: 0;
         }
         .project-gallery {
             width: 100%;
@@ -193,97 +254,52 @@
             </div>
         </div>
         <div class="project-page-container">
+            <div class="button-container">
+                <button class="back-button" onclick="history.back()"><img src="arrow.backward.svg" alt="Back" style="width: 25px; height: 25px;"> Back</button>
+                <button class="title-button">PlantAI: Crop Care</button>
+            </div>
             <div class="project-hero">
-                <div class="project-hero-inner"></div>
+                <div class="project-hero-inner"><img src="ProtoHand DarkLeaf.svg" alt="LeafAI Hero"></div>
             </div>
             
             <div class="project-header">
-                <h1 class="project-title">LeafAI</h1>
-                <div class="project-tags">
-                    <span class="project-tag">AI/ML</span>
-                    <span class="project-tag">Mobile App</span>
-                    <span class="project-tag">Agriculture</span>
-                </div>
+                <h1 class="project-title">PlantAI: Crop Care</h1>
             </div>
             
+            <div class="project-section">
+                <p class="section-content">
+                    I grew up going to school in a farming community, so I've always thought about ways to bring what I do into agriculture. Technology in farming has always fascinated me. When a friend came to me to design a plant disease detection app, I saw it as the perfect opportunity. I expanded his concept into Plant AI: Crop Care, transforming it from a basic detector for tomato and maize into a comprehensive app for all plant types. The app uses computer vision for disease identification and language AI to deliver treatment recommendations in local languages based on the user's location. Research with farming communities taught me that simplicity builds trust, so I designed clean navigation, automatic language detection, and a shop finder that connects farmers directly to solutions.
+                </p>
+            </div>
+
             <div class="project-meta">
-                <div class="meta-item">
-                    <span class="meta-label">Role</span>
-                    <span class="meta-value">Product Designer</span>
+                <div class="meta-row">
+                    <div class="meta-item">
+                        <span class="meta-label">The Challenge</span>
+                        <span class="meta-value meta-value-content">Farmers rely on guesswork for diagnosis,<br>leading to delayed treatment and crop<br>losses</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">What I Created</span>
+                        <span class="meta-value meta-value-content">AI-Powered mobile app for instant disease identification with treatment guidance in users local language</span>
+                    </div>
                 </div>
-                <div class="meta-item">
-                    <span class="meta-label">Duration</span>
-                    <span class="meta-value">3 Months</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Year</span>
-                    <span class="meta-value">2025</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Platform</span>
-                    <span class="meta-value">iOS & Android</span>
-                </div>
-            </div>
-            
-            <div class="project-section">
-                <h2 class="section-title">Overview</h2>
-                <p class="section-content">
-                    Leaf Disease Detector is a smart mobile app that uses AI to detect plant diseases from leaf images. Just snap a photo, get an instant diagnosis, and receive treatment tips—helping you protect crops, reduce losses, and boost yields with ease. The app is designed specifically for farmers in rural areas who need quick and accessible solutions for plant health monitoring.
-                </p>
-            </div>
-            
-            <div class="project-section">
-                <h2 class="section-title">Problem Statement</h2>
-                <p class="section-content">
-                    Farmers, especially in rural areas, often struggle to identify plant diseases early enough to prevent crop loss. Traditional methods require expert knowledge or expensive consultations. This delay in diagnosis leads to significant yield losses and economic hardship for small-scale farmers.
-                </p>
-            </div>
-            
-            <div class="project-section">
-                <h2 class="section-title">Solution</h2>
-                <p class="section-content">
-                    LeafAI provides an accessible, AI-powered solution that allows farmers to simply take a photo of an affected leaf and receive instant diagnosis along with treatment recommendations. The app works offline and is designed with a simple interface to ensure usability for users with varying levels of tech literacy.
-                </p>
-            </div>
-            
-            <div class="project-gallery">
-                <div class="gallery-image">
-                    <img src="leafBG.svg" alt="LeafAI Screenshot 1">
-                </div>
-                <div class="gallery-image">
-                    <img src="leafBG.svg" alt="LeafAI Screenshot 2">
-                </div>
-                <div class="gallery-image">
-                    <img src="leafBG.svg" alt="LeafAI Screenshot 3">
-                </div>
-                <div class="gallery-image">
-                    <img src="leafBG.svg" alt="LeafAI Screenshot 4">
+                <div class="meta-row">
+                    <div class="meta-item">
+                        <span class="meta-label">Year</span>
+                        <span class="meta-value">2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Platform</span>
+                        <span class="meta-value">iOS & Android</span>
+                    </div>
                 </div>
             </div>
             
-            <div class="project-section">
-                <h2 class="section-title">Key Features</h2>
-                <p class="section-content">
-                    • Instant disease detection using advanced machine learning<br>
-                    • Offline functionality for areas with limited connectivity<br>
-                    • Treatment recommendations tailored to each disease<br>
-                    • Multi-language support for accessibility<br>
-                    • History tracking to monitor plant health over time<br>
-                    • Community forum for farmers to share knowledge
-                </p>
+                </div>
             </div>
             
-            <div class="project-section">
-                <h2 class="section-title">Impact</h2>
-                <p class="section-content">
-                    The app has helped over 10,000 farmers identify plant diseases early, reducing crop losses by an estimated 30%. User feedback has been overwhelmingly positive, with farmers reporting increased confidence in managing their crops' health.
-                </p>
-            </div>
             
-            <div class="cta-section">
-                <button class="cta-button cta-primary">View Prototype</button>
-                <button class="cta-button cta-secondary">Case Study PDF</button>
-            </div>
+            <!-- cta-section with prototype and case study buttons removed -->
         </div>
     </div>
     <footer class="footer">
