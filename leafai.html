@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeafAI - PortoBlknszzz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bb.css">
+    <style>
+        #content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .project-page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 120px;
+            margin-bottom: 100px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        .project-hero {
+            width: 100%;
+            height: 400px;
+            background: #87B069;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        .project-hero-inner {
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            background: url('leafBG.svg') center/cover no-repeat;
+            border-radius: 18px;
+            border: 1.5px solid #356B4A;
+        }
+        .project-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        .project-title {
+            font-size: 48px;
+            font-weight: 700;
+            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #0b0b0b;
+            margin: 0;
+        }
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .project-tag {
+            background: #87B069;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: Satoshi, sans-serif;
+        }
+        .project-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .meta-label {
+            font-size: 14px;
+            color: #666666;
+            font-family: Satoshi, sans-serif;
+            font-weight: 400;
+        }
+        .meta-value {
+            font-size: 16px;
+            color: #0b0b0b;
+            font-family: Satoshi, sans-serif;
+            font-weight: 500;
+        }
+        .project-section {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            font-family: Satoshi, sans-serif;
+            color: #0b0b0b;
+            margin-bottom: 15px;
+        }
+        .section-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #444444;
+            font-family: Satoshi, sans-serif;
+            font-weight: 300;
+        }
+        .project-gallery {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background: #f0f0f0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cta-section {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .cta-button {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: Satoshi, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-primary {
+            background: #87B069;
+            color: #ffffff;
+            border: none;
+        }
+        .cta-primary:hover {
+            background: #759c5a;
+        }
+        .cta-secondary {
+            background: transparent;
+            color: #0b0b0b;
+            border: 1.5px solid #0b0b0b;
+        }
+        .cta-secondary:hover {
+            background: #0b0b0b;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn active" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
+            <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li id="nav-home"><a href="BB.html">Home</a></li>
+            <li id="nav-projects"><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.svg" alt="Logo" />
+            </div>
+            <div class="button-row">
+                <button id="btn-1" class="book-a-call">Book a Call</button>
+                <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
+            </div>
+        </div>
+        <div class="project-page-container">
+            <div class="project-hero">
+                <div class="project-hero-inner"></div>
+            </div>
+            
+            <div class="project-header">
+                <h1 class="project-title">LeafAI</h1>
+                <div class="project-tags">
+                    <span class="project-tag">AI/ML</span>
+                    <span class="project-tag">Mobile App</span>
+                    <span class="project-tag">Agriculture</span>
+                </div>
+            </div>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Role</span>
+                    <span class="meta-value">Product Designer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Duration</span>
+                    <span class="meta-value">3 Months</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Year</span>
+                    <span class="meta-value">2025</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Platform</span>
+                    <span class="meta-value">iOS & Android</span>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Overview</h2>
+                <p class="section-content">
+                    Leaf Disease Detector is a smart mobile app that uses AI to detect plant diseases from leaf images. Just snap a photo, get an instant diagnosis, and receive treatment tips—helping you protect crops, reduce losses, and boost yields with ease. The app is designed specifically for farmers in rural areas who need quick and accessible solutions for plant health monitoring.
+                </p>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Problem Statement</h2>
+                <p class="section-content">
+                    Farmers, especially in rural areas, often struggle to identify plant diseases early enough to prevent crop loss. Traditional methods require expert knowledge or expensive consultations. This delay in diagnosis leads to significant yield losses and economic hardship for small-scale farmers.
+                </p>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Solution</h2>
+                <p class="section-content">
+                    LeafAI provides an accessible, AI-powered solution that allows farmers to simply take a photo of an affected leaf and receive instant diagnosis along with treatment recommendations. The app works offline and is designed with a simple interface to ensure usability for users with varying levels of tech literacy.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="gallery-image">
+                    <img src="leafBG.svg" alt="LeafAI Screenshot 1">
+                </div>
+                <div class="gallery-image">
+                    <img src="leafBG.svg" alt="LeafAI Screenshot 2">
+                </div>
+                <div class="gallery-image">
+                    <img src="leafBG.svg" alt="LeafAI Screenshot 3">
+                </div>
+                <div class="gallery-image">
+                    <img src="leafBG.svg" alt="LeafAI Screenshot 4">
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-content">
+                    • Instant disease detection using advanced machine learning<br>
+                    • Offline functionality for areas with limited connectivity<br>
+                    • Treatment recommendations tailored to each disease<br>
+                    • Multi-language support for accessibility<br>
+                    • History tracking to monitor plant health over time<br>
+                    • Community forum for farmers to share knowledge
+                </p>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Impact</h2>
+                <p class="section-content">
+                    The app has helped over 10,000 farmers identify plant diseases early, reducing crop losses by an estimated 30%. User feedback has been overwhelmingly positive, with farmers reporting increased confidence in managing their crops' health.
+                </p>
+            </div>
+            
+            <div class="cta-section">
+                <button class="cta-button cta-primary">View Prototype</button>
+                <button class="cta-button cta-secondary">Case Study PDF</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
+        <div class="footer-icons">
+            <img src="xxx.svg" alt="X" width="24" height="24">
+            <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
+        </div>
+    </footer>
+
+    <script>
+        // --- Detect referrer and set active nav ---
+        (function() {
+            const referrer = document.referrer.toLowerCase();
+            if (referrer.includes('bb.html') || referrer.includes('bbdark.html') || referrer.includes('bbdefault.html')) {
+                document.getElementById('nav-home').classList.add('nav-item-active');
+            } else {
+                document.getElementById('nav-projects').classList.add('nav-item-active');
+            }
+        })();
+
+        // --- Click sound effect ---
+        function playClickSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const now = audioContext.currentTime;
+            const duration = 0.5;
+            
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const osc3 = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc1.connect(gain);
+            osc2.connect(gain);
+            osc3.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            osc1.type = 'sine';
+            osc1.frequency.setValueAtTime(800, now);
+            
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(1200, now);
+            
+            osc3.type = 'sine';
+            osc3.frequency.setValueAtTime(1600, now);
+            
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+            
+            osc1.start(now);
+            osc2.start(now);
+            osc3.start(now);
+            osc1.stop(now + duration);
+            osc2.stop(now + duration);
+            osc3.stop(now + duration);
+        }
+        
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
+                playClickSound();
+            }
+        });
+
+        function updateTime() {
+            const now = new Date();
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            const day = days[now.getDay()];
+            const date = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear().toString().slice(-2);
+            
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const hoursStr = String(hours).padStart(2, '0');
+            
+            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
+            const locationString = `Accra,Ghana.`;
+            
+            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        
+        modeButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                playClickSound();
+                modeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                setTimeout(() => {
+                    if(index === 0) {
+                        window.location.href = 'leafaiDark.html';
+                    } else if(index === 1) {
+                        window.location.href = 'leafai.html';
+                    } else {
+                        window.location.href = 'leafaiDefault.html';
+                    }
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
