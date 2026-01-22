@@ -3,11 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeafAI - PortoBlknszzz</title>
+    <title>Lign - PortoBlknszzz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
+    <style>
+        body, html {
+            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        .project-title {
+            font-size: 28px;
+            font-weight: 900;
+            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #0b0b0b;
+            margin: 0;
+        }
+        .project-tag {
+            font-family: Satoshi, sans-serif;
+        }
+        .meta-label {
+            font-family: Satoshi, sans-serif;
+        }
+        .meta-value, .meta-value-content {
+            font-family: Satoshi, sans-serif;
+        }
+        .section-title {
+            font-family: Satoshi, sans-serif;
+        }
+        .section-content {
+            font-family: Satoshi, sans-serif;
+        }
+        .see-how-title, .see-how-desc {
+            font-family: Satoshi, sans-serif;
+        }
+        .feature-card, .title-button, .back-button, .view-button, .footer, .footer-icons {
+            font-family: Satoshi, sans-serif;
+        }
+    </style>
     <style>
         #content {
             display: flex;
@@ -101,7 +134,7 @@
             flex-wrap: wrap;
         }
         .project-tag {
-            background: #87B069;
+            background: #FFC9D7;
             color: #ffffff;
             padding: 8px 16px;
             border-radius: 20px;
@@ -174,108 +207,6 @@
             font-weight: 400;
             margin: 0;
         }
-        .project-gallery {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .gallery-image {
-            width: 100%;
-            height: 250px;
-            background: #f0f0f0;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        .gallery-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .cta-section {
-            width: 100%;
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .cta-button {
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 500;
-            font-family: Satoshi, sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .cta-primary {
-            background: #87B069;
-            color: #ffffff;
-            border: none;
-        }
-        .cta-primary:hover {
-            background: #759c5a;
-        }
-        .cta-secondary {
-            background: transparent;
-            color: #0b0b0b;
-            border: 1.5px solid #0b0b0b;
-        }
-        .cta-secondary:hover {
-            background: #0b0b0b;
-            color: #ffffff;
-        }
-        .green-canvas {
-            /* background: url('BG LEAF.svg') center center/cover no-repeat; */
-            width: 100vw;
-            min-width: 100vw;
-            max-width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            transform: translateX(-50%);
-            height: 1483px;
-            margin-top: 15px;
-            margin-bottom: 45px;
-            border-radius: 0;
-        }
-        .video-box {
-            width: 100%;
-            max-width: 730px;
-            height: 620px;
-            margin: 40px auto 0 auto;
-            border-radius: 25px;
-            overflow: hidden;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .video-box video {
-            width: 100%;
-            height: 100%;
-            border-radius: 25px;
-            background: #000;
-            object-fit: cover;
-        }
-        .see-how-title {
-            font-size: 18px;
-            color: #0b0b0b;
-            font-family: Satoshi, sans-serif;
-            font-weight: 700;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-        .see-how-desc {
-            font-size: 16px;
-            color: #444;
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            margin-bottom: 24px;
-            text-align: left;
-            line-height: 1.7;
-        }
     </style>
 </head>
 <body>
@@ -289,7 +220,7 @@
     </div>
     <nav class="navbar">
         <ul class="nav-menu">
-            <li id="nav-home"><a href="BB.html">Home</a></li>
+            <li id="nav-home" class="nav-item-active"><a href="BB.html">Home</a></li>
             <li id="nav-projects"><a href="projects.html">Projects</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
@@ -307,31 +238,28 @@
         <div class="project-page-container">
             <div class="button-container">
                 <button class="back-button" onclick="history.back()"><img src="arrow.backward.svg" alt="Back" style="width: 25px; height: 25px;"> Back</button>
-                <button class="title-button">Agriculture/AI/ML</button>
+                <button class="title-button">Fintech/Web</button>
             </div>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="ProtoHand DarkLeaf.svg" alt="LeafAI Hero"></div>
+                <div class="project-hero-inner"><img src="LignHand.svg" alt="Lign Hero"></div>
             </div>
-            
             <div class="project-header">
-                <h1 class="project-title">PlantAI: Crop Care</h1>
+                <h1 class="project-title">Lign</h1>
             </div>
-            
             <div class="project-section">
                 <p class="section-content">
-                    I grew up going to school in a farming community, so I've always thought about ways to bring what I do into agriculture. Technology in farming has always fascinated me. When a friend came to me to design a plant disease detection app, I saw it as the perfect opportunity. I expanded his concept into Plant AI: Crop Care, transforming it from a basic detector for tomato and maize into a comprehensive app for all plant types. The app uses computer vision for disease identification and language AI to deliver treatment recommendations in local languages based on the user's location. Research with farming communities taught me that simplicity builds trust, so I designed clean navigation, automatic language detection, and a shop finder that connects farmers directly to solutions.
+                    Lign is a modern fintech platform designed to streamline digital transactions and enhance user experience. The project leverages cutting-edge web technologies to deliver secure, fast, and intuitive financial services for users and businesses alike.
                 </p>
             </div>
-
             <div class="project-meta">
                 <div class="meta-row">
                     <div class="meta-item">
                         <span class="meta-label">The Challenge</span>
-                        <span class="meta-value meta-value-content">Farmers rely on guesswork for diagnosis,<br>leading to delayed treatment and crop<br>losses</span>
+                        <span class="meta-value meta-value-content">Traditional financial platforms are often slow, complex, and lack user-centric design.</span>
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">What I Created</span>
-                        <span class="meta-value meta-value-content">AI-Powered mobile app for instant disease identification with treatment guidance in users local language</span>
+                        <span class="meta-value meta-value-content">A web-based fintech solution with a focus on simplicity, security, and seamless transactions.</span>
                     </div>
                 </div>
                 <div class="meta-row">
@@ -341,47 +269,39 @@
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Timeline</span>
-                        <span class="meta-value">March ‘6 - June ‘20 2025</span>
+                        <span class="meta-value">2025</span>
                     </div>
                 </div>
             </div>
-            
-            <div class="video-box">
+            <div class="video-box" style="width: 730px; height: 620px; margin: 40px auto 0 auto; border-radius: 25px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center;">
                 <!-- Replace the src with your video file or embed code -->
                 <video controls style="width:100%; height:100%; border-radius:25px; background:#000;">
                     <source src="your-video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div class="see-how-title">See how it works</div>
-            <div class="see-how-desc">
-                Plant AI: Crop care uses computer vision to identify across all plant types and language to deliver treatment in Local Languages. The app connects farmers to nearby supplies through an accessibility-first interface.
+            <div class="see-how-title" style="font-size: 18px; color: #0b0b0b; font-family: Satoshi, sans-serif; font-weight: 700; margin-top: 15px; margin-bottom: 10px; text-align: left;">See how it works</div>
+            <div class="see-how-desc" style="font-size: 16px; color: #444; font-family: Satoshi, sans-serif; font-weight: 400; margin-bottom: 24px; text-align: left; line-height: 1.7;">
+                Lign streamlines digital transactions with a user-friendly interface and robust security, making financial operations seamless for everyone.
             </div>
-            
             <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
                 <button class="title-button">Features</button>
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end;">
                 <div class="features-cards-row" style="display:flex;gap:10px;margin-bottom:40px;width:auto;justify-content:flex-end;">
                     <div class="feature-card" style="background:#000000;width:230px;height:380px;border-radius:18px;"></div>
-                    <div class="feature-card" style="background:#E9FFF5;width:230px;height:380px;border-radius:18px;"></div>
                     <div class="feature-card" style="background:#000000;width:230px;height:380px;border-radius:18px;"></div>
+                    <div class="feature-card" style="background:#F1F0FF;width:230px;height:380px;border-radius:18px;"></div>
                 </div>
             </div>
-            <!-- Wide card 730x170px for light mode, 30px below cards -->
             <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 0px;">
                 <div style="width: 730px; height: 170px; background: url('Frame 364 www.svg') center center/cover no-repeat, #fff; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #222; font-size: 24px; font-family: Satoshi, sans-serif;">
                     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                        <span style="font-size: 20px; color: #fff; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind plant AI.</span>
+                        <span style="font-size: 20px; color: #fff; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind Lign.</span>
                         <button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button>
                     </div>
                 </div>
             </div>
-                </div>
-            </div>
-            
-            
-            <!-- cta-section with prototype and case study buttons removed -->
         </div>
     </div>
     <footer class="footer">
@@ -391,105 +311,5 @@
             <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
         </div>
     </footer>
-
-    <script>
-        // --- Detect referrer and set active nav ---
-        (function() {
-            const referrer = document.referrer.toLowerCase();
-            if (referrer.includes('bb.html') || referrer.includes('bbdark.html') || referrer.includes('bbdefault.html')) {
-                document.getElementById('nav-home').classList.add('nav-item-active');
-            } else {
-                document.getElementById('nav-projects').classList.add('nav-item-active');
-            }
-        })();
-
-        // --- Click sound effect ---
-        function playClickSound() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const now = audioContext.currentTime;
-            const duration = 0.5;
-            
-            const osc1 = audioContext.createOscillator();
-            const osc2 = audioContext.createOscillator();
-            const osc3 = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            
-            osc1.connect(gain);
-            osc2.connect(gain);
-            osc3.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            osc1.type = 'sine';
-            osc1.frequency.setValueAtTime(800, now);
-            
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(1200, now);
-            
-            osc3.type = 'sine';
-            osc3.frequency.setValueAtTime(1600, now);
-            
-            gain.gain.setValueAtTime(0.2, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-            
-            osc1.start(now);
-            osc2.start(now);
-            osc3.start(now);
-            osc1.stop(now + duration);
-            osc2.stop(now + duration);
-            osc3.stop(now + duration);
-        }
-        
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
-                playClickSound();
-            }
-        });
-
-        function updateTime() {
-            const now = new Date();
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            
-            const day = days[now.getDay()];
-            const date = now.getDate();
-            const month = months[now.getMonth()];
-            const year = now.getFullYear().toString().slice(-2);
-            
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            const hoursStr = String(hours).padStart(2, '0');
-            
-            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
-            const locationString = `Accra,Ghana.`;
-            
-            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
-        }
-        
-        updateTime();
-        setInterval(updateTime, 60000);
-
-        const modeButtons = document.querySelectorAll('.mode-btn');
-        
-        modeButtons.forEach((btn, index) => {
-            btn.addEventListener('click', function() {
-                playClickSound();
-                modeButtons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                setTimeout(() => {
-                    if(index === 0) {
-                        window.location.href = 'leafaiDark.html';
-                    } else if(index === 1) {
-                        window.location.href = 'leafai.html';
-                    } else {
-                        window.location.href = 'leafaiDefault.html';
-                    }
-                }, 100);
-            });
-        });
-    </script>
 </body>
 </html>

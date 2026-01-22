@@ -41,6 +41,7 @@
             width: 730px;
             margin: 0 auto;
             margin-top: 120px;
+            /* margin-bottom: 100px; */
             flex: 1;
         }
         .project-hero {
@@ -125,7 +126,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 0px;
             width: 100%;
         }
         .meta-row {
@@ -304,11 +305,11 @@
             display: flex;
             gap: 10px;
             margin-bottom: 40px;
-            justify-content: flex-start;
+            justify-content: flex-end;
         }
         .feature-card {
-            width: 172.84px;
-            height: 348px;
+            width: 230px;
+            height: 380px;
             border-radius: 18px;
             box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
             display: flex;
@@ -399,11 +400,21 @@
             <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
                 <button class="title-button">Features</button>
             </div>
-            <div class="features-cards-row">
-                <div class="feature-card" style="background:#0F0F0F;"></div>
-                <div class="feature-card" style="background:#E9FFF5;"></div>
-                <div class="feature-card" style="background:#0F0F0F;"></div>
-                <div class="feature-card" style="background:#E9FFF5;"></div>
+            <div style="width: 100%; display: flex; justify-content: flex-end;">
+                <div class="features-cards-row" style="width: auto;">
+                    <div class="feature-card" style="background:#0F0F0F;"></div>
+                    <div class="feature-card" style="background:#E9FFF5;"></div>
+                    <div class="feature-card" style="background:#0F0F0F;"></div>
+                </div>
+            </div>
+            <!-- Wide card 730x170px for dark mode, 30px below cards -->
+            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 20px; margin-bottom: 100px;">
+                <div style="width: 730px; height: 170px; background: url('Frame 364.svg') center center/cover no-repeat, #232323; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #f5f5f5; font-size: 24px; font-family: Satoshi, sans-serif;">
+                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                        <span style="font-size: 20px; color: #f5f5f5; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind plant AI.</span>
+                        <button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button>
+                    </div>
+                </div>
             </div>
     <footer class="footer">
         <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>

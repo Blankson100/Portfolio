@@ -59,7 +59,7 @@ html{
 html,body{height:100%}
 body{
     margin:0;
-    font-family:"Google Sans", sans-serif;
+    font-family:'Satoshi', 'Google Sans', Arial, sans-serif;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     background:#ffffff;

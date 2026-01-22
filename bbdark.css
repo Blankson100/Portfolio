@@ -3,6 +3,7 @@
 body.dark-mode {
     background:#000000;
     color:#ffffff;
+    font-family: 'Satoshi', 'Google Sans', Arial, sans-serif;
 }
 
 body.dark-mode .navbar {
@@ -34,6 +35,8 @@ body.dark-mode .intro-heading {
 
 body.dark-mode .intro-sub {
     color:#e0e0e0;
+    font-family: 'Satoshi', 'Google Sans', Arial, sans-serif;
+    font-weight: 300;
 }
 
 body.dark-mode .intro-cta {
