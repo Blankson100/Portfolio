@@ -22,10 +22,30 @@
                 border-radius: 0;
             }
             .right-pill {
-                /* background: #252525 !important; */
+                position: fixed;
+                bottom: 40px;
+                right: 5%;
+                z-index: 100;
+                width: 68px;
+                height: 152px;
+                background: rgba(11, 11, 11, 0.5) !important;
+                backdrop-filter: blur(15px);
+                border-radius: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             .mode-container {
-                /* background: #252525 !important; */
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+                justify-content: center;
+                background: transparent !important;
+                box-shadow: none !important;
+            }
+            body.dark-mode .right-pill, body.dark-mode .mode-container {
+                background: #252525 !important;
             }
         </style>
     <meta charset="UTF-8">
@@ -292,6 +312,9 @@
     </style>
 </head>
 <body>
+    <div class="logo">
+        <img src="logo.svg" alt="Logo" />
+    </div>
     <div class="time-location-display" id="time-location"></div>
     <div class="right-pill">
         <div class="mode-container">
@@ -309,10 +332,7 @@
     </nav>
     <div id="content">
         <div class="container">
-            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 100px;">
-                <img src="logo.svg" alt="Logo" />
-            </div>
-            <div class="button-row">
+            <div class="button-row" style="display: flex; gap: 12px; margin-bottom: 100px;">
                 <button id="btn-1" class="book-a-call">Book a Call</button>
                 <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
             </div>

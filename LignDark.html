@@ -323,7 +323,7 @@
     <div class="time-location-display" id="time-location"></div>
     <div class="right-pill">
         <div class="mode-container">
-            <button class="mode-btn active" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
             <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
             <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
         </div>
@@ -503,21 +503,20 @@
         updateTime();
         setInterval(updateTime, 60000);
 
+        // Mode pill logic (match BBDark.html/leafaiDark.html)
         const modeButtons = document.querySelectorAll('.mode-btn');
-        
         modeButtons.forEach((btn, index) => {
             btn.addEventListener('click', function() {
                 playClickSound();
                 modeButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                
                 setTimeout(() => {
                     if(index === 0) {
-                        window.location.href = 'leafaiDark.html';
+                        window.location.href = 'LignDark.html';
                     } else if(index === 1) {
-                        window.location.href = 'leafai.html';
+                        window.location.href = 'lign.html';
                     } else {
-                        window.location.href = 'leafaiDefault.html';
+                        window.location.href = 'LignDefault.html';
                     }
                 }, 100);
             });
