@@ -7,13 +7,22 @@
   <title>Portfolio Mobile</title>
   <script>
     (function () {
+      var ua = navigator.userAgent || navigator.vendor || window.opera || '';
+      var isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
       var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
+      var target;
+
+      if (isMobileDevice) {
+        target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
+      } else {
+        target = isDark ? 'projectsDark.html' : 'projects.html';
+      }
+
       window.location.replace(target);
     })();
   </script>
   <noscript>
-    <meta http-equiv="refresh" content="0; url=portfolio-mobile-light.html" />
+    <meta http-equiv="refresh" content="0; url=projects.html" />
   </noscript>
 </head>
 <body>
