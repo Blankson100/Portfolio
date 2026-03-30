@@ -172,6 +172,7 @@
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
       var drawing = false, lastX = 0, lastY = 0, clearTimer;
+      var multiTouch = false;
       function resizeCanvas() {
         var ratio = Math.max(window.devicePixelRatio || 1, 1);
         canvas.width = Math.round(window.innerWidth * ratio);
@@ -205,12 +206,48 @@
         canvas.classList.remove('is-fading');
       }
       canvas.addEventListener('pointerdown', function (event) {
+        // Only start drawing if two or more fingers are down
+        if (event.pointerType === 'touch' && event.isPrimary && event.pointerId) {
+          // Count active pointers
+          if (event.targetTouches && event.targetTouches.length < 2) return;
+        }
+        if (event.pointerType === 'touch' && event.getCoalescedEvents) {
+          // Fallback for browsers that support getCoalescedEvents
+          var touches = (event.getCoalescedEvents() || []).length;
+          if (touches < 2) return;
+        }
+        if (event.pointerType === 'touch' && event.touches && event.touches.length < 2) return;
+        if (event.pointerType === 'touch' && event.pressure < 0.5 && event.width < 10) return;
+        if (event.pointerType === 'touch' && event.pointerId && event.pointerId < 2) return;
+        if (event.pointerType === 'touch' && event.pointerId && event.pointerId >= 2) {
+          multiTouch = true;
+        } else if (event.pointerType === 'touch') {
+          multiTouch = false;
+        }
+        if (event.pointerType === 'touch' && !multiTouch) return;
         drawing = true; cancelClear();
         var pt = pointFromEvent(event); lastX = pt.x; lastY = pt.y;
       });
       var hue = 0;
       canvas.addEventListener('pointermove', function (event) {
         if (!drawing) return;
+        // Only draw if two or more fingers are down
+        if (event.pointerType === 'touch' && event.isPrimary && event.pointerId) {
+          if (event.targetTouches && event.targetTouches.length < 2) return;
+        }
+        if (event.pointerType === 'touch' && event.getCoalescedEvents) {
+          var touches = (event.getCoalescedEvents() || []).length;
+          if (touches < 2) return;
+        }
+        if (event.pointerType === 'touch' && event.touches && event.touches.length < 2) return;
+        if (event.pointerType === 'touch' && event.pressure < 0.5 && event.width < 10) return;
+        if (event.pointerType === 'touch' && event.pointerId && event.pointerId < 2) return;
+        if (event.pointerType === 'touch' && event.pointerId && event.pointerId >= 2) {
+          multiTouch = true;
+        } else if (event.pointerType === 'touch') {
+          multiTouch = false;
+        }
+        if (event.pointerType === 'touch' && !multiTouch) return;
         var pt = pointFromEvent(event);
         ctx.strokeStyle = 'hsl(' + hue + ', 90%, 55%)';
         ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pt.x, pt.y); ctx.stroke();
