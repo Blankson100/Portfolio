@@ -166,6 +166,9 @@
   <p class="section-label section-label-spaced">Experience</p>
   <p class="contact-copy">Open on your laptop or PC for a much better experience.</p>
     <button id="doodleToggle" style="position:fixed;bottom:24px;right:20px;z-index:120;background:rgba(255,255,255,0.10);color:#000;border:none;border-radius:50%;width:54px;height:54px;box-shadow:0 2px 8px #0001;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;padding:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">✏️</button>
+      <button id="doodleToggle" style="position:fixed;bottom:24px;right:20px;z-index:120;background:rgba(255,255,255,0.10);color:#000;border:none;width:54px;height:54px;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;padding:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
+        <img id="doodleIcon" src="doodle_off.svg" alt="Doodle" style="width:32px;height:32px;filter:invert(1) brightness(2);" />
+      </button>
     <canvas id="doodleCanvas" class="doodle-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:110;pointer-events:none;touch-action:none;background:transparent;"></canvas>
     <script>
       (function () {
@@ -204,17 +207,24 @@
           canvas.classList.remove('is-fading');
         }
         var hue = 0;
+        var icon = document.getElementById('doodleIcon');
         function enableDoodleMode() {
           doodleMode = true;
           canvas.style.pointerEvents = 'auto';
           toggle.style.background = '#2a8';
-          toggle.textContent = '🖐️';
+          if (icon) {
+            icon.src = 'doodle_on.svg';
+            icon.style.filter = 'invert(0)'; // black
+          }
         }
         function disableDoodleMode() {
           doodleMode = false;
           canvas.style.pointerEvents = 'none';
-          toggle.style.background = '#1a1a2a';
-          toggle.textContent = '✏️';
+          toggle.style.background = 'rgba(255,255,255,0.10)';
+          if (icon) {
+            icon.src = 'doodle_off.svg';
+            icon.style.filter = 'invert(1) brightness(2)'; // white
+          }
         }
         toggle.addEventListener('click', function () {
           if (doodleMode) {
