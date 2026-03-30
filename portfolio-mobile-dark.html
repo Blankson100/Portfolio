@@ -177,7 +177,88 @@
   <p class="contact-copy">hit me up lets talk on twitter <a class="muted-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="muted-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a></p>
   <p class="section-label section-label-spaced">Experience</p>
   <p class="contact-copy">Open on your laptop or PC for a much better experience.</p>
-  <canvas id="doodleCanvas" class="doodle-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:100;pointer-events:none;touch-action:none;background:transparent;"></canvas>
+    <button id="doodleToggle" style="position:fixed;bottom:24px;right:20px;z-index:120;background:#1a1a2a;color:#fff;border:none;border-radius:50%;width:54px;height:54px;box-shadow:0 2px 8px #0003;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;">✏️</button>
+    <canvas id="doodleCanvas" class="doodle-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:110;pointer-events:none;touch-action:none;background:transparent;"></canvas>
+    <script>
+      (function () {
+        var canvas = document.getElementById('doodleCanvas');
+        var toggle = document.getElementById('doodleToggle');
+        if (!canvas || !toggle) return;
+        var ctx = canvas.getContext('2d');
+        var drawing = false, lastX = 0, lastY = 0, clearTimer, doodleMode = false;
+        function resizeCanvas() {
+          var ratio = Math.max(window.devicePixelRatio || 1, 1);
+          canvas.width = Math.round(window.innerWidth * ratio);
+          canvas.height = Math.round(window.innerHeight * ratio);
+          canvas.style.width = '100vw';
+          canvas.style.height = '100vh';
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.scale(ratio, ratio);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.lineWidth = 2.5;
+        }
+        function pointFromEvent(event) {
+          return { x: event.clientX, y: event.clientY };
+        }
+        function scheduleClear() {
+          window.clearTimeout(clearTimer);
+          clearTimer = window.setTimeout(function () {
+            canvas.classList.add('is-fading');
+            setTimeout(function () {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              canvas.classList.remove('is-fading');
+            }, 1200);
+          }, 3000);
+        }
+        function cancelClear() {
+          window.clearTimeout(clearTimer);
+          canvas.classList.remove('is-fading');
+        }
+        var hue = 0;
+        function enableDoodleMode() {
+          doodleMode = true;
+          canvas.style.pointerEvents = 'auto';
+          toggle.style.background = '#2a8';
+          toggle.textContent = '🖐️';
+        }
+        function disableDoodleMode() {
+          doodleMode = false;
+          canvas.style.pointerEvents = 'none';
+          toggle.style.background = '#1a1a2a';
+          toggle.textContent = '✏️';
+        }
+        toggle.addEventListener('click', function () {
+          if (doodleMode) {
+            disableDoodleMode();
+          } else {
+            enableDoodleMode();
+          }
+        });
+        canvas.addEventListener('pointerdown', function (event) {
+          if (!doodleMode) return;
+          drawing = true; cancelClear();
+          var pt = pointFromEvent(event); lastX = pt.x; lastY = pt.y;
+        });
+        canvas.addEventListener('pointermove', function (event) {
+          if (!drawing || !doodleMode) return;
+          var pt = pointFromEvent(event);
+          ctx.strokeStyle = 'hsl(' + hue + ', 90%, 55%)';
+          ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pt.x, pt.y); ctx.stroke();
+          lastX = pt.x; lastY = pt.y;
+          hue = (hue + 3) % 360;
+        });
+        function stopDrawing() { if (!drawing) return; drawing = false; scheduleClear(); }
+        canvas.addEventListener('pointerup', stopDrawing);
+        canvas.addEventListener('pointercancel', stopDrawing);
+        canvas.addEventListener('pointerleave', stopDrawing);
+        window.addEventListener('resize', resizeCanvas);
+        // Make fade transition slower and softer
+        canvas.style.transition = 'opacity 1.2s cubic-bezier(.4,0,.2,1)';
+        disableDoodleMode();
+        resizeCanvas();
+      })();
+    </script>
   <script>
     (function () {
       var canvas = document.getElementById('doodleCanvas');
@@ -216,69 +297,13 @@
         window.clearTimeout(clearTimer);
         canvas.classList.remove('is-fading');
       }
-      // Touch events for multi-finger doodle
-      canvas.addEventListener('touchstart', function (event) {
-        if (event.touches.length >= 2) {
-          canvas.style.pointerEvents = 'auto';
-          drawing = true; cancelClear();
-          var pt = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-          lastX = pt.x; lastY = pt.y;
-        }
-      });
-      canvas.addEventListener('touchmove', function (event) {
-        if (drawing && event.touches.length >= 2) {
-          var pt = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-          ctx.strokeStyle = 'hsl(' + hue + ', 90%, 55%)';
-          ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pt.x, pt.y); ctx.stroke();
-          lastX = pt.x; lastY = pt.y;
-          hue = (hue + 3) % 360;
-          event.preventDefault();
-        }
-      }, {passive:false});
-      canvas.addEventListener('touchend', function (event) {
-        if (drawing && event.touches.length < 2) {
-          drawing = false; scheduleClear();
-          canvas.style.pointerEvents = 'none';
-        }
-      });
-      // Pointer events for mouse/stylus
       canvas.addEventListener('pointerdown', function (event) {
-        if (event.pointerType !== 'touch') {
-          drawing = true; cancelClear();
-          var pt = pointFromEvent(event); lastX = pt.x; lastY = pt.y;
-        }
+        drawing = true; cancelClear();
+        var pt = pointFromEvent(event); lastX = pt.x; lastY = pt.y;
       });
-      canvas.addEventListener('pointermove', function (event) {
-        if (!drawing || event.pointerType === 'touch') return;
-        var pt = pointFromEvent(event);
-        ctx.strokeStyle = 'hsl(' + hue + ', 90%, 55%)';
-        ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pt.x, pt.y); ctx.stroke();
-        lastX = pt.x; lastY = pt.y;
-        hue = (hue + 3) % 360;
-      });
-      canvas.addEventListener('pointerup', function (event) { if (event.pointerType !== 'touch') stopDrawing(); });
-      canvas.addEventListener('pointercancel', function (event) { if (event.pointerType !== 'touch') stopDrawing(); });
-      canvas.addEventListener('pointerleave', function (event) { if (event.pointerType !== 'touch') stopDrawing(); });
       var hue = 0;
       canvas.addEventListener('pointermove', function (event) {
         if (!drawing) return;
-        // Only draw if two or more fingers are down
-        if (event.pointerType === 'touch' && event.isPrimary && event.pointerId) {
-          if (event.targetTouches && event.targetTouches.length < 2) return;
-        }
-        if (event.pointerType === 'touch' && event.getCoalescedEvents) {
-          var touches = (event.getCoalescedEvents() || []).length;
-          if (touches < 2) return;
-        }
-        if (event.pointerType === 'touch' && event.touches && event.touches.length < 2) return;
-        if (event.pointerType === 'touch' && event.pressure < 0.5 && event.width < 10) return;
-        if (event.pointerType === 'touch' && event.pointerId && event.pointerId < 2) return;
-        if (event.pointerType === 'touch' && event.pointerId && event.pointerId >= 2) {
-          multiTouch = true;
-        } else if (event.pointerType === 'touch') {
-          multiTouch = false;
-        }
-        if (event.pointerType === 'touch' && !multiTouch) return;
         var pt = pointFromEvent(event);
         ctx.strokeStyle = 'hsl(' + hue + ', 90%, 55%)';
         ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pt.x, pt.y); ctx.stroke();
@@ -290,17 +315,9 @@
       canvas.addEventListener('pointercancel', stopDrawing);
       canvas.addEventListener('pointerleave', stopDrawing);
       window.addEventListener('resize', resizeCanvas);
-      // Allow drawing only when not scrolling
-      var enableDoodle = function() { canvas.style.pointerEvents = 'auto'; };
-      var disableDoodle = function() { canvas.style.pointerEvents = 'none'; };
-      var scrollTimeout;
-      window.addEventListener('scroll', function() {
-        disableDoodle();
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(enableDoodle, 220);
-      }, {passive:true});
-      // Start with doodle enabled
-      enableDoodle();
+      // Let clicks/taps through to page content when not drawing
+      canvas.addEventListener('pointerup', function () { setTimeout(function(){canvas.style.pointerEvents='none';}, 4200); });
+      canvas.addEventListener('pointerdown', function () { canvas.style.pointerEvents='auto'; });
       // Make fade transition slower and softer
       canvas.style.transition = 'opacity 1.2s cubic-bezier(.4,0,.2,1)';
       resizeCanvas();
