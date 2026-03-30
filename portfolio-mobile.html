@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Portfolio Mobile</title>
+  <script>
+    (function () {
+      var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
+      window.location.replace(target);
+    })();
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=portfolio-mobile-light.html" />
+  </noscript>
+</head>
+<body>
+</body>
+</html>
