@@ -222,9 +222,7 @@
       canvas.addEventListener('pointercancel', stopDrawing);
       canvas.addEventListener('pointerleave', stopDrawing);
       window.addEventListener('resize', resizeCanvas);
-      // Let clicks/taps through to page content when not drawing
-      canvas.addEventListener('pointerup', function () { setTimeout(function(){canvas.style.pointerEvents='none';}, 4200); });
-      canvas.addEventListener('pointerdown', function () { canvas.style.pointerEvents='auto'; });
+      // Always allow drawing—canvas always ready
       // Make fade transition slower and softer
       canvas.style.transition = 'opacity 1.2s cubic-bezier(.4,0,.2,1)';
       resizeCanvas();
