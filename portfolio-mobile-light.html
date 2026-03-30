@@ -190,11 +190,15 @@
       }
       function scheduleClear() {
         window.clearTimeout(clearTimer);
-        canvas.classList.add('is-fading');
+        // Start fading after 5 seconds
         clearTimer = window.setTimeout(function () {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          canvas.classList.remove('is-fading');
-        }, 700);
+          canvas.classList.add('is-fading');
+          // After fade transition (1.2s), clear
+          setTimeout(function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.classList.remove('is-fading');
+          }, 1200);
+        }, 5000);
       }
       function cancelClear() {
         window.clearTimeout(clearTimer);
@@ -219,8 +223,10 @@
       canvas.addEventListener('pointerleave', stopDrawing);
       window.addEventListener('resize', resizeCanvas);
       // Let clicks/taps through to page content when not drawing
-      canvas.addEventListener('pointerup', function () { setTimeout(function(){canvas.style.pointerEvents='none';}, 800); });
+      canvas.addEventListener('pointerup', function () { setTimeout(function(){canvas.style.pointerEvents='none';}, 6200); });
       canvas.addEventListener('pointerdown', function () { canvas.style.pointerEvents='auto'; });
+      // Make fade transition slower and softer
+      canvas.style.transition = 'opacity 1.2s cubic-bezier(.4,0,.2,1)';
       resizeCanvas();
     })();
   </script>
