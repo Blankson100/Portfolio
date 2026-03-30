@@ -222,7 +222,17 @@
       canvas.addEventListener('pointercancel', stopDrawing);
       canvas.addEventListener('pointerleave', stopDrawing);
       window.addEventListener('resize', resizeCanvas);
-      // Always allow drawing—canvas always ready
+      // Allow drawing only when not scrolling
+      var enableDoodle = function() { canvas.style.pointerEvents = 'auto'; };
+      var disableDoodle = function() { canvas.style.pointerEvents = 'none'; };
+      var scrollTimeout;
+      window.addEventListener('scroll', function() {
+        disableDoodle();
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(enableDoodle, 220);
+      }, {passive:true});
+      // Start with doodle enabled
+      enableDoodle();
       // Make fade transition slower and softer
       canvas.style.transition = 'opacity 1.2s cubic-bezier(.4,0,.2,1)';
       resizeCanvas();
