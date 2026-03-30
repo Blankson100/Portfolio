@@ -6,6 +6,11 @@
   <title>Portfolio Mobile Light</title>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --doodle: rgba(12, 12, 12, 0.06);
+      --doodle-text: rgba(12, 12, 12, 0.55);
+      --doodle-line: rgba(12, 12, 12, 0.8);
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: #ffffff;
@@ -104,6 +109,38 @@
     .muted-handle:hover {
       text-decoration: underline;
     }
+    .doodle-wrap {
+      position: fixed;
+      right: 16px;
+      bottom: 20px;
+      width: min(230px, calc(100vw - 32px));
+      height: 118px;
+      border: 1px solid var(--doodle-line);
+      border-radius: 14px;
+      background: var(--doodle);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      overflow: hidden;
+    }
+    .doodle-hint {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-size: 12px;
+      color: var(--doodle-text);
+      pointer-events: none;
+    }
+    .doodle-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      touch-action: none;
+      transition: opacity 0.35s ease;
+      opacity: 1;
+    }
+    .doodle-canvas.is-fading {
+      opacity: 0;
+    }
   </style>
 </head>
 <body>
@@ -128,5 +165,94 @@
   <p class="contact-copy">hit me up lets talk on twitter <a class="muted-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="muted-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a></p>
   <p class="section-label section-label-spaced">Experience</p>
   <p class="contact-copy">Open on your laptop or PC for a much better experience.</p>
+  <div class="doodle-wrap" aria-hidden="true">
+    <span class="doodle-hint">Doodle here</span>
+    <canvas id="doodleCanvas" class="doodle-canvas"></canvas>
+  </div>
+  <script>
+    (function () {
+      var canvas = document.getElementById('doodleCanvas');
+      if (!canvas) {
+        return;
+      }
+
+      var ctx = canvas.getContext('2d');
+      var drawing = false;
+      var lastX = 0;
+      var lastY = 0;
+      var clearTimer;
+
+      function resizeCanvas() {
+        var rect = canvas.getBoundingClientRect();
+        var ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = Math.round(rect.width * ratio);
+        canvas.height = Math.round(rect.height * ratio);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(ratio, ratio);
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--doodle-line').trim() || 'rgba(12,12,12,0.8)';
+      }
+
+      function pointFromEvent(event) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top
+        };
+      }
+
+      function scheduleClear() {
+        window.clearTimeout(clearTimer);
+        canvas.classList.add('is-fading');
+        clearTimer = window.setTimeout(function () {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          canvas.classList.remove('is-fading');
+        }, 550);
+      }
+
+      function cancelClear() {
+        window.clearTimeout(clearTimer);
+        canvas.classList.remove('is-fading');
+      }
+
+      canvas.addEventListener('pointerdown', function (event) {
+        drawing = true;
+        cancelClear();
+        var pt = pointFromEvent(event);
+        lastX = pt.x;
+        lastY = pt.y;
+      });
+
+      canvas.addEventListener('pointermove', function (event) {
+        if (!drawing) {
+          return;
+        }
+        var pt = pointFromEvent(event);
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(pt.x, pt.y);
+        ctx.stroke();
+        lastX = pt.x;
+        lastY = pt.y;
+      });
+
+      function stopDrawing() {
+        if (!drawing) {
+          return;
+        }
+        drawing = false;
+        scheduleClear();
+      }
+
+      canvas.addEventListener('pointerup', stopDrawing);
+      canvas.addEventListener('pointercancel', stopDrawing);
+      canvas.addEventListener('pointerleave', stopDrawing);
+      window.addEventListener('resize', resizeCanvas);
+
+      resizeCanvas();
+    })();
+  </script>
 </body>
 </html>
