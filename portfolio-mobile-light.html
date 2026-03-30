@@ -165,7 +165,7 @@
   <p class="contact-copy">hit me up lets talk on twitter <a class="muted-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="muted-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a></p>
   <p class="section-label section-label-spaced">Experience</p>
   <p class="contact-copy">Open on your laptop or PC for a much better experience.</p>
-  <canvas id="doodleCanvas" class="doodle-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:100;pointer-events:auto;touch-action:none;background:transparent;"></canvas>
+  <canvas id="doodleCanvas" class="doodle-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:100;pointer-events:none;touch-action:none;background:transparent;"></canvas>
   <script>
     (function () {
       var canvas = document.getElementById('doodleCanvas');
@@ -276,6 +276,7 @@
         // Touch events for multi-finger doodle
         canvas.addEventListener('touchstart', function (event) {
           if (event.touches.length >= 2) {
+            canvas.style.pointerEvents = 'auto';
             drawing = true; cancelClear();
             var pt = { x: event.touches[0].clientX, y: event.touches[0].clientY };
             lastX = pt.x; lastY = pt.y;
@@ -292,7 +293,10 @@
           }
         }, {passive:false});
         canvas.addEventListener('touchend', function (event) {
-          if (drawing && event.touches.length < 2) { drawing = false; scheduleClear(); }
+          if (drawing && event.touches.length < 2) {
+            drawing = false; scheduleClear();
+            canvas.style.pointerEvents = 'none';
+          }
         });
         // Pointer events for mouse/stylus
         canvas.addEventListener('pointerdown', function (event) {
