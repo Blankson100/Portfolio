@@ -187,7 +187,7 @@
         var toggle = document.getElementById('doodleToggle');
         if (!canvas || !toggle) return;
         var ctx = canvas.getContext('2d');
-        var drawing = false, lastX = 0, lastY = 0, clearTimer, doodleMode = false;
+        var drawing = {}, clearTimer, doodleMode = false;
         function resizeCanvas() {
           var ratio = Math.max(window.devicePixelRatio || 1, 1);
           canvas.width = Math.round(window.innerWidth * ratio);
@@ -238,20 +238,26 @@
             enableDoodleMode();
           }
         });
+        var hues = {};
         canvas.addEventListener('pointerdown', function (event) {
           if (!doodleMode) return;
-          drawing = true; cancelClear();
-          var pt = pointFromEvent(event); lastX = pt.x; lastY = pt.y;
+          cancelClear();
+          drawing[event.pointerId] = pointFromEvent(event);
+          hues[event.pointerId] = Math.floor(Math.random() * 360);
         });
         canvas.addEventListener('pointermove', function (event) {
-          if (!drawing || !doodleMode) return;
+          if (!doodleMode || !(event.pointerId in drawing)) return;
+          var last = drawing[event.pointerId];
           var pt = pointFromEvent(event);
-          ctx.strokeStyle = 'hsl(' + hue + ', 90%, 55%)';
-          ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pt.x, pt.y); ctx.stroke();
-          lastX = pt.x; lastY = pt.y;
-          hue = (hue + 3) % 360;
+          ctx.strokeStyle = 'hsl(' + hues[event.pointerId] + ', 90%, 55%)';
+          ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(pt.x, pt.y); ctx.stroke();
+          drawing[event.pointerId] = pt;
+          hues[event.pointerId] = (hues[event.pointerId] + 3) % 360;
         });
-        function stopDrawing() { if (!drawing) return; drawing = false; scheduleClear(); }
+        function stopDrawing(event) {
+          if (event && event.pointerId) delete drawing[event.pointerId];
+          if (Object.keys(drawing).length === 0) scheduleClear();
+        }
         canvas.addEventListener('pointerup', stopDrawing);
         canvas.addEventListener('pointercancel', stopDrawing);
         canvas.addEventListener('pointerleave', stopDrawing);
