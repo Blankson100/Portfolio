@@ -165,92 +165,59 @@
   <p class="contact-copy">hit me up lets talk on twitter <a class="muted-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="muted-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a></p>
   <p class="section-label section-label-spaced">Experience</p>
   <p class="contact-copy">Open on your laptop or PC for a much better experience.</p>
-  <div class="doodle-wrap" aria-hidden="true">
-    <span class="doodle-hint">Doodle here</span>
-    <canvas id="doodleCanvas" class="doodle-canvas"></canvas>
-  </div>
+  <canvas id="doodleCanvas" class="doodle-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:100;pointer-events:auto;touch-action:none;background:transparent;"></canvas>
   <script>
     (function () {
       var canvas = document.getElementById('doodleCanvas');
-      if (!canvas) {
-        return;
-      }
-
+      if (!canvas) return;
       var ctx = canvas.getContext('2d');
-      var drawing = false;
-      var lastX = 0;
-      var lastY = 0;
-      var clearTimer;
-
+      var drawing = false, lastX = 0, lastY = 0, clearTimer;
       function resizeCanvas() {
-        var rect = canvas.getBoundingClientRect();
         var ratio = Math.max(window.devicePixelRatio || 1, 1);
-        canvas.width = Math.round(rect.width * ratio);
-        canvas.height = Math.round(rect.height * ratio);
+        canvas.width = Math.round(window.innerWidth * ratio);
+        canvas.height = Math.round(window.innerHeight * ratio);
+        canvas.style.width = '100vw';
+        canvas.style.height = '100vh';
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.scale(ratio, ratio);
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 2.5;
         ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--doodle-line').trim() || 'rgba(12,12,12,0.8)';
       }
-
       function pointFromEvent(event) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-          x: event.clientX - rect.left,
-          y: event.clientY - rect.top
-        };
+        return { x: event.clientX, y: event.clientY };
       }
-
       function scheduleClear() {
         window.clearTimeout(clearTimer);
         canvas.classList.add('is-fading');
         clearTimer = window.setTimeout(function () {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           canvas.classList.remove('is-fading');
-        }, 550);
+        }, 700);
       }
-
       function cancelClear() {
         window.clearTimeout(clearTimer);
         canvas.classList.remove('is-fading');
       }
-
       canvas.addEventListener('pointerdown', function (event) {
-        drawing = true;
-        cancelClear();
-        var pt = pointFromEvent(event);
-        lastX = pt.x;
-        lastY = pt.y;
+        drawing = true; cancelClear();
+        var pt = pointFromEvent(event); lastX = pt.x; lastY = pt.y;
       });
-
       canvas.addEventListener('pointermove', function (event) {
-        if (!drawing) {
-          return;
-        }
+        if (!drawing) return;
         var pt = pointFromEvent(event);
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(pt.x, pt.y);
-        ctx.stroke();
-        lastX = pt.x;
-        lastY = pt.y;
+        ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pt.x, pt.y); ctx.stroke();
+        lastX = pt.x; lastY = pt.y;
       });
-
-      function stopDrawing() {
-        if (!drawing) {
-          return;
-        }
-        drawing = false;
-        scheduleClear();
-      }
-
+      function stopDrawing() { if (!drawing) return; drawing = false; scheduleClear(); }
       canvas.addEventListener('pointerup', stopDrawing);
       canvas.addEventListener('pointercancel', stopDrawing);
       canvas.addEventListener('pointerleave', stopDrawing);
       window.addEventListener('resize', resizeCanvas);
-
+      // Let clicks/taps through to page content when not drawing
+      canvas.addEventListener('pointerup', function () { setTimeout(function(){canvas.style.pointerEvents='none';}, 800); });
+      canvas.addEventListener('pointerdown', function () { canvas.style.pointerEvents='auto'; });
       resizeCanvas();
     })();
   </script>
