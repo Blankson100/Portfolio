@@ -464,6 +464,14 @@
             line-height: 1.7;
         }
     </style>
+<script>
+    // Redirect to mobile version matching user's color scheme
+    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
+        window.location.href = target;
+    }
+</script>
 </head>
 <body>
         <!-- Modal for enlarged Frame 360.svg image -->

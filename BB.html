@@ -29,6 +29,14 @@
             opacity: 1;
         }
     </style>
+<script>
+    // Redirect to mobile version matching user's color scheme
+    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
+        window.location.href = target;
+    }
+</script>
 </head>
 <body>
     <div class="time-location-display" id="time-location"></div>
