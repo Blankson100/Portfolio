@@ -21,12 +21,62 @@
     <title>LeafAI - PortoBlknszzz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
     <link rel="stylesheet" href="bbdark.css">
     <style>
+        /* Custom Video Controls */
+        .custom-video-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 710px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0 16px;
+            border-radius: 20px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 5;
+        }
+        .play-pause-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #ffffff;
+            border-radius: 2px;
+            width: 0%;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+        }
         body {
-            background-color: #181818;
+            background-color: #000000;
             color: #f5f5f5;
         }
         #content {
@@ -52,7 +102,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 15px;
             overflow: hidden;
         }
         .back-button {
@@ -236,7 +286,7 @@
         }
         .cta-secondary:hover {
             background: #f5f5f5;
-            color: #181818;
+            color: #000000;
         }
         .navbar {
             /* background-color: #252525 !important; */
@@ -269,19 +319,121 @@
             max-width: 730px;
             height: 620px;
             margin: 40px auto 0 auto;
-            border-radius: 25px;
-            overflow: hidden;
+            border-radius: 30px;
+            overflow: visible;
             background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
         .video-box video {
             width: 100%;
             height: 100%;
-            border-radius: 25px;
+            border-radius: 30px;
             background: #fff;
             object-fit: cover;
+            object-position: center;
+        }
+        .video-pill {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 0;
+            width: 42px;
+            height: 106px;
+            border-radius: 35px;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .video-duration-pill {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            min-width: 64px;
+            height: 32px;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.45);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "Google Sans", sans-serif;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+        .pill-icon-btn {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .pill-icon-btn img {
+            display: block;
+        }
+        .volume-popover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 140px;
+            height: 20px;
+            display: none;
+            align-items: center;
+            padding: 0;
+            box-sizing: border-box;
+            z-index: 11;
+        }
+        .volume-popover.visible {
+            display: flex;
+        }
+        .volume-slider {
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            margin: 0;
+        }
+        .volume-slider::-webkit-slider-runnable-track {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: 999px;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffffff;
+            margin-top: -3px;
+            border: none;
+            cursor: pointer;
+        }
+        .volume-slider::-moz-range-track {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: 999px;
+        }
+        .volume-slider::-moz-range-thumb {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: none;
+            cursor: pointer;
         }
         .see-how-title {
             font-size: 18px;
@@ -325,7 +477,6 @@
         <div class="mode-container">
             <button class="mode-btn active" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
             <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
-            <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
         </div>
     </div>
     <nav class="navbar">
@@ -338,20 +489,16 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <img src="logo.svg" alt="Logo" />
-            </div>
-            <div class="button-row">
-                <button id="btn-1" class="book-a-call">Book a Call</button>
-                <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
             </div>
         </div>
         <div class="project-page-container">
             <div class="button-container">
-                <button class="back-button" onclick="history.back()"><img src="arrow.backward.svg" alt="Back" style="width: 25px; height: 25px; filter: invert(1);"> Back</button>
+                <button class="back-button" onclick="smartBack()"><img src="arrow.backward.svg" alt="Back" style="width: 25px; height: 25px; filter: invert(1);"> Back</button>
                 <button class="title-button">Agriculture/AI/ML</button>
             </div>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="ProtoHand leaf dark.png" alt="LeafAI Hero"></div>
+                <div class="project-hero-inner"><img src="ProtoHand leaf dark.svg" alt="LeafAI Hero"></div>
             </div>
             
             <div class="project-header">
@@ -388,23 +535,39 @@
             </div>
             
             <div class="video-box">
-                <video controls style="width:100%; height:100%; border-radius:25px; background:#fff;">
-                    <source src="your-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <div class="video-duration-pill" id="video-duration-pill">--:--</div>
+                <div class="video-pill">
+                    <button class="pill-icon-btn" type="button" id="expand-btn" aria-label="Expand video"><img src="expand.svg" alt="Expand" style="width:24px;height:24px;"></button>
+                    <button class="pill-icon-btn" type="button" id="volume-btn" aria-label="Adjust volume"><img src="speaker.wave.3.svg" alt="Speaker" style="width:20px;height:20px;"></button>
+                </div>
+                <div class="volume-popover" id="volume-popover">
+                    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="1" aria-label="Video volume">
+                </div>
+                <div class="video-container">
+                    <video id="custom-video" style="width:100%; height:100%; background:#fff;">
+                        <source src="Central Cee x Dave - Trojan Horse (Lyrics).mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="custom-video-controls">
+                        <button class="play-pause-btn" id="play-pause-btn">▶</button>
+                        <div class="progress-bar" id="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="see-how-title">See how it works</div>
             <div class="see-how-desc">
-                Plant AI: Crop care uses computer vision to identify across all plant types and language to deliver treatment in Local Languages. The app connects farmers to nearby supplies through an accessibility-first interface.
+                This demo shows how Plant AI: Crop Care works end to end, from snapping a plant photo to getting a diagnosis, treatment guidance in local language, and nearby input recommendations farmers can act on immediately.
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
                 <button class="title-button">Features</button>
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end;">
                 <div class="features-cards-row" style="width: auto;">
-                    <div class="feature-card" style="background:#0F0F0F;"></div>
-                    <div class="feature-card" style="background:#E9FFF5;"></div>
-                    <div class="feature-card" style="background:#0F0F0F;"></div>
+                    <img src="Frame 360white.svg" alt="Feature 1" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
+                    <img src="Frame 362.svg" alt="Feature 2" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
+                    <img src="Frame 359.svg" alt="Feature 3" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
                 </div>
             </div>
             <!-- Wide card 730x170px for dark mode, 30px below cards -->
@@ -412,7 +575,7 @@
                 <div style="width: 730px; height: 170px; background: url('Frame 364.svg') center center/cover no-repeat, #232323; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #f5f5f5; font-size: 24px; font-family: Satoshi, sans-serif;">
                     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
                         <span style="font-size: 20px; color: #f5f5f5; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind plant AI.</span>
-                        <button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button>
+                        <a href="casestudy-viewer.html" style="text-decoration: none;"><button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button></a>
                     </div>
                 </div>
             </div>
@@ -427,11 +590,19 @@
     <script>
         // --- Detect referrer and set active nav ---
         (function() {
-            const referrer = document.referrer.toLowerCase();
-            if (referrer.includes('bb.html') || referrer.includes('bbdark.html') || referrer.includes('bbdefault.html')) {
+            const params = new URLSearchParams(window.location.search);
+            const from = params.get('from');
+            if (from === 'home') {
                 document.getElementById('nav-home').classList.add('nav-item-active');
-            } else {
+            } else if (from === 'projects') {
                 document.getElementById('nav-projects').classList.add('nav-item-active');
+            } else {
+                const referrer = document.referrer.toLowerCase();
+                if (referrer.includes('bb.html') || referrer.includes('bbdark.html')) {
+                    document.getElementById('nav-home').classList.add('nav-item-active');
+                } else {
+                    document.getElementById('nav-projects').classList.add('nav-item-active');
+                }
             }
         })();
 
@@ -503,6 +674,26 @@
         updateTime();
         setInterval(updateTime, 60000);
 
+        // --- Restore scroll position from mode switch ---
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const scrollY = params.get('scrollY');
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY, 10));
+            }
+        })();
+
+        // --- Smart back navigation ---
+        function smartBack() {
+            const params = new URLSearchParams(window.location.search);
+            const from = params.get('from');
+            if (from === 'home') {
+                window.location.href = 'BBDark.html';
+            } else {
+                window.location.href = 'projectsDark.html';
+            }
+        }
+
         const modeButtons = document.querySelectorAll('.mode-btn');
         
         modeButtons.forEach((btn, index) => {
@@ -511,16 +702,138 @@
                 modeButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
+                const fromParam = new URLSearchParams(window.location.search).get('from') || 'projects';
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
                 setTimeout(() => {
                     if(index === 0) {
-                        window.location.href = 'leafaiDark.html';
+                        window.location.href = 'leafaiDark.html?from=' + fromParam + '&scrollY=' + scrollY;
                     } else if(index === 1) {
-                        window.location.href = 'leafai.html';
-                    } else {
-                        window.location.href = 'leafaiDefault.html';
+                        window.location.href = 'leafai.html?from=' + fromParam + '&scrollY=' + scrollY;
                     }
                 }, 100);
             });
+        });
+
+        // Custom Video Player Controls
+        const video = document.getElementById('custom-video');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressFill = document.getElementById('progress-fill');
+        const expandBtn = document.getElementById('expand-btn');
+        const volumeBtn = document.getElementById('volume-btn');
+        const volumePopover = document.getElementById('volume-popover');
+        const volumeSlider = document.getElementById('volume-slider');
+        const durationPill = document.getElementById('video-duration-pill');
+        const videoBox = video.closest('.video-box');
+
+        function formatTime(totalSeconds) {
+            if (!Number.isFinite(totalSeconds) || totalSeconds < 0) {
+                return '--:--';
+            }
+            const seconds = Math.floor(totalSeconds);
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return minutes + ':' + String(remainingSeconds).padStart(2, '0');
+        }
+
+        function updateDurationPill() {
+            durationPill.textContent = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
+        }
+
+        function togglePlayback() {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.textContent = '⏸';
+            } else {
+                video.pause();
+                playPauseBtn.textContent = '▶';
+            }
+        }
+
+        playPauseBtn.addEventListener('click', function() {
+            togglePlayback();
+        });
+
+        video.addEventListener('click', function() {
+            togglePlayback();
+        });
+
+        video.addEventListener('play', function() {
+            playPauseBtn.textContent = '⏸';
+        });
+
+        video.addEventListener('pause', function() {
+            playPauseBtn.textContent = '▶';
+        });
+
+        video.addEventListener('loadedmetadata', updateDurationPill);
+        video.addEventListener('durationchange', updateDurationPill);
+
+        if (video.readyState >= 1) {
+            updateDurationPill();
+        }
+
+        video.addEventListener('timeupdate', function() {
+            const percent = (video.currentTime / video.duration) * 100;
+            progressFill.style.width = percent + '%';
+            updateDurationPill();
+        });
+
+        progressBar.addEventListener('click', function(e) {
+            const rect = progressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            video.currentTime = percent * video.duration;
+        });
+
+        volumeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const videoBoxRect = volumeBtn.closest('.video-box').getBoundingClientRect();
+            const btnRect = volumeBtn.getBoundingClientRect();
+            const popoverHeight = volumePopover.offsetHeight || 36;
+            const popoverWidth = volumePopover.offsetWidth || 140;
+            const alignedTop = (btnRect.top - videoBoxRect.top) + (btnRect.height / 2) - (popoverHeight / 2) + 6;
+            const alignedLeft = (btnRect.left - videoBoxRect.left) - popoverWidth - 15;
+
+            volumePopover.style.top = alignedTop + 'px';
+            volumePopover.style.left = alignedLeft + 'px';
+            volumePopover.classList.toggle('visible');
+        });
+
+        volumeSlider.addEventListener('input', function() {
+            video.volume = parseFloat(volumeSlider.value);
+        });
+
+        expandBtn.addEventListener('click', async function() {
+            try {
+                if (!document.fullscreenElement) {
+                    await videoBox.requestFullscreen();
+                } else {
+                    await document.exitFullscreen();
+                }
+            } catch (err) {
+                console.error('Fullscreen toggle failed:', err);
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!volumePopover.contains(e.target) && e.target !== volumeBtn && !volumeBtn.contains(e.target)) {
+                volumePopover.classList.remove('visible');
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            const isSpace = e.code === 'Space' || e.key === ' ';
+            if (!isSpace) {
+                return;
+            }
+
+            const tag = (document.activeElement && document.activeElement.tagName) ? document.activeElement.tagName.toLowerCase() : '';
+            if (tag === 'input' || tag === 'textarea' || tag === 'select') {
+                return;
+            }
+
+            e.preventDefault();
+            togglePlayback();
         });
     </script>
 </body>

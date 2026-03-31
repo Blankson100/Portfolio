@@ -165,10 +165,9 @@
   <p class="contact-copy">hit me up lets talk on twitter <a class="muted-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="muted-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a></p>
   <p class="section-label section-label-spaced">Experience</p>
   <p class="contact-copy">Open on your laptop or PC for a much better experience.</p>
-    <button id="doodleToggle" style="position:fixed;bottom:24px;right:20px;z-index:120;background:rgba(255,255,255,0.10);color:#000;border:none;border-radius:50%;width:54px;height:54px;box-shadow:0 2px 8px #0001;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;padding:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">✏️</button>
-      <button id="doodleToggle" style="position:fixed;bottom:24px;right:20px;z-index:120;background:rgba(255,255,255,0.10);color:#000;border:none;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;padding:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
-        <img id="doodleIcon" src="doodle_off.svg" alt="Doodle" style="width:32px;height:32px;filter:invert(1) brightness(2);" />
-      </button>
+    <button id="doodleToggle" style="position:fixed;bottom:24px;right:20px;z-index:120;background:rgba(255,255,255,0.10);color:#000;border:none;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;padding:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background 0.35s cubic-bezier(.4,0,.2,1);">
+      <img id="doodleIcon" src="doodle_off.svg" alt="Doodle" style="width:32px;height:32px;filter:invert(1) brightness(2);transition:filter 0.35s cubic-bezier(.4,0,.2,1);" />
+    </button>
     <canvas id="doodleCanvas" class="doodle-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:110;pointer-events:none;touch-action:none;background:transparent;"></canvas>
     <script>
       (function () {

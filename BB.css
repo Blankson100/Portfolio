@@ -105,8 +105,8 @@ body{
     bottom:40px;
     right:5%;
     z-index:100;
-    width:68px;
-    height:152px;
+    width:112px;
+    height:68px;
     background:rgba(11, 11, 11, 0.5);
     backdrop-filter:blur(15px);
     border-radius:50px;
@@ -117,7 +117,7 @@ body{
 
 .mode-container{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     gap:12px;
     align-items:center;
     justify-content:center;
@@ -236,12 +236,21 @@ body{
     left:5%;
     top:20px;
     z-index:101;
+    height:50px;
 }
 .logo img{
     width:50px;
     height:50px;
     object-fit:cover;
     display:block;
+}
+.barcode-logo{
+    font-family:'Libre Barcode 39', cursive;
+    font-size:40px;
+    color:var(--black);
+    text-decoration:none;
+    line-height:1;
+    white-space:nowrap;
 }
 
 .button-row{
@@ -313,7 +322,7 @@ body{
 
 
 .intro-inner{
-    max-width:760px;
+    max-width:620px;
     margin:0 auto;
 }
 
@@ -321,7 +330,7 @@ body{
     margin:10px 0 0 0;
     color:var(--black);
     font-weight:400;
-    max-width:760px;
+    max-width:620px;
     font-size:18px;
     line-height:1.6;
 }
@@ -385,8 +394,8 @@ body{
 .intro-heading{
     margin:0;
     font-size:40px;
-    font-weight:700;
-    font-family:Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-weight:400;
+    font-family:'Libre Barcode 39', cursive;
     color:var(--black);
 }
 

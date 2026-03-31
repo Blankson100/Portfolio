@@ -6,8 +6,29 @@
     <title>PortoBlknszzz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
+    <style>
+        .cursor-tooltip {
+            position: fixed;
+            pointer-events: none;
+            background: #0b0b0b;
+            color: #ffffff;
+            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 8px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.18s ease;
+            z-index: 9999;
+            transform: translate(14px, 14px);
+        }
+        .cursor-tooltip.visible {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="time-location-display" id="time-location"></div>
@@ -15,7 +36,6 @@
         <div class="mode-container">
             <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
             <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
-            <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
         </div>
     </div>
     <nav class="navbar">
@@ -28,30 +48,25 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <img src="logo.svg" alt="Logo" />
-            </div>
-            <div class="button-row">
-                <button id="btn-1" class="book-a-call">Book a Call</button>
-                <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
             </div>
         </div>
         <div class="introduction">
             <div class="intro-inner">
-                <h1 class="intro-heading">Hello, I am Blankson.</h1>
-                <p class="intro-sub">A Product Designer who is interested in challenges. I feel like I am the missing piece of your team. Currently studying Human computer interaction for masters. Building research and user driven designs and concepts I find cool and helpful. Always chasing perfection.</p>
+                <p class="intro-sub">People first design, across products, systems and wherever AI shows up.</p>
                 <div class="extra-action">
                     <div class="featured-section">
 
                         <div class="featured-content-box">
                             <button class="projects-btn">Featured Projects</button>
                             <div class="grid-container">
-                                <a href="leafai.html" class="leafAi" style="text-decoration: none;">
+                                <a href="leafai.html?from=home" class="leafAi" data-project="Plant AI" style="text-decoration: none;">
                                     <div class="grid-container"></div>
                                 </a>
-                                <a href="lign.html" class="Lign" style="text-decoration: none;">
+                                <a href="LignTransport.html?from=home" class="Lign" data-project="Lign" style="text-decoration: none;">
                                     <div class="grid-container"></div>
                                 </a>
-                                <div class="IncFig">
+                                <div class="IncFig" data-project="Clostra">
                                     <div class="grid-container"></div>
                                 </div>
                             </div>
@@ -63,12 +78,33 @@
         <footer class="footer">
             <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
             <div class="footer-icons">
-                <img src="xxx.svg" alt="X" width="24" height="24">
-                <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
+                    <img src="XWHITE.svg" alt="X" width="24" height="24">
+                    <img src="LinkedIN WHITE.svg" alt="LinkedIn" width="24" height="24">
             </div>
         </footer>
     </div>
+    <div class="cursor-tooltip" id="cursorTooltip"></div>
     <script>
+        // --- Cursor tooltip for project cards ---
+        (function() {
+            const tooltip = document.getElementById('cursorTooltip');
+            const projectItems = document.querySelectorAll('[data-project]');
+
+            projectItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    tooltip.textContent = this.dataset.project;
+                    tooltip.classList.add('visible');
+                });
+                item.addEventListener('mouseleave', function() {
+                    tooltip.classList.remove('visible');
+                });
+                item.addEventListener('mousemove', function(e) {
+                    tooltip.style.left = e.clientX + 14 + 'px';
+                    tooltip.style.top = e.clientY + 14 + 'px';
+                });
+            });
+        })();
+
         // --- Click sound effect ---
         function playClickSound() {
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -143,24 +179,19 @@
         updateTime();
         setInterval(updateTime, 60000);
 
+        // --- Restore scroll position from mode switch ---
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const scrollY = params.get('scrollY');
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY, 10));
+            }
+        })();
+
         // Mode switching
         const modeButtons = document.querySelectorAll('.mode-btn');
         
-        // Check for theme in URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const theme = urlParams.get('theme');
-
-        if (theme === 'default') {
-            modeButtons[2].classList.add('active');
-            // Update nav links to preserve default theme
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                if (!link.href.includes('#')) {
-                    link.href = link.href.split('?')[0] + '?theme=default';
-                }
-            });
-        } else {
-            modeButtons[1].classList.add('active'); // Default to light active
-        }
+        modeButtons[1].classList.add('active'); // Light mode active
         
         modeButtons.forEach((btn, index) => {
             btn.addEventListener('click', function() {
@@ -168,16 +199,12 @@
                 modeButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
                 setTimeout(() => {
                     if(index === 0) {
-                        // Dark mode - redirect to dark mode page
-                        window.location.href = 'BBDark.html';
+                        window.location.href = 'BBDark.html?scrollY=' + scrollY;
                     } else if(index === 1) {
-                        // Light mode - stay on this page
-                        window.location.href = 'BB.html';
-                    } else {
-                        // Default mode - redirect to default detection page
-                        window.location.href = 'BBDefault.html';
+                        window.location.href = 'BB.html?scrollY=' + scrollY;
                     }
                 }, 100);
             });

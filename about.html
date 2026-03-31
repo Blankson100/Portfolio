@@ -6,7 +6,7 @@
     <title>About Me - PortoBlknszzz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
     <style>
         #content {
@@ -43,9 +43,22 @@
             line-height: 1.6;
             color: #0b0b0b;
         }
+        .gmail-link {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 16px;
+            font-family: Satoshi, sans-serif;
+            color: #0b0b0b;
+            text-decoration: underline wavy transparent;
+            text-underline-offset: 4px;
+            transition: text-decoration-color 0.3s ease;
+        }
+        .gmail-link:hover {
+            text-decoration-color: #0b0b0b;
+        }
         .content-box {
             width: 430px;
-            height: 510px;
+            height: 620px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -58,8 +71,51 @@
             height: 100px;
             min-width: 100px;
             min-height: 100px;
-            margin-bottom: 20px;
+            margin-bottom: 0;
             flex-shrink: 0;
+        }
+        .star-name-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 0;
+        }
+        .id-card-wrapper {
+            display: flex;
+            align-items: center;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 5px;
+            width: 400px;
+            margin-bottom: 20px;
+            background: #ffffff;
+        }
+        .star-name-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .star-name {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: #0b0b0b;
+            letter-spacing: 0.5px;
+        }
+        body.dark-mode .star-name {
+            color: #e0e0e0;
+        }
+        .star-subtitle {
+            font-family: 'Satoshi', 'Google Sans', sans-serif;
+            font-style: italic;
+            font-size: 18px;
+            font-weight: 400;
+            color: #000000;
+            text-decoration: underline wavy;
+            opacity: 1;
+            margin-top: 2px;
+        }
+        body.dark-mode .star-subtitle {
+            color: #000000;
         }
         body.dark-mode .about-text {
             color: #e0e0e0;
@@ -76,7 +132,6 @@
         <div class="mode-container">
             <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
             <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
-            <button class="mode-btn" title="Default Mode"><img src="default.svg" alt="Default"></button>
         </div>
     </div>
     <nav class="navbar">
@@ -89,33 +144,37 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <img src="logo.svg" alt="Logo" />
-            </div>
-            <div class="button-row">
-                <button id="btn-1" class="book-a-call">Book a Call</button>
-                <a href="mailto:akornorblankson99@gmail.com" id="btn-2" class="mail" style="text-decoration:none;display:inline-flex;align-items:center;"><img src="Group 81.png" alt="Email" style="width:20px;height:16px;margin-right:8px;">Send an Email</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
             </div>
         </div>
         <div class="about-container">
             <div class="content-box">
                 <img src="logo.svg" alt="Avatar" class="avatar-image">
-                <svg id="star" class="star-svg" viewBox="0 0 200 200">
-                    <defs>
-                        <pattern id="face-pattern" patternUnits="objectBoundingBox" width="1" height="1">
-                            <image href="face.jpeg" width="200" height="200" preserveAspectRatio="xMidYMid slice"/>
-                        </pattern>
-                    </defs>
-                    <path id="star-polygon" class="star-shape" />
-                </svg>
-                <p class="about-text">I was really thinking of using AI to write this but hey; that won't be cool. I am Blankson, used to be a student. Still a student, because i am always learning. Welcome to my portfolio website. Hope you enjoy and go through as i enjoyed researching and making these projects. I am mostly focused on Rural area systems and systems that will be easy to navigate and accessible to all. I use AI very much though i just don't think its cool to write about yourself with AI. Lastly I am extremely introverted but i am trying more to be extroverted shoot me a Dm on my socials for any Job or lets talk about cool stuffs.</p>
+                <div class="id-card-wrapper">
+                <div class="star-name-row">
+                    <svg id="star" class="star-svg" viewBox="0 0 200 200">
+                        <defs>
+                            <pattern id="face-pattern" patternUnits="objectBoundingBox" width="1" height="1">
+                                <image href="face.jpeg" width="200" height="200" preserveAspectRatio="xMidYMid slice"/>
+                            </pattern>
+                        </defs>
+                        <path id="star-polygon" class="star-shape" />
+                    </svg>
+                    <div class="star-name-group">
+                        <span class="star-name">Bright Akornor Blankson</span>
+                        <a href="mailto:akornorblankson99@gmail.com" class="star-subtitle" style="text-decoration: none; color: inherit; text-decoration: underline wavy transparent; transition: text-decoration-color 0.3s ease;" onmouseover="this.style.textDecorationColor='#000000'" onmouseout="this.style.textDecorationColor='transparent'">Gmail</a>
+                    </div>
+                </div>
+                </div>
+                <p class="about-text">I'm a UX/UI Designer and Researcher who genuinely loves solving problems that matter to people. My background is in fintech, but my focus has always been on the human side of things - understanding how people think, what they need, and designing around that. Whether I'm working on a complex system or integrating AI into a product, I make sure it never loses that human touch. Good design, to me, is when people don't have to think twice.</p>
             </div>
         </div>
     </div>
     <footer class="footer">
         <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
         <div class="footer-icons">
-            <img src="xxx.svg" alt="X" width="24" height="24">
-            <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
+            <img src="XWHITE.svg" alt="X" width="24" height="24">
+            <img src="LinkedIN WHITE.svg" alt="LinkedIn" width="24" height="24">
         </div>
     </footer>
 
@@ -253,24 +312,19 @@
         updateTime();
         setInterval(updateTime, 60000);
 
+        // --- Restore scroll position from mode switch ---
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const scrollY = params.get('scrollY');
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY, 10));
+            }
+        })();
+
         // Mode switching
         const modeButtons = document.querySelectorAll('.mode-btn');
         
-        // Check for theme in URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const theme = urlParams.get('theme');
-
-        if (theme === 'default') {
-            modeButtons[2].classList.add('active');
-            // Update nav links to preserve default theme
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                if (!link.href.includes('#')) {
-                    link.href = link.href.split('?')[0] + '?theme=default';
-                }
-            });
-        } else {
-            modeButtons[1].classList.add('active'); // Default to light active
-        }
+        modeButtons[1].classList.add('active'); // Light mode active
         
         modeButtons.forEach((btn, index) => {
             btn.addEventListener('click', function() {
@@ -278,10 +332,10 @@
                 modeButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
                 setTimeout(() => {
-                    if (index === 0) window.location.href = 'aboutDark.html';
-                    else if (index === 1) window.location.href = 'about.html';
-                    else if (index === 2) window.location.href = 'aboutDefault.html';
+                    if (index === 0) window.location.href = 'aboutDark.html?scrollY=' + scrollY;
+                    else if (index === 1) window.location.href = 'about.html?scrollY=' + scrollY;
                 }, 100);
             });
         });

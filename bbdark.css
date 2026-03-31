@@ -33,6 +33,10 @@ body.dark-mode .intro-heading {
     color:#ffffff;
 }
 
+body.dark-mode .barcode-logo {
+    color:#ffffff;
+}
+
 body.dark-mode .intro-sub {
     color:#e0e0e0;
     font-family: 'Satoshi', 'Google Sans', Arial, sans-serif;
@@ -44,7 +48,6 @@ body.dark-mode .intro-cta {
     color:#0a0a0a;
 }
 
-body.dark-mode .book-a-call,
 body.dark-mode .mail {
     background:#ffffff;
     color:#0a0a0a;

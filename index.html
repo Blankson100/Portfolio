@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bright Blankson Portfolio</title>
+  <script>
+    // Detect dark mode preference
+    var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Redirect to the appropriate mobile version
+    if (isDark) {
+      window.location.replace('portfolio-mobile-dark.html');
+    } else {
+      window.location.replace('portfolio-mobile-light.html');
+    }
+  </script>
+  <style>
+    body {
+      background: #fff;
+      color: #222;
+      font-family: 'Jost', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .loading {
+      font-size: 1.2em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">Loading portfolio...</div>
+</body>
+</html>

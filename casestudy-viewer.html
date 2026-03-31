@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study - Plant AI: Crop Care</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Google Sans', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .viewer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 32px;
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .viewer-header h1 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #0b0b0b;
+        }
+        .header-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .back-btn {
+            background: none;
+            border: 1.5px solid #0b0b0b;
+            border-radius: 10px;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-family: 'Google Sans', sans-serif;
+            cursor: pointer;
+            color: #0b0b0b;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .back-btn:hover {
+            background: #e6e6e6;
+        }
+        .download-btn {
+            background: #0b0b0b;
+            border: none;
+            border-radius: 10px;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-family: 'Google Sans', sans-serif;
+            cursor: pointer;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .download-btn:hover {
+            background: #333333;
+        }
+        .download-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: #ffffff;
+        }
+        .pdf-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+        }
+        .pdf-container iframe {
+            width: 100%;
+            max-width: 900px;
+            height: calc(100vh - 100px);
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewer-header">
+        <h1>Plant AI: Crop Care — Full Case Study</h1>
+        <div class="header-buttons">
+            <a class="back-btn" onclick="history.back()">← Back</a>
+            <a href="CropCare_Academic_Reframe.pdf" download="CropCare_Academic_Reframe.pdf" class="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
+                Download PDF
+            </a>
+        </div>
+    </div>
+    <div class="pdf-container">
+        <iframe src="CropCare_Academic_Reframe.pdf" type="application/pdf"></iframe>
+    </div>
+</body>
+</html>
