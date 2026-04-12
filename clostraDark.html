@@ -96,14 +96,91 @@
         }
         .project-hero {
             width: 730px;
-            height: 431px;
-            background: transparent;
-            border-radius: 24px;
+            height: 620px;
+            margin: 40px auto 0 auto;
+            border-radius: 30px;
+            overflow: visible;
+            background: #232323;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 15px;
+            position: relative;
+        }
+        .hero-slide-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
             overflow: hidden;
+        }
+        .hero-slide-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .details-corner-circle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Satoshi, sans-serif;
+            font-size: 21px;
+            font-weight: 500;
+            line-height: 1;
+            z-index: 2;
+        }
+        .details-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 21px;
+        }
+        .digit-one-slot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 12px;
+            height: 21px;
+            overflow: hidden;
+        }
+        .details-corner-circle.bottom-left {
+            top: auto;
+            right: auto;
+            bottom: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+        .details-corner-circle.bottom-right {
+            top: auto;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .details-corner-circle.is-disabled {
+            background: rgba(125, 125, 125, 0.28);
+            cursor: default;
+            pointer-events: none;
+        }
+        .details-corner-circle.is-disabled img {
+            opacity: 0.62;
+            filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(253%) hue-rotate(87deg) brightness(92%) contrast(87%);
+        }
+        .details-corner-circle .digit-zero {
+            color: #aaaaaa;
+        }
+        .details-corner-circle .digit-one {
+            color: #ffffff;
         }
         .back-button {
             width: 100px;
@@ -506,7 +583,12 @@
                 <button class="title-button">Product/SaaS/UX</button>
             </div>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="ClostraEscrowdrk.svg" alt="Clostra Hero"></div>
+                <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
+                <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
+                <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
+                <div class="hero-slide-frame">
+                    <img id="details-slide-image" src="ClostraEscrowdrk.svg" alt="Clostra Slide 01" style="width:100%; height:100%; object-fit:cover;">
+                </div>
             </div>
             
             <div class="project-header">
@@ -515,7 +597,7 @@
             
             <div class="project-section">
                 <p class="section-content">
-                    I grew up going to school in a farming community, so I've always thought about ways to bring what I do into agriculture. Technology in farming has always fascinated me. When a friend came to me to design a plant disease detection app, I saw it as the perfect opportunity. I expanded his concept into Plant AI: Crop Care, transforming it from a basic detector for tomato and maize into a comprehensive app for all plant types. The app uses computer vision for disease identification and language AI to deliver treatment recommendations in local languages based on the user's location. Research with farming communities taught me that simplicity builds trust, so I designed clean navigation, automatic language detection, and a shop finder that connects farmers directly to solutions.
+                    Clostra is an Escrow platform ......
                 </p>
             </div>
 
@@ -721,6 +803,103 @@
                 }, 100);
             });
         });
+
+        // Details slide controls with instant number updates
+        (function() {
+            const slideImage = document.getElementById('details-slide-image');
+            const prevBtn = document.getElementById('details-prev-slide');
+            const nextBtn = document.getElementById('details-next-slide');
+            const numberCircle = document.getElementById('details-slide-number-circle');
+
+            if (!slideImage || !prevBtn || !nextBtn || !numberCircle) {
+                return;
+            }
+
+            const slides = [
+                'ClostraEscrowdrk.svg',
+                'Frame 360white.svg',
+                'Frame 362.svg',
+                'Frame 359.svg'
+            ];
+
+            let currentIndex = 0;
+            const slideParam = new URLSearchParams(window.location.search).get('slide');
+            const parsedSlide = parseInt(slideParam, 10);
+            if (!Number.isNaN(parsedSlide)) {
+                currentIndex = Math.min(Math.max(parsedSlide, 0), slides.length - 1);
+            }
+
+            function getNumberValue(index) {
+                return String(index + 1).padStart(2, '0');
+            }
+
+            function buildOneMarkup(value) {
+                return '<span class="digit-one">' + value + '</span>';
+            }
+
+            function buildNumberMarkup(index) {
+                const value = String(index + 1).padStart(2, '0');
+                return '<span class="details-number"><span class="digit-zero">' + value.charAt(0) + '</span><span class="digit-one-slot"><span class="digit-one">' + value.charAt(1) + '</span></span></span>';
+            }
+
+            function updateNumber(index) {
+                const value = getNumberValue(index);
+                const zeroEl = numberCircle.querySelector('.digit-zero');
+                const oneSlot = numberCircle.querySelector('.digit-one-slot');
+
+                if (!zeroEl || !oneSlot) {
+                    numberCircle.innerHTML = buildNumberMarkup(index);
+                    return;
+                }
+
+                zeroEl.textContent = value.charAt(0);
+                oneSlot.innerHTML = buildOneMarkup(value.charAt(1));
+            }
+
+            function updateArrowState() {
+                prevBtn.classList.toggle('is-disabled', currentIndex === 0);
+                nextBtn.classList.toggle('is-disabled', currentIndex === slides.length - 1);
+            }
+
+            function syncSlideUI() {
+                slideImage.src = slides[currentIndex];
+                slideImage.alt = 'Clostra Slide ' + String(currentIndex + 1).padStart(2, '0');
+                updateNumber(currentIndex);
+                updateArrowState();
+                window.clostraDarkCurrentSlideIndex = currentIndex;
+            }
+
+            function goTo(direction) {
+                if (slides.length <= 1) {
+                    return;
+                }
+                const nextIndex = currentIndex + direction;
+                if (nextIndex < 0 || nextIndex >= slides.length) {
+                    return;
+                }
+                currentIndex = nextIndex;
+                syncSlideUI();
+            }
+
+            function handleSliderKeydown(event) {
+                const active = document.activeElement;
+                if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) {
+                    return;
+                }
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    goTo(-1);
+                } else if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+                    goTo(1);
+                }
+            }
+
+            syncSlideUI();
+            prevBtn.addEventListener('click', function() { goTo(-1); });
+            nextBtn.addEventListener('click', function() { goTo(1); });
+            document.addEventListener('keydown', handleSliderKeydown);
+        })();
 
         // Custom Video Player Controls
         const video = document.getElementById('custom-video');

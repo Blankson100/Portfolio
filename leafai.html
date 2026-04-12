@@ -9,49 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
     <style>
-                /* Custom Video Controls */
-        .custom-video-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 710px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 0 16px;
-            border-radius: 20px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 5;
-        }
-        .play-pause-btn {
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-        .progress-bar {
-            flex: 1;
-            height: 4px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 2px;
-            cursor: pointer;
-            position: relative;
-        }
-        .progress-fill {
-            height: 100%;
-            background: #ffffff;
-            border-radius: 2px;
-            width: 0%;
-        }
         .video-container {
             position: relative;
             width: 100%;
@@ -324,126 +281,89 @@
             margin-bottom: 45px;
             border-radius: 0;
         }
-        .video-box {
+        .details-slide-box {
             width: 100%;
             max-width: 730px;
             height: 620px;
             margin: 40px auto 0 auto;
             border-radius: 30px;
             overflow: visible;
-            background: #000;
+            background: #e0e0e0;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
-        .video-box video {
+        .details-slide-box video {
             width: 100%;
             height: 100%;
             border-radius: 30px;
-            background: #000;
+            background: #e0e0e0;
             object-fit: cover;
             object-position: center;
         }
-        .video-pill {
+        .details-corner-circle {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 8px 0;
-            width: 42px;
-            height: 106px;
-            border-radius: 35px;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: center;
+            font-family: Satoshi, sans-serif;
+            font-size: 21px;
+            font-weight: 500;
+            line-height: 1;
+            z-index: 2;
         }
-        .video-duration-pill {
-            position: absolute;
-            top: 10px;
+        .details-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 21px;
+        }
+        .digit-one-slot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 12px;
+            height: 21px;
+            overflow: hidden;
+        }
+        .details-corner-circle.bottom-left {
+            top: auto;
+            right: auto;
+            bottom: 10px;
             left: 10px;
-            min-width: 64px;
-            height: 32px;
-            padding: 0 12px;
-            border-radius: 999px;
-            background: rgba(0, 0, 0, 0.45);
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 600;
-            font-family: "Google Sans", sans-serif;
-            z-index: 10;
-            box-sizing: border-box;
-        }
-        .pill-icon-btn {
-            background: transparent;
-            border: none;
-            padding: 0;
-            margin: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             cursor: pointer;
         }
-        .pill-icon-btn img {
-            display: block;
-        }
-        .volume-popover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 140px;
-            height: 20px;
-            display: none;
-            align-items: center;
-            padding: 0;
-            box-sizing: border-box;
-            z-index: 11;
-        }
-        .volume-popover.visible {
-            display: flex;
-        }
-        .volume-slider {
-            width: 100%;
-            appearance: none;
-            -webkit-appearance: none;
-            background: transparent;
-            margin: 0;
-        }
-        .volume-slider::-webkit-slider-runnable-track {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 999px;
-        }
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffffff;
-            margin-top: -3px;
-            border: none;
+        .details-corner-circle.bottom-right {
+            top: auto;
+            bottom: 10px;
+            right: 10px;
             cursor: pointer;
         }
-        .volume-slider::-moz-range-track {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 999px;
+        .details-corner-circle.is-disabled {
+            background: rgba(170, 170, 170, 0.28);
+            cursor: default;
+            pointer-events: none;
         }
-        .volume-slider::-moz-range-thumb {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: none;
-            cursor: pointer;
+        .details-corner-circle.is-disabled img {
+            opacity: 0.62;
+            filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(253%) hue-rotate(87deg) brightness(92%) contrast(87%);
+        }
+        .details-corner-circle .digit-zero {
+            color: #AAAAAA;
+        }
+        .details-corner-circle .digit-one {
+            color: #000000;
         }
         .see-how-title {
             font-size: 18px;
@@ -464,20 +384,12 @@
             line-height: 1.7;
         }
     </style>
-<script>
-    // Redirect to mobile version matching user's color scheme
-    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
-        window.location.href = target;
-    }
-</script>
 </head>
 <body>
         <!-- Modal for enlarged Frame 360.svg image -->
         <div id="frame360-modal" class="modal" onclick="closeModal()">
             <span class="close-modal" onclick="closeModal();event.stopPropagation();">&times;</span>
-            <img class="modal-content" id="frame360-large" src="Frame 360.svg" alt="Frame 360 Large" />
+            <img class="modal-content" id="frame360-large" src="Frame 360.png" alt="Frame 360 Large" />
         </div>
     <div class="time-location-display" id="time-location"></div>
     <div class="right-pill">
@@ -505,7 +417,7 @@
                 <button class="title-button">Agriculture/AI/ML</button>
             </div>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="ProtoHand DarkLeaf.svg" alt="LeafAI Hero"></div>
+                <div class="project-hero-inner"><img src="LCO1.png" alt="LeafAI Hero"></div>
             </div>
             
             <div class="project-header">
@@ -541,26 +453,12 @@
                 </div>
             </div>
             
-            <div class="video-box">
-                <div class="video-duration-pill" id="video-duration-pill">--:--</div>
-                <div class="video-pill">
-                    <button class="pill-icon-btn" type="button" id="expand-btn" aria-label="Expand video"><img src="expand.svg" alt="Expand" style="width:24px;height:24px;"></button>
-                    <button class="pill-icon-btn" type="button" id="volume-btn" aria-label="Adjust volume"><img src="speaker.wave.3.svg" alt="Speaker" style="width:20px;height:20px;"></button>
-                </div>
-                <div class="volume-popover" id="volume-popover">
-                    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="1" aria-label="Video volume">
-                </div>
+            <div class="details-slide-box">
+                <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
+                <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
+                <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
                 <div class="video-container">
-                    <video id="custom-video" style="width:100%; height:100%; background:#000;">
-                        <source src="Central Cee x Dave - Trojan Horse (Lyrics).mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="custom-video-controls">
-                        <button class="play-pause-btn" id="play-pause-btn">▶</button>
-                        <div class="progress-bar" id="progress-bar">
-                            <div class="progress-fill" id="progress-fill"></div>
-                        </div>
-                    </div>
+                    <img id="details-slide-image" src="SLO1LAI.png" alt="LeafAI Slide 01" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             </div>
             <div class="see-how-title">See how it works</div>
@@ -573,18 +471,18 @@
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end;">
                 <div class="features-cards-row" style="display:flex;gap:10px;margin-bottom:40px;width:auto;justify-content:flex-end;">
-                    <img src="Frame 360.svg" alt="Feature 1" style="width:230px;height:380px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame360-thumb" onclick="openModal()" />
-                    <img src="Frame 362.svg" alt="Feature 2" style="width:230px;height:380px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame362-thumb" onclick="openModal362()" />
+                    <img src="Frame 360.png" alt="Feature 1" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame360-thumb" onclick="openModal()" />
+                    <img src="Frame 362.png" alt="Feature 2" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame362-thumb" onclick="openModal362()" />
                     <!-- Modal for enlarged Frame 362.svg image -->
                     <div id="frame362-modal" class="modal" onclick="closeModal362()">
                         <span class="close-modal" onclick="closeModal362();event.stopPropagation();">&times;</span>
-                        <img class="modal-content" id="frame362-large" src="Frame 362.svg" alt="Frame 362 Large" />
+                        <img class="modal-content" id="frame362-large" src="Frame 362.png" alt="Frame 362 Large" />
                     </div>
-                    <img src="Frame 359.svg" alt="Feature 3" style="width:230px;height:380px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame359-thumb" onclick="openModal359()" />
+                    <img src="Frame 359.png" alt="Feature 3" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame359-thumb" onclick="openModal359()" />
                     <!-- Modal for enlarged Frame 359.svg image -->
                     <div id="frame359-modal" class="modal" onclick="closeModal359()">
                         <span class="close-modal" onclick="closeModal359();event.stopPropagation();">&times;</span>
-                        <img class="modal-content" id="frame359-large" src="Frame 359.svg" alt="Frame 359 Large" />
+                        <img class="modal-content" id="frame359-large" src="Frame 359.png" alt="Frame 359 Large" />
                     </div>
                 </div>
             </div>
@@ -647,127 +545,108 @@
                     if (event.key === 'Escape') closeModal();
                 });
 
-                // Custom Video Player Controls
-                const video = document.getElementById('custom-video');
-                const playPauseBtn = document.getElementById('play-pause-btn');
-                const progressBar = document.getElementById('progress-bar');
-                const progressFill = document.getElementById('progress-fill');
-                const expandBtn = document.getElementById('expand-btn');
-                const volumeBtn = document.getElementById('volume-btn');
-                const volumePopover = document.getElementById('volume-popover');
-                const volumeSlider = document.getElementById('volume-slider');
-                const durationPill = document.getElementById('video-duration-pill');
-                const videoBox = video.closest('.video-box');
+                // Details slide controls with instant number updates
+                (function() {
+                    const slideImage = document.getElementById('details-slide-image');
+                    const prevBtn = document.getElementById('details-prev-slide');
+                    const nextBtn = document.getElementById('details-next-slide');
+                    const numberCircle = document.getElementById('details-slide-number-circle');
 
-                function formatTime(totalSeconds) {
-                    if (!Number.isFinite(totalSeconds) || totalSeconds < 0) {
-                        return '--:--';
+                    if (!slideImage || !prevBtn || !nextBtn || !numberCircle) {
+                        return;
                     }
-                    const seconds = Math.floor(totalSeconds);
-                    const minutes = Math.floor(seconds / 60);
-                    const remainingSeconds = seconds % 60;
-                    return minutes + ':' + String(remainingSeconds).padStart(2, '0');
-                }
 
-                function updateDurationPill() {
-                    durationPill.textContent = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
-                }
+                    const slides = [
+                        'SLO1LAI.png',
+                        'LeafAI SL02.png',
+                        'LeafAI SL03.png',
+                        'LeafAI SL04.png',
+                        'LeafAI SL05.png',
+                        'LeafAI SL06.png',
+                        'LeafAI SL07.png',
+                        'LeafAI SL08.png',
+                        'LeafAI SL09.png',
+                        'LeafAI SL10.png'
+                    ];
 
-                function togglePlayback() {
-                    if (video.paused) {
-                        video.play();
-                        playPauseBtn.textContent = '⏸';
-                    } else {
-                        video.pause();
-                        playPauseBtn.textContent = '▶';
+                    let currentIndex = 0;
+                    const slideParam = new URLSearchParams(window.location.search).get('slide');
+                    const parsedSlide = parseInt(slideParam, 10);
+                    if (!Number.isNaN(parsedSlide)) {
+                        currentIndex = Math.min(Math.max(parsedSlide, 0), slides.length - 1);
                     }
-                }
 
-                playPauseBtn.addEventListener('click', function() {
-                    togglePlayback();
-                });
+                    function getNumberValue(index) {
+                        return String(index + 1).padStart(2, '0');
+                    }
 
-                video.addEventListener('click', function() {
-                    togglePlayback();
-                });
+                    function buildOneMarkup(value) {
+                        return '<span class="digit-one">' + value + '</span>';
+                    }
 
-                video.addEventListener('play', function() {
-                    playPauseBtn.textContent = '⏸';
-                });
+                    function buildNumberMarkup(index) {
+                        const value = String(index + 1).padStart(2, '0');
+                        return '<span class="details-number"><span class="digit-zero">' + value.charAt(0) + '</span><span class="digit-one-slot"><span class="digit-one">' + value.charAt(1) + '</span></span></span>';
+                    }
 
-                video.addEventListener('pause', function() {
-                    playPauseBtn.textContent = '▶';
-                });
+                    function updateNumber(index) {
+                        const value = getNumberValue(index);
+                        const zeroEl = numberCircle.querySelector('.digit-zero');
+                        const oneSlot = numberCircle.querySelector('.digit-one-slot');
 
-                video.addEventListener('loadedmetadata', updateDurationPill);
-                video.addEventListener('durationchange', updateDurationPill);
-
-                if (video.readyState >= 1) {
-                    updateDurationPill();
-                }
-
-                video.addEventListener('timeupdate', function() {
-                    const percent = (video.currentTime / video.duration) * 100;
-                    progressFill.style.width = percent + '%';
-                    updateDurationPill();
-                });
-
-                progressBar.addEventListener('click', function(e) {
-                    const rect = progressBar.getBoundingClientRect();
-                    const percent = (e.clientX - rect.left) / rect.width;
-                    video.currentTime = percent * video.duration;
-                });
-
-                volumeBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const videoBoxRect = volumeBtn.closest('.video-box').getBoundingClientRect();
-                    const btnRect = volumeBtn.getBoundingClientRect();
-                    const popoverHeight = volumePopover.offsetHeight || 36;
-                    const popoverWidth = volumePopover.offsetWidth || 140;
-                    const alignedTop = (btnRect.top - videoBoxRect.top) + (btnRect.height / 2) - (popoverHeight / 2) + 6;
-                    const alignedLeft = (btnRect.left - videoBoxRect.left) - popoverWidth - 15;
-
-                    volumePopover.style.top = alignedTop + 'px';
-                    volumePopover.style.left = alignedLeft + 'px';
-                    volumePopover.classList.toggle('visible');
-                });
-
-                volumeSlider.addEventListener('input', function() {
-                    video.volume = parseFloat(volumeSlider.value);
-                });
-
-                expandBtn.addEventListener('click', async function() {
-                    try {
-                        if (!document.fullscreenElement) {
-                            await videoBox.requestFullscreen();
-                        } else {
-                            await document.exitFullscreen();
+                        if (!zeroEl || !oneSlot) {
+                            numberCircle.innerHTML = buildNumberMarkup(index);
+                            return;
                         }
-                    } catch (err) {
-                        console.error('Fullscreen toggle failed:', err);
-                    }
-                });
 
-                document.addEventListener('click', function(e) {
-                    if (!volumePopover.contains(e.target) && e.target !== volumeBtn && !volumeBtn.contains(e.target)) {
-                        volumePopover.classList.remove('visible');
-                    }
-                });
-
-                document.addEventListener('keydown', function(e) {
-                    const isSpace = e.code === 'Space' || e.key === ' ';
-                    if (!isSpace) {
-                        return;
+                        zeroEl.textContent = value.charAt(0);
+                        oneSlot.innerHTML = buildOneMarkup(value.charAt(1));
                     }
 
-                    const tag = (document.activeElement && document.activeElement.tagName) ? document.activeElement.tagName.toLowerCase() : '';
-                    if (tag === 'input' || tag === 'textarea' || tag === 'select') {
-                        return;
+                    function updateArrowState() {
+                        prevBtn.classList.toggle('is-disabled', currentIndex === 0);
+                        nextBtn.classList.toggle('is-disabled', currentIndex === slides.length - 1);
                     }
 
-                    e.preventDefault();
-                    togglePlayback();
-                });
+                    function syncSlideUI() {
+                        slideImage.src = slides[currentIndex];
+                        slideImage.alt = 'LeafAI Slide ' + String(currentIndex + 1).padStart(2, '0');
+                        updateNumber(currentIndex);
+                        updateArrowState();
+                        window.leafAiCurrentSlideIndex = currentIndex;
+                    }
+
+                    function goTo(direction) {
+                        if (slides.length <= 1) {
+                            return;
+                        }
+                        const nextIndex = currentIndex + direction;
+                        if (nextIndex < 0 || nextIndex >= slides.length) {
+                            return;
+                        }
+                        currentIndex = nextIndex;
+                        syncSlideUI();
+                    }
+
+                    function handleSliderKeydown(event) {
+                        const active = document.activeElement;
+                        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) {
+                            return;
+                        }
+                        if (event.key === 'ArrowLeft') {
+                            event.preventDefault();
+                            goTo(-1);
+                        } else if (event.key === 'ArrowRight') {
+                            event.preventDefault();
+                            goTo(1);
+                        }
+                    }
+
+                    syncSlideUI();
+                    prevBtn.addEventListener('click', function() { goTo(-1); });
+                    nextBtn.addEventListener('click', function() { goTo(1); });
+                    document.addEventListener('keydown', handleSliderKeydown);
+                })();
         // --- Detect referrer and set active nav ---
         (function() {
             const params = new URLSearchParams(window.location.search);
@@ -884,11 +763,12 @@
                 
                 const fromParam = new URLSearchParams(window.location.search).get('from') || 'projects';
                 const scrollY = window.scrollY || document.documentElement.scrollTop;
+                const slideIndex = Number.isInteger(window.leafAiCurrentSlideIndex) ? window.leafAiCurrentSlideIndex : 0;
                 setTimeout(() => {
                     if(index === 0) {
-                        window.location.href = 'leafaiDark.html?from=' + fromParam + '&scrollY=' + scrollY;
+                        window.location.href = 'leafaiDark.html?from=' + fromParam + '&scrollY=' + scrollY + '&slide=' + slideIndex;
                     } else if(index === 1) {
-                        window.location.href = 'leafai.html?from=' + fromParam + '&scrollY=' + scrollY;
+                        window.location.href = 'leafai.html?from=' + fromParam + '&scrollY=' + scrollY + '&slide=' + slideIndex;
                     }
                 }, 100);
             });
