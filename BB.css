@@ -49,6 +49,7 @@
     --black:#0b0b0b;
     --card-shadow: 0 10px 30px rgba(2,6,23,0.06);
     --btn-radius: 999px;
+    --transition-easing: cubic-bezier(0.22, 1.61, 0.36, 1);
 }
 
 *{box-sizing:border-box}
@@ -132,7 +133,7 @@ body{
     justify-content:center;
     padding:5px;
     border-radius:50%;
-    transition:background 0.3s ease;
+    transition: background 0.6s var(--transition-easing);
     width:32px;
     height:32px;
 }
@@ -188,7 +189,7 @@ body{
     text-decoration:none;
     font-weight:400;
     font-size:16px;
-    transition:color 0.3s ease;
+    transition: color 0.6s var(--transition-easing);
 }
 
 .nav-menu a:hover{
@@ -538,7 +539,7 @@ body{
 .footer-links a {
     color:#ffffff;
     text-decoration:none;
-    transition:opacity 0.3s ease;
+    transition: opacity 0.6s var(--transition-easing);
     display:flex;
     align-items:center;
     justify-content:center;

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -111,28 +111,15 @@
         }
         .project-hero {
             width: 730px;
-            height: 620px;
-            margin: 40px auto 0 auto;
+            height: 431px;
+            margin: 0 auto;
             margin-bottom: 15px;
-            border-radius: 30px;
-            overflow: visible;
-            background: #e0e0e0;
+            border-radius: 24px;
+            overflow: hidden;
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-        }
-        .project-hero .video-container {
-            width: 100%;
-            height: 100%;
-            border-radius: 18px;
-            overflow: hidden;
-        }
-        .project-hero .video-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
         .details-corner-circle {
             position: absolute;
@@ -529,6 +516,19 @@
             border: none;
             cursor: pointer;
         }
+        .details-slide-box {
+            width: 100%;
+            max-width: 730px;
+            height: 620px;
+            margin: 40px auto 0 auto;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
         .see-how-title {
             font-size: 18px;
             color: #0b0b0b;
@@ -546,6 +546,12 @@
             margin-bottom: 24px;
             text-align: left;
             line-height: 1.7;
+        }
+        .features-cards-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            justify-content: flex-end;
         }
     </style>
 <script>
@@ -575,7 +581,7 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="Logo.svg" alt="Logo"></a>
             </div>
         </div>
         <div class="project-page-container">
@@ -584,6 +590,39 @@
                 <button class="title-button">Product/SaaS/UX</button>
             </div>
             <div class="project-hero">
+                <div class="project-hero-inner"><img src="ClostraEscrowGero.png" alt="Clostra Platform Hero"></div>
+            </div>
+            <div class="project-header">
+                <h1 class="project-title">Clostra Platform</h1>
+            </div>
+            <div class="project-section">
+                <p class="section-content">
+                    Sending money online, whether on Jumia or to someone selling phones at Circle, has always been a gamble. You pay, you wait, and sometimes you never hear back. I experienced it, watched it happen to others, and decided to build a solution. Clostra is an escrow-based platform that holds funds securely until both parties meet agreed conditions, so payments only release when a deal is done. It works across all kinds of transactions including physical goods, digital products, and services. An integrated AI assistant guides users through each step, paired with real-time tracking and a transparent transaction history. At its core, Clostra is about one thing: making transactions safer where trust isn't guaranteed.
+                </p>
+            </div>
+            <div class="project-meta">
+                <div class="meta-row">
+                    <div class="meta-item">
+                        <span class="meta-label">The Challenge</span>
+                        <span class="meta-value meta-value-content">No guarantee that money sent online<br>will be honored. Buyers get scammed,<br>sellers go unpaid.</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">What I Created</span>
+                        <span class="meta-value meta-value-content">An escrow platform that holds funds securely and releases them only when both parties are satisfied, across goods, services, and digital products.</span>
+                    </div>
+                </div>
+                <div class="meta-row">
+                    <div class="meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Product Designer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">March '6 - June '20 2025</span>
+                    </div>
+                </div>
+            </div>
+            <div class="details-slide-box">
                 <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
                 <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
                 <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
@@ -591,18 +630,32 @@
                     <img id="details-slide-image" src="ClostraEscrow.png" alt="Clostra Slide 01" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             </div>
-            <div class="project-header">
-                <h1 class="project-title">Clostra Platform</h1>
+            <div class="see-how-title">See how it works</div>
+            <div class="see-how-desc">
+                This walkthrough highlights the Clostra escrow experience from transaction setup to release, showing how both parties stay protected throughout the flow.
             </div>
-            <div class="project-section">
-                <p class="section-content">
-                    Clostra is an Escrow platform ......
-                </p>
+            <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
+                <button class="title-button">Features</button>
+            </div>
+            <div style="width: 100%; display: flex; justify-content: flex-end;">
+                <div class="features-cards-row">
+                    <img src="CE FT1.png" alt="Feature 1" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
+                    <img src="CE FT2.png" alt="Feature 2" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
+                    <img src="CE FT3.png" alt="Feature 3" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
+                </div>
+            </div>
+            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 0;">
+                <div style="width: 730px; height: 170px; background: url('LingCard.svg') center center/cover no-repeat, #fff; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #222; font-size: 24px; font-family: Satoshi, sans-serif;">
+                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                        <span style="font-size: 20px; color: #000; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 12px; margin-top: 20px; max-width: 600px;">Explore the complete research, design process, and iterations behind Clostra Platform.</span>
+                        <a href="casestudy-viewer.html" style="text-decoration: none;"><button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <footer class="footer">
-        <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
+        <p>� 2025 � Nyame Dua Inc � the body is finally at rest.</p>
         <div class="footer-icons">
             <img src="xxx.svg" alt="X" width="24" height="24">
             <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
@@ -628,46 +681,40 @@
         })();
 
         // --- Click sound effect ---
+        const clickAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+
         function playClickSound() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const now = audioContext.currentTime;
-            const duration = 0.5;
-            
-            const osc1 = audioContext.createOscillator();
-            const osc2 = audioContext.createOscillator();
-            const osc3 = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            
-            osc1.connect(gain);
-            osc2.connect(gain);
-            osc3.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            osc1.type = 'sine';
-            osc1.frequency.setValueAtTime(800, now);
-            
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(1200, now);
-            
-            osc3.type = 'sine';
-            osc3.frequency.setValueAtTime(1600, now);
-            
-            gain.gain.setValueAtTime(0.2, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-            
-            osc1.start(now);
-            osc2.start(now);
-            osc3.start(now);
-            osc1.stop(now + duration);
-            osc2.stop(now + duration);
-            osc3.stop(now + duration);
+            const now = clickAudioContext.currentTime;
+            const duration = 0.09;
+
+            if (clickAudioContext.state === 'suspended') {
+                clickAudioContext.resume();
+            }
+
+            const osc = clickAudioContext.createOscillator();
+            const gain = clickAudioContext.createGain();
+
+            osc.connect(gain);
+            gain.connect(clickAudioContext.destination);
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(560, now);
+            osc.frequency.exponentialRampToValueAtTime(420, now + duration);
+
+            gain.gain.setValueAtTime(0.05, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+            osc.start(now);
+            osc.stop(now + duration);
         }
-        
-        document.addEventListener('click', function(e) {
+
+        document.addEventListener('pointerdown', function(e) {
             if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
                 playClickSound();
             }
-        });
+        }, { capture: true });
+
+
 
         function updateTime() {
             const now = new Date();
@@ -747,10 +794,12 @@
             }
 
             const slides = [
-                'ClostraEscrow.png',
-                'Frame 360.svg',
-                'Frame 362.svg',
-                'Frame 359.svg'
+                'CE1.png',
+                'CE2.png',
+                'CE3.png',
+                'CE4.png',
+                'CE5.png',
+                'CE6.png'
             ];
 
             let currentIndex = 0;
@@ -832,6 +881,66 @@
             document.addEventListener('keydown', handleSliderKeydown);
         })();
     </script>
+<script>
+(function () {
+    const logoSources = ['Logo 1.svg', 'Logo 2.svg', 'Logo 3.svg', 'Logo 4.svg', 'Logo 5.svg', 'Logo 6.svg'];
+    const logos = document.querySelectorAll('.barcode-logo img');
+    const intervalMs = 5000;
+    const fadeOutMs = 220;
+    const storageKey = 'logoCycleStartMs';
+
+    if (!logos.length) {
+        return;
+    }
+
+    let startMs;
+    try {
+        const stored = parseInt(localStorage.getItem(storageKey) || '', 10);
+        if (Number.isNaN(stored)) {
+            startMs = Date.now();
+            localStorage.setItem(storageKey, String(startMs));
+        } else {
+            startMs = stored;
+        }
+    } catch (e) {
+        startMs = Date.now();
+    }
+
+    function getCurrentIndex() {
+        const elapsed = Date.now() - startMs;
+        return Math.floor(elapsed / intervalMs) % logoSources.length;
+    }
+
+    logos.forEach(function (img) {
+        img.width = 50;
+        img.height = 50;
+        img.style.width = '50px';
+        img.style.height = '50px';
+        img.style.objectFit = 'cover';
+        img.style.transition = 'opacity 0.45s ease';
+        img.style.opacity = '1';
+        img.src = logoSources[getCurrentIndex()];
+
+        const delayToNext = intervalMs - ((Date.now() - startMs) % intervalMs);
+
+        setTimeout(function () {
+            img.style.opacity = '0.35';
+            setTimeout(function () {
+                img.src = logoSources[getCurrentIndex()];
+                img.style.opacity = '1';
+            }, fadeOutMs);
+
+            setInterval(function () {
+                img.style.opacity = '0.35';
+                setTimeout(function () {
+                    img.src = logoSources[getCurrentIndex()];
+                    img.style.opacity = '1';
+                }, fadeOutMs);
+            }, intervalMs);
+        }, delayToNext);
+    });
+})();
+</script>
 </body>
 </html>
 

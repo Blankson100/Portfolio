@@ -27,6 +27,12 @@
         .avatar-image {
             display: none; /* Hide the avatar */
         }
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
         .star-shape {
             stroke: #0b0b0b;
             stroke-width: 2;
@@ -152,18 +158,18 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="unnamed.jpg" alt="Bright Blankson" class="logo-image"></a>
             </div>
         </div>
         <div class="about-container">
             <div class="content-box">
-                <img src="logo.svg" alt="Avatar" class="avatar-image">
+                <img src="unnamed.jpg" alt="Avatar" class="avatar-image">
                 <div class="id-card-wrapper">
                 <div class="star-name-row">
                     <svg id="star" class="star-svg" viewBox="0 0 200 200">
                         <defs>
                             <pattern id="face-pattern" patternUnits="objectBoundingBox" width="1" height="1">
-                                <image href="face.jpeg" width="200" height="200" preserveAspectRatio="xMidYMid slice"/>
+                                <image href="unnamed.jpg" width="200" height="200" preserveAspectRatio="xMidYMid slice"/>
                             </pattern>
                         </defs>
                         <path id="star-polygon" class="star-shape" />

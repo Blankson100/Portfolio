@@ -91,33 +91,20 @@
             width: 730px;
             margin: 0 auto;
             margin-top: 120px;
-            /* margin-bottom: 100px; */
+            margin-bottom: 100px;
             flex: 1;
         }
         .project-hero {
             width: 730px;
-            height: 620px;
-            margin: 40px auto 0 auto;
-            border-radius: 30px;
-            overflow: visible;
-            background: #232323;
+            height: 431px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 15px;
-            position: relative;
-        }
-        .hero-slide-frame {
-            width: 100%;
-            height: 100%;
-            border-radius: 18px;
-            overflow: hidden;
-        }
-        .hero-slide-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
         .details-corner-circle {
             position: absolute;
@@ -246,14 +233,14 @@
                 display: flex;
                 gap: 10px;
                 margin-bottom: 40px;
-                justify-content: flex-start;
+                justify-content: flex-end;
             }
         
         .project-meta {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-bottom: 0px;
+            margin-bottom: 40px;
             width: 100%;
         }
         .meta-row {
@@ -512,6 +499,19 @@
             border: none;
             cursor: pointer;
         }
+        .details-slide-box {
+            width: 100%;
+            max-width: 730px;
+            height: 620px;
+            margin: 40px auto 0 auto;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #232323;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
         .see-how-title {
             font-size: 18px;
             color: #f5f5f5;
@@ -574,7 +574,7 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="Logo.svg" alt="Logo"></a>
             </div>
         </div>
         <div class="project-page-container">
@@ -583,12 +583,7 @@
                 <button class="title-button">Product/SaaS/UX</button>
             </div>
             <div class="project-hero">
-                <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
-                <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
-                <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
-                <div class="hero-slide-frame">
-                    <img id="details-slide-image" src="ClostraEscrowdrk.svg" alt="Clostra Slide 01" style="width:100%; height:100%; object-fit:cover;">
-                </div>
+                <div class="project-hero-inner"><img src="ClostraEscrowGero.png" alt="Clostra Platform Hero"></div>
             </div>
             
             <div class="project-header">
@@ -597,7 +592,7 @@
             
             <div class="project-section">
                 <p class="section-content">
-                    Clostra is an Escrow platform ......
+                    Sending money online, whether on Jumia or to someone selling phones at Circle, has always been a gamble. You pay, you wait, and sometimes you never hear back. I experienced it, watched it happen to others, and decided to build a solution. Clostra is an escrow-based platform that holds funds securely until both parties meet agreed conditions, so payments only release when a deal is done. It works across all kinds of transactions including physical goods, digital products, and services. An integrated AI assistant guides users through each step, paired with real-time tracking and a transparent transaction history. At its core, Clostra is about one thing: making transactions safer where trust isn't guaranteed.
                 </p>
             </div>
 
@@ -605,70 +600,58 @@
                 <div class="meta-row">
                     <div class="meta-item">
                         <span class="meta-label">The Challenge</span>
-                        <span class="meta-value meta-value-content">Farmers rely on guesswork for diagnosis,<br>leading to delayed treatment and crop<br>losses</span>
+                        <span class="meta-value meta-value-content">No guarantee that money sent online<br>will be honored. Buyers get scammed,<br>sellers go unpaid.</span>
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">What I Created</span>
-                        <span class="meta-value meta-value-content">AI-Powered mobile app for instant disease identification with treatment guidance in users local language</span>
+                        <span class="meta-value meta-value-content">An escrow platform that holds funds securely and releases them only when both parties are satisfied, across goods, services, and digital products.</span>
                     </div>
                 </div>
                 <div class="meta-row">
                     <div class="meta-item">
                         <span class="meta-label">Role</span>
-                        <span class="meta-value meta-value-content">Product Designer</span>
+                        <span class="meta-value">Product Designer</span>
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Timeline</span>
-                        <span class="meta-value meta-value-content">March ‘6 - June ‘20 2025</span>
+                        <span class="meta-value">March '6 - June '20 2025</span>
                     </div>
                 </div>
             </div>
             
-            <div class="video-box">
-                <div class="video-duration-pill" id="video-duration-pill">--:--</div>
-                <div class="video-pill">
-                    <button class="pill-icon-btn" type="button" id="expand-btn" aria-label="Expand video"><img src="expand.svg" alt="Expand" style="width:24px;height:24px;"></button>
-                    <button class="pill-icon-btn" type="button" id="volume-btn" aria-label="Adjust volume"><img src="speaker.wave.3.svg" alt="Speaker" style="width:20px;height:20px;"></button>
-                </div>
-                <div class="volume-popover" id="volume-popover">
-                    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="1" aria-label="Video volume">
-                </div>
+            <div class="details-slide-box">
+                <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
+                <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
+                <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
                 <div class="video-container">
-                    <video id="custom-video" style="width:100%; height:100%; background:#fff;">
-                        <source src="your-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="custom-video-controls">
-                        <button class="play-pause-btn" id="play-pause-btn">▶</button>
-                        <div class="progress-bar" id="progress-bar">
-                            <div class="progress-fill" id="progress-fill"></div>
-                        </div>
-                    </div>
+                    <img id="details-slide-image" src="ClostraEscrowdrk.svg" alt="Clostra Slide 01" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             </div>
             <div class="see-how-title">See how it works</div>
             <div class="see-how-desc">
-                This demo preview for Clostra Platform will be updated with your final product flow, interaction details, and supporting visuals once you provide the project assets.
+                This walkthrough highlights the Clostra escrow experience from transaction setup to release, showing how both parties stay protected throughout the flow.
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
                 <button class="title-button">Features</button>
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end;">
-                <div class="features-cards-row" style="width: auto;">
-                    <img src="Frame 360white.svg" alt="Feature 1" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
-                    <img src="Frame 362.svg" alt="Feature 2" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
-                    <img src="Frame 359.svg" alt="Feature 3" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
+                <div class="features-cards-row">
+                    <img src="CEW FT1.png" alt="Feature 1" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
+                    <img src="CEW FT2.png" alt="Feature 2" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
+                    <img src="CEW FT3.png" alt="Feature 3" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
                 </div>
             </div>
             <!-- Wide card 730x170px for dark mode, 30px below cards -->
-            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 20px; margin-bottom: 100px;">
+            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 0;">
                 <div style="width: 730px; height: 170px; background: url('Frame 364.svg') center center/cover no-repeat, #232323; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #f5f5f5; font-size: 24px; font-family: Satoshi, sans-serif;">
                     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                        <span style="font-size: 20px; color: #f5f5f5; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind Clostra Platform.</span>
+                        <span style="font-size: 20px; color: #f5f5f5; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 12px; margin-top: 20px; max-width: 600px;">Explore the complete research, design process, and iterations behind Clostra Platform.</span>
                         <a href="casestudy-viewer.html" style="text-decoration: none;"><button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button></a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
     <footer class="footer">
         <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
         <div class="footer-icons">
@@ -697,46 +680,40 @@
         })();
 
         // --- Click sound effect ---
+        const clickAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+
         function playClickSound() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const now = audioContext.currentTime;
-            const duration = 0.5;
-            
-            const osc1 = audioContext.createOscillator();
-            const osc2 = audioContext.createOscillator();
-            const osc3 = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            
-            osc1.connect(gain);
-            osc2.connect(gain);
-            osc3.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            osc1.type = 'sine';
-            osc1.frequency.setValueAtTime(800, now);
-            
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(1200, now);
-            
-            osc3.type = 'sine';
-            osc3.frequency.setValueAtTime(1600, now);
-            
-            gain.gain.setValueAtTime(0.2, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-            
-            osc1.start(now);
-            osc2.start(now);
-            osc3.start(now);
-            osc1.stop(now + duration);
-            osc2.stop(now + duration);
-            osc3.stop(now + duration);
+            const now = clickAudioContext.currentTime;
+            const duration = 0.09;
+
+            if (clickAudioContext.state === 'suspended') {
+                clickAudioContext.resume();
+            }
+
+            const osc = clickAudioContext.createOscillator();
+            const gain = clickAudioContext.createGain();
+
+            osc.connect(gain);
+            gain.connect(clickAudioContext.destination);
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(560, now);
+            osc.frequency.exponentialRampToValueAtTime(420, now + duration);
+
+            gain.gain.setValueAtTime(0.05, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+            osc.start(now);
+            osc.stop(now + duration);
         }
-        
-        document.addEventListener('click', function(e) {
+
+        document.addEventListener('pointerdown', function(e) {
             if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
                 playClickSound();
             }
-        });
+        }, { capture: true });
+
+
 
         function updateTime() {
             const now = new Date();
@@ -816,10 +793,12 @@
             }
 
             const slides = [
-                'ClostraEscrowdrk.svg',
-                'Frame 360white.svg',
-                'Frame 362.svg',
-                'Frame 359.svg'
+                'CE1.png',
+                'CE2.png',
+                'CE3.png',
+                'CE4.png',
+                'CE5.png',
+                'CE6.png'
             ];
 
             let currentIndex = 0;
@@ -901,128 +880,67 @@
             document.addEventListener('keydown', handleSliderKeydown);
         })();
 
-        // Custom Video Player Controls
-        const video = document.getElementById('custom-video');
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const progressBar = document.getElementById('progress-bar');
-        const progressFill = document.getElementById('progress-fill');
-        const expandBtn = document.getElementById('expand-btn');
-        const volumeBtn = document.getElementById('volume-btn');
-        const volumePopover = document.getElementById('volume-popover');
-        const volumeSlider = document.getElementById('volume-slider');
-        const durationPill = document.getElementById('video-duration-pill');
-        const videoBox = video.closest('.video-box');
-
-        function formatTime(totalSeconds) {
-            if (!Number.isFinite(totalSeconds) || totalSeconds < 0) {
-                return '--:--';
-            }
-            const seconds = Math.floor(totalSeconds);
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = seconds % 60;
-            return minutes + ':' + String(remainingSeconds).padStart(2, '0');
-        }
-
-        function updateDurationPill() {
-            durationPill.textContent = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
-        }
-
-        function togglePlayback() {
-            if (video.paused) {
-                video.play();
-                playPauseBtn.textContent = '⏸';
-            } else {
-                video.pause();
-                playPauseBtn.textContent = '▶';
-            }
-        }
-
-        playPauseBtn.addEventListener('click', function() {
-            togglePlayback();
-        });
-
-        video.addEventListener('click', function() {
-            togglePlayback();
-        });
-
-        video.addEventListener('play', function() {
-            playPauseBtn.textContent = '⏸';
-        });
-
-        video.addEventListener('pause', function() {
-            playPauseBtn.textContent = '▶';
-        });
-
-        video.addEventListener('loadedmetadata', updateDurationPill);
-        video.addEventListener('durationchange', updateDurationPill);
-
-        if (video.readyState >= 1) {
-            updateDurationPill();
-        }
-
-        video.addEventListener('timeupdate', function() {
-            const percent = (video.currentTime / video.duration) * 100;
-            progressFill.style.width = percent + '%';
-            updateDurationPill();
-        });
-
-        progressBar.addEventListener('click', function(e) {
-            const rect = progressBar.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            video.currentTime = percent * video.duration;
-        });
-
-        volumeBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const videoBoxRect = volumeBtn.closest('.video-box').getBoundingClientRect();
-            const btnRect = volumeBtn.getBoundingClientRect();
-            const popoverHeight = volumePopover.offsetHeight || 36;
-            const popoverWidth = volumePopover.offsetWidth || 140;
-            const alignedTop = (btnRect.top - videoBoxRect.top) + (btnRect.height / 2) - (popoverHeight / 2) + 6;
-            const alignedLeft = (btnRect.left - videoBoxRect.left) - popoverWidth - 15;
-
-            volumePopover.style.top = alignedTop + 'px';
-            volumePopover.style.left = alignedLeft + 'px';
-            volumePopover.classList.toggle('visible');
-        });
-
-        volumeSlider.addEventListener('input', function() {
-            video.volume = parseFloat(volumeSlider.value);
-        });
-
-        expandBtn.addEventListener('click', async function() {
-            try {
-                if (!document.fullscreenElement) {
-                    await videoBox.requestFullscreen();
-                } else {
-                    await document.exitFullscreen();
-                }
-            } catch (err) {
-                console.error('Fullscreen toggle failed:', err);
-            }
-        });
-
-        document.addEventListener('click', function(e) {
-            if (!volumePopover.contains(e.target) && e.target !== volumeBtn && !volumeBtn.contains(e.target)) {
-                volumePopover.classList.remove('visible');
-            }
-        });
-
-        document.addEventListener('keydown', function(e) {
-            const isSpace = e.code === 'Space' || e.key === ' ';
-            if (!isSpace) {
-                return;
-            }
-
-            const tag = (document.activeElement && document.activeElement.tagName) ? document.activeElement.tagName.toLowerCase() : '';
-            if (tag === 'input' || tag === 'textarea' || tag === 'select') {
-                return;
-            }
-
-            e.preventDefault();
-            togglePlayback();
-        });
     </script>
+<script>
+(function () {
+    const logoSources = ['Logo 1.svg', 'Logo 2.svg', 'Logo 3.svg', 'Logo 4.svg', 'Logo 5.svg', 'Logo 6.svg'];
+    const logos = document.querySelectorAll('.barcode-logo img');
+    const intervalMs = 5000;
+    const fadeOutMs = 220;
+    const storageKey = 'logoCycleStartMs';
+
+    if (!logos.length) {
+        return;
+    }
+
+    let startMs;
+    try {
+        const stored = parseInt(localStorage.getItem(storageKey) || '', 10);
+        if (Number.isNaN(stored)) {
+            startMs = Date.now();
+            localStorage.setItem(storageKey, String(startMs));
+        } else {
+            startMs = stored;
+        }
+    } catch (e) {
+        startMs = Date.now();
+    }
+
+    function getCurrentIndex() {
+        const elapsed = Date.now() - startMs;
+        return Math.floor(elapsed / intervalMs) % logoSources.length;
+    }
+
+    logos.forEach(function (img) {
+        img.width = 50;
+        img.height = 50;
+        img.style.width = '50px';
+        img.style.height = '50px';
+        img.style.objectFit = 'cover';
+        img.style.transition = 'opacity 0.45s ease';
+        img.style.opacity = '1';
+        img.src = logoSources[getCurrentIndex()];
+
+        const delayToNext = intervalMs - ((Date.now() - startMs) % intervalMs);
+
+        setTimeout(function () {
+            img.style.opacity = '0.35';
+            setTimeout(function () {
+                img.src = logoSources[getCurrentIndex()];
+                img.style.opacity = '1';
+            }, fadeOutMs);
+
+            setInterval(function () {
+                img.style.opacity = '0.35';
+                setTimeout(function () {
+                    img.src = logoSources[getCurrentIndex()];
+                    img.style.opacity = '1';
+                }, fadeOutMs);
+            }, intervalMs);
+        }, delayToNext);
+    });
+})();
+</script>
 </body>
 </html>
 

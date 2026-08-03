@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,24 +10,20 @@
       color-scheme: light dark;
       --bg: #ffffff;
       --text: #000;
-      --doodle: rgba(12, 12, 12, 0.88);
-      --doodle-text: rgba(20, 20, 20, 0.62);
-      --doodle-line: rgba(20, 20, 20, 0.84);
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #000;
         --text: #ffffff;
-        --doodle: rgba(255, 255, 255, 0.08);
-        --doodle-text: rgba(255, 255, 255, 0.58);
-        --doodle-line: rgba(255, 255, 255, 0.85);
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: var(--bg);
+      color: var(--text);
       font-family: 'Jost', sans-serif;
-      padding: 84px 24px 24px;
+      padding: calc(84px + env(safe-area-inset-top)) 24px calc(10px + env(safe-area-inset-bottom)) 24px;
+      line-height: 1.45;
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
@@ -49,7 +45,7 @@
       font-size: 16px;
       font-weight: 400;
       color: #9F9F9F;
-      margin-top: 16px;
+      margin-top: 0;
     }
     .bio-text {
       font-size: 16px;
@@ -63,6 +59,10 @@
       font-size: 16px;
       font-weight: 400;
       color: #9F9F9F;
+    }
+    .bio-block {
+      padding: 10px;
+      margin-top: 16px;
     }
     .project-title {
       font-size: 16px;
@@ -95,6 +95,40 @@
     .project-desc-last {
       margin-bottom: 16px;
     }
+    .project-block {
+      padding: 10px;
+      margin-top: 12px;
+      border-radius: 8px;
+      transition: background-color 0.45s var(--transition-easing);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .project-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .project-link:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 3px;
+      border-radius: 20px;
+    }
+    .project-block:active,
+    .project-block.is-pressed {
+      background: rgba(224, 224, 224, 0.7);
+      border-radius: 20px;
+    }
+    .project-block .project-title {
+      margin-top: 0;
+    }
+    .project-block .project-desc {
+      margin-bottom: 0;
+    }
+    .project-block .project-title-next {
+      margin-top: 0;
+    }
+    .project-block .project-desc-next {
+      margin-bottom: 0;
+    }
     .contact-title {
       font-size: 16px;
       font-weight: 400;
@@ -121,225 +155,140 @@
     .muted-handle:hover {
       text-decoration: underline;
     }
-    .doodle-wrap {
-      position: fixed;
-      right: 16px;
-      bottom: 20px;
-      width: min(230px, calc(100vw - 32px));
-      height: 118px;
-      border: 1px solid var(--doodle-line);
-      border-radius: 14px;
-      background: var(--doodle);
-      backdrop-filter: blur(4px);
-      z-index: 100;
-      overflow: hidden;
+    .muted-handle:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
-    .doodle-hint {
-      position: absolute;
-      top: 8px;
-      left: 10px;
+    .mobile-footer {
+      padding: 10px 14px;
+      margin-top: 16px;
+      margin-left: -24px;
+      margin-right: -24px;
+      color: #9F9F9F;
       font-size: 12px;
-      color: var(--doodle-text);
-      pointer-events: none;
-    }
-    .doodle-canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-      touch-action: none;
-      transition: opacity 0.35s ease;
-      opacity: 1;
-    }
-    .doodle-canvas.is-fading {
-      opacity: 0;
+      line-height: 1.4;
+      text-align: left;
     }
   </style>
 </head>
 <body>
   <p class="name">Bright Blankson</p>
   <p class="role">Product Designer</p>
-  <p class="bio">Hi Akwaaba,</p>
-  <p class="bio-text">I am a Ux/Ui designer and Researcher from Accra, Ghana. Worked closely with people across several projects and that closeness carries into how I integrate AI, making sure it still feels human on the other end.</p>
+  <div class="bio-block">
+    <p class="bio">Hi Akwaaba,</p>
+    <p class="bio-text">I am a UX/UI designer and researcher from Accra, Ghana. I have worked closely with people across several projects, and that closeness carries into how I integrate AI, making sure it still feels human on the other end.</p>
+  </div>
   <p class="section-label">Projects</p>
-  <p class="project-title">Didoc</p>
-  <p class="project-desc">A Diabetic management app built around patients that track their food intakes and records</p>
-  <p class="project-title-next">Crop Care</p>
-  <p class="project-desc-next">AI-powered crop disease diagnosis for farmers in emerging marker</p>
-  <p class="project-title-next">Lign</p>
-  <p class="project-desc-next">Institutional Transport management, made legible and easy to integrate.</p>
-  <p class="project-title-next">Cog Archive</p>
-  <p class="project-desc-next">A cognitive performance tracker Designed to surface what matters</p>
-  <p class="project-title-next">Clostra</p>
-  <p class="project-desc-next">A desktop Escrow app that makes secure transactions feel straightforward.</p>
-  <p class="project-title-next">Roster</p>
-  <p class="project-desc-next project-desc-last">LinkedIn but Exclusive for Club members</p>
+  <a class="project-link" href="didocDark.html" aria-label="Open Didoc case study">
+    <div class="project-block">
+      <p class="project-title">Didoc</p>
+      <p class="project-desc">A diabetic management app built around patients that track their food intake and records.</p>
+    </div>
+  </a>
+  <div class="project-block">
+    <p class="project-title-next">Crop Care</p>
+    <p class="project-desc-next">AI-powered crop disease diagnosis for farmers in emerging markets.</p>
+  </div>
+  <a class="project-link" href="lign-mobile.html" aria-label="Open Lign mobile page">
+    <div class="project-block">
+      <p class="project-title-next">Lign</p>
+      <p class="project-desc-next">Institutional transport management, made legible and easy to integrate.</p>
+    </div>
+  </a>
+  <div class="project-block">
+    <p class="project-title-next">Cog Archive</p>
+    <p class="project-desc-next">A cognitive performance tracker designed to surface what matters.</p>
+  </div>
+  <div class="project-block">
+    <p class="project-title-next">Clostra</p>
+    <p class="project-desc-next">A desktop escrow app that makes secure transactions feel straightforward.</p>
+  </div>
+  <div class="project-block project-desc-last">
+    <p class="project-title-next">Roster</p>
+    <p class="project-desc-next">LinkedIn, but exclusive for club members.</p>
+  </div>
   <p class="section-label">Contact</p>
-  <p class="contact-copy">hit me up lets talk on twitter <a class="muted-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="muted-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a></p>
+  <p class="contact-copy">Hit me up, let's talk on X <a class="muted-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="muted-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a>.</p>
   <p class="section-label section-label-spaced">Experience</p>
   <p class="contact-copy">Open on your laptop or PC for a much better experience.</p>
-    <button id="doodleToggle" style="position:fixed;bottom:24px;right:20px;z-index:120;background:rgba(26,26,42,0.10);color:#fff;border:none;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;outline:none;padding:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background 0.35s cubic-bezier(.4,0,.2,1);">
-      <img id="doodleIcon" src="doodle_off.svg" alt="Doodle" style="width:32px;height:32px;filter:invert(1) brightness(2);transition:filter 0.35s cubic-bezier(.4,0,.2,1);" />
-    </button>
-    <canvas id="doodleCanvas" class="doodle-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:110;pointer-events:none;touch-action:none;background:transparent;"></canvas>
-    <script>
-      (function () {
-        var canvas = document.getElementById('doodleCanvas');
-        var toggle = document.getElementById('doodleToggle');
-        if (!canvas || !toggle) return;
-        var ctx = canvas.getContext('2d');
-        var drawing = {}, clearTimer, doodleMode = false;
-        function resizeCanvas() {
-          var ratio = Math.max(window.devicePixelRatio || 1, 1);
-          canvas.width = Math.round(window.innerWidth * ratio);
-          canvas.height = Math.round(window.innerHeight * ratio);
-          canvas.style.width = '100vw';
-          canvas.style.height = '100vh';
-          ctx.setTransform(1, 0, 0, 1, 0, 0);
-          ctx.scale(ratio, ratio);
-          ctx.lineCap = 'round';
-          ctx.lineJoin = 'round';
-          ctx.lineWidth = 2.5;
-        }
-        function pointFromEvent(event) {
-          return { x: event.clientX, y: event.clientY };
-        }
-        function scheduleClear() {
-          window.clearTimeout(clearTimer);
-          clearTimer = window.setTimeout(function () {
-            canvas.classList.add('is-fading');
-            setTimeout(function () {
-              ctx.clearRect(0, 0, canvas.width, canvas.height);
-              canvas.classList.remove('is-fading');
-            }, 1200);
-          }, 3000);
-        }
-        function cancelClear() {
-          window.clearTimeout(clearTimer);
-          canvas.classList.remove('is-fading');
-        }
-        var hue = 0;
-        var icon = document.getElementById('doodleIcon');
-        function enableDoodleMode() {
-          doodleMode = true;
-          canvas.style.pointerEvents = 'auto';
-          toggle.style.background = '#fff';
-          if (icon) {
-            icon.src = 'doodle_on.svg';
-            icon.style.filter = 'invert(0)'; // black
-            icon.style.transition = 'filter 0.35s cubic-bezier(.4,0,.2,1)';
-          }
-        }
-        function disableDoodleMode() {
-          doodleMode = false;
-          canvas.style.pointerEvents = 'none';
-          toggle.style.background = 'rgba(26,26,42,0.10)';
-          if (icon) {
-            icon.src = 'doodle_off.svg';
-            icon.style.filter = 'invert(0)'; // black
-            icon.style.transition = 'filter 0.35s cubic-bezier(.4,0,.2,1)';
-          }
-        }
-        toggle.addEventListener('click', function () {
-          if (doodleMode) {
-            disableDoodleMode();
-          } else {
-            enableDoodleMode();
-          }
-        });
-        var hues = {};
-        canvas.addEventListener('pointerdown', function (event) {
-          if (!doodleMode) return;
-          cancelClear();
-          drawing[event.pointerId] = pointFromEvent(event);
-          hues[event.pointerId] = Math.floor(Math.random() * 360);
-        });
-        canvas.addEventListener('pointermove', function (event) {
-          if (!doodleMode || !(event.pointerId in drawing)) return;
-          var last = drawing[event.pointerId];
-          var pt = pointFromEvent(event);
-          ctx.strokeStyle = 'hsl(' + hues[event.pointerId] + ', 90%, 55%)';
-          ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(pt.x, pt.y); ctx.stroke();
-          drawing[event.pointerId] = pt;
-          hues[event.pointerId] = (hues[event.pointerId] + 3) % 360;
-        });
-        function stopDrawing(event) {
-          if (event && event.pointerId) delete drawing[event.pointerId];
-          if (Object.keys(drawing).length === 0) scheduleClear();
-        }
-        canvas.addEventListener('pointerup', stopDrawing);
-        canvas.addEventListener('pointercancel', stopDrawing);
-        canvas.addEventListener('pointerleave', stopDrawing);
-        window.addEventListener('resize', resizeCanvas);
-        // Make fade transition slower and softer
-        canvas.style.transition = 'opacity 1.2s cubic-bezier(.4,0,.2,1)';
-        disableDoodleMode();
-        resizeCanvas();
-      })();
-    </script>
+  <footer class="mobile-footer">&copy; 2025 ? Nyame Dua Inc ? the body is finally at rest</footer>
   <script>
     (function () {
-      var canvas = document.getElementById('doodleCanvas');
-      if (!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var drawing = false, lastX = 0, lastY = 0, clearTimer;
-      function resizeCanvas() {
-        var ratio = Math.max(window.devicePixelRatio || 1, 1);
-        canvas.width = Math.round(window.innerWidth * ratio);
-        canvas.height = Math.round(window.innerHeight * ratio);
-        canvas.style.width = '100vw';
-        canvas.style.height = '100vh';
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.scale(ratio, ratio);
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.lineWidth = 2.5;
-        // Rainbow color will be set dynamically while drawing
-      }
-      function pointFromEvent(event) {
-        return { x: event.clientX, y: event.clientY };
-      }
-      function scheduleClear() {
-        window.clearTimeout(clearTimer);
-        // Start fading after 3 seconds
-        clearTimer = window.setTimeout(function () {
-          canvas.classList.add('is-fading');
-          // After fade transition (1.2s), clear
-          setTimeout(function () {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            canvas.classList.remove('is-fading');
-          }, 1200);
-        }, 3000);
-      }
-      function cancelClear() {
-        window.clearTimeout(clearTimer);
-        canvas.classList.remove('is-fading');
-      }
-      canvas.addEventListener('pointerdown', function (event) {
-        drawing = true; cancelClear();
-        var pt = pointFromEvent(event); lastX = pt.x; lastY = pt.y;
+      var blocks = document.querySelectorAll('.project-block');
+      blocks.forEach(function (block) {
+        block.addEventListener('pointerdown', function () {
+          block.classList.add('is-pressed');
+        });
+        var clearPressed = function () {
+          block.classList.remove('is-pressed');
+        };
+        block.addEventListener('pointerup', clearPressed);
+        block.addEventListener('pointercancel', clearPressed);
+        block.addEventListener('pointerleave', clearPressed);
       });
-      var hue = 0;
-      canvas.addEventListener('pointermove', function (event) {
-        if (!drawing) return;
-        var pt = pointFromEvent(event);
-        ctx.strokeStyle = 'hsl(' + hue + ', 90%, 55%)';
-        ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pt.x, pt.y); ctx.stroke();
-        lastX = pt.x; lastY = pt.y;
-        hue = (hue + 3) % 360;
-      });
-      function stopDrawing() { if (!drawing) return; drawing = false; scheduleClear(); }
-      canvas.addEventListener('pointerup', stopDrawing);
-      canvas.addEventListener('pointercancel', stopDrawing);
-      canvas.addEventListener('pointerleave', stopDrawing);
-      window.addEventListener('resize', resizeCanvas);
-      // Let clicks/taps through to page content when not drawing
-      canvas.addEventListener('pointerup', function () { setTimeout(function(){canvas.style.pointerEvents='none';}, 4200); });
-      canvas.addEventListener('pointerdown', function () { canvas.style.pointerEvents='auto'; });
-      // Make fade transition slower and softer
-      canvas.style.transition = 'opacity 1.2s cubic-bezier(.4,0,.2,1)';
-      resizeCanvas();
     })();
   </script>
+<script>
+(function () {
+    const logoSources = ['Logo 1.svg', 'Logo 2.svg', 'Logo 3.svg', 'Logo 4.svg', 'Logo 5.svg', 'Logo 6.svg'];
+    const logos = document.querySelectorAll('.barcode-logo img');
+    const intervalMs = 5000;
+    const fadeOutMs = 220;
+    const storageKey = 'logoCycleStartMs';
+
+    if (!logos.length) {
+        return;
+    }
+
+    let startMs;
+    try {
+        const stored = parseInt(localStorage.getItem(storageKey) || '', 10);
+        if (Number.isNaN(stored)) {
+            startMs = Date.now();
+            localStorage.setItem(storageKey, String(startMs));
+        } else {
+            startMs = stored;
+        }
+    } catch (e) {
+        startMs = Date.now();
+    }
+
+    function getCurrentIndex() {
+        const elapsed = Date.now() - startMs;
+        return Math.floor(elapsed / intervalMs) % logoSources.length;
+    }
+
+    logos.forEach(function (img) {
+        img.width = 50;
+        img.height = 50;
+        img.style.width = '50px';
+        img.style.height = '50px';
+        img.style.objectFit = 'cover';
+        img.style.transition = 'opacity 0.45s ease';
+        img.style.opacity = '1';
+        img.src = logoSources[getCurrentIndex()];
+
+        const delayToNext = intervalMs - ((Date.now() - startMs) % intervalMs);
+
+        setTimeout(function () {
+            img.style.opacity = '0.35';
+            setTimeout(function () {
+                img.src = logoSources[getCurrentIndex()];
+                img.style.opacity = '1';
+            }, fadeOutMs);
+
+            setInterval(function () {
+                img.style.opacity = '0.35';
+                setTimeout(function () {
+                    img.src = logoSources[getCurrentIndex()];
+                    img.style.opacity = '1';
+                }, fadeOutMs);
+            }, intervalMs);
+        }, delayToNext);
+    });
+  </script>
+  <script src="scripts/logo-rotator.js"></script>
 </body>
 </html>
 

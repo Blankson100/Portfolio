@@ -18,7 +18,7 @@
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roster Management - PortoBlknszzz</title>
+    <title>Roster - PortoBlknszzz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
@@ -269,7 +269,7 @@
             font-weight: 500;
             font-family: Satoshi, sans-serif;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.6s var(--transition-easing);
         }
         .cta-primary {
             background: #87B069;
@@ -497,7 +497,7 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="unnamed.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></a>
             </div>
         </div>
         <div class="project-page-container">
@@ -506,11 +506,11 @@
                 <button class="title-button">Operations/SaaS/UX</button>
             </div>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="Rooster.svg" alt="Roster Hero"></div>
+                <div class="project-hero-inner"><img src="Rooster.png" alt="Roster Hero"></div>
             </div>
             
             <div class="project-header">
-                <h1 class="project-title">Roster Management</h1>
+                <h1 class="project-title">Roster</h1>
             </div>
             
             <div class="project-section">
@@ -566,23 +566,23 @@
             </div>
             <div class="see-how-title">See how it works</div>
             <div class="see-how-desc">
-                This demo preview for Roster Management will be updated with your final product flow, interaction details, and supporting visuals once you provide the project assets.
+                This demo preview for Roster will be updated with your final product flow, interaction details, and supporting visuals once you provide the project assets.
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
                 <button class="title-button">Features</button>
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end;">
-                <div class="features-cards-row" style="width: auto;">
-                    <img src="Frame 360white.svg" alt="Feature 1" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
-                    <img src="Frame 362.svg" alt="Feature 2" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
-                    <img src="Frame 359.svg" alt="Feature 3" style="width:230px;height:380px;object-fit:cover;border-radius:18px;" />
+                <div class="features-cards-row">
+                    <img src="Frame 360white.svg" alt="Feature 1" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
+                    <img src="Frame 362.svg" alt="Feature 2" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
+                    <img src="Frame 359.svg" alt="Feature 3" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
                 </div>
             </div>
             <!-- Wide card 730x170px for dark mode, 30px below cards -->
-            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 20px; margin-bottom: 100px;">
+            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 100px;">
                 <div style="width: 730px; height: 170px; background: url('Frame 364.svg') center center/cover no-repeat, #232323; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #f5f5f5; font-size: 24px; font-family: Satoshi, sans-serif;">
                     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                        <span style="font-size: 20px; color: #f5f5f5; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind Roster Management.</span>
+                        <span style="font-size: 20px; color: #f5f5f5; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind Roster.</span>
                         <a href="casestudy-viewer.html" style="text-decoration: none;"><button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button></a>
                     </div>
                 </div>
@@ -596,77 +596,7 @@
     </footer>
 
     <script>
-        // --- Detect referrer and set active nav ---
-        (function() {
-            const params = new URLSearchParams(window.location.search);
-            const from = params.get('from');
-            if (from === 'home') {
-                document.getElementById('nav-home').classList.add('nav-item-active');
-            } else if (from === 'projects') {
-                document.getElementById('nav-projects').classList.add('nav-item-active');
-            } else {
-                const referrer = document.referrer.toLowerCase();
-                if (referrer.includes('bb.html') || referrer.includes('bbdark.html')) {
-                    document.getElementById('nav-home').classList.add('nav-item-active');
-                } else {
-                    document.getElementById('nav-projects').classList.add('nav-item-active');
-                }
-            }
-        })();
-
-        // --- Click sound effect ---
-        function playClickSound() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const now = audioContext.currentTime;
-            const duration = 0.5;
-            
-            const osc1 = audioContext.createOscillator();
-            const osc2 = audioContext.createOscillator();
-            const osc3 = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            
-            osc1.connect(gain);
-            osc2.connect(gain);
-            osc3.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            osc1.type = 'sine';
-            osc1.frequency.setValueAtTime(800, now);
-            
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(1200, now);
-            
-            osc3.type = 'sine';
-            osc3.frequency.setValueAtTime(1600, now);
-            
-            gain.gain.setValueAtTime(0.2, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-            
-            osc1.start(now);
-            osc2.start(now);
-            osc3.start(now);
-            osc1.stop(now + duration);
-            osc2.stop(now + duration);
-            osc3.stop(now + duration);
-        }
-        
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
-                playClickSound();
-            }
-        });
-
-        function updateTime() {
-            const now = new Date();
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            
-            const day = days[now.getDay()];
-            const date = now.getDate();
-            const month = months[now.getMonth()];
-            const year = now.getFullYear().toString().slice(-2);
-            
-            let hours = now.getHours();
+        // ---  hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
@@ -844,6 +774,102 @@
             togglePlayback();
         });
     </script>
+<script>
+(function () {
+    const logoSources = ['Logo 1.svg', 'Logo 2.svg', 'Logo 3.svg', 'Logo 4.svg', 'Logo 5.svg', 'Logo 6.svg'];
+    const logos = document.querySelectorAll('.barcode-logo img');
+    const intervalMs = 5000;
+    const fadeOutMs = 220;
+    const storageKey = 'logoCycleStartMs';
+
+    if (!logos.length) {
+        return;
+    }
+
+    let startMs;
+    try {
+        const stored = parseInt(localStorage.getItem(storageKey) || '', 10);
+        if (Number.isNaN(stored)) {
+            startMs = Date.now();
+            localStorage.setItem(storageKey, String(startMs));
+        } else {
+            startMs = stored;
+        }
+    } catch (e) {
+        startMs = Date.now();
+    }
+
+    function getCurrentIndex() {
+        const elapsed = Date.now() - startMs;
+        return Math.floor(elapsed / intervalMs) % logoSources.length;
+    }
+
+    logos.forEach(function (img) {
+        img.width = 50;
+        img.height = 50;
+        img.style.width = '50px';
+        img.style.height = '50px';
+        img.style.objectFit = 'cover';
+        img.style.transition = 'opacity 0.45s ease';
+        img.style.opacity = '1';
+        img.src = logoSources[getCurrentIndex()];
+
+        const delayToNext = intervalMs - ((Date.now() - startMs) % intervalMs);
+
+        setTimeout(function () {
+            img.style.opacity = '0.35';
+            setTimeout(function () {
+                img.src = logoSources[getCurrentIndex()];
+                img.style.opacity = '1';
+            }, fadeOutMs);
+
+            setInterval(function () {
+                img.style.opacity = '0.35';
+                setTimeout(function () {
+                    img.src = logoSources[getCurrentIndex()];
+                    img.style.opacity = '1';
+                }, fadeOutMs);
+            }, intervalMs);
+        }, delayToNext);
+    });
+    </script>
+    <script>
+        function smartBack() {
+            const params = new URLSearchParams(window.location.search);
+            const from = params.get('from');
+
+            if (from === 'home') {
+                window.location.href = 'BB.html';
+                return;
+            }
+
+            if (window.history.length > 1) {
+                window.history.back();
+                return;
+            }
+
+            window.location.href = 'projects.html';
+        }
+    </script>
+    <script>
+        function smartBack() {
+            const params = new URLSearchParams(window.location.search);
+            const from = params.get('from');
+
+            if (from === 'home') {
+                window.location.href = 'BB.html';
+                return;
+            }
+
+            if (window.history.length > 1) {
+                window.history.back();
+                return;
+            }
+
+            window.location.href = 'projects.html';
+        }
+    </script>
+    <script src="scripts/logo-rotator.js"></script>
 </body>
 </html>
 

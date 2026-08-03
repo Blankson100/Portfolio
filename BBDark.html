@@ -24,7 +24,7 @@
             border-radius: 8px;
             white-space: nowrap;
             opacity: 0;
-            transition: opacity 0.18s ease;
+            transition: opacity 0.45s var(--transition-easing);
             z-index: 9999;
             transform: translate(14px, 14px);
         }
@@ -59,7 +59,7 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="unnamed.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></a>
             </div>
         </div>
         <div class="introduction">
@@ -76,9 +76,9 @@
                                 <a href="LignTransportDark.html?from=home" class="Lign" data-project="Lign" style="text-decoration: none;">
                                     <div class="grid-container"></div>
                                 </a>
-                                <div class="IncFig" data-project="Clostra">
+                                <a href="clostraDark.html?from=home" class="IncFig" data-project="Clostra" style="text-decoration: none;">
                                     <div class="grid-container"></div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -116,52 +116,40 @@
         })();
 
         // --- Click sound effect ---
+        const clickAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+
         function playClickSound() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const now = audioContext.currentTime;
-            const duration = 0.5;
-            
-            // Create a bell notification sound with multiple harmonics
-            const osc1 = audioContext.createOscillator();
-            const osc2 = audioContext.createOscillator();
-            const osc3 = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            
-            osc1.connect(gain);
-            osc2.connect(gain);
-            osc3.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            // Main frequency (bright bell tone)
-            osc1.type = 'sine';
-            osc1.frequency.setValueAtTime(800, now);
-            
-            // Second harmonic
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(1200, now);
-            
-            // Third harmonic for richness
-            osc3.type = 'sine';
-            osc3.frequency.setValueAtTime(1600, now);
-            
-            // Volume envelope - quick attack, long decay
-            gain.gain.setValueAtTime(0.2, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-            
-            osc1.start(now);
-            osc2.start(now);
-            osc3.start(now);
-            osc1.stop(now + duration);
-            osc2.stop(now + duration);
-            osc3.stop(now + duration);
+            const now = clickAudioContext.currentTime;
+            const duration = 0.09;
+
+            if (clickAudioContext.state === 'suspended') {
+                clickAudioContext.resume();
+            }
+
+            const osc = clickAudioContext.createOscillator();
+            const gain = clickAudioContext.createGain();
+
+            osc.connect(gain);
+            gain.connect(clickAudioContext.destination);
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(560, now);
+            osc.frequency.exponentialRampToValueAtTime(420, now + duration);
+
+            gain.gain.setValueAtTime(0.05, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+            osc.start(now);
+            osc.stop(now + duration);
         }
-        
-        // Add click sound to all buttons
-        document.addEventListener('click', function(e) {
+
+        document.addEventListener('pointerdown', function(e) {
             if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
                 playClickSound();
             }
-        });
+        }, { capture: true });
+
+
 
         function updateTime() {
             const now = new Date();
@@ -220,5 +208,65 @@
             });
         });
     </script>
+<script>
+(function () {
+    const logoSources = ['Logo 1.svg', 'Logo 2.svg', 'Logo 3.svg', 'Logo 4.svg', 'Logo 5.svg', 'Logo 6.svg'];
+    const logos = document.querySelectorAll('.barcode-logo img');
+    const intervalMs = 5000;
+    const fadeOutMs = 220;
+    const storageKey = 'logoCycleStartMs';
+
+    if (!logos.length) {
+        return;
+    }
+
+    let startMs;
+    try {
+        const stored = parseInt(localStorage.getItem(storageKey) || '', 10);
+        if (Number.isNaN(stored)) {
+            startMs = Date.now();
+            localStorage.setItem(storageKey, String(startMs));
+        } else {
+            startMs = stored;
+        }
+    } catch (e) {
+        startMs = Date.now();
+    }
+
+    function getCurrentIndex() {
+        const elapsed = Date.now() - startMs;
+        return Math.floor(elapsed / intervalMs) % logoSources.length;
+    }
+
+    logos.forEach(function (img) {
+        img.width = 50;
+        img.height = 50;
+        img.style.width = '50px';
+        img.style.height = '50px';
+        img.style.objectFit = 'cover';
+        img.style.transition = 'opacity 0.45s ease';
+        img.style.opacity = '1';
+        img.src = logoSources[getCurrentIndex()];
+
+        const delayToNext = intervalMs - ((Date.now() - startMs) % intervalMs);
+
+        setTimeout(function () {
+            img.style.opacity = '0.35';
+            setTimeout(function () {
+                img.src = logoSources[getCurrentIndex()];
+                img.style.opacity = '1';
+            }, fadeOutMs);
+
+            setInterval(function () {
+                img.style.opacity = '0.35';
+                setTimeout(function () {
+                    img.src = logoSources[getCurrentIndex()];
+                    img.style.opacity = '1';
+                }, fadeOutMs);
+            }, intervalMs);
+        }, delayToNext);
+    });
+    </script>
+    <script src="scripts/logo-rotator.js"></script>
 </body>
 </html>

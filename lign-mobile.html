@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Lign Mobile</title>
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: #ffffff;
+      overflow-x: hidden;
+      padding-top: env(safe-area-inset-top);
+    }
+
+    .mobile-stage {
+      position: relative;
+      width: 100%;
+      min-height: 100dvh;
+      padding-bottom: 48px;
+      box-sizing: border-box;
+      background: #ffffff;
+    }
+
+    .bottom-safe-cover {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: calc(env(safe-area-inset-bottom) + 16px);
+      background: #ffffff;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .picture-box {
+      position: relative;
+      --travel: 0px;
+      width: 100%;
+      height: 670px;
+      margin-top: calc(-1 * env(safe-area-inset-top));
+      background: #289AF9;
+      overflow: hidden;
+    }
+
+    .picture-box::before {
+      content: "";
+      position: absolute;
+      top: calc(-1 * env(safe-area-inset-top));
+      left: 0;
+      width: 100%;
+      height: env(safe-area-inset-top);
+      background: #289AF9;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .cards-stack {
+      width: 340px;
+      margin: 24px auto 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stack-image-card {
+      width: 340px;
+      height: 525px;
+      border-radius: 16px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .challenge-card {
+      width: 340px;
+      min-height: 155px;
+      padding: 25px;
+      box-sizing: border-box;
+      background: #EDEDED;
+      border-radius: 20px;
+      margin: 16px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .challenge-title {
+      font-family: "Satoshi", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #000000;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .challenge-text {
+      font-family: "Satoshi", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #333333;
+      margin: 0;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .stack-image-card-lftdc {
+      background-image: url('LFTDC.png');
+    }
+
+    .stack-image-card-ltd2 {
+      background-image: url('LTD 2.png');
+    }
+
+    .info-frame {
+      position: fixed;
+      top: min(745px, calc(100dvh - 115px));
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2147483647;
+      width: 350px;
+      height: 102px;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.50);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 326px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+
+    .info-content {
+      width: 232px;
+      margin-right: -8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #ffffff;
+      font-family: "Satoshi", sans-serif;
+      font-style: normal;
+    }
+
+    .info-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+      margin: 0;
+      line-height: 22px;
+      letter-spacing: -0.408px;
+    }
+
+    .info-desc {
+      font-size: 11px;
+      font-weight: 300;
+      color: #e0e0e0;
+      margin: 0;
+      line-height: 13px;
+      font-family: "Satoshi", sans-serif;
+    }
+
+    .info-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      appearance: none;
+      -webkit-appearance: none;
+      background: #000000;
+      color: #8cc1f2;
+      border: none;
+      border-radius: 30px;
+      padding: 8px 8px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: "Satoshi", sans-serif;
+      line-height: 1;
+      letter-spacing: -0.408px;
+      white-space: nowrap;
+      margin-right: -8px;
+      min-width: 102px;
+      box-sizing: border-box;
+    }
+
+
+    .moving-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: auto;
+      height: 100%;
+      min-width: 100%;
+      animation: slide-horizontal 6s linear infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes slide-horizontal {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(calc(-1 * var(--travel)));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bottom-safe-cover" aria-hidden="true"></div>
+  <div class="mobile-stage">
+    <div class="picture-box" aria-label="Lign picture box">
+      <img class="moving-image" src="LignHand.svg" alt="Lign mobile visual" />
+    </div>
+    <div class="challenge-card" aria-label="The Challenge card">
+      <p class="challenge-title">The Challenge</p>
+      <p class="challenge-text">Trotro strikes and unreliable public transit left students and workers stranded, with organizations having no digital tool to manage their own transport.</p>
+    </div>
+    <div class="challenge-card" style="margin-top: 12px;" aria-label="What I created card">
+      <p class="challenge-title">What I created</p>
+      <p class="challenge-text">A managed transit platform that lets organizations book, track, and ticket their own fleet. Keeping their people moving regardless of public transport.</p>
+    </div>
+    <div class="cards-stack" aria-label="Lign detail cards">
+      <div class="stack-image-card stack-image-card-lftdc" aria-label="Lign LFTDC card"></div>
+      <div class="stack-image-card stack-image-card-ltd2" aria-label="Lign LTD 2 card"></div>
+    </div>
+  </div>
+  <div class="info-frame" aria-label="Lign info frame">
+    <div class="info-row">
+      <div class="info-content">
+        <p class="info-title">Lign</p>
+        <p class="info-desc">Lign is a smart transport platform built for organizations to manage their fleets digitally. Track your bus live, book seats, and never get left behind.</p>
+      </div>
+      <button class="info-button">View Case study</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var box = document.querySelector('.picture-box');
+      var image = document.querySelector('.moving-image');
+
+      if (!box || !image) {
+        return;
+      }
+
+      function updateTravel() {
+        var travel = Math.max(0, image.getBoundingClientRect().width - box.clientWidth);
+        box.style.setProperty('--travel', travel + 'px');
+      }
+
+      if (image.complete) {
+        updateTravel();
+      } else {
+        image.addEventListener('load', updateTravel, { once: true });
+      }
+
+      window.addEventListener('resize', updateTravel);
+    })();
+  </script>
+</body>
+</html>

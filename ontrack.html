@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnTrack Logistics - PortoBlknszzz</title>
+    <title>OnTrack - PortoBlknszzz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
@@ -291,7 +291,7 @@
             font-weight: 500;
             font-family: Satoshi, sans-serif;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.6s var(--transition-easing);
         }
         .cta-primary {
             background: #87B069;
@@ -445,6 +445,90 @@
             border: none;
             cursor: pointer;
         }
+        .details-slide-box {
+            width: 100%;
+            max-width: 730px;
+            height: 620px;
+            margin: 40px auto 0 auto;
+            border-radius: 30px;
+            overflow: visible;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .details-slide-box video {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            background: #e0e0e0;
+            object-fit: cover;
+            object-position: center;
+        }
+        .details-corner-circle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Satoshi, sans-serif;
+            font-size: 21px;
+            font-weight: 500;
+            line-height: 1;
+            z-index: 2;
+        }
+        .details-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 21px;
+        }
+        .digit-one-slot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 12px;
+            height: 21px;
+            overflow: hidden;
+        }
+        .details-corner-circle.bottom-left {
+            top: auto;
+            right: auto;
+            bottom: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+        .details-corner-circle.bottom-right {
+            top: auto;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .details-corner-circle.is-disabled {
+            background: rgba(170, 170, 170, 0.28);
+            cursor: default;
+            pointer-events: none;
+        }
+        .details-corner-circle.is-disabled img {
+            opacity: 0.62;
+            filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(253%) hue-rotate(87deg) brightness(92%) contrast(87%);
+        }
+        .details-corner-circle .digit-zero {
+            color: #AAAAAA;
+        }
+        .details-corner-circle .digit-one {
+            color: #000000;
+        }
         .see-how-title {
             font-size: 18px;
             color: #0b0b0b;
@@ -496,20 +580,20 @@
     <div id="content">
         <div class="container">
             <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo">Bright Blankson</a>
+                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="unnamed.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></a>
             </div>
         </div>
         <div class="project-page-container">
             <div class="button-container">
                 <button class="back-button" onclick="smartBack()"><img src="arrow.backward.svg" alt="Back" style="width: 25px; height: 25px;"> Back</button>
-                <button class="title-button">Logistics/B2B/UX</button>
+                <button class="title-button">B2B/UX</button>
             </div>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="ProtoHand DarkLeaf.svg" alt="LeafAI Hero"></div>
+                <div class="project-hero-inner"><img src="ON.jpg" alt="OnTrack Hero"></div>
             </div>
             
             <div class="project-header">
-                <h1 class="project-title">OnTrack Logistics</h1>
+                <h1 class="project-title">OnTrack</h1>
             </div>
             
             <div class="project-section">
@@ -541,46 +625,32 @@
                 </div>
             </div>
             
-            <div class="video-box">
-                <div class="video-duration-pill" id="video-duration-pill">--:--</div>
-                <div class="video-pill">
-                    <button class="pill-icon-btn" type="button" id="expand-btn" aria-label="Expand video"><img src="expand.svg" alt="Expand" style="width:24px;height:24px;"></button>
-                    <button class="pill-icon-btn" type="button" id="volume-btn" aria-label="Adjust volume"><img src="speaker.wave.3.svg" alt="Speaker" style="width:20px;height:20px;"></button>
-                </div>
-                <div class="volume-popover" id="volume-popover">
-                    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="1" aria-label="Video volume">
-                </div>
+            <div class="details-slide-box">
+                <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
+                <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
+                <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
                 <div class="video-container">
-                    <video id="custom-video" style="width:100%; height:100%; background:#000;">
-                        <source src="your-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="custom-video-controls">
-                        <button class="play-pause-btn" id="play-pause-btn">▶</button>
-                        <div class="progress-bar" id="progress-bar">
-                            <div class="progress-fill" id="progress-fill"></div>
-                        </div>
-                    </div>
+                    <img id="details-slide-image" src="ON.jpg" alt="OnTrack Slide 01" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             </div>
             <div class="see-how-title">See how it works</div>
             <div class="see-how-desc">
-                This demo preview for OnTrack Logistics will be updated with your final product flow, interaction details, and supporting visuals once you provide the project assets.
+                This demo preview for OnTrack will be updated with your final product flow, interaction details, and supporting visuals once you provide the project assets.
             </div>
             
             <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
                 <button class="title-button">Features</button>
             </div>
             <div style="width: 100%; display: flex; justify-content: flex-end;">
-                <div class="features-cards-row" style="display:flex;gap:10px;margin-bottom:40px;width:auto;justify-content:flex-end;">
-                    <img src="Frame 360.svg" alt="Feature 1" style="width:230px;height:380px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame360-thumb" onclick="openModal()" />
-                    <img src="Frame 362.svg" alt="Feature 2" style="width:230px;height:380px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame362-thumb" onclick="openModal362()" />
+                <div class="features-cards-row">
+                    <img src="Frame 360.svg" alt="Feature 1" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame360-thumb" onclick="openModal()" />
+                    <img src="Frame 362.svg" alt="Feature 2" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame362-thumb" onclick="openModal362()" />
                     <!-- Modal for enlarged Frame 362.svg image -->
                     <div id="frame362-modal" class="modal" onclick="closeModal362()">
                         <span class="close-modal" onclick="closeModal362();event.stopPropagation();">&times;</span>
                         <img class="modal-content" id="frame362-large" src="Frame 362.svg" alt="Frame 362 Large" />
                     </div>
-                    <img src="Frame 359.svg" alt="Feature 3" style="width:230px;height:380px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame359-thumb" onclick="openModal359()" />
+                    <img src="Frame 359.svg" alt="Feature 3" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame359-thumb" onclick="openModal359()" />
                     <!-- Modal for enlarged Frame 359.svg image -->
                     <div id="frame359-modal" class="modal" onclick="closeModal359()">
                         <span class="close-modal" onclick="closeModal359();event.stopPropagation();">&times;</span>
@@ -592,7 +662,7 @@
             <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 0px;">
                 <div style="width: 730px; height: 170px; background: url('Frame 364 www.svg') center center/cover no-repeat, #fff; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #222; font-size: 24px; font-family: Satoshi, sans-serif;">
                     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                        <span style="font-size: 20px; color: #fff; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind OnTrack Logistics.</span>
+                        <span style="font-size: 20px; color: #fff; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind OnTrack.</span>
                         <a href="casestudy-viewer.html" style="text-decoration: none;"><button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button></a>
                     </div>
                 </div>
@@ -611,250 +681,82 @@
             <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
         </div>
     </footer>
-
-    <script>
-                                // Modal logic for Frame 359.svg
-                                function openModal359() {
-                                    document.getElementById('frame359-modal').style.display = 'flex';
-                                }
-                                function closeModal359() {
-                                    document.getElementById('frame359-modal').style.display = 'none';
-                                }
-                                // Optional: Close modal on ESC key for Frame 359
-                                document.addEventListener('keydown', function(event) {
-                                    if (event.key === 'Escape') closeModal359();
-                                });
-                        // Modal logic for Frame 362.svg
-                        function openModal362() {
-                            document.getElementById('frame362-modal').style.display = 'flex';
-                        }
-                        function closeModal362() {
-                            document.getElementById('frame362-modal').style.display = 'none';
-                        }
-                        // Optional: Close modal on ESC key for Frame 362
-                        document.addEventListener('keydown', function(event) {
-                            if (event.key === 'Escape') closeModal362();
-                        });
-                // Modal logic for Frame 360.svg
-                function openModal() {
-                    document.getElementById('frame360-modal').style.display = 'flex';
-                }
-                function closeModal() {
-                    document.getElementById('frame360-modal').style.display = 'none';
-                }
-                // Optional: Close modal on ESC key
-                document.addEventListener('keydown', function(event) {
-                    if (event.key === 'Escape') closeModal();
-                });
-
-                // Custom Video Player Controls
-                const video = document.getElementById('custom-video');
-                const playPauseBtn = document.getElementById('play-pause-btn');
-                const progressBar = document.getElementById('progress-bar');
-                const progressFill = document.getElementById('progress-fill');
-                const expandBtn = document.getElementById('expand-btn');
-                const volumeBtn = document.getElementById('volume-btn');
-                const volumePopover = document.getElementById('volume-popover');
-                const volumeSlider = document.getElementById('volume-slider');
-                const durationPill = document.getElementById('video-duration-pill');
-                const videoBox = video.closest('.video-box');
-
-                function formatTime(totalSeconds) {
-                    if (!Number.isFinite(totalSeconds) || totalSeconds < 0) {
-                        return '--:--';
-                    }
-                    const seconds = Math.floor(totalSeconds);
-                    const minutes = Math.floor(seconds / 60);
-                    const remainingSeconds = seconds % 60;
-                    return minutes + ':' + String(remainingSeconds).padStart(2, '0');
-                }
-
-                function updateDurationPill() {
-                    durationPill.textContent = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
-                }
-
-                function togglePlayback() {
-                    if (video.paused) {
-                        video.play();
-                        playPauseBtn.textContent = '⏸';
-                    } else {
-                        video.pause();
-                        playPauseBtn.textContent = '▶';
-                    }
-                }
-
-                playPauseBtn.addEventListener('click', function() {
-                    togglePlayback();
-                });
-
-                video.addEventListener('click', function() {
-                    togglePlayback();
-                });
-
-                video.addEventListener('play', function() {
-                    playPauseBtn.textContent = '⏸';
-                });
-
-                video.addEventListener('pause', function() {
-                    playPauseBtn.textContent = '▶';
-                });
-
-                video.addEventListener('loadedmetadata', updateDurationPill);
-                video.addEventListener('durationchange', updateDurationPill);
-
-                if (video.readyState >= 1) {
-                    updateDurationPill();
-                }
-
-                video.addEventListener('timeupdate', function() {
-                    const percent = (video.currentTime / video.duration) * 100;
-                    progressFill.style.width = percent + '%';
-                    updateDurationPill();
-                });
-
-                progressBar.addEventListener('click', function(e) {
-                    const rect = progressBar.getBoundingClientRect();
-                    const percent = (e.clientX - rect.left) / rect.width;
-                    video.currentTime = percent * video.duration;
-                });
-
-                volumeBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const videoBoxRect = volumeBtn.closest('.video-box').getBoundingClientRect();
-                    const btnRect = volumeBtn.getBoundingClientRect();
-                    const popoverHeight = volumePopover.offsetHeight || 36;
-                    const popoverWidth = volumePopover.offsetWidth || 140;
-                    const alignedTop = (btnRect.top - videoBoxRect.top) + (btnRect.height / 2) - (popoverHeight / 2) + 6;
-                    const alignedLeft = (btnRect.left - videoBoxRect.left) - popoverWidth - 15;
-
-                    volumePopover.style.top = alignedTop + 'px';
-                    volumePopover.style.left = alignedLeft + 'px';
-                    volumePopover.classList.toggle('visible');
-                });
-
-                volumeSlider.addEventListener('input', function() {
-                    video.volume = parseFloat(volumeSlider.value);
-                });
-
-                expandBtn.addEventListener('click', async function() {
-                    try {
-                        if (!document.fullscreenElement) {
-                            await videoBox.requestFullscreen();
-                        } else {
-                            await document.exitFullscreen();
-                        }
-                    } catch (err) {
-                        console.error('Fullscreen toggle failed:', err);
-                    }
-                });
-
-                document.addEventListener('click', function(e) {
-                    if (!volumePopover.contains(e.target) && e.target !== volumeBtn && !volumeBtn.contains(e.target)) {
-                        volumePopover.classList.remove('visible');
-                    }
-                });
-
-                document.addEventListener('keydown', function(e) {
-                    const isSpace = e.code === 'Space' || e.key === ' ';
-                    if (!isSpace) {
-                        return;
-                    }
-
-                    const tag = (document.activeElement && document.activeElement.tagName) ? document.activeElement.tagName.toLowerCase() : '';
-                    if (tag === 'input' || tag === 'textarea' || tag === 'select') {
-                        return;
-                    }
-
-                    e.preventDefault();
-                    togglePlayback();
-                });
-        // --- Detect referrer and set active nav ---
+</body>
+</html>
         (function() {
             const params = new URLSearchParams(window.location.search);
             const from = params.get('from');
+            const navHome = document.getElementById('nav-home');
+            const navProjects = document.getElementById('nav-projects');
+
+            if (!navHome || !navProjects) {
+                return;
+            }
+
             if (from === 'home') {
-                document.getElementById('nav-home').classList.add('nav-item-active');
+                navHome.classList.add('nav-item-active');
             } else if (from === 'projects') {
-                document.getElementById('nav-projects').classList.add('nav-item-active');
+                navProjects.classList.add('nav-item-active');
             } else {
                 const referrer = document.referrer.toLowerCase();
                 if (referrer.includes('bb.html') || referrer.includes('bbdark.html')) {
-                    document.getElementById('nav-home').classList.add('nav-item-active');
+                    navHome.classList.add('nav-item-active');
                 } else {
-                    document.getElementById('nav-projects').classList.add('nav-item-active');
+                    navProjects.classList.add('nav-item-active');
                 }
             }
         })();
 
         // --- Click sound effect ---
+        const clickAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+
         function playClickSound() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const now = audioContext.currentTime;
-            const duration = 0.5;
-            
-            const osc1 = audioContext.createOscillator();
-            const osc2 = audioContext.createOscillator();
-            const osc3 = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            
-            osc1.connect(gain);
-            osc2.connect(gain);
-            osc3.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            osc1.type = 'sine';
-            osc1.frequency.setValueAtTime(800, now);
-            
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(1200, now);
-            
-            osc3.type = 'sine';
-            osc3.frequency.setValueAtTime(1600, now);
-            
-            gain.gain.setValueAtTime(0.2, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-            
-            osc1.start(now);
-            osc2.start(now);
-            osc3.start(now);
-            osc1.stop(now + duration);
-            osc2.stop(now + duration);
-            osc3.stop(now + duration);
+            const now = clickAudioContext.currentTime;
+            const duration = 0.09;
+            if (clickAudioContext.state === 'suspended') {
+                clickAudioContext.resume();
+            }
+            const osc = clickAudioContext.createOscillator();
+            const gain = clickAudioContext.createGain();
+            osc.connect(gain);
+            gain.connect(clickAudioContext.destination);
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(560, now);
+            osc.frequency.exponentialRampToValueAtTime(420, now + duration);
+            gain.gain.setValueAtTime(0.05, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+            osc.start(now);
+            osc.stop(now + duration);
         }
-        
-        document.addEventListener('click', function(e) {
+
+        document.addEventListener('pointerdown', function(e) {
             if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
                 playClickSound();
             }
-        });
+        }, { capture: true });
 
         function updateTime() {
             const now = new Date();
             const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
             const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            
             const day = days[now.getDay()];
             const date = now.getDate();
             const month = months[now.getMonth()];
             const year = now.getFullYear().toString().slice(-2);
-            
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
             hours = hours ? hours : 12;
             const hoursStr = String(hours).padStart(2, '0');
-            
             const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
-            const locationString = `Accra,Ghana.`;
-            
+            const locationString = 'Accra,Ghana.';
             document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
         }
-        
+
         updateTime();
         setInterval(updateTime, 60000);
 
-        // --- Restore scroll position from mode switch ---
         (function() {
             const params = new URLSearchParams(window.location.search);
             const scrollY = params.get('scrollY');
@@ -863,37 +765,40 @@
             }
         })();
 
-        // --- Smart back navigation ---
         function smartBack() {
             const params = new URLSearchParams(window.location.search);
             const from = params.get('from');
             if (from === 'home') {
                 window.location.href = 'BB.html';
-            } else {
-                window.location.href = 'projects.html';
+                return;
             }
+            if (window.history.length > 1) {
+                window.history.back();
+                return;
+            }
+            window.location.href = 'projects.html';
         }
 
         const modeButtons = document.querySelectorAll('.mode-btn');
-        
         modeButtons.forEach((btn, index) => {
             btn.addEventListener('click', function() {
                 playClickSound();
                 modeButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                
                 const fromParam = new URLSearchParams(window.location.search).get('from') || 'projects';
                 const scrollY = window.scrollY || document.documentElement.scrollTop;
+                const slideIndex = Number.isInteger(window.onTrackCurrentSlideIndex) ? window.onTrackCurrentSlideIndex : 0;
                 setTimeout(() => {
-                    if(index === 0) {
-                        window.location.href = 'ontrackDark.html?from=' + fromParam + '&scrollY=' + scrollY;
-                    } else if(index === 1) {
-                        window.location.href = 'ontrack.html?from=' + fromParam + '&scrollY=' + scrollY;
+                    if (index === 0) {
+                        window.location.href = 'ontrackDark.html?from=' + fromParam + '&scrollY=' + scrollY + '&slide=' + slideIndex;
+                    } else if (index === 1) {
+                        window.location.href = 'ontrack.html?from=' + fromParam + '&scrollY=' + scrollY + '&slide=' + slideIndex;
                     }
                 }, 100);
             });
         });
     </script>
+    <script src="scripts/logo-rotator.js"></script>
 </body>
 </html>
 
