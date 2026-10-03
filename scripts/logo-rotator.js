@@ -6,10 +6,11 @@
         if (!logos || !logos.length) return;
 
         logos.forEach(function (img) {
-            img.width = 50;
-            img.height = 50;
-            img.style.width = '50px';
-            img.style.height = '50px';
+            const size = img.closest('.profile-header') ? 72 : 50;
+            img.width = size;
+            img.height = size;
+            img.style.width = size + 'px';
+            img.style.height = size + 'px';
             img.style.objectFit = 'cover';
             img.style.borderRadius = '50%';
             img.style.display = 'block';

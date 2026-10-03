@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - PortoBlknszzz - Dark Mode</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">    <link rel="stylesheet" href="bb.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bb.css">
     <link rel="stylesheet" href="bbdark.css">
+    <script src="scripts/page-fade.js"></script>
     <link rel="stylesheet" href="">
     <style>
         #content {
@@ -20,7 +24,7 @@
             align-items: center;
             width: 100%;
             margin: 0 auto;
-            margin-top: 145px;
+            margin-top: 90px;
             margin-bottom: 100px;
             flex: 1;
         }
@@ -39,85 +43,89 @@
         }
         .project-card {
             background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 18px;
+            border-radius: 30px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
             cursor: pointer;
             width: 360px;
             height: 288px;
+            flex-shrink: 0;
+            box-sizing: border-box;
         }
-        .project-card:nth-child(1) {
-            background: #87B069;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .project-row .leafAi,
+        .project-row .Lign {
+            width: 360px;
+            height: 288px;
+            border-radius: 30px;
+            padding: 6px;
+            box-sizing: border-box;
         }
-        .project-row:nth-child(1) .project-card {
-            background: #87B069;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .project-row:nth-child(2) .project-card {
-            background: #FFC9D7;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .project-card-inner {
+        .project-row .leafAi .grid-container,
+        .project-row .Lign .grid-container {
             width: 348px;
             height: 276px;
-            border: 1.2px solid #356B4A;
-            border-radius: 12px;
+            border-radius: 24px;
+            padding: 0;
+            box-sizing: border-box;
+            margin: 0;
         }
-        .project-row:nth-child(2) .project-card-inner {
-            border: 1.2px solid #D91D4C;
+        .project-card-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
         }
         .project-row:nth-child(3) .project-card {
             background: #F7DC83;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .project-row:nth-child(3) .project-card-inner {
             border: 1.2px solid #000000;
         }
         .project-row:nth-child(4) .project-card {
             background: #AD6100;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .project-row:nth-child(4) .project-card-inner {
             border: 1.2px solid #FFC77F;
         }
         .project-row:nth-child(5) .project-card {
             background: #B8CCFF;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .project-row:nth-child(5) .project-card-inner {
             border: 1.2px solid #406BD7;
         }
+        .cursor-tooltip {
+            position: fixed;
+            pointer-events: none;
+            background: rgba(11, 11, 11, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 8px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.45s var(--transition-easing);
+            z-index: 9999;
+        }
+        .cursor-tooltip.visible {
+            opacity: 1;
+        }
         .project-description-box {
             width: 346px;
-            height: 288px;
+            min-height: 288px;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             position: relative;
         }
         .project-description-box p {
-            font-size: 20px;
-            color: #666666;
+            font-size: 18px;
+            color: #b0b0b0;
             line-height: 1.6;
             font-family: Satoshi, sans-serif;
             font-weight: 300;
@@ -195,13 +203,13 @@
         .project-row {
             display: flex;
             gap: 24px;
-            width: 746.1px;
-            height: 300px;
+            width: 729.6px;
+            height: 288px;
             position: relative;
-            border-radius: 24px;
+            border-radius: 36px;
             transition: all 0.6s var(--transition-easing);
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
         }
         a.project-row {
@@ -214,10 +222,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
+            width: calc(100% + 12px);
+            height: calc(100% + 12px);
             background: #252525;
-            border-radius: 24px;
+            border-radius: 36px;
             opacity: 0;
             transition: opacity 0.6s var(--transition-easing);
             pointer-events: none;
@@ -241,10 +249,6 @@
             font-family: "Google Sans", sans-serif;
             color: #BDBDBD;
             cursor: pointer;
-            position: absolute;
-            left: -153px;
-            top: -80px;
-            z-index: 50;
         }
         .projects-button {
             width: 97px;
@@ -265,14 +269,6 @@
             background: #d0d0d0;
         }
     </style>
-<script>
-    // Redirect to mobile version matching user's color scheme
-    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
-        window.location.href = target;
-    }
-</script>
 </head>
 <body class="dark-mode">
     <div class="time-location-display" id="time-location"></div>
@@ -291,37 +287,30 @@
     </nav>
     <div id="content">
         <div class="container">
-            <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="unnamed.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></a>
-            </div>
         </div>
         <div class="projects-container">
             <div class="projects-section">
                 <button class="projects-btn">Projects</button>
                 <div class="projects-grid">
-                <a href="leafaiDark.html?from=projects" class="project-row" style="text-decoration: none; color: inherit;">
-                <div class="project-card">
-                    <div class="project-card-inner" style="background-image: url('leafbg.svg'); background-size: cover; background-position: center;">
-                    </div>
+                <a href="leafaiDark.html?from=projects" class="project-row" data-project="Plant AI" style="text-decoration: none; color: inherit;">
+                <div class="leafAi" style="text-decoration: none;">
+                    <div class="grid-container"></div>
                 </div>
                 <div class="project-description-box">
                     <h3 class="project-name">Plant AI: Crop Care</h3>
                     <p>Leaf Disease Detector is a smart mobile app that uses AI to detect plant diseases from leaf images. Just snap a photo, get an instant diagnosis, and receive treatment tips—helping you protect crops, reduce losses, and boost yields with ease.</p>
-                    <span class="view-button">View <img src="arrow.up.right.svg" alt="Arrow"></span>
                 </div>
                 </a>
-                <a href="LignTransportDark.html?from=projects" class="project-row" style="text-decoration: none; color: inherit;">
-                <div class="project-card">
-                    <div class="project-card-inner" style="background-image: url('protohand.svg'); background-size: cover; background-position: center;">
-                    </div>
+                <a href="LignTransportDark.html?from=projects" class="project-row" data-project="Lign" style="text-decoration: none; color: inherit;">
+                <div class="Lign" style="text-decoration: none;">
+                    <div class="grid-container"></div>
                 </div>
                 <div class="project-description-box">
                     <h3 class="project-name">Lign</h3>
                     <p>Lign is a multi-modal transport platform that helps schools, hospitals, and organizations manage their fleets digitally. Track buses in real time, book seats, buy tickets in bulk, and never miss a ride again — all in one app.</p>
-                    <button class="view-button">View <img src="arrow.up.right.svg" alt="Arrow"></button>
                 </div>
                 </a>
-                <a href="clostraDark.html?from=projects" class="project-row" style="text-decoration: none; color: inherit;">
+                <a href="clostraDark.html?from=projects" class="project-row" data-project="Clostra" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
                     <div class="project-card-inner" style="background-image: url('frame 86.svg'); background-size: cover; background-position: center;">
                     </div>
@@ -329,10 +318,9 @@
                 <div class="project-description-box">
                     <h3 class="project-name">Clostra</h3>
                     <p>Description of your second project goes here. Share what you built and the impact it had.</p>
-                    <span class="view-button">View <img src="arrow.up.right.svg" alt="Arrow"></span>
                 </div>
                 </a>
-                <a href="rosterDark.html?from=projects" class="project-row" style="text-decoration: none; color: inherit;">
+                <a href="rosterDark.html?from=projects" class="project-row" data-project="Roster" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
                     <div class="project-card-inner" style="background-image: url('frame 80.svg'); background-size: cover; background-position: center;">
                     </div>
@@ -340,10 +328,9 @@
                 <div class="project-description-box">
                     <h3 class="project-name">Roster</h3>
                     <p>An invite-only network where verified professionals share work, job opportunities, and connect in a trusted, private community—no public profiles or algorithms.</p>
-                    <span class="view-button">View <img src="arrow.up.right.svg" alt="Arrow"></span>
                 </div>
                 </a>
-                <a href="ontrackDark.html?from=projects" class="project-row" style="text-decoration: none; color: inherit;">
+                <a href="ontrackDark.html?from=projects" class="project-row" data-project="On Track" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
                     <div class="project-card-inner" style="background-image: url('iPhone 16 - 15.svg'); background-size: cover; background-position: center;">
                     </div>
@@ -351,7 +338,6 @@
                 <div class="project-description-box">
                     <h3 class="project-name">On Track</h3>
                     <p>This app helps people with diabetes manage their diet and blood sugar by recording glucose readings and offering meal recommendations tailored to their health. It’s user-friendly and supports healthier daily choices.</p>
-                    <span class="view-button">View <img src="arrow.up.right.svg" alt="Arrow"></span>
                 </div>
                 </a>
             </div>
@@ -365,8 +351,29 @@
             <img src="linkedin.svg" alt="LinkedIn" width="24" height="24">
         </div>
     </footer>
+    <div class="cursor-tooltip" id="cursorTooltip"></div>
 
     <script>
+        // --- Cursor tooltip for project cards ---
+        (function() {
+            const tooltip = document.getElementById('cursorTooltip');
+            const projectItems = document.querySelectorAll('[data-project]');
+
+            projectItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    tooltip.textContent = this.dataset.project;
+                    tooltip.classList.add('visible');
+                });
+                item.addEventListener('mouseleave', function() {
+                    tooltip.classList.remove('visible');
+                });
+                item.addEventListener('mousemove', function(e) {
+                    tooltip.style.left = e.clientX + 14 + 'px';
+                    tooltip.style.top = e.clientY + 14 + 'px';
+                });
+            });
+        })();
+
         // --- Click sound effect ---
         const clickAudioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -410,27 +417,21 @@
             if (!href) return;
 
             e.preventDefault();
-            window.location.href = href;
+            window.fadeNavigate(href);
         });
 
         // --- Standard page scripts ---
         function updateTime() {
             const now = new Date();
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            const day = days[now.getDay()];
-            const date = now.getDate();
-            const month = months[now.getMonth()];
-            const year = now.getFullYear().toString().slice(-2);
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const ampm = hours >= 12 ? 'pm' : 'am';
             hours = hours % 12;
             hours = hours ? hours : 12;
             const hoursStr = String(hours).padStart(2, '0');
-            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
-            const locationString = `Accra,Ghana.`;
-            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+            const timeString = `${hoursStr}:${minutes} ${ampm}`;
+            const locationString = `Accra, Ghana`;
+            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
         }
         updateTime();
         setInterval(updateTime, 60000);
@@ -456,73 +457,11 @@
                 this.classList.add('active');
                 
                 const scrollY = window.scrollY || document.documentElement.scrollTop;
-                setTimeout(() => {
-                    if (index === 0) window.location.href = 'projectsDark.html?scrollY=' + scrollY;
-                    else if (index === 1) window.location.href = 'projects.html?scrollY=' + scrollY;
-                }, 100);
+                if (index === 0) window.fadeNavigate('projectsDark.html?scrollY=' + scrollY);
+                else if (index === 1) window.fadeNavigate('projects.html?scrollY=' + scrollY);
             });
         });
 
     </script>
-<script>
-(function () {
-    const logoSources = ['Logo 1.svg', 'Logo 2.svg', 'Logo 3.svg', 'Logo 4.svg', 'Logo 5.svg', 'Logo 6.svg'];
-    const logos = document.querySelectorAll('.barcode-logo img');
-    const intervalMs = 5000;
-    const fadeOutMs = 220;
-    const storageKey = 'logoCycleStartMs';
-
-    if (!logos.length) {
-        return;
-    }
-
-    let startMs;
-    try {
-        const stored = parseInt(localStorage.getItem(storageKey) || '', 10);
-        if (Number.isNaN(stored)) {
-            startMs = Date.now();
-            localStorage.setItem(storageKey, String(startMs));
-        } else {
-            startMs = stored;
-        }
-    } catch (e) {
-        startMs = Date.now();
-    }
-
-    function getCurrentIndex() {
-        const elapsed = Date.now() - startMs;
-        return Math.floor(elapsed / intervalMs) % logoSources.length;
-    }
-
-    logos.forEach(function (img) {
-        img.width = 50;
-        img.height = 50;
-        img.style.width = '50px';
-        img.style.height = '50px';
-        img.style.objectFit = 'cover';
-        img.style.transition = 'opacity 0.45s ease';
-        img.style.opacity = '1';
-        img.src = logoSources[getCurrentIndex()];
-
-        const delayToNext = intervalMs - ((Date.now() - startMs) % intervalMs);
-
-        setTimeout(function () {
-            img.style.opacity = '0.35';
-            setTimeout(function () {
-                img.src = logoSources[getCurrentIndex()];
-                img.style.opacity = '1';
-            }, fadeOutMs);
-
-            setInterval(function () {
-                img.style.opacity = '0.35';
-                setTimeout(function () {
-                    img.src = logoSources[getCurrentIndex()];
-                    img.style.opacity = '1';
-                }, fadeOutMs);
-            }, intervalMs);
-        }, delayToNext);
-    });
-    </script>
-    <script src="scripts/logo-rotator.js"></script>
 </body>
 </html>

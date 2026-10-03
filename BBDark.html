@@ -7,8 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
     <link rel="stylesheet" href="bbdark.css">
+    <script src="scripts/page-fade.js"></script>
     <style>
         .cursor-tooltip {
             position: fixed;
@@ -32,20 +35,12 @@
             opacity: 1;
         }
     </style>
-<script>
-    // Redirect to mobile version matching user's color scheme
-    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
-        window.location.href = target;
-    }
-</script>
 </head>
 <body class="dark-mode">
     <div class="time-location-display" id="time-location"></div>
     <div class="right-pill">
         <div class="mode-container">
-            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn active" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
             <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
         </div>
     </div>
@@ -57,28 +52,43 @@
         </ul>
     </nav>
     <div id="content">
-        <div class="container">
-            <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="unnamed.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></a>
-            </div>
-        </div>
+        <div class="container"></div>
         <div class="introduction">
             <div class="intro-inner">
-                <p class="intro-sub">People first design, across products, systems and wherever AI shows up.</p>
-                <div class="extra-action">
-                    <div class="featured-section">
-                        <div class="featured-content-box">
-                            <button class="projects-btn">Featured Projects</button>
-                            <div class="grid-container">
-                                <a href="leafaiDark.html?from=home" class="leafAi" data-project="Plant AI" style="text-decoration: none;">
-                                    <div class="grid-container"></div>
-                                </a>
-                                <a href="LignTransportDark.html?from=home" class="Lign" data-project="Lign" style="text-decoration: none;">
-                                    <div class="grid-container"></div>
-                                </a>
-                                <a href="clostraDark.html?from=home" class="IncFig" data-project="Clostra" style="text-decoration: none;">
-                                    <div class="grid-container"></div>
-                                </a>
+                <div class="profile-header">
+                    <div class="profile-avatar-wrap">
+                        <img src="Profile.jpg" alt="Bright Blankson" class="profile-avatar-img">
+                        <img src="human.jpg" alt="Bright Blankson" class="profile-avatar-human">
+                        <svg class="profile-avatar-stroke" viewBox="0 0 100 100" aria-hidden="true">
+                            <defs>
+                                <clipPath id="avatarScallop" clipPathUnits="objectBoundingBox">
+                                    <path d="M 0.476823,0.019302 Q 0.500000,0.000000 0.523177,0.019302 L 0.528327,0.023591 Q 0.551504,0.042892 0.578394,0.029232 L 0.584370,0.026196 Q 0.611260,0.012536 0.629561,0.036511 L 0.633628,0.041839 Q 0.651928,0.065814 0.681184,0.058480 L 0.687686,0.056850 Q 0.716942,0.049516 0.729449,0.076962 L 0.732228,0.083061 Q 0.744735,0.110507 0.774889,0.109867 L 0.781590,0.109724 Q 0.811745,0.109084 0.817831,0.138625 L 0.819183,0.145190 Q 0.825269,0.174731 0.854810,0.180817 L 0.861375,0.182169 Q 0.890916,0.188255 0.890276,0.218410 L 0.890133,0.225111 Q 0.889493,0.255265 0.916939,0.267772 L 0.923038,0.270551 Q 0.950484,0.283058 0.943150,0.312314 L 0.941520,0.318816 Q 0.934186,0.348072 0.958161,0.366372 L 0.963489,0.370439 Q 0.987464,0.388740 0.973804,0.415630 L 0.970768,0.421606 Q 0.957108,0.448496 0.976409,0.471673 L 0.980698,0.476823 Q 1.000000,0.500000 0.980698,0.523177 L 0.976409,0.528327 Q 0.957108,0.551504 0.970768,0.578394 L 0.973804,0.584370 Q 0.987464,0.611260 0.963489,0.629561 L 0.958161,0.633628 Q 0.934186,0.651928 0.941520,0.681184 L 0.943150,0.687686 Q 0.950484,0.716942 0.923038,0.729449 L 0.916939,0.732228 Q 0.889493,0.744735 0.890133,0.774889 L 0.890276,0.781590 Q 0.890916,0.811745 0.861375,0.817831 L 0.854810,0.819183 Q 0.825269,0.825269 0.819183,0.854810 L 0.817831,0.861375 Q 0.811745,0.890916 0.781590,0.890276 L 0.774889,0.890133 Q 0.744735,0.889493 0.732228,0.916939 L 0.729449,0.923038 Q 0.716942,0.950484 0.687686,0.943150 L 0.681184,0.941520 Q 0.651928,0.934186 0.633628,0.958161 L 0.629561,0.963489 Q 0.611260,0.987464 0.584370,0.973804 L 0.578394,0.970768 Q 0.551504,0.957108 0.528327,0.976409 L 0.523177,0.980698 Q 0.500000,1.000000 0.476823,0.980698 L 0.471673,0.976409 Q 0.448496,0.957108 0.421606,0.970768 L 0.415630,0.973804 Q 0.388740,0.987464 0.370439,0.963489 L 0.366372,0.958161 Q 0.348072,0.934186 0.318816,0.941520 L 0.312314,0.943150 Q 0.283058,0.950484 0.270551,0.923038 L 0.267772,0.916939 Q 0.255265,0.889493 0.225111,0.890133 L 0.218410,0.890276 Q 0.188255,0.890916 0.182169,0.861375 L 0.180817,0.854810 Q 0.174731,0.825269 0.145190,0.819183 L 0.138625,0.817831 Q 0.109084,0.811745 0.109724,0.781590 L 0.109867,0.774889 Q 0.110507,0.744735 0.083061,0.732228 L 0.076962,0.729449 Q 0.049516,0.716942 0.056850,0.687686 L 0.058480,0.681184 Q 0.065814,0.651928 0.041839,0.633628 L 0.036511,0.629561 Q 0.012536,0.611260 0.026196,0.584370 L 0.029232,0.578394 Q 0.042892,0.551504 0.023591,0.528327 L 0.019302,0.523177 Q 0.000000,0.500000 0.019302,0.476823 L 0.023591,0.471673 Q 0.042892,0.448496 0.029232,0.421606 L 0.026196,0.415630 Q 0.012536,0.388740 0.036511,0.370439 L 0.041839,0.366372 Q 0.065814,0.348072 0.058480,0.318816 L 0.056850,0.312314 Q 0.049516,0.283058 0.076962,0.270551 L 0.083061,0.267772 Q 0.110507,0.255265 0.109867,0.225111 L 0.109724,0.218410 Q 0.109084,0.188255 0.138625,0.182169 L 0.145190,0.180817 Q 0.174731,0.174731 0.180817,0.145190 L 0.182169,0.138625 Q 0.188255,0.109084 0.218410,0.109724 L 0.225111,0.109867 Q 0.255265,0.110507 0.267772,0.083061 L 0.270551,0.076962 Q 0.283058,0.049516 0.312314,0.056850 L 0.318816,0.058480 Q 0.348072,0.065814 0.366372,0.041839 L 0.370439,0.036511 Q 0.388740,0.012536 0.415630,0.026196 L 0.421606,0.029232 Q 0.448496,0.042892 0.471673,0.023591 Z"></path>
+                                </clipPath>
+                            </defs>
+                            <path d="M 47.682,1.930 Q 50.000,0.000 52.318,1.930 L 52.833,2.359 Q 55.150,4.289 57.839,2.923 L 58.437,2.620 Q 61.126,1.254 62.956,3.651 L 63.363,4.184 Q 65.193,6.581 68.118,5.848 L 68.769,5.685 Q 71.694,4.952 72.945,7.696 L 73.223,8.306 Q 74.473,11.051 77.489,10.987 L 78.159,10.972 Q 81.174,10.908 81.783,13.863 L 81.918,14.519 Q 82.527,17.473 85.481,18.082 L 86.137,18.217 Q 89.092,18.826 89.028,21.841 L 89.013,22.511 Q 88.949,25.527 91.694,26.777 L 92.304,27.055 Q 95.048,28.306 94.315,31.231 L 94.152,31.882 Q 93.419,34.807 95.816,36.637 L 96.349,37.044 Q 98.746,38.874 97.380,41.563 L 97.077,42.161 Q 95.711,44.850 97.641,47.167 L 98.070,47.682 Q 100.000,50.000 98.070,52.318 L 97.641,52.833 Q 95.711,55.150 97.077,57.839 L 97.380,58.437 Q 98.746,61.126 96.349,62.956 L 95.816,63.363 Q 93.419,65.193 94.152,68.118 L 94.315,68.769 Q 95.048,71.694 92.304,72.945 L 91.694,73.223 Q 88.949,74.473 89.013,77.489 L 89.028,78.159 Q 89.092,81.174 86.137,81.783 L 85.481,81.918 Q 82.527,82.527 81.918,85.481 L 81.783,86.137 Q 81.174,89.092 78.159,89.028 L 77.489,89.013 Q 74.473,88.949 73.223,91.694 L 72.945,92.304 Q 71.694,95.048 68.769,94.315 L 68.118,94.152 Q 65.193,93.419 63.363,95.816 L 62.956,96.349 Q 61.126,98.746 58.437,97.380 L 57.839,97.077 Q 55.150,95.711 52.833,97.641 L 52.318,98.070 Q 50.000,100.000 47.682,98.070 L 47.167,97.641 Q 44.850,95.711 42.161,97.077 L 41.563,97.380 Q 38.874,98.746 37.044,96.349 L 36.637,95.816 Q 34.807,93.419 31.882,94.152 L 31.231,94.315 Q 28.306,95.048 27.055,92.304 L 26.777,91.694 Q 25.527,88.949 22.511,89.013 L 21.841,89.028 Q 18.826,89.092 18.217,86.137 L 18.082,85.481 Q 17.473,82.527 14.519,81.918 L 13.863,81.783 Q 10.908,81.174 10.972,78.159 L 10.987,77.489 Q 11.051,74.473 8.306,73.223 L 7.696,72.945 Q 4.952,71.694 5.685,68.769 L 5.848,68.118 Q 6.581,65.193 4.184,63.363 L 3.651,62.956 Q 1.254,61.126 2.620,58.437 L 2.923,57.839 Q 4.289,55.150 2.359,52.833 L 1.930,52.318 Q 0.000,50.000 1.930,47.682 L 2.359,47.167 Q 4.289,44.850 2.923,42.161 L 2.620,41.563 Q 1.254,38.874 3.651,37.044 L 4.184,36.637 Q 6.581,34.807 5.848,31.882 L 5.685,31.231 Q 4.952,28.306 7.696,27.055 L 8.306,26.777 Q 11.051,25.527 10.987,22.511 L 10.972,21.841 Q 10.908,18.826 13.863,18.217 L 14.519,18.082 Q 17.473,17.473 18.082,14.519 L 18.217,13.863 Q 18.826,10.908 21.841,10.972 L 22.511,10.987 Q 25.527,11.051 26.777,8.306 L 27.055,7.696 Q 28.306,4.952 31.231,5.685 L 31.882,5.848 Q 34.807,6.581 36.637,4.184 L 37.044,3.651 Q 38.874,1.254 41.563,2.620 L 42.161,2.923 Q 44.850,4.289 47.167,2.359 Z" fill="none" stroke="#0b0b0b" stroke-width="1.56" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                    </div>
+                    <div class="profile-details">
+                        <div class="profile-name">Bright Blankson</div>
+                        <div class="profile-role">Product Design</div>
+                    </div>
+                </div>
+                <div class="content-shift">
+                    <div class="intro-sub">I Make things.</div>
+                    <div class="extra-action">
+                        <div class="featured-section">
+                            <div class="featured-content-box">
+                                <div class="grid-container">
+                                    <a href="leafaiDark.html?from=home" class="leafAi" data-project="Plant AI" style="text-decoration: none;">
+                                        <div class="grid-container"></div>
+                                    </a>
+                                    <a href="LignTransportDark.html?from=home" class="Lign" data-project="Lign" style="text-decoration: none;">
+                                        <div class="grid-container"></div>
+                                    </a>
+                                    <a href="clostraDark.html?from=home" class="IncFig" data-project="Clostra" style="text-decoration: none;">
+                                        <div class="grid-container"></div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -153,25 +163,18 @@
 
         function updateTime() {
             const now = new Date();
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            
-            const day = days[now.getDay()];
-            const date = now.getDate();
-            const month = months[now.getMonth()];
-            const year = now.getFullYear().toString().slice(-2);
-            
+
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const ampm = hours >= 12 ? 'pm' : 'am';
             hours = hours % 12;
             hours = hours ? hours : 12;
             const hoursStr = String(hours).padStart(2, '0');
-            
-            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
-            const locationString = `Accra,Ghana.`;
-            
-            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+
+            const timeString = `${hoursStr}:${minutes} ${ampm}`;
+            const locationString = `Accra, Ghana`;
+
+            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
         }
         
         updateTime();
@@ -189,8 +192,6 @@
         // Mode switching
         const modeButtons = document.querySelectorAll('.mode-btn');
         
-        modeButtons[0].classList.add('active'); // Dark mode active
-        
         modeButtons.forEach((btn, index) => {
             btn.addEventListener('click', function() {
                 playClickSound();
@@ -198,13 +199,11 @@
                 this.classList.add('active');
                 
                 const scrollY = window.scrollY || document.documentElement.scrollTop;
-                setTimeout(() => {
-                    if(index === 0) {
-                        window.location.href = 'BBDark.html?scrollY=' + scrollY;
-                    } else if(index === 1) {
-                        window.location.href = 'BB.html?scrollY=' + scrollY;
-                    }
-                }, 100);
+                if(index === 0) {
+                    window.fadeNavigate('BBDark.html?scrollY=' + scrollY);
+                } else if(index === 1) {
+                    window.fadeNavigate('BB.html?scrollY=' + scrollY);
+                }
             });
         });
     </script>
@@ -239,10 +238,10 @@
     }
 
     logos.forEach(function (img) {
-        img.width = 50;
-        img.height = 50;
-        img.style.width = '50px';
-        img.style.height = '50px';
+        img.width = 72;
+        img.height = 72;
+        img.style.width = '72px';
+        img.style.height = '72px';
         img.style.objectFit = 'cover';
         img.style.transition = 'opacity 0.45s ease';
         img.style.opacity = '1';

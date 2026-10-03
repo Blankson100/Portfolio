@@ -7,7 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
+    <script src="scripts/page-fade.js"></script>
     <style>
                 /* Custom Video Controls */
         .custom-video-controls {
@@ -105,7 +108,7 @@
             align-items: flex-start;
             width: 730px;
             margin: 0 auto;
-            margin-top: 120px;
+            margin-top: 90px;
             margin-bottom: 100px;
             flex: 1;
         }
@@ -464,14 +467,6 @@
             line-height: 1.7;
         }
     </style>
-<script>
-    // Redirect to mobile version matching user's color scheme
-    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
-        window.location.href = target;
-    }
-</script>
 </head>
 <body>
         <!-- Modal for enlarged Frame 360.svg image -->
@@ -479,13 +474,6 @@
             <span class="close-modal" onclick="closeModal();event.stopPropagation();">&times;</span>
             <img class="modal-content" id="frame360-large" src="Frame 360.svg" alt="Frame 360 Large" />
         </div>
-    <div class="time-location-display" id="time-location"></div>
-    <div class="right-pill">
-        <div class="mode-container">
-            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
-            <button class="mode-btn active" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
-        </div>
-    </div>
     <nav class="navbar">
         <ul class="nav-menu">
             <li id="nav-home"><a href="BB.html">Home</a></li>
@@ -691,6 +679,31 @@
 
             window.location.href = 'projects.html';
         }
+    </script>
+    <script>
+        (function() {
+            const navHome = document.getElementById('nav-home');
+            const navProjects = document.getElementById('nav-projects');
+            if (!navHome || !navProjects) {
+                return;
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const from = params.get('from');
+
+            if (from === 'home') {
+                navHome.classList.add('nav-item-active');
+            } else if (from === 'projects') {
+                navProjects.classList.add('nav-item-active');
+            } else {
+                const referrer = document.referrer.toLowerCase();
+                if (referrer.includes('bb.html') || referrer.includes('bbdark.html')) {
+                    navHome.classList.add('nav-item-active');
+                } else {
+                    navProjects.classList.add('nav-item-active');
+                }
+            }
+        })();
     </script>
     <script src="scripts/logo-rotator.js"></script>
 </body>

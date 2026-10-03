@@ -22,8 +22,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
     <link rel="stylesheet" href="bbdark.css">
+    <script src="scripts/page-fade.js"></script>
     <style>
         /* Custom Video Controls */
         .custom-video-controls {
@@ -90,7 +93,7 @@
             align-items: flex-start;
             width: 730px;
             margin: 0 auto;
-            margin-top: 120px;
+            margin-top: 90px;
             margin-bottom: 100px;
             flex: 1;
         }
@@ -717,25 +720,18 @@
 
         function updateTime() {
             const now = new Date();
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            
-            const day = days[now.getDay()];
-            const date = now.getDate();
-            const month = months[now.getMonth()];
-            const year = now.getFullYear().toString().slice(-2);
-            
+
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const ampm = hours >= 12 ? 'pm' : 'am';
             hours = hours % 12;
             hours = hours ? hours : 12;
             const hoursStr = String(hours).padStart(2, '0');
-            
-            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
-            const locationString = `Accra,Ghana.`;
-            
-            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+
+            const timeString = `${hoursStr}:${minutes} ${ampm}`;
+            const locationString = `Accra, Ghana`;
+
+            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
         }
         
         updateTime();

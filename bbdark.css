@@ -11,11 +11,6 @@ body.dark-mode .navbar {
     backdrop-filter: blur(15px);
 }
 
-body.dark-mode .right-pill {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(15px);
-}
-
 body.dark-mode .time-location-display {
     color:rgba(255, 255, 255, 0.5);
 }
@@ -35,6 +30,10 @@ body.dark-mode .intro-heading {
 
 body.dark-mode .barcode-logo {
     color:#ffffff;
+}
+
+body.dark-mode .profile-role {
+    color:rgba(255, 255, 255, 0.55);
 }
 
 body.dark-mode .intro-sub {
@@ -63,7 +62,7 @@ body.dark-mode .leafAi {
 }
 
 body.dark-mode .Lign {
-    background:#FFC9D7;
+    background:#289AF9;
 }
 
 body.dark-mode .IncFig {

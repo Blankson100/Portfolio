@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -95,14 +97,6 @@
             background: #fff;
         }
     </style>
-<script>
-    // Redirect to mobile version matching user's color scheme
-    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var target = isDark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html';
-        window.location.href = target;
-    }
-</script>
 </head>
 <body>
     <div class="viewer-header">

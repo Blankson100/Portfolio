@@ -7,7 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
+    <script src="scripts/page-fade.js"></script>
     <style>
                 /* Custom Video Controls */
         .custom-video-controls {
@@ -105,7 +108,7 @@
             align-items: flex-start;
             width: 730px;
             margin: 0 auto;
-            margin-top: 120px;
+            margin-top: 90px;
             margin-bottom: 100px;
             flex: 1;
         }
@@ -120,6 +123,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .hero-title-standalone {
+            font-family: Satoshi, sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            color: #0b0b0b;
+            margin: 0 0 16px 0;
+        }
+        .project-hero-simple {
+            background: #FAFAFA;
         }
         .details-corner-circle {
             position: absolute;
@@ -587,13 +600,10 @@
         <div class="project-page-container">
             <div class="button-container">
                 <button class="back-button" onclick="smartBack()"><img src="arrow.backward.svg" alt="Back" style="width: 25px; height: 25px;"> Back</button>
-                <button class="title-button">Product/SaaS/UX</button>
             </div>
-            <div class="project-hero">
-                <div class="project-hero-inner"><img src="ClostraEscrowGero.png" alt="Clostra Platform Hero"></div>
-            </div>
-            <div class="project-header">
-                <h1 class="project-title">Clostra Platform</h1>
+            <h1 class="hero-title-standalone">Clostra Platform</h1>
+            <div class="project-hero project-hero-simple">
+                <img src="protohand.svg" alt="" style="width: 602px; height: 431px; display: block;">
             </div>
             <div class="project-section">
                 <p class="section-content">
@@ -718,25 +728,18 @@
 
         function updateTime() {
             const now = new Date();
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            
-            const day = days[now.getDay()];
-            const date = now.getDate();
-            const month = months[now.getMonth()];
-            const year = now.getFullYear().toString().slice(-2);
-            
+
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const ampm = hours >= 12 ? 'pm' : 'am';
             hours = hours % 12;
             hours = hours ? hours : 12;
             const hoursStr = String(hours).padStart(2, '0');
-            
-            const timeString = `${hoursStr}:${minutes} ${ampm} ${day} ${date} ${month} ${year}`;
-            const locationString = `Accra,Ghana.`;
-            
-            document.getElementById('time-location').innerHTML = `${timeString}<br>${locationString}`;
+
+            const timeString = `${hoursStr}:${minutes} ${ampm}`;
+            const locationString = `Accra, Ghana`;
+
+            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
         }
         
         updateTime();
