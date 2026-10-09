@@ -48,14 +48,53 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            width: 730px;
-            margin: 0 auto;
+            width: 100%;
+            margin: 0;
             margin-top: 90px;
             /* margin-bottom: 100px; */
             flex: 1;
         }
+        .hero-title-standalone {
+            font-family: Satoshi, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #f5f5f5;
+            text-align: left;
+            margin: 0 0 16px 0;
+        }
+        .project-layout {
+            width: 100%;
+        }
+        .project-sidebar {
+            width: 140px;
+            position: fixed;
+            left: 70px;
+            top: 90px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .project-sidebar a {
+            font-family: Satoshi, sans-serif;
+            font-size: 15px;
+            color: #777777;
+            text-decoration: none;
+            transition: color 0.3s var(--transition-easing);
+        }
+        .project-sidebar a:hover,
+        .project-sidebar a.active {
+            color: #f5f5f5;
+        }
+        .project-main {
+            width: 602px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
         .project-hero {
-            width: 730px;
+            width: 602px;
             height: 431px;
             background: transparent;
             border-radius: 24px;
@@ -66,28 +105,30 @@
             overflow: hidden;
         }
         .back-button {
-            width: 100px;
-            height: 45px;
-            background: #4C4C4C;
+            width: auto;
+            height: 24px;
+            background: none;
             border: none;
-            border-radius: 50px;
+            border-radius: 0;
             padding: 0;
-            font-size: 16px;
-            font-weight: 300;
-            font-family: "Google Sans", sans-serif;
-            color: #BDBDBD;
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            line-height: 24px;
+            font-weight: 400;
+            font-family: Satoshi, sans-serif;
+            color: #777777;
             cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 6px;
+            transition: color 0.3s var(--transition-easing);
         }
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 15px;
+        .back-button:hover {
+            color: #f5f5f5;
+        }
+        .back-button svg {
+            flex-shrink: 0;
         }
         .title-button {
             background: #4C4C4C;
@@ -110,6 +151,157 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        .toc-section {
+            width: 100%;
+            margin-bottom: 16px;
+            scroll-margin-top: 110px;
+        }
+        .toc-heading {
+            font-family: Satoshi, sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #f5f5f5;
+            margin: 0 0 4px 0;
+        }
+        .toc-content p {
+            font-family: Satoshi, sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #aaaaaa;
+            margin: 0 0 16px 0;
+        }
+        .toc-content p:last-child {
+            margin-bottom: 0;
+        }
+        .chg-wrap {
+            position: relative;
+            width: 602px;
+            height: 330px;
+        }
+        .chg-title {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 602px;
+            height: 22px;
+            font-family: Satoshi, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: -0.48px;
+            color: #FFFFFF;
+        }
+        .chg-card {
+            position: absolute;
+            left: 0;
+            top: 26px;
+            width: 602px;
+            height: 304px;
+            background: #2D2D2D;
+            border-radius: 32px;
+            padding: 4px;
+            box-sizing: border-box;
+        }
+        .chg-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #161616;
+            border-radius: 28px;
+            border: 1px solid #1C1C1C;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .chg-row {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .chg-row-header {
+            top: 0;
+            height: 44px;
+            background: #2D2D2D;
+        }
+        .chg-row-body {
+            background: #161616;
+            border-bottom: 0.5px solid #2D2D2D;
+        }
+        .chg-text {
+            position: absolute;
+            color: #FFFFFF;
+        }
+        .chg-text-header {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-weight: 510;
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0;
+            width: 100px;
+        }
+        .chg-text-body {
+            font-family: Satoshi, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: -0.48px;
+        }
+        .cropcare-cloud-box {
+            position: relative;
+            width: 602px;
+            height: 170px;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+        .cropcare-cloud-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .cta-compact {
+            position: absolute;
+            left: 32px;
+            top: 26px;
+            width: 250px;
+            height: 119px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 11px;
+            padding: 0;
+        }
+        .cta-compact-text {
+            width: 250px;
+            height: 66px;
+            font-family: Satoshi, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: 0;
+            color: #FFFFFF;
+            text-align: left;
+            margin: 0;
+        }
+        .cta-compact-btn {
+            width: 173px;
+            height: 42px;
+            box-sizing: border-box;
+            background: #FFFFFF;
+            border-radius: 14px;
+            padding: 11px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Satoshi, sans-serif;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 20px;
+            letter-spacing: 0;
+            color: #000000;
+            white-space: nowrap;
+            text-decoration: none;
         }
         .project-header {
             width: 100%;
@@ -251,15 +443,6 @@
         .navbar ul li a {
             color: #f5f5f5;
         }
-        .right-pill {
-            background: #252525 !important;
-        }
-        .mode-container {
-            background: #252525 !important;
-        }
-        .mode-btn {
-            background: transparent !important;
-        }
         .mode-btn.active {
             background: #000000 !important;
             border-radius: 50%;
@@ -275,7 +458,7 @@
             width: 100%;
             max-width: 730px;
             height: 620px;
-            margin: 40px auto 0 auto;
+            margin: 0 auto;
             border-radius: 30px;
             overflow: visible;
             background: #141414;
@@ -392,6 +575,13 @@
     </style>
 </head>
 <body class="dark-mode">
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
+        </div>
+    </div>
     <nav class="navbar">
         <ul class="nav-menu">
             <li id="nav-home"><a href="BBDark.html">Home</a></li>
@@ -400,84 +590,111 @@
         </ul>
     </nav>
     <div id="content">
-        <div class="container">
-            <div class="logo">
-                <a href="mailto:akornorblankson99@gmail.com" class="barcode-logo"><img src="unnamed.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></a>
-            </div>
-        </div>
         <div class="project-page-container">
-            <div class="button-container">
-                <button class="back-button" onclick="smartBack()"><img src="arrow.backward.svg" alt="Back" style="width: 25px; height: 25px; filter: invert(1);"> Back</button>
-                <button class="title-button">Agriculture/AI/ML</button>
-            </div>
+            <div class="project-layout">
+                <div class="project-sidebar">
+                    <button class="back-button" onclick="smartBack()"><svg width="16" height="16" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.06836 12.1833C5.06836 12.4187 5.17038 12.6542 5.35086 12.8268L10.5301 17.9982C10.7185 18.1787 10.9225 18.265 11.1501 18.265C11.6445 18.265 12.0054 17.9119 12.0054 17.4332C12.0054 17.1821 11.9113 16.9702 11.7465 16.8133L9.98082 15.0241L7.70508 12.9445L9.53352 13.0544H19.0445C19.5625 13.0544 19.9234 12.6934 19.9234 12.1833C19.9234 11.6654 19.5625 11.3044 19.0445 11.3044H9.53352L7.71293 11.4143L9.98082 9.33472L11.7465 7.54551C11.9113 7.38857 12.0054 7.17669 12.0054 6.92557C12.0054 6.44688 11.6445 6.09375 11.1501 6.09375C10.9225 6.09375 10.7106 6.18007 10.5066 6.37626L5.35086 11.532C5.17038 11.7046 5.06836 11.94 5.06836 12.1833Z" fill="currentColor"/></svg><span>Back</span></button>
+                    <a href="#introduction">Introduction</a>
+                    <a href="#the-problem">The Problem</a>
+                    <a href="#the-app">The App</a>
+                    <a href="#design-process">Design Process</a>
+                    <a href="#challenges">Challenges</a>
+                    <a href="#whats-next">What's Next</a>
+                </div>
+                <div class="project-main">
+            <h1 class="hero-title-standalone">Crop Care</h1>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="LCOD1.png" alt="LeafAI Hero"></div>
-            </div>
-            
-            <div class="project-header">
-                <h1 class="project-title">PlantAI: Crop Care</h1>
-            </div>
-            
-            <div class="project-section">
-                <p class="section-content">
-                    I grew up going to school in a farming community, so I've always thought about ways to bring what I do into agriculture. Technology in farming has always fascinated me. When a friend came to me to design a plant disease detection app, I saw it as the perfect opportunity. I expanded his concept into Plant AI: Crop Care, transforming it from a basic detector for tomato and maize into a comprehensive app for all plant types. The app uses computer vision for disease identification and language AI to deliver treatment recommendations in local languages based on the user's location. Research with farming communities taught me that simplicity builds trust, so I designed clean navigation, automatic language detection, and a shop finder that connects farmers directly to solutions.
-                </p>
+                <div class="project-hero-inner"><img src="ProtoHand DarkLeaf.png" alt="Plant Ai: Crop Care"></div>
             </div>
 
-            <div class="project-meta">
-                <div class="meta-row">
-                    <div class="meta-item">
-                        <span class="meta-label">The Challenge</span>
-                        <span class="meta-value meta-value-content">Farmers rely on guesswork for diagnosis,<br>leading to delayed treatment and crop<br>losses</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">What I Created</span>
-                        <span class="meta-value meta-value-content">AI-Powered mobile app for instant disease identification with treatment guidance in users local language</span>
-                    </div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-item">
-                        <span class="meta-label">Role</span>
-                        <span class="meta-value meta-value-content">Product Designer</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Timeline</span>
-                        <span class="meta-value meta-value-content">March ‘6 - June ‘20 2025</span>
-                    </div>
+            <div class="toc-section" id="introduction">
+                <h2 class="toc-heading">Introduction</h2>
+                <div class="toc-content">
+                    <p>Crop Care is an AI-powered personal assistant for farmers. Point your phone at a diseased leaf, and it identifies the problem, suggests treatment, and walks you through treatment, in your own language.</p>
+                    <p>No agricultural training needed and no internet connection needed either. It's built for the moment it actually matters: standing in a field, looking at a plant that wasn't there yesterday, needing an answer now instead of in three days.</p>
+                    <p>Whether it's a single potted plant at home or a working farm, the same care applies. Crop Care scales with whoever's using it.</p>
                 </div>
             </div>
-            
-            <div class="details-slide-box">
-                <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
-                <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
-                <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
-                <div class="video-container">
-                    <img id="details-slide-image" src="LeafAI SL01DRk.png" alt="LeafAI Slide 01" style="width:100%; height:100%; object-fit:cover;">
+
+            <div class="toc-section" id="the-problem">
+                <h2 class="toc-heading">The Problem</h2>
+                <div class="toc-content">
+                    <p>Plant diseases destroy 20 to 40 percent of global crop yields every year, costing the world economy over $220 billion. Most of that's preventable if caught early, but for most farmers, expert diagnosis is slow to reach them, if it reaches them at all. In many regions, one extension officer covers several thousand farmers, so by the time help arrives, the disease has already spread.</p>
+                    <p>Existing tools don't close that gap. They're often built around a narrow set of crops and diseases, tested in conditions far removed from an actual field, and rarely account for how a farmer describes what they're seeing, in their own words, their own language.</p>
+                    <p>What's missing is a system that becomes a personal assistant to farmers, one that understands them and translates for them based on where they are and what language they speak, so the answer they get back actually makes sense to them.</p>
                 </div>
             </div>
-            <div class="see-how-title">See how it works</div>
-            <div class="see-how-desc">
-                This demo shows how Plant AI: Crop Care works end to end, from snapping a plant photo to getting a diagnosis, treatment guidance in local language, and nearby input recommendations farmers can act on immediately.
-            </div>
-            <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
-                <button class="title-button">Features</button>
-            </div>
-            <div style="width: 100%; display: flex; justify-content: flex-end;">
-                <div class="features-cards-row">
-                    <img src="LF1D.png" alt="Feature 1" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
-                    <img src="LF2.png" alt="Feature 2" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
-                    <img src="Frame 359.png" alt="Feature 3" style="width:230px;height:430px;object-fit:cover;border-radius:18px;" />
+
+            <div class="toc-section" id="the-app">
+                <h2 class="toc-heading">The App</h2>
+                <div class="details-slide-box">
+                    <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
+                    <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
+                    <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
+                    <div class="video-container">
+                        <img id="details-slide-image" src="LeafAI SL01DRk.png" alt="LeafAI Slide 01" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                </div>
+                <div class="see-how-title">See how it works</div>
+                <div class="see-how-desc">
+                    Plant AI: Crop Care uses computer vision to identify diseases across all plant types, and language AI to deliver treatment in local languages. The app connects farmers to nearby supplies through an accessibility-first interface.
                 </div>
             </div>
-            <!-- Wide card 730x170px for dark mode, 30px below cards -->
-            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 100px;">
-                <div style="width: 730px; height: 170px; background: url('Frame 364.svg') center center/cover no-repeat, #232323; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #f5f5f5; font-size: 24px; font-family: Satoshi, sans-serif;">
-                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                        <span style="font-size: 20px; color: #f5f5f5; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind plant AI.</span>
-                        <a href="casestudy-viewer.html" style="text-decoration: none;"><button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button></a>
+
+            <div class="toc-section" id="design-process">
+                <h2 class="toc-heading">Design Process</h2>
+                <div class="toc-content">
+                    <p>Research started with FAO and World Bank data to understand the scale of the problem, then a competitive audit across six existing apps: PlantNet, PlantVillage Nuru, iNaturalist, Google Lens, Agrio, and Plantix. None of them met more than half the criteria that actually mattered, language support, treatment guidance, offline use, simplicity.</p>
+                    <p>The camera screen went through three versions. The first had no guidance at all, and testers didn't know how close to hold the phone or how to frame the leaf. The second added instructions, but the text blocked the viewfinder. The final version cut it down to two short prompts that sit above the camera without getting in the way.</p>
+                    <p>The result screen changed the most. Early versions dumped everything, diagnosis, treatment, prevention, into one long scroll, and testers missed half of it. Splitting it into clear sections fixed that: a user can read the diagnosis in under three seconds, then choose how deep to go.</p>
+                    <p>Visually, the whole app leans on deep greens pulled from healthy crop leaves, because it should look like what it's for. White backgrounds keep the result and history screens legible outdoors. Icons always carry a text label, since not every user is used to reading icons alone.</p>
+                </div>
+            </div>
+
+            <div class="toc-section" id="challenges">
+                <div class="chg-wrap">
+                    <div class="chg-title">Challenges</div>
+                    <div class="chg-card">
+                        <div class="chg-inner">
+                            <div class="chg-row chg-row-header"></div>
+                            <div class="chg-row chg-row-body" style="top:44px; height:74px;"></div>
+                            <div class="chg-row chg-row-body" style="top:118px; height:52px;"></div>
+                            <div class="chg-row chg-row-body" style="top:170px; height:52px;"></div>
+                            <div class="chg-row chg-row-body" style="top:222px; height:74px; border-bottom:none;"></div>
+
+                            <span class="chg-text chg-text-header" style="left:10px; top:15px;">Challenge</span>
+                            <span class="chg-text chg-text-header" style="left:307px; top:15px;">Response</span>
+
+                            <span class="chg-text chg-text-body" style="left:10px; top:70px;">Trust in AI accuracy</span>
+                            <span class="chg-text chg-text-body" style="left:307px; top:59px; width:277px;">Confidence score, calibrated against real<br>outcomes</span>
+
+                            <span class="chg-text chg-text-body" style="left:10px; top:133px;">No connectivity in the field</span>
+                            <span class="chg-text chg-text-body" style="left:297px; top:133px;">On-device model, no server call needed</span>
+
+                            <span class="chg-text chg-text-body" style="left:10px; top:185px;">Dataset bias toward Western crops</span>
+                            <span class="chg-text chg-text-body" style="left:297px; top:185px;">Local image collection to expand coverage</span>
+
+                            <span class="chg-text chg-text-body" style="left:10px; top:248px;">Getting farmers to actually use it</span>
+                            <span class="chg-text chg-text-body" style="left:297px; top:237px; width:287px;">Distribution through people they already<br>trust</span>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="toc-section" id="whats-next">
+                <div class="cropcare-cloud-box">
+                    <img src="Crop Card cloud dark.png" alt="Crop Care">
+                    <div class="cta-compact">
+                        <p class="cta-compact-text">Explore the complete research, design process, and iterations behind plant AI.</p>
+                        <a class="cta-compact-btn" href="casestudy-viewer.html">View Full Case Study</a>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="footer">
         <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
         <div class="footer-icons">
@@ -549,19 +766,44 @@
     function smartBack() {
             const params = new URLSearchParams(window.location.search);
             const from = params.get('from');
-
             if (from === 'home') {
-                window.location.href = 'BB.html';
-                return;
+                window.location.href = 'BBDark.html';
+            } else {
+                window.location.href = 'projectsDark.html';
             }
-
-            if (window.history.length > 1) {
-                window.history.back();
-                return;
-            }
-
-            window.location.href = 'projects.html';
         }
+    </script>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const hoursStr = String(hours).padStart(2, '0');
+            const timeString = `${hoursStr}:${minutes} ${ampm}`;
+            const locationString = `Accra, Ghana`;
+            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Mode switching
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        modeButtons[0].classList.add('active'); // Dark mode active
+
+        modeButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                modeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const params = new URLSearchParams(window.location.search);
+                const from = params.get('from') || 'projects';
+                if (index === 0) window.fadeNavigate('leafaiDark.html?from=' + from);
+                else if (index === 1) window.fadeNavigate('leafai.html?from=' + from);
+            });
+        });
     </script>
     <script>
         (function() {
@@ -586,6 +828,48 @@
                     navProjects.classList.add('nav-item-active');
                 }
             }
+        })();
+    </script>
+    <script>
+        (function() {
+            const sections = document.querySelectorAll('.toc-section');
+            const navLinks = document.querySelectorAll('.project-sidebar a[href^="#"]');
+            if (!sections.length || !navLinks.length) {
+                return;
+            }
+
+            function onScroll() {
+                const triggerLine = 150;
+                let currentId = null;
+
+                sections.forEach(function(section) {
+                    if (section.getBoundingClientRect().top <= triggerLine) {
+                        currentId = section.id;
+                    }
+                });
+
+                const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+                if (atBottom) {
+                    currentId = sections[sections.length - 1].id;
+                }
+
+                navLinks.forEach(function(link) {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+                });
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('pageshow', onScroll);
+            onScroll();
+
+            navLinks.forEach(function(link) {
+                link.addEventListener('mouseenter', function() {
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
         })();
     </script>
     <script src="scripts/logo-rotator.js"></script>

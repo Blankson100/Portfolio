@@ -15,7 +15,7 @@
         document.body.classList.add('page-leaving');
         setTimeout(function () {
             window.location.href = href;
-        }, 220);
+        }, 120);
     };
 
     document.addEventListener('click', function (e) {

@@ -71,11 +71,11 @@ body{
 }
 body.page-loaded{
     opacity:1;
-    transition:opacity 0.25s ease;
+    transition:opacity 0.14s ease-out;
 }
 body.page-leaving{
     opacity:0 !important;
-    transition:opacity 0.22s ease;
+    transition:opacity 0.12s ease-in;
 }
 
 /* Navbar styling */
@@ -130,6 +130,10 @@ body.page-leaving{
 .mode-btn{
     background:none;
     border:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    outline:none;
     cursor:pointer;
     display:flex;
     align-items:center;
@@ -406,9 +410,11 @@ body.page-leaving{
 .intro-sub{
     margin:16px 0 0 0;
     color:var(--black);
+    font-family:'Bodoni Moda', serif;
     font-weight:400;
     max-width:620px;
-    font-size:18px;
+    font-size:16px;
+    letter-spacing:0;
     line-height:1.6;
     text-align:left;
 }

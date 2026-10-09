@@ -63,9 +63,8 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            width: 790px;
+            width: 100%;
             margin: 0;
-            margin-left: 70px;
             margin-top: 90px;
             margin-bottom: 100px;
             flex: 1;
@@ -77,8 +76,10 @@
             font-family: Satoshi, sans-serif;
             font-weight: 500;
             font-size: 16px;
+            line-height: 24px;
             color: #000000;
-            margin: 0 0 12px 0;
+            text-align: left;
+            margin: 0 0 16px 0;
         }
         .project-hero {
             width: 602px;
@@ -92,20 +93,18 @@
             overflow: hidden;
         }
         .project-layout {
-            display: flex;
-            align-items: flex-start;
-            gap: 48px;
             width: 100%;
         }
         .project-sidebar {
             width: 140px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 110px;
+            position: fixed;
+            left: 70px;
+            top: 90px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            padding-top: 10px;
+            gap: 8px;
+            padding-top: 0;
+            margin-top: 0;
         }
         .project-sidebar a {
             font-family: Satoshi, sans-serif;
@@ -120,15 +119,14 @@
         }
         .project-main {
             width: 602px;
-            flex: none;
-            min-width: 0;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
         .toc-section {
             width: 100%;
-            margin-bottom: 36px;
+            margin-bottom: 16px;
             scroll-margin-top: 110px;
         }
         .toc-heading {
@@ -136,7 +134,7 @@
             font-weight: 700;
             font-size: 20px;
             color: #0b0b0b;
-            margin: 0 0 12px 0;
+            margin: 0 0 4px 0;
         }
         .toc-content p {
             font-family: Satoshi, sans-serif;
@@ -155,66 +153,140 @@
             color: #aaaaaa;
             margin: 0;
         }
-        .challenges-table {
+        .chg-card {
+            position: relative;
+            width: 602px;
+            height: 304px;
+            background: #D3D3D3;
+            border-radius: 32px;
+            padding: 4px;
+            box-sizing: border-box;
+        }
+        .chg-inner {
+            position: relative;
             width: 100%;
-            border-radius: 16px;
+            height: 100%;
+            background: #C7C7C7;
+            border-radius: 28px;
+            border: 1px solid #D8D8D8;
+            box-sizing: border-box;
             overflow: hidden;
-            background: #e4e4e4;
-            border: 1px solid #d4d4d4;
         }
-        .challenges-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            padding: 16px 20px;
-            border-top: 1px solid #d4d4d4;
+        .chg-row {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
-        .challenges-row:first-child {
-            border-top: none;
+        .chg-row-header {
+            top: 0;
+            height: 44px;
+            background: #D3D3D3;
         }
-        .challenges-head {
-            background: #d6d6d6;
+        .chg-row-body {
+            background: #C7C7C7;
+            border-bottom: 0.5px solid #D3D3D3;
         }
-        .challenges-head span {
+        .chg-text {
+            position: absolute;
+            color: #555555;
+        }
+        .chg-text-header {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-weight: 510;
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0;
+        }
+        .chg-text-body {
             font-family: Satoshi, sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            color: #0b0b0b;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: -0.48px;
         }
-        .challenges-row:not(.challenges-head) span {
+        .cropcare-cloud-box {
+            position: relative;
+            width: 602px;
+            height: 170px;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+        .cropcare-cloud-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .cta-compact {
+            position: absolute;
+            left: 32px;
+            top: 26px;
+            width: 250px;
+            height: 119px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 11px;
+            padding: 0;
+        }
+        .cta-compact-text {
+            width: 250px;
+            height: 66px;
             font-family: Satoshi, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: 0;
+            color: #00410E;
+            text-align: left;
+            margin: 0;
+        }
+        .cta-compact-btn {
+            width: 173px;
+            height: 42px;
+            box-sizing: border-box;
+            background: #000000;
+            border-radius: 14px;
+            padding: 11px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Satoshi, sans-serif;
+            font-weight: 400;
             font-size: 15px;
-            line-height: 1.5;
-            color: #333333;
-        }
-        .challenges-row:not(.challenges-head):nth-child(odd) {
-            background: #ececec;
+            line-height: 20px;
+            letter-spacing: 0;
+            color: #FFFFFF;
+            white-space: nowrap;
+            text-decoration: none;
         }
         .back-button {
-            position: static;
-            width: 100px;
-            height: 45px;
+            width: auto;
+            height: 24px;
             background: none;
             border: none;
             border-radius: 0;
             padding: 0;
-            font-size: 16px;
-            font-weight: 300;
-            font-family: "Google Sans", sans-serif;
-            color: #000000;
+            margin-top: 0;
+            margin-bottom: 4px;
+            font-size: 15px;
+            line-height: 24px;
+            font-weight: 400;
+            font-family: Satoshi, sans-serif;
+            color: #a8a8a8;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             gap: 6px;
+            transition: color 0.3s var(--transition-easing);
         }
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 15px;
-            position: static;
+        .back-button:hover {
+            color: #0b0b0b;
+        }
+        .back-button svg {
+            flex-shrink: 0;
         }
         .title-button {
             background: #e9e9e9;
@@ -400,7 +472,7 @@
             width: 100%;
             max-width: 730px;
             height: 620px;
-            margin: 40px auto 0 auto;
+            margin: 0 auto;
             border-radius: 30px;
             overflow: visible;
             background: #e0e0e0;
@@ -506,6 +578,13 @@
             <span class="close-modal" onclick="closeModal();event.stopPropagation();">&times;</span>
             <img class="modal-content" id="frame360-large" src="LF1.png" alt="Frame 360 Large" />
         </div>
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn" title="Light Mode"><img src="brightmode.svg" alt="Light"></button>
+        </div>
+    </div>
     <nav class="navbar">
         <ul class="nav-menu">
             <li id="nav-home"><a href="BB.html">Home</a></li>
@@ -515,11 +594,9 @@
     </nav>
     <div id="content">
         <div class="project-page-container">
-            <div class="button-container">
-                <button class="back-button" onclick="smartBack()"><img src="arrow.backward.svg" alt="Back" style="width: 25px; height: 25px;"> Back</button>
-            </div>
             <div class="project-layout">
                 <div class="project-sidebar">
+                    <button class="back-button" onclick="smartBack()"><svg width="16" height="16" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.06836 12.1833C5.06836 12.4187 5.17038 12.6542 5.35086 12.8268L10.5301 17.9982C10.7185 18.1787 10.9225 18.265 11.1501 18.265C11.6445 18.265 12.0054 17.9119 12.0054 17.4332C12.0054 17.1821 11.9113 16.9702 11.7465 16.8133L9.98082 15.0241L7.70508 12.9445L9.53352 13.0544H19.0445C19.5625 13.0544 19.9234 12.6934 19.9234 12.1833C19.9234 11.6654 19.5625 11.3044 19.0445 11.3044H9.53352L7.71293 11.4143L9.98082 9.33472L11.7465 7.54551C11.9113 7.38857 12.0054 7.17669 12.0054 6.92557C12.0054 6.44688 11.6445 6.09375 11.1501 6.09375C10.9225 6.09375 10.7106 6.18007 10.5066 6.37626L5.35086 11.532C5.17038 11.7046 5.06836 11.94 5.06836 12.1833Z" fill="currentColor"/></svg><span>Back</span></button>
                     <a href="#introduction">Introduction</a>
                     <a href="#the-problem">The Problem</a>
                     <a href="#the-app">The App</a>
@@ -530,7 +607,7 @@
                 <div class="project-main">
             <h1 class="hero-title-standalone">Crop Care</h1>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="ProtoHand DarkLeaf.png" alt="Plant Ai: Crop Care"></div>
+                <div class="project-hero-inner"><img src="ProtoHand lightLeaf.png" alt="Plant Ai: Crop Care"></div>
             </div>
 
             <div class="toc-section" id="introduction">
@@ -579,87 +656,42 @@
 
             <div class="toc-section" id="challenges">
                 <h2 class="toc-heading">Challenges</h2>
-                <div class="challenges-table">
-                    <div class="challenges-row challenges-head">
-                        <span>Challenge</span>
-                        <span>Response</span>
-                    </div>
-                    <div class="challenges-row">
-                        <span>Trust in AI accuracy</span>
-                        <span>Confidence score, calibrated against real outcomes</span>
-                    </div>
-                    <div class="challenges-row">
-                        <span>No connectivity in the field</span>
-                        <span>On-device model, no server call needed</span>
-                    </div>
-                    <div class="challenges-row">
-                        <span>Dataset bias toward Western crops</span>
-                        <span>Local image collection to expand coverage</span>
-                    </div>
-                    <div class="challenges-row">
-                        <span>Getting farmers to actually use it</span>
-                        <span>Distribution through people they already trust</span>
+                <div class="chg-card">
+                    <div class="chg-inner">
+                        <div class="chg-row chg-row-header"></div>
+                        <div class="chg-row chg-row-body" style="top:44px; height:74px;"></div>
+                        <div class="chg-row chg-row-body" style="top:118px; height:52px;"></div>
+                        <div class="chg-row chg-row-body" style="top:170px; height:52px;"></div>
+                        <div class="chg-row chg-row-body" style="top:222px; height:74px; border-bottom:none;"></div>
+
+                        <span class="chg-text chg-text-header" style="left:10px; top:15px;">Challenge</span>
+                        <span class="chg-text chg-text-header" style="left:307px; top:15px;">Response</span>
+
+                        <span class="chg-text chg-text-body" style="left:10px; top:70px;">Trust in AI accuracy</span>
+                        <span class="chg-text chg-text-body" style="left:307px; top:59px; width:277px;">Confidence score, calibrated against real<br>outcomes</span>
+
+                        <span class="chg-text chg-text-body" style="left:10px; top:133px;">No connectivity in the field</span>
+                        <span class="chg-text chg-text-body" style="left:297px; top:133px;">On-device model, no server call needed</span>
+
+                        <span class="chg-text chg-text-body" style="left:10px; top:185px;">Dataset bias toward Western crops</span>
+                        <span class="chg-text chg-text-body" style="left:297px; top:185px;">Local image collection to expand coverage</span>
+
+                        <span class="chg-text chg-text-body" style="left:10px; top:248px;">Getting farmers to actually use it</span>
+                        <span class="chg-text chg-text-body" style="left:297px; top:237px; width:287px;">Distribution through people they already<br>trust</span>
                     </div>
                 </div>
             </div>
 
             <div class="toc-section" id="whats-next">
-                <h2 class="toc-heading">What's Next</h2>
-                <p class="toc-placeholder">More to come.</p>
-            </div>
-
-            <div class="project-meta">
-                <div class="meta-row">
-                    <div class="meta-item">
-                        <span class="meta-label">The Challenge</span>
-                        <span class="meta-value meta-value-content">Farmers rely on guesswork for diagnosis,<br>leading to delayed treatment and crop<br>losses</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">What I Created</span>
-                        <span class="meta-value meta-value-content">AI-Powered mobile app for instant disease identification with treatment guidance in users local language</span>
-                    </div>
-                </div>
-                <div class="meta-row">
-                    <div class="meta-item">
-                        <span class="meta-label">Role</span>
-                        <span class="meta-value">Product Designer</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Timeline</span>
-                        <span class="meta-value">March ‘6 - June ‘20 2025</span>
+                <div class="cropcare-cloud-box">
+                    <img src="crop card cloud.png" alt="Crop Care">
+                    <div class="cta-compact">
+                        <p class="cta-compact-text">Explore the complete research, design process, and iterations behind plant AI.</p>
+                        <a class="cta-compact-btn" href="casestudy-viewer.html">View Full Case Study</a>
                     </div>
                 </div>
             </div>
 
-            <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: 25px;">
-                <button class="title-button">Features</button>
-            </div>
-            <div style="width: 100%; display: flex; justify-content: flex-end;">
-                <div class="features-cards-row">
-                    <img src="LF1.png" alt="Feature 1" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame360-thumb" onclick="openModal()" />
-                    <img src="LF2.png" alt="Feature 2" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame362-thumb" onclick="openModal362()" />
-                    <!-- Modal for enlarged Frame 362.svg image -->
-                    <div id="frame362-modal" class="modal" onclick="closeModal362()">
-                        <span class="close-modal" onclick="closeModal362();event.stopPropagation();">&times;</span>
-                        <img class="modal-content" id="frame362-large" src="LF2.png" alt="Frame 362 Large" />
-                    </div>
-                    <img src="Frame 359.png" alt="Feature 3" style="width:230px;height:430px;object-fit:cover;border-radius:18px;cursor:pointer;" id="frame359-thumb" onclick="openModal359()" />
-                    <!-- Modal for enlarged Frame 359.svg image -->
-                    <div id="frame359-modal" class="modal" onclick="closeModal359()">
-                        <span class="close-modal" onclick="closeModal359();event.stopPropagation();">&times;</span>
-                        <img class="modal-content" id="frame359-large" src="Frame 359.png" alt="Frame 359 Large" />
-                    </div>
-                </div>
-            </div>
-            <!-- Wide card 730x170px for light mode, 30px below cards -->
-            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 0px;">
-                <div style="width: 730px; height: 170px; background: url('Frame 364 www.svg') center center/cover no-repeat, #fff; border-radius: 24.28px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #222; font-size: 24px; font-family: Satoshi, sans-serif;">
-                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                        <span style="font-size: 20px; color: #fff; text-align: center; font-family: Satoshi, sans-serif; margin-bottom: 18px; max-width: 600px;">Explore the complete research, design process, and iterations behind plant AI.</span>
-                        <a href="casestudy-viewer.html" style="text-decoration: none;"><button style="margin-top: 8px; background: #000; color: #fff; border: none; border-radius: 12px; width: 185px; height: 40px; font-size: 15px; font-family: Satoshi, sans-serif; cursor: pointer;">View Full Case Study</button></a>
-                    </div>
-                </div>
-            </div>
                 </div>
             </div>
 
@@ -738,19 +770,44 @@
         function smartBack() {
             const params = new URLSearchParams(window.location.search);
             const from = params.get('from');
-
             if (from === 'home') {
                 window.location.href = 'BB.html';
-                return;
+            } else {
+                window.location.href = 'projects.html';
             }
-
-            if (window.history.length > 1) {
-                window.history.back();
-                return;
-            }
-
-            window.location.href = 'projects.html';
         }
+    </script>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const hoursStr = String(hours).padStart(2, '0');
+            const timeString = `${hoursStr}:${minutes} ${ampm}`;
+            const locationString = `Accra, Ghana`;
+            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Mode switching
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        modeButtons[1].classList.add('active'); // Light mode active
+
+        modeButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                modeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const params = new URLSearchParams(window.location.search);
+                const from = params.get('from') || 'projects';
+                if (index === 0) window.fadeNavigate('leafaiDark.html?from=' + from);
+                else if (index === 1) window.fadeNavigate('leafai.html?from=' + from);
+            });
+        });
     </script>
     <script>
         (function() {
@@ -775,6 +832,48 @@
                     navProjects.classList.add('nav-item-active');
                 }
             }
+        })();
+    </script>
+    <script>
+        (function() {
+            const sections = document.querySelectorAll('.toc-section');
+            const navLinks = document.querySelectorAll('.project-sidebar a[href^="#"]');
+            if (!sections.length || !navLinks.length) {
+                return;
+            }
+
+            function onScroll() {
+                const triggerLine = 150;
+                let currentId = null;
+
+                sections.forEach(function(section) {
+                    if (section.getBoundingClientRect().top <= triggerLine) {
+                        currentId = section.id;
+                    }
+                });
+
+                const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+                if (atBottom) {
+                    currentId = sections[sections.length - 1].id;
+                }
+
+                navLinks.forEach(function(link) {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+                });
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('pageshow', onScroll);
+            onScroll();
+
+            navLinks.forEach(function(link) {
+                link.addEventListener('mouseenter', function() {
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
         })();
     </script>
     <script src="scripts/logo-rotator.js"></script>
