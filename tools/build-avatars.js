@@ -283,6 +283,13 @@ V['sleep'] = svg({
 ${[[235, 568, 16, 0], [132, 835, 14, -0.7], [252, 905, 15, -1.4]].map(([x, y, r, delay]) => anim(star(x, y, r), `animation:twinkle 2.1s ease-in-out ${delay}s infinite`)).join('')}`,
 });
 
+// Wink: the right-hand eye shut with an upturned lid; flashed briefly by scripts/avatar.js.
+V['wink'] = svg({
+    raw: `<rect x="572" y="562" width="126" height="60" rx="24" fill="${SKIN}"/>`,
+    body: '<path d="M579,598 Q636,566 692,596" fill="none" stroke-width="10"/>'
+        + '<path d="M602,588 L594,576 M636,582 L636,568 M670,586 L678,574" fill="none" stroke-width="7"/>',
+});
+
 V['nightcap'] = svg({
     defs: '<clipPath id="capDome"><path d="M300,392 C310,280 430,215 545,215 C660,215 770,285 790,380 Z"/></clipPath>',
     body: `<path d="M360,300 C290,280 225,350 205,470 L250,478 C270,400 320,345 400,330 Z" fill="#3B5BDB"/>
@@ -308,6 +315,7 @@ const cards = [
     ['Rainy season', ['rainy']], ['Harmattan', ['harmattan']],
     ['Beard · week 1 (stubble)', ['beard-1']], ['Beard · week 2', ['beard-2']], ['Beard · week 3', ['beard-3']], ['Beard · week 4', ['beard-4']],
     ['Asleep', ['sleep', 'nightcap']],
+    ['Wink (flashes for a moment)', ['wink']],
     ['Combo · Christmas night, asleep', ['beard-2', 'christmas', 'sleep']],
     ['Combo · rainy + full beard', ['beard-3', 'rainy']],
     ['Combo · Harmattan + long beard', ['beard-4', 'harmattan']],

@@ -2,8 +2,9 @@
 // a beard that grows through the month, and sleep at night. Overlays come from /avatar
 // (built by tools/build-avatars.js). A thought bubble pops up with a holiday wish,
 // Zzz while asleep, or "I need a shave" once the beard starts growing.
-// Preview any moment with ?avatarDate=2026-12-25T23 (date + hour in the city below)
-// and force the weather with ?avatarWeather=rain.
+// Preview any moment with ?avatarDate=2026-12-25T23 (date + hour in the city below),
+// force the weather with ?avatarWeather=rain, and see the Home "still here" nudge
+// after 3s instead of 5 minutes with ?avatarStill.
 (function () {
     // Where Bright is right now: calendar day, sleeping hours and the live weather.
     const CITY = { name: 'Accra, Ghana', timeZone: 'Africa/Accra', lat: 5.6037, lon: -0.1870 };
@@ -125,14 +126,33 @@
         return d + ' Z';
     }
 
-    function addBubble(wrap) {
+    const bases = Array.prototype.slice.call(document.querySelectorAll('img[src="Profile.jpg"]'));
+    if (!bases.length) return;
+    const wrap = bases[0].parentElement;
+
+    // One bubble on screen at a time.
+    let current = null;
+
+    function hideBubble(immediate) {
+        if (!current) return;
+        const el = current.el;
+        clearTimeout(current.timer);
+        current = null;
+        if (immediate) { el.remove(); return; }
+        el.classList.add('avatar-bubble-leaving');
+        setTimeout(function () { el.remove(); }, 450);
+    }
+
+    // Pops in ~0.6s after being added, stays `ms`, then shrinks away.
+    function showBubble(b, ms) {
+        hideBubble(true);
         const el = document.createElement('div');
         el.className = 'avatar-bubble';
         el.innerHTML = '<svg class="avatar-bubble-cloud" aria-hidden="true"></svg><div class="avatar-bubble-content">'
-            + (bubble.kind === 'zzz' ? ZZZ : '<span class="avatar-bubble-text"></span>' + (bubble.kind === 'shave' ? RAZOR : ''))
+            + (b.kind === 'zzz' ? ZZZ : '<span class="avatar-bubble-text"></span>' + (b.kind === 'shave' ? RAZOR : ''))
             + '</div>';
-        if (bubble.text) el.querySelector('.avatar-bubble-text').textContent = bubble.text;
-        if (bubble.kind === 'zzz') el.setAttribute('aria-label', 'Bright is asleep');
+        if (b.text) el.querySelector('.avatar-bubble-text').textContent = b.text;
+        if (b.kind === 'zzz') el.setAttribute('aria-label', 'Bright is asleep');
         document.body.appendChild(el);
 
         const cloud = el.querySelector('.avatar-bubble-cloud');
@@ -157,18 +177,54 @@
         }
         draw();
         place();
-        window.addEventListener('resize', place);
-        window.addEventListener('load', place);
-        if (document.fonts) document.fonts.ready.then(function () { draw(); place(); });
-
-        // Pops in at ~0.6s, stays 15s, then shrinks away.
-        setTimeout(function () {
-            el.classList.add('avatar-bubble-leaving');
-            setTimeout(function () { el.remove(); }, 450);
-        }, 15600);
+        current = { el: el, draw: draw, place: place, timer: setTimeout(hideBubble, 600 + ms) };
     }
 
-    const bases = Array.prototype.slice.call(document.querySelectorAll('img[src="Profile.jpg"]'));
+    window.addEventListener('resize', function () { if (current) current.place(); });
+    window.addEventListener('load', function () { if (current) current.place(); });
+    if (document.fonts) document.fonts.ready.then(function () { if (current) { current.draw(); current.place(); } });
+
+    // The day's bubble shows for 5s, at most once every 20 minutes across the site
+    // (remembered in this browser) so it doesn't nag. Preview links skip the limit.
+    const SHOW_FOR = 5000;
+    const EVERY = 20 * 60 * 1000;
+    const LAST_SHOWN = 'avatarBubbleLastShown';
+    const previewing = params.has('avatarDate') || params.has('avatarWeather') || params.has('avatarStill');
+
+    function lastShown() {
+        try { return parseInt(localStorage.getItem(LAST_SHOWN), 10) || 0; } catch (e) { return 0; }
+    }
+    function maybeShowDaily() {
+        if (!bubble || document.hidden) return;
+        if (!previewing && Date.now() - lastShown() < EVERY) return;
+        try { localStorage.setItem(LAST_SHOWN, String(Date.now())); } catch (e) { /* private mode: just show it */ }
+        showBubble(bubble, SHOW_FOR);
+    }
+
+    // After 5 minutes on Home: a nudge, then a wink. (?avatarStill triggers it after 3s.)
+    const onHome = /\/bb(dark)?\.html$/i.test(window.location.pathname);
+    const STILL_HERE = { kind: 'wish', text: 'Hey, you still here? Be a moving man' };
+
+    function wink() {
+        if (asleep) return;
+        bases.forEach(function (base) {
+            const img = document.createElement('img');
+            img.src = 'avatar/wink.svg';
+            img.alt = '';
+            img.className = base.className;
+            img.style.cssText = 'position:absolute;inset:0;pointer-events:none';
+            base.insertAdjacentElement('afterend', img);
+            setTimeout(function () { img.remove(); }, 450);
+        });
+    }
+    function stillHere() {
+        if (document.hidden) {
+            document.addEventListener('visibilitychange', stillHere, { once: true });
+            return;
+        }
+        showBubble(STILL_HERE, SHOW_FOR);
+        setTimeout(wink, 1100);
+    }
 
     function render(raining) {
         const layers = layersFor(raining);
@@ -188,6 +244,13 @@
     }
 
     render(false);
-    if (bubble) bases.forEach(function (base) { addBubble(base.parentElement); });
     rainingNow().then(function (raining) { if (raining) render(true); });
+
+    maybeShowDaily();
+    setInterval(maybeShowDaily, 60 * 1000);
+
+    if (onHome) {
+        new Image().src = 'avatar/wink.svg';
+        setTimeout(stillHere, params.has('avatarStill') ? 3000 : 5 * 60 * 1000);
+    }
 })();
