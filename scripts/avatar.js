@@ -88,10 +88,12 @@
     const hol = holiday(now);
     const stage = beardStage(now.d);
 
-    // A holiday hat wins over the umbrella; the nightcap only goes on a bare head;
-    // glasses come off for sleep.
+    // Rain always falls when it's raining; the umbrella only comes out while awake and
+    // not wearing a holiday hat (asleep, he's indoors in his nightcap). Glasses come
+    // off for sleep.
     function layersFor(weather) {
-        const umbrella = weather.raining && !(hol && hol.hat);
+        const hat = !!(hol && hol.hat);
+        const umbrella = weather.raining && !asleep && !hat;
         const layers = [];
         if (stage) layers.push('beard-' + stage);
         layers.push('earring');
@@ -99,7 +101,8 @@
         else layers.push('glasses-' + lensTint(now.h, weather.gloomy));
         if (hol) layers.push(hol.layer);
         if (umbrella) layers.push('rainy');
-        if (asleep && !(hol && hol.hat) && !umbrella) layers.push('nightcap');
+        else if (weather.raining) layers.push('rain');
+        if (asleep && !hat) layers.push('nightcap');
         if (isHarmattan(now)) layers.push('harmattan');
         return layers;
     }

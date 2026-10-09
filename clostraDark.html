@@ -28,56 +28,6 @@
     <link rel="stylesheet" href="bbdark.css">
     <script src="scripts/page-fade.js"></script>
     <style>
-        /* Custom Video Controls */
-        .custom-video-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 710px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 0 16px;
-            border-radius: 20px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 5;
-        }
-        .play-pause-btn {
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-        .progress-bar {
-            flex: 1;
-            height: 4px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 2px;
-            cursor: pointer;
-            position: relative;
-        }
-        .progress-fill {
-            height: 100%;
-            background: #ffffff;
-            border-radius: 2px;
-            width: 0%;
-        }
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 30px;
-            overflow: hidden;
-        }
         body {
             background-color: #000000;
             color: #f5f5f5;
@@ -147,69 +97,6 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-        }
-        .details-corner-circle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            opacity: 1;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Satoshi, sans-serif;
-            font-size: 21px;
-            font-weight: 500;
-            line-height: 1;
-            z-index: 2;
-        }
-        .details-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 24px;
-            height: 21px;
-        }
-        .digit-one-slot {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 12px;
-            height: 21px;
-            overflow: hidden;
-        }
-        .details-corner-circle.bottom-left {
-            top: auto;
-            right: auto;
-            bottom: 10px;
-            left: 10px;
-            cursor: pointer;
-        }
-        .details-corner-circle.bottom-right {
-            top: auto;
-            bottom: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-        .details-corner-circle.is-disabled {
-            background: rgba(125, 125, 125, 0.28);
-            cursor: default;
-            pointer-events: none;
-        }
-        .details-corner-circle.is-disabled img {
-            opacity: 0.62;
-            filter: brightness(0) saturate(100%) invert(68%) sepia(12%) saturate(253%) hue-rotate(87deg) brightness(92%) contrast(87%);
-        }
-        .details-corner-circle .digit-zero {
-            color: #aaaaaa;
-        }
-        .details-corner-circle .digit-one {
-            color: #ffffff;
         }
         .back-button {
             width: auto;
@@ -412,140 +299,6 @@
         }
         .time-location-display {
             color: #f5f5f5;
-        }
-        .video-box {
-            width: 100%;
-            max-width: 730px;
-            height: 620px;
-            margin: 40px auto 0 auto;
-            border-radius: 30px;
-            overflow: visible;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .video-box video {
-            width: 100%;
-            height: 100%;
-            border-radius: 30px;
-            background: #fff;
-            object-fit: cover;
-            object-position: center;
-        }
-        .video-pill {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 8px 0;
-            width: 42px;
-            height: 106px;
-            border-radius: 35px;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
-        }
-        .video-duration-pill {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            min-width: 64px;
-            height: 32px;
-            padding: 0 12px;
-            border-radius: 999px;
-            background: rgba(0, 0, 0, 0.45);
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 600;
-            font-family: "Google Sans", sans-serif;
-            z-index: 10;
-            box-sizing: border-box;
-        }
-        .pill-icon-btn {
-            background: transparent;
-            border: none;
-            padding: 0;
-            margin: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .pill-icon-btn img {
-            display: block;
-        }
-        .volume-popover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 140px;
-            height: 20px;
-            display: none;
-            align-items: center;
-            padding: 0;
-            box-sizing: border-box;
-            z-index: 11;
-        }
-        .volume-popover.visible {
-            display: flex;
-        }
-        .volume-slider {
-            width: 100%;
-            appearance: none;
-            -webkit-appearance: none;
-            background: transparent;
-            margin: 0;
-        }
-        .volume-slider::-webkit-slider-runnable-track {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 999px;
-        }
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffffff;
-            margin-top: -3px;
-            border: none;
-            cursor: pointer;
-        }
-        .volume-slider::-moz-range-track {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 999px;
-        }
-        .volume-slider::-moz-range-thumb {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: none;
-            cursor: pointer;
-        }
-        .details-slide-box {
-            width: 100%;
-            max-width: 730px;
-            height: 620px;
-            margin: 0 auto;
-            border-radius: 30px;
-            overflow: hidden;
-            background: #232323;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
         }
         .see-how-title {
             font-size: 18px;
@@ -775,14 +528,7 @@
 
             <div class="toc-section" id="the-app">
                 <h2 class="toc-heading">The App</h2>
-                <div class="details-slide-box">
-                    <div class="details-corner-circle" id="details-slide-number-circle"><span class="details-number"><span class="digit-zero">0</span><span class="digit-one-slot"><span class="digit-one">1</span></span></span></div>
-                    <div class="details-corner-circle bottom-left" id="details-prev-slide"><img src="chevron.left.svg" alt="Left" style="width:18px;height:18px;"></div>
-                    <div class="details-corner-circle bottom-right" id="details-next-slide"><img src="chevron.right.svg" alt="Right" style="width:18px;height:18px;"></div>
-                    <div class="video-container">
-                        <img id="details-slide-image" src="ClostraEscrowdrk.svg" alt="Clostra Slide 01" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                </div>
+                <div class="case-video" data-video="videos/clostra.mp4"></div>
                 <div class="see-how-title">See how it works</div>
                 <div class="see-how-desc">
                     This walkthrough highlights the Clostra escrow experience from transaction setup to release, showing how both parties stay protected throughout the flow, with an AI assistant guiding each step.
@@ -961,104 +707,6 @@
             });
         });
 
-        // Details slide controls with instant number updates
-        (function() {
-            const slideImage = document.getElementById('details-slide-image');
-            const prevBtn = document.getElementById('details-prev-slide');
-            const nextBtn = document.getElementById('details-next-slide');
-            const numberCircle = document.getElementById('details-slide-number-circle');
-
-            if (!slideImage || !prevBtn || !nextBtn || !numberCircle) {
-                return;
-            }
-
-            const slides = [
-                'CE1.png',
-                'CE2.png',
-                'CE3.png',
-                'CE4.png',
-                'CE5.png',
-                'CE6.png'
-            ];
-
-            let currentIndex = 0;
-            const slideParam = new URLSearchParams(window.location.search).get('slide');
-            const parsedSlide = parseInt(slideParam, 10);
-            if (!Number.isNaN(parsedSlide)) {
-                currentIndex = Math.min(Math.max(parsedSlide, 0), slides.length - 1);
-            }
-
-            function getNumberValue(index) {
-                return String(index + 1).padStart(2, '0');
-            }
-
-            function buildOneMarkup(value) {
-                return '<span class="digit-one">' + value + '</span>';
-            }
-
-            function buildNumberMarkup(index) {
-                const value = String(index + 1).padStart(2, '0');
-                return '<span class="details-number"><span class="digit-zero">' + value.charAt(0) + '</span><span class="digit-one-slot"><span class="digit-one">' + value.charAt(1) + '</span></span></span>';
-            }
-
-            function updateNumber(index) {
-                const value = getNumberValue(index);
-                const zeroEl = numberCircle.querySelector('.digit-zero');
-                const oneSlot = numberCircle.querySelector('.digit-one-slot');
-
-                if (!zeroEl || !oneSlot) {
-                    numberCircle.innerHTML = buildNumberMarkup(index);
-                    return;
-                }
-
-                zeroEl.textContent = value.charAt(0);
-                oneSlot.innerHTML = buildOneMarkup(value.charAt(1));
-            }
-
-            function updateArrowState() {
-                prevBtn.classList.toggle('is-disabled', currentIndex === 0);
-                nextBtn.classList.toggle('is-disabled', currentIndex === slides.length - 1);
-            }
-
-            function syncSlideUI() {
-                slideImage.src = slides[currentIndex];
-                slideImage.alt = 'Clostra Slide ' + String(currentIndex + 1).padStart(2, '0');
-                updateNumber(currentIndex);
-                updateArrowState();
-                window.clostraDarkCurrentSlideIndex = currentIndex;
-            }
-
-            function goTo(direction) {
-                if (slides.length <= 1) {
-                    return;
-                }
-                const nextIndex = currentIndex + direction;
-                if (nextIndex < 0 || nextIndex >= slides.length) {
-                    return;
-                }
-                currentIndex = nextIndex;
-                syncSlideUI();
-            }
-
-            function handleSliderKeydown(event) {
-                const active = document.activeElement;
-                if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) {
-                    return;
-                }
-                if (event.key === 'ArrowLeft') {
-                    event.preventDefault();
-                    goTo(-1);
-                } else if (event.key === 'ArrowRight') {
-                    event.preventDefault();
-                    goTo(1);
-                }
-            }
-
-            syncSlideUI();
-            prevBtn.addEventListener('click', function() { goTo(-1); });
-            nextBtn.addEventListener('click', function() { goTo(1); });
-            document.addEventListener('keydown', handleSliderKeydown);
-        })();
 
     </script>
 <script>
@@ -1163,6 +811,7 @@
         });
     })();
 </script>
+    <script src="scripts/case-video.js"></script>
 </body>
 </html>
 

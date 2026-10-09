@@ -12,56 +12,6 @@
     <link rel="stylesheet" href="bb.css">
     <script src="scripts/page-fade.js"></script>
     <style>
-        /* Custom Video Controls */
-        .custom-video-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 710px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 0 16px;
-            border-radius: 20px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 5;
-        }
-        .play-pause-btn {
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-        .progress-bar {
-            flex: 1;
-            height: 4px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 2px;
-            cursor: pointer;
-            position: relative;
-        }
-        .progress-fill {
-            height: 100%;
-            background: #ffffff;
-            border-radius: 2px;
-            width: 0%;
-        }
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 30px;
-            overflow: hidden;
-        }
         #content {
             display: flex;
             flex-direction: column;
@@ -184,127 +134,6 @@
             font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
             color: #0b0b0b;
             margin: 0;
-        }
-        .video-box {
-            width: 100%;
-            max-width: 730px;
-            height: 620px;
-            margin: 0 auto;
-            border-radius: 30px;
-            overflow: visible;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .video-box video {
-            width: 100%;
-            height: 100%;
-            border-radius: 30px;
-            background: #000;
-            object-fit: cover;
-            object-position: center;
-        }
-        .video-pill {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 8px 0;
-            width: 42px;
-            height: 106px;
-            border-radius: 35px;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
-        }
-        .video-duration-pill {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            min-width: 64px;
-            height: 32px;
-            padding: 0 12px;
-            border-radius: 999px;
-            background: rgba(0, 0, 0, 0.45);
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 600;
-            font-family: "Google Sans", sans-serif;
-            z-index: 10;
-            box-sizing: border-box;
-        }
-        .pill-icon-btn {
-            background: transparent;
-            border: none;
-            padding: 0;
-            margin: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .pill-icon-btn img {
-            display: block;
-        }
-        .volume-popover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 140px;
-            height: 20px;
-            display: none;
-            align-items: center;
-            padding: 0;
-            box-sizing: border-box;
-            z-index: 11;
-        }
-        .volume-popover.visible {
-            display: flex;
-        }
-        .volume-slider {
-            width: 100%;
-            appearance: none;
-            -webkit-appearance: none;
-            background: transparent;
-            margin: 0;
-        }
-        .volume-slider::-webkit-slider-runnable-track {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 999px;
-        }
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffffff;
-            margin-top: -3px;
-            border: none;
-            cursor: pointer;
-        }
-        .volume-slider::-moz-range-track {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 999px;
-        }
-        .volume-slider::-moz-range-thumb {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: none;
-            cursor: pointer;
         }
         .see-how-title {
             font-size: 18px;
@@ -510,28 +339,7 @@
 
             <div class="toc-section" id="the-app">
                 <h2 class="toc-heading">The App</h2>
-                <div class="video-box">
-                    <div class="video-duration-pill" id="video-duration-pill">--:--</div>
-                    <div class="video-pill">
-                        <button class="pill-icon-btn" type="button" id="expand-btn" aria-label="Expand video"><img src="expand.svg" alt="Expand" style="width:24px;height:24px;"></button>
-                        <button class="pill-icon-btn" type="button" id="volume-btn" aria-label="Adjust volume"><img src="speaker.wave.3.svg" alt="Speaker" style="width:20px;height:20px;"></button>
-                    </div>
-                    <div class="volume-popover" id="volume-popover">
-                        <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="1" aria-label="Video volume">
-                    </div>
-                    <div class="video-container">
-                        <video id="custom-video" style="width:100%; height:100%; background:#000;">
-                            <source src="your-video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="custom-video-controls">
-                            <button class="play-pause-btn" id="play-pause-btn">▶</button>
-                            <div class="progress-bar" id="progress-bar">
-                                <div class="progress-fill" id="progress-fill"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="case-video" data-video="videos/roster.mp4"></div>
                 <div class="see-how-title">See how it works</div>
                 <div class="see-how-desc">
                     This walkthrough shows how an invite moves someone into the network, how opportunities get shared peer to peer, and how the absence of public profiles changes what the feed actually looks like.
@@ -702,127 +510,6 @@
             });
         });
 
-        // Custom Video Player Controls
-        const video = document.getElementById('custom-video');
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const progressBar = document.getElementById('progress-bar');
-        const progressFill = document.getElementById('progress-fill');
-        const expandBtn = document.getElementById('expand-btn');
-        const volumeBtn = document.getElementById('volume-btn');
-        const volumePopover = document.getElementById('volume-popover');
-        const volumeSlider = document.getElementById('volume-slider');
-        const durationPill = document.getElementById('video-duration-pill');
-        const videoBox = video.closest('.video-box');
-
-        function formatTime(totalSeconds) {
-            if (!Number.isFinite(totalSeconds) || totalSeconds < 0) {
-                return '--:--';
-            }
-            const seconds = Math.floor(totalSeconds);
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = seconds % 60;
-            return minutes + ':' + String(remainingSeconds).padStart(2, '0');
-        }
-
-        function updateDurationPill() {
-            durationPill.textContent = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
-        }
-
-        function togglePlayback() {
-            if (video.paused) {
-                video.play();
-                playPauseBtn.textContent = '⏸';
-            } else {
-                video.pause();
-                playPauseBtn.textContent = '▶';
-            }
-        }
-
-        playPauseBtn.addEventListener('click', function() {
-            togglePlayback();
-        });
-
-        video.addEventListener('click', function() {
-            togglePlayback();
-        });
-
-        video.addEventListener('play', function() {
-            playPauseBtn.textContent = '⏸';
-        });
-
-        video.addEventListener('pause', function() {
-            playPauseBtn.textContent = '▶';
-        });
-
-        video.addEventListener('loadedmetadata', updateDurationPill);
-        video.addEventListener('durationchange', updateDurationPill);
-
-        if (video.readyState >= 1) {
-            updateDurationPill();
-        }
-
-        video.addEventListener('timeupdate', function() {
-            const percent = (video.currentTime / video.duration) * 100;
-            progressFill.style.width = percent + '%';
-            updateDurationPill();
-        });
-
-        progressBar.addEventListener('click', function(e) {
-            const rect = progressBar.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            video.currentTime = percent * video.duration;
-        });
-
-        volumeBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const videoBoxRect = volumeBtn.closest('.video-box').getBoundingClientRect();
-            const btnRect = volumeBtn.getBoundingClientRect();
-            const popoverHeight = volumePopover.offsetHeight || 36;
-            const popoverWidth = volumePopover.offsetWidth || 140;
-            const alignedTop = (btnRect.top - videoBoxRect.top) + (btnRect.height / 2) - (popoverHeight / 2) + 6;
-            const alignedLeft = (btnRect.left - videoBoxRect.left) - popoverWidth - 15;
-
-            volumePopover.style.top = alignedTop + 'px';
-            volumePopover.style.left = alignedLeft + 'px';
-            volumePopover.classList.toggle('visible');
-        });
-
-        volumeSlider.addEventListener('input', function() {
-            video.volume = parseFloat(volumeSlider.value);
-        });
-
-        expandBtn.addEventListener('click', async function() {
-            try {
-                if (!document.fullscreenElement) {
-                    await videoBox.requestFullscreen();
-                } else {
-                    await document.exitFullscreen();
-                }
-            } catch (err) {
-                console.error('Fullscreen toggle failed:', err);
-            }
-        });
-
-        document.addEventListener('click', function(e) {
-            if (!volumePopover.contains(e.target) && e.target !== volumeBtn && !volumeBtn.contains(e.target)) {
-                volumePopover.classList.remove('visible');
-            }
-        });
-
-        document.addEventListener('keydown', function(e) {
-            const isSpace = e.code === 'Space' || e.key === ' ';
-            if (!isSpace) {
-                return;
-            }
-
-            const tag = (document.activeElement && document.activeElement.tagName) ? document.activeElement.tagName.toLowerCase() : '';
-            if (tag === 'input' || tag === 'textarea' || tag === 'select') {
-                return;
-            }
-
-            e.preventDefault();
-            togglePlayback();
-        });
     </script>
     <script>
         (function() {
@@ -867,5 +554,6 @@
         })();
     </script>
     <script src="scripts/logo-rotator.js"></script>
+    <script src="scripts/case-video.js"></script>
 </body>
 </html>

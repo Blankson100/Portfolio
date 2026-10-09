@@ -248,14 +248,20 @@ ${anim(anim(`<path d="M885,478 C865,450 835,445 815,458 C830,462 836,474 832,486
 <path d="M170,1040 l12,10 l12,-10 l12,10 l12,-10 l12,10 l12,-10 l12,10" fill="none" stroke-width="7"/>`,
 });
 
+const RAINDROPS = [[170, 470], [232, 600], [140, 690], [215, 800], [152, 905], [255, 470], [195, 640], [880, 470], [930, 600], [860, 700], [925, 800], [872, 905], [830, 560], [950, 450]]
+    .map(([x, y], i) => anim(drop(x, y), `animation:rain 1.1s linear -${((i * 0.37) % 1.1).toFixed(2)}s infinite`)).join('');
+
+// Raining while awake: umbrella overhead plus falling rain.
 V['rainy'] = svg({
     body: `<path d="M260,385 C280,250 400,215 545,215 C690,215 810,250 830,385 Q759,345 688,385 Q616,345 545,385 Q474,345 402,385 Q331,345 260,385 Z" fill="#3BA7F0"/>
 <path d="M545,215 L402,385 Q474,345 545,385 Z" fill="#FFD23F" stroke-width="6"/>
 <path d="M545,215 C690,215 810,250 830,385 Q759,345 688,385 Z" fill="#FFD23F" stroke-width="6"/>
 <path d="M545,215 L402,385 M545,215 L545,385 M545,215 L688,385 M545,215 L545,196" fill="none" stroke-width="7"/>
-${[[170, 470], [232, 600], [140, 690], [215, 800], [152, 905], [255, 470], [195, 640], [880, 470], [930, 600], [860, 700], [925, 800], [872, 905], [830, 560], [950, 450]]
-        .map(([x, y], i) => anim(drop(x, y), `animation:rain 1.1s linear -${((i * 0.37) % 1.1).toFixed(2)}s infinite`)).join('')}`,
+${RAINDROPS}`,
 });
+
+// Raining while asleep or wearing a holiday hat: just the rain falling around him.
+V['rain'] = svg({ body: RAINDROPS });
 
 V['harmattan'] = svg({
     defs: '<clipPath id="scarf"><path d="M372,1002 C450,1060 625,1060 700,995 L708,1072 C625,1135 450,1135 366,1078 Z M610,1080 L700,1075 L735,1250 L640,1258 Z"/></clipPath>',
@@ -344,6 +350,7 @@ const cards = [
     ['Glasses · light tint', ['glasses-light']],
     ['Glasses · dark (midday sun)', ['glasses-dark']],
     ['Asleep (glasses off)', ['sleep', 'nightcap']],
+    ['Rainy night, asleep', ['sleep', 'rain', 'nightcap']],
     ['Wink (flashes for a moment)', ['wink', 'glasses-clear']],
     ['Combo · Christmas night, asleep', ['beard-2', 'christmas', 'sleep']],
     ['Combo · rainy + full beard', ['beard-3', 'rainy']],
