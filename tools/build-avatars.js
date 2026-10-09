@@ -283,6 +283,31 @@ V['sleep'] = svg({
 ${[[235, 568, 16, 0], [132, 835, 14, -0.7], [252, 905, 15, -1.4]].map(([x, y, r, delay]) => anim(star(x, y, r), `animation:twinkle 2.1s ease-in-out ${delay}s infinite`)).join('')}`,
 });
 
+// Glasses (Bright wears photochromic lenses): frames plus a lens tint. The eyes sit on a
+// line tilted about -5deg in the drawing, so the pair is drawn level and rotated to match.
+function glasses(lensFill, lensOpacity) {
+    const lens = cx => `<rect x="${f(cx - 74)}" y="557.5" width="148" height="90" rx="30" fill="${lensFill}" fill-opacity="${lensOpacity}" stroke-width="11"/>`;
+    const glare = cx => `<path d="M${f(cx - 50)},590 L${f(cx - 30)},572" fill="none" stroke="#fff" stroke-width="7" stroke-opacity=".85"/>`;
+    return svg({
+        body: `<g transform="rotate(-4.9 524.5 602.5)">
+${lens(413.6)}${lens(635.4)}${glare(413.6)}${glare(635.4)}
+<path d="M487.6,596 Q524.5,580 561.4,596" fill="none" stroke-width="11"/>
+<path d="M339.6,590 L290,584 M709.4,590 L772,598" fill="none" stroke-width="10"/>
+</g>`,
+    });
+}
+// Earring on the visible (right-hand) ear lobe: a silver stud with a twinkling glint.
+// Drawn outside the rough filter so the wobble doesn't smear something this small.
+V['earring'] = svg({
+    top: `<circle cx="788" cy="704" r="15" fill="#D9D9D9" stroke="#000" stroke-width="6"/>
+<circle cx="783" cy="699" r="4" fill="#fff"/>
+${anim('<path d="M820,674 L824,684 L834,688 L824,692 L820,702 L816,692 L806,688 L816,684 Z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>', 'animation:twinkle 1.8s ease-in-out infinite')}`,
+});
+
+V['glasses-clear'] = glasses('#ffffff', 0.12);
+V['glasses-light'] = glasses('#3a3a3a', 0.38);
+V['glasses-dark'] = glasses('#1f1f1f', 0.8);
+
 // Wink: the right-hand eye shut with an upturned lid; flashed briefly by scripts/avatar.js.
 V['wink'] = svg({
     raw: `<rect x="572" y="562" width="126" height="60" rx="24" fill="${SKIN}"/>`,
@@ -314,8 +339,12 @@ const cards = [
     ['Ghana Independence Day', ['ghana-independence']], ['Easter', ['easter']], ['Halloween', ['halloween']],
     ['Rainy season', ['rainy']], ['Harmattan', ['harmattan']],
     ['Beard · week 1 (stubble)', ['beard-1']], ['Beard · week 2', ['beard-2']], ['Beard · week 3', ['beard-3']], ['Beard · week 4', ['beard-4']],
-    ['Asleep', ['sleep', 'nightcap']],
-    ['Wink (flashes for a moment)', ['wink']],
+    ['Earring', ['earring']],
+    ['Glasses · clear (early/late)', ['glasses-clear']],
+    ['Glasses · light tint', ['glasses-light']],
+    ['Glasses · dark (midday sun)', ['glasses-dark']],
+    ['Asleep (glasses off)', ['sleep', 'nightcap']],
+    ['Wink (flashes for a moment)', ['wink', 'glasses-clear']],
     ['Combo · Christmas night, asleep', ['beard-2', 'christmas', 'sleep']],
     ['Combo · rainy + full beard', ['beard-3', 'rainy']],
     ['Combo · Harmattan + long beard', ['beard-4', 'harmattan']],

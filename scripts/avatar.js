@@ -1,10 +1,11 @@
 // Dresses the drawn avatar (Profile.jpg) for the day: holidays, Harmattan, live rain,
-// a beard that grows through the month, and sleep at night. Overlays come from /avatar
-// (built by tools/build-avatars.js). A thought bubble pops up with a holiday wish,
-// Zzz while asleep, or "I need a shave" once the beard starts growing.
+// photochromic glasses that darken with the sun, a beard that grows through the month,
+// and sleep at night. Overlays come from /avatar (built by tools/build-avatars.js).
+// A thought bubble pops up with a holiday wish, Zzz while asleep, or "I need a shave"
+// once the beard starts growing.
 // Preview any moment with ?avatarDate=2026-12-25T23 (date + hour in the city below),
-// force the weather with ?avatarWeather=rain, and see the Home "still here" nudge
-// after 3s instead of 5 minutes with ?avatarStill.
+// force the weather with ?avatarWeather=rain or =cloudy, and see the Home "still here"
+// nudge after 3s instead of 5 minutes with ?avatarStill.
 (function () {
     // Where Bright is right now: calendar day, sleeping hours and the live weather.
     const CITY = { name: 'Accra, Ghana', timeZone: 'Africa/Accra', lat: 5.6037, lon: -0.1870 };
@@ -51,19 +52,30 @@
         return md >= 1201 || md <= 229;
     }
 
-    // Rain only when it's actually raining in the city right now (Open-Meteo, no key).
-    // WMO codes: drizzle 51-57, rain 61-67, showers 80-82, thunderstorms 95-99.
-    function rainingNow() {
+    // Live weather in the city right now (Open-Meteo, no key). `raining` shows the
+    // umbrella; `gloomy` (rain, overcast or fog) keeps the photochromic lenses light.
+    // WMO codes: overcast 3, fog 45/48, drizzle 51-57, rain 61-67, showers 80-82, storms 95-99.
+    const CLEAR = { raining: false, gloomy: false };
+    function weatherNow() {
         const forced = params.get('avatarWeather');
-        if (forced) return Promise.resolve(forced === 'rain');
-        if (params.get('avatarDate')) return Promise.resolve(false);
+        if (forced) return Promise.resolve({ raining: forced === 'rain', gloomy: forced === 'rain' || forced === 'cloudy' });
+        if (params.get('avatarDate')) return Promise.resolve(CLEAR);
         return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${CITY.lat}&longitude=${CITY.lon}&current=weather_code`)
             .then(r => (r.ok ? r.json() : null))
             .then(j => {
                 const c = j && j.current ? j.current.weather_code : -1;
-                return (c >= 51 && c <= 67) || (c >= 80 && c <= 82) || c >= 95;
+                const raining = (c >= 51 && c <= 67) || (c >= 80 && c <= 82) || c >= 95;
+                return { raining: raining, gloomy: raining || c === 3 || c === 45 || c === 48 };
             })
-            .catch(() => false);
+            .catch(() => CLEAR);
+    }
+
+    // Photochromic lenses: dark in strong midday sun, light-tinted in softer morning and
+    // late-afternoon light (or under cloud), clear once it's dark.
+    function lensTint(h, gloomy) {
+        if (h >= 10 && h < 16) return gloomy ? 'light' : 'dark';
+        if ((h >= 8 && h < 10) || (h >= 16 && h < 18)) return 'light';
+        return 'clear';
     }
 
     // Clean-shaven on the 1st, then a new stage roughly every week.
@@ -76,12 +88,15 @@
     const hol = holiday(now);
     const stage = beardStage(now.d);
 
-    // A holiday hat wins over the umbrella; the nightcap only goes on a bare head.
-    function layersFor(raining) {
-        const umbrella = raining && !(hol && hol.hat);
+    // A holiday hat wins over the umbrella; the nightcap only goes on a bare head;
+    // glasses come off for sleep.
+    function layersFor(weather) {
+        const umbrella = weather.raining && !(hol && hol.hat);
         const layers = [];
         if (stage) layers.push('beard-' + stage);
+        layers.push('earring');
         if (asleep) layers.push('sleep');
+        else layers.push('glasses-' + lensTint(now.h, weather.gloomy));
         if (hol) layers.push(hol.layer);
         if (umbrella) layers.push('rainy');
         if (asleep && !(hol && hol.hat) && !umbrella) layers.push('nightcap');
@@ -143,11 +158,11 @@
         setTimeout(function () { el.remove(); }, 450);
     }
 
-    // Pops in ~0.6s after being added, stays `ms`, then shrinks away.
-    function showBubble(b, ms) {
+    // Pops in ~0.6s after being added (straight away if `now`), stays `ms`, then shrinks away.
+    function showBubble(b, ms, now) {
         hideBubble(true);
         const el = document.createElement('div');
-        el.className = 'avatar-bubble';
+        el.className = now ? 'avatar-bubble avatar-bubble-now' : 'avatar-bubble';
         el.innerHTML = '<svg class="avatar-bubble-cloud" aria-hidden="true"></svg><div class="avatar-bubble-content">'
             + (b.kind === 'zzz' ? ZZZ : '<span class="avatar-bubble-text"></span>' + (b.kind === 'shave' ? RAZOR : ''))
             + '</div>';
@@ -177,7 +192,7 @@
         }
         draw();
         place();
-        current = { el: el, draw: draw, place: place, timer: setTimeout(hideBubble, 600 + ms) };
+        current = { el: el, draw: draw, place: place, timer: setTimeout(hideBubble, (now ? 0 : 600) + ms) };
     }
 
     window.addEventListener('resize', function () { if (current) current.place(); });
@@ -226,8 +241,8 @@
         setTimeout(wink, 1100);
     }
 
-    function render(raining) {
-        const layers = layersFor(raining);
+    function render(weather) {
+        const layers = layersFor(weather);
         bases.forEach(function (base) {
             base.parentElement.querySelectorAll('img.avatar-layer').forEach(function (old) { old.remove(); });
             let after = base;
@@ -243,11 +258,26 @@
         });
     }
 
-    render(false);
-    rainingNow().then(function (raining) { if (raining) render(true); });
+    render(CLEAR);
+    weatherNow().then(function (weather) { if (weather.raining || weather.gloomy) render(weather); });
 
     maybeShowDaily();
     setInterval(maybeShowDaily, 60 * 1000);
+
+    // The first time a visitor presses the avatar (ever, in this browser) it says hello.
+    const GREETED = 'avatarGreeted';
+    const GREETINGS = ['Hiii, hope you good', 'Hello, hope you good', 'Heyya, hope you good'];
+    let alreadyGreeted = false;
+    try { alreadyGreeted = localStorage.getItem(GREETED) === '1'; } catch (e) { /* storage blocked: greet once per page */ }
+    if (!alreadyGreeted) {
+        wrap.classList.add('avatar-greetable');
+        wrap.addEventListener('click', function greet() {
+            wrap.removeEventListener('click', greet);
+            wrap.classList.remove('avatar-greetable');
+            try { localStorage.setItem(GREETED, '1'); } catch (e) { /* ignore */ }
+            showBubble({ kind: 'wish', text: GREETINGS[Math.floor(Math.random() * GREETINGS.length)] }, SHOW_FOR, true);
+        });
+    }
 
     if (onHome) {
         new Image().src = 'avatar/wink.svg';

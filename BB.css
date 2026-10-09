@@ -395,8 +395,14 @@ body.page-leaving{
     transform-origin: 15% 100%;
     animation: avatar-bubble-pop 0.55s var(--transition-easing) 0.6s both;
 }
+.avatar-bubble.avatar-bubble-now {
+    animation-delay: 0s;
+}
 .avatar-bubble.avatar-bubble-leaving {
     animation: avatar-bubble-out 0.4s ease-in forwards;
+}
+.avatar-greetable {
+    cursor: pointer;
 }
 .avatar-bubble-cloud {
     position: absolute;
