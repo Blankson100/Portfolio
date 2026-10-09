@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1085 1450" width="1085" height="1450">
+<defs><filter id="rough" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<style>
+.a{transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translateY(-40px) rotate(0);opacity:0}15%,85%{opacity:1}100%{transform:translateY(80px) rotate(140deg);opacity:0}}
+@keyframes flutter{0%{transform:translateY(-18px) rotate(0);opacity:0}20%,80%{opacity:1}100%{transform:translateY(34px) rotate(200deg);opacity:0}}
+@keyframes rise{0%{transform:translateY(24px) scale(.8);opacity:0}25%,80%{opacity:1}100%{transform:translateY(-46px) scale(1.1);opacity:0}}
+@keyframes rain{0%{transform:translateY(-60px);opacity:0}15%{opacity:1}100%{transform:translateY(110px);opacity:0}}
+@keyframes drift{0%{transform:translateX(-24px);opacity:0}30%,70%{opacity:.8}100%{transform:translateX(36px);opacity:0}}
+@keyframes twinkle{0%,100%{transform:scale(.75);opacity:.4}50%{transform:scale(1.15);opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes wave{0%,100%{transform:skewY(-5deg)}50%{transform:skewY(4deg) scaleX(.95)}}
+@keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
+@keyframes toot{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+@keyframes blink{0%,100%{opacity:0}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect x="684" y="716" width="58" height="14" fill="#CE1126"/><rect x="684" y="730" width="58" height="14" fill="#FCD116"/><rect x="684" y="744" width="58" height="14" fill="#006B3F"/>
+<g filter="url(#rough)" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M268,1010 L268,512" stroke="#7A4A22" stroke-width="13"/>
+<g style="transform-box:view-box;transform-origin:268px 572px;animation:wave 1.6s ease-in-out infinite"><rect x="128" y="515" width="140" height="38" fill="#CE1126" stroke="none"/>
+<rect x="128" y="553" width="140" height="38" fill="#FCD116" stroke="none"/>
+<rect x="128" y="591" width="140" height="38" fill="#006B3F" stroke="none"/>
+<path d="M198,555 L202.5,565.8 L214.2,566.7 L205.3,574.4 L208,585.8 L198,579.7 L188,585.8 L190.7,574.4 L181.8,566.7 L193.5,565.8 Z" fill="#000" stroke-width="0"/>
+<rect x="128" y="515" width="140" height="114" fill="none"/></g>
+<g class="a" style="animation:flutter 2.84s linear -1.90s infinite"><path d="M846,753.5 q9,-14 18,0 t18,0" fill="none" stroke="#CE1126" stroke-width="9" transform="rotate(47 864 753.5)"/></g><g class="a" style="animation:flutter 3.12s linear -2.19s infinite"><path d="M835.2,676.3 q9,-14 18,0 t18,0" fill="none" stroke="#FCD116" stroke-width="9" transform="rotate(51 853.2 676.3)"/></g><g class="a" style="animation:flutter 4.16s linear -1.37s infinite"><path d="M811.6,508.9 q9,-14 18,0 t18,0" fill="none" stroke="#006B3F" stroke-width="9" transform="rotate(96 829.6 508.9)"/></g><g class="a" style="animation:flutter 2.97s linear -1.58s infinite"><path d="M826.5,483.5 q9,-14 18,0 t18,0" fill="none" stroke="#CE1126" stroke-width="9" transform="rotate(9 844.5 483.5)"/></g><g class="a" style="animation:flutter 3.48s linear -0.93s infinite"><rect x="896.4" y="757.8" width="28" height="14" fill="#FCD116" stroke-width="5" transform="rotate(35 910.4 764.8)"/></g><g class="a" style="animation:flutter 3.62s linear -0.48s infinite"><path d="M818.7,452 q9,-14 18,0 t18,0" fill="none" stroke="#006B3F" stroke-width="9" transform="rotate(100 836.7 452)"/></g><g class="a" style="animation:flutter 3.64s linear -1.84s infinite"><path d="M759.4,477.3 q9,-14 18,0 t18,0" fill="none" stroke="#CE1126" stroke-width="9" transform="rotate(97 777.4 477.3)"/></g><g class="a" style="animation:flutter 3.75s linear -1.66s infinite"><rect x="754.7" y="359.6" width="28" height="14" fill="#FCD116" stroke-width="5" transform="rotate(167 768.7 366.6)"/></g><g class="a" style="animation:flutter 3.92s linear -0.29s infinite"><rect x="821.8" y="969.7" width="28" height="14" fill="#006B3F" stroke-width="5" transform="rotate(165 835.8 976.7)"/></g><g class="a" style="animation:flutter 4.23s linear -2.38s infinite"><path d="M821.7,716.5 q9,-14 18,0 t18,0" fill="none" stroke="#CE1126" stroke-width="9" transform="rotate(175 839.7 716.5)"/></g>
+</g>
+
+</svg>

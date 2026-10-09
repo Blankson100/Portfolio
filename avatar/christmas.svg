@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1085 1450" width="1085" height="1450">
+<defs><filter id="rough" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<style>
+.a{transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translateY(-40px) rotate(0);opacity:0}15%,85%{opacity:1}100%{transform:translateY(80px) rotate(140deg);opacity:0}}
+@keyframes flutter{0%{transform:translateY(-18px) rotate(0);opacity:0}20%,80%{opacity:1}100%{transform:translateY(34px) rotate(200deg);opacity:0}}
+@keyframes rise{0%{transform:translateY(24px) scale(.8);opacity:0}25%,80%{opacity:1}100%{transform:translateY(-46px) scale(1.1);opacity:0}}
+@keyframes rain{0%{transform:translateY(-60px);opacity:0}15%{opacity:1}100%{transform:translateY(110px);opacity:0}}
+@keyframes drift{0%{transform:translateX(-24px);opacity:0}30%,70%{opacity:.8}100%{transform:translateX(36px);opacity:0}}
+@keyframes twinkle{0%,100%{transform:scale(.75);opacity:.4}50%{transform:scale(1.15);opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes wave{0%,100%{transform:skewY(-5deg)}50%{transform:skewY(4deg) scaleX(.95)}}
+@keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
+@keyframes toot{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+@keyframes blink{0%,100%{opacity:0}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+
+<g filter="url(#rough)" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M300,384 C318,272 430,196 560,198 C665,200 765,258 818,322 L772,366 Z" fill="#D62828"/>
+<path d="M640,214 C700,248 742,296 762,352" fill="none" stroke-width="7"/>
+<rect x="278" y="356" width="530" height="86" rx="43" fill="#fff" transform="rotate(-4 542 398)"/>
+<circle cx="824" cy="318" r="46" fill="#fff"/>
+<g class="a" style="animation:fall 4.5s linear 0s infinite"><path d="M152,520 L228,520 M171,487.1 L209,552.9 M209,487.1 L171,552.9 " stroke="#7CC4F0" stroke-width="8" fill="none"/></g><g class="a" style="animation:fall 4.5s linear -1.6s infinite"><path d="M873,560 L937,560 M889,532.3 L921,587.7 M921,532.3 L889,587.7 " stroke="#7CC4F0" stroke-width="8" fill="none"/></g><g class="a" style="animation:fall 4.5s linear -2.9s infinite"><path d="M142,860 L198,860 M156,835.8 L184,884.2 M184,835.8 L156,884.2 " stroke="#7CC4F0" stroke-width="8" fill="none"/></g><g class="a" style="animation:fall 4.5s linear -0.8s infinite"><path d="M895,860 L955,860 M910,834 L940,886 M940,834 L910,886 " stroke="#7CC4F0" stroke-width="8" fill="none"/></g><g class="a" style="animation:fall 4.5s linear -3.6s infinite"><path d="M226,380 L274,380 M238,359.2 L262,400.8 M262,359.2 L238,400.8 " stroke="#7CC4F0" stroke-width="8" fill="none"/></g><g class="a" style="animation:fall 4.5s linear -2.2s infinite"><path d="M818,420 L862,420 M829,400.9 L851,439.1 M851,400.9 L829,439.1 " stroke="#7CC4F0" stroke-width="8" fill="none"/></g>
+</g>
+
+</svg>

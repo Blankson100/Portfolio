@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1085 1450" width="1085" height="1450">
+<defs><filter id="rough" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter><clipPath id="scarf"><path d="M372,1002 C450,1060 625,1060 700,995 L708,1072 C625,1135 450,1135 366,1078 Z M610,1080 L700,1075 L735,1250 L640,1258 Z"/></clipPath></defs>
+<style>
+.a{transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translateY(-40px) rotate(0);opacity:0}15%,85%{opacity:1}100%{transform:translateY(80px) rotate(140deg);opacity:0}}
+@keyframes flutter{0%{transform:translateY(-18px) rotate(0);opacity:0}20%,80%{opacity:1}100%{transform:translateY(34px) rotate(200deg);opacity:0}}
+@keyframes rise{0%{transform:translateY(24px) scale(.8);opacity:0}25%,80%{opacity:1}100%{transform:translateY(-46px) scale(1.1);opacity:0}}
+@keyframes rain{0%{transform:translateY(-60px);opacity:0}15%{opacity:1}100%{transform:translateY(110px);opacity:0}}
+@keyframes drift{0%{transform:translateX(-24px);opacity:0}30%,70%{opacity:.8}100%{transform:translateX(36px);opacity:0}}
+@keyframes twinkle{0%,100%{transform:scale(.75);opacity:.4}50%{transform:scale(1.15);opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes wave{0%,100%{transform:skewY(-5deg)}50%{transform:skewY(4deg) scaleX(.95)}}
+@keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
+@keyframes toot{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+@keyframes blink{0%,100%{opacity:0}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1085" height="1450" fill="#C9A46B" fill-opacity=".18"/>
+<g filter="url(#rough)" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+<g clip-path="url(#scarf)" stroke="none"><rect x="352" y="980" width="30" height="300" fill="#F2C14E"/><rect x="382" y="980" width="30" height="300" fill="#1E8449"/><rect x="412" y="980" width="30" height="300" fill="#F2C14E"/><rect x="442" y="980" width="30" height="300" fill="#C0392B"/><rect x="472" y="980" width="30" height="300" fill="#F2C14E"/><rect x="502" y="980" width="30" height="300" fill="#1E8449"/><rect x="532" y="980" width="30" height="300" fill="#F2C14E"/><rect x="562" y="980" width="30" height="300" fill="#C0392B"/><rect x="592" y="980" width="30" height="300" fill="#F2C14E"/><rect x="622" y="980" width="30" height="300" fill="#1E8449"/><rect x="652" y="980" width="30" height="300" fill="#F2C14E"/><rect x="682" y="980" width="30" height="300" fill="#C0392B"/><rect x="712" y="980" width="30" height="300" fill="#F2C14E"/><rect x="742" y="980" width="30" height="300" fill="#1E8449"/>
+<path d="M350,1040 H760 M350,1092 H760 M600,1150 H760 M600,1200 H760" stroke="#000" stroke-width="6"/></g>
+<path d="M372,1002 C450,1060 625,1060 700,995 L708,1072 C625,1135 450,1135 366,1078 Z" fill="none"/>
+<path d="M610,1080 L700,1075 L735,1250 L640,1258 Z" fill="none"/>
+<g class="a" style="animation:drift 4.5s ease-in-out -0.0s infinite"><path d="M120,470 C180,440 230,500 290,470" fill="none" stroke="#B08A55" stroke-width="8" stroke-opacity=".75"/></g><g class="a" style="animation:drift 5.2s ease-in-out -1.3s infinite"><path d="M140,560 C190,535 230,585 275,560" fill="none" stroke="#B08A55" stroke-width="8" stroke-opacity=".75"/></g><g class="a" style="animation:drift 5.9s ease-in-out -2.6s infinite"><path d="M110,800 C170,770 220,830 280,800" fill="none" stroke="#B08A55" stroke-width="8" stroke-opacity=".75"/></g><g class="a" style="animation:drift 4.5s ease-in-out -3.9s infinite"><path d="M820,470 C880,440 930,500 975,470" fill="none" stroke="#B08A55" stroke-width="8" stroke-opacity=".75"/></g><g class="a" style="animation:drift 5.2s ease-in-out -5.2s infinite"><path d="M840,620 C890,595 930,645 970,620" fill="none" stroke="#B08A55" stroke-width="8" stroke-opacity=".75"/></g><g class="a" style="animation:drift 5.9s ease-in-out -6.5s infinite"><path d="M830,780 C890,750 940,810 975,780" fill="none" stroke="#B08A55" stroke-width="8" stroke-opacity=".75"/></g>
+</g>
+
+</svg>
