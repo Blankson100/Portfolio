@@ -205,6 +205,26 @@ window.STICKERS = {
             "name": "Jump rope",
             "caption": "OnTrack"
         },
+        "running": {
+            "name": "Me, out for a run",
+            "caption": "OnTrack"
+        },
+        "cycling": {
+            "name": "Me, on my bike",
+            "caption": "OnTrack"
+        },
+        "yoga": {
+            "name": "Me, finding my calm",
+            "caption": "OnTrack"
+        },
+        "salad": {
+            "name": "Me, eating clean",
+            "caption": "OnTrack"
+        },
+        "swimming": {
+            "name": "Me, doing laps",
+            "caption": "OnTrack"
+        },
         "network": {
             "name": "Networking",
             "caption": "Roster"
@@ -280,6 +300,11 @@ window.STICKERS = {
         ],
         "ontrack": [
             "workout",
+            "running",
+            "cycling",
+            "yoga",
+            "salad",
+            "swimming",
             "sneaker",
             "stopwatch",
             "bottle",
@@ -333,6 +358,11 @@ window.STICKERS = {
             "medal",
             "heartrate",
             "jumprope",
+            "running",
+            "cycling",
+            "yoga",
+            "salad",
+            "swimming",
             "network",
             "namebadge",
             "coffee",

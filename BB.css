@@ -164,6 +164,24 @@ body.page-leaving{
     -webkit-mask:linear-gradient(0deg, #0000 87.5%, #000 100%);
     mask:linear-gradient(0deg, #0000 87.5%, #000 100%);
 }
+/* A little film grain over the blur, strongest at the very top: specks of colour cut
+   out by a noise mask (dark specks on light pages, light ones on dark pages). */
+.grad-blur-grain{
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 -1.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    position:absolute;
+    inset:0;
+    z-index:9;
+    background:#000;
+    opacity:0.16;
+    -webkit-mask-image:var(--grain), linear-gradient(180deg, #000 0%, #000 35%, #0000 100%);
+    -webkit-mask-composite:source-in;
+    mask-image:var(--grain), linear-gradient(180deg, #000 0%, #000 35%, #0000 100%);
+    mask-composite:intersect;
+}
+body.dark-mode .grad-blur-grain{
+    background:#fff;
+    opacity:0.08;
+}
 
 /* Navbar styling */
 .navbar{

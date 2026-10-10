@@ -271,6 +271,15 @@ const miniBee = (x, y) => `<ellipse cx="${x + 2}" cy="${y - 26}" rx="12" ry="20"
 <ellipse cx="${x}" cy="${y}" rx="20" ry="14" fill="#FFC93C"/>
 <path d="M${x - 6},${y - 12} V${y + 12} M${x + 6},${y - 12} V${y + 12}" fill="none" stroke-width="5"/>`;
 const workoutHead = fs.readFileSync(path.join(__dirname, 'assets', 'workout-head.jpg')).toString('base64');
+// Bright's drawn head (cropped from the avatar) filling a circle; used as a sticker's `raw`.
+const myHead = (cx, cy, r) => `<defs><clipPath id="headClip"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath></defs>
+<image href="data:image/jpeg;base64,${workoutHead}" x="${cx - r}" y="${cy - r}" width="${2 * r}" height="${2 * r}" clip-path="url(#headClip)"/>`;
+// An outlined arm or leg through the given points.
+const SKIN = '#B87A58';
+const limb = (pts, color = SKIN, w = 13) => {
+    const d = 'M' + pts.map(p => p.join(',')).join(' L');
+    return `<path d="${d}" fill="none" stroke-width="${w + 10}"/><path d="${d}" fill="none" stroke="${color}" stroke-width="${w}"/>`;
+};
 
 const PROJECT_ITEMS = {
     // ---- Clostra: bees and honey ----
@@ -559,8 +568,7 @@ ${[90, 109, 128, 147, 166, 185, 204].map(x => `<rect x="${x}" y="212" width="7" 
     // ---- OnTrack: working out ----
     workout: {
         name: 'Me, working out', caption: 'OnTrack',
-        raw: `<defs><clipPath id="headClip"><circle cx="150" cy="124" r="92"/></clipPath></defs>
-<image href="data:image/jpeg;base64,${workoutHead}" x="58" y="32" width="184" height="184" clip-path="url(#headClip)"/>`,
+        raw: myHead(150, 124, 92),
         art: `<circle cx="150" cy="124" r="92" fill="none"/>
 <path d="M66,92 Q150,60 236,84" fill="none" stroke-width="24"/>
 <path d="M66,92 Q150,60 236,84" fill="none" stroke="#E63946" stroke-width="15"/>
@@ -647,6 +655,86 @@ ${star(150, 202, 32, '#FFE07A')}
 <g transform="rotate(20 230 70)"><rect x="216" y="20" width="28" height="80" rx="13" fill="#FFC93C"/><rect x="218" y="96" width="24" height="12" rx="4" fill="#9E9E9E"/></g>
 <text x="150" y="180" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="40" fill="#1F1F1F" stroke="none">x100</text>`,
     },
+    // Bright staying healthy: the drawn head on a marker body (`under` is drawn below it).
+    running: {
+        name: 'Me, out for a run', caption: 'OnTrack',
+        under: `<path d="M24,152 H60 M14,182 H54 M26,212 H56" fill="none" stroke-width="5"/>
+${limb([[128, 142], [102, 164], [98, 194]])}
+${limb([[140, 212], [114, 238], [82, 232]])}
+${limb([[162, 212], [196, 230], [188, 266]])}
+<ellipse cx="78" cy="236" rx="17" ry="9" transform="rotate(-10 78 236)" fill="#FF6B35"/>
+<ellipse cx="198" cy="272" rx="18" ry="9" fill="#FF6B35"/>
+<path d="M124,196 H176 L182,226 H154 L150,214 L146,226 H118 Z" fill="#2E6BE6"/>
+<path d="M122,128 Q150,118 178,128 L174,200 H126 Z" fill="#E63946"/>
+${limb([[172, 142], [192, 176], [218, 156]])}`,
+        raw: myHead(150, 76, 52),
+        art: `<circle cx="150" cy="76" r="52" fill="none"/>
+${drop(232, 70)}${drop(80, 88, 0.8)}`,
+    },
+    cycling: {
+        name: 'Me, on my bike', caption: 'OnTrack',
+        under: `${[74, 226].map(x => `<circle cx="${x}" cy="230" r="42" fill="#F3F6F9" stroke-width="10"/>
+<path d="M${x},192 V268 M${x - 38},230 H${x + 38} M${x - 27},203 L${x + 27},257 M${x + 27},203 L${x - 27},257" fill="none" stroke="#9E9E9E" stroke-width="2.5"/>
+<circle cx="${x}" cy="230" r="6" fill="#9E9E9E"/>`).join('\n')}
+${limb([[126, 160], [166, 186], [124, 222]], '#2E6BE6', 16)}
+<path d="M74,230 L140,232 L200,180 L226,230 M74,230 L122,172 L200,180 L194,160 M140,232 L122,172" fill="none" stroke-width="14"/>
+<path d="M74,230 L140,232 L200,180 L226,230 M74,230 L122,172 L200,180 L194,160 M140,232 L122,172" fill="none" stroke="#E63946" stroke-width="7"/>
+<path d="M182,160 H212" fill="none" stroke-width="7"/>
+<path d="M104,166 H140 L134,175 H110 Z" fill="#2B2B2B"/>
+<circle cx="140" cy="232" r="12" fill="#9E9E9E"/>
+${limb([[126, 160], [176, 206], [160, 250]], '#2E6BE6', 16)}
+<rect x="148" y="248" width="24" height="8" rx="3" fill="#2B2B2B"/>
+<path d="M104,170 C104,156 112,150 124,148 L170,112 C184,106 204,114 204,128 L146,172 Z" fill="#3BD16F"/>
+${limb([[190, 128], [212, 160]])}`,
+        raw: myHead(190, 76, 46),
+        art: `<circle cx="190" cy="76" r="46" fill="none"/>
+<path d="M144,58 A50,50 0 0 1 236,58 Q190,42 144,58 Z" fill="#3BD16F"/>
+<path d="M174,32 L177,48 M190,28 V46 M206,32 L203,48" fill="none" stroke-width="3"/>`,
+    },
+    yoga: {
+        name: 'Me, finding my calm', caption: 'OnTrack',
+        under: `<rect x="26" y="248" width="248" height="18" rx="8" fill="#8E7CC3"/>
+<path d="M56,236 C70,206 120,204 150,214 C180,204 230,206 244,236 C244,256 200,258 150,252 C100,258 56,256 56,236 Z" fill="#4A4A4A"/>
+<path d="M104,232 C130,226 170,226 196,240" fill="none" stroke-width="4"/>
+<ellipse cx="112" cy="240" rx="16" ry="9" fill="${SKIN}"/>
+<ellipse cx="190" cy="236" rx="16" ry="9" fill="${SKIN}"/>
+<path d="M118,130 Q150,120 182,130 L180,216 H120 Z" fill="#2EC4B6"/>
+${limb([[124, 142], [94, 184], [80, 214]])}
+${limb([[176, 142], [206, 184], [220, 214]])}
+<circle cx="80" cy="218" r="10" fill="${SKIN}"/><circle cx="220" cy="218" r="10" fill="${SKIN}"/>`,
+        raw: myHead(150, 80, 52),
+        art: `<circle cx="150" cy="80" r="52" fill="none"/>
+<g stroke-width="3.5">${star(58, 66, 16, '#FFC93C')}${star(244, 96, 12, '#FFC93C')}${star(232, 42, 9, '#FFC93C')}</g>`,
+    },
+    salad: {
+        name: 'Me, eating clean', caption: 'OnTrack',
+        under: `<path d="M62,282 C62,190 238,190 238,282 Z" fill="#2E6BE6"/>`,
+        raw: myHead(150, 94, 60),
+        art: `<circle cx="150" cy="94" r="60" fill="none"/>
+<path d="M200,198 L236,124" fill="none" stroke-width="14"/>
+<path d="M200,198 L236,124" fill="none" stroke="#C9D1D8" stroke-width="6"/>
+<path d="M228,128 L232,104 M236,130 L242,108 M244,134 L252,112" fill="none" stroke-width="5"/>
+<circle cx="96" cy="200" r="18" fill="#6DBE45"/><circle cx="132" cy="190" r="20" fill="#3E8E2B"/>
+<circle cx="170" cy="192" r="20" fill="#6DBE45"/><circle cx="206" cy="200" r="18" fill="#3E8E2B"/>
+<circle cx="116" cy="196" r="9" fill="#E63946"/><circle cx="188" cy="188" r="9" fill="#E63946"/><circle cx="152" cy="198" r="8" fill="#FF8C2E"/>
+<path d="M58,206 H242 Q236,268 150,270 Q64,268 58,206 Z" fill="#fff"/>
+<path d="M72,230 Q150,242 228,230" fill="none" stroke="#2E9BF6" stroke-width="6"/>
+<circle cx="60" cy="218" r="12" fill="${SKIN}"/><circle cx="240" cy="218" r="12" fill="${SKIN}"/>
+<path d="M250,62 C250,62 236,53 236,44 C236,39 240,35 244,35 C247,35 250,38 250,41 C250,38 253,35 256,35 C260,35 264,39 264,44 C264,53 250,62 250,62 Z" fill="#E63946"/>`,
+    },
+    swimming: {
+        name: 'Me, doing laps', caption: 'OnTrack',
+        raw: myHead(150, 134, 56),
+        art: `<circle cx="150" cy="134" r="56" fill="none"/>
+<path d="M100,108 A56,56 0 0 1 200,108 Q150,92 100,108 Z" fill="#2E6BE6"/>
+<path d="M14,186 Q31,174 48,186 T82,186 T116,186 T150,186 T184,186 T218,186 T252,186 T286,186 V266 Q286,272 280,272 H20 Q14,272 14,266 Z" fill="#6CB4E4"/>
+<path d="M40,210 q10,-6 20,0 t20,0 M200,214 q10,-6 20,0 t20,0" fill="none" stroke="#fff" stroke-width="3"/>
+<path d="M22,246 H278" fill="none" stroke-width="4"/>
+${Array.from({ length: 11 }, (_, i) => `<circle cx="${30 + i * 24}" cy="246" r="9" fill="${i % 2 ? '#fff' : '#E63946'}"/>`).join('')}
+${limb([[202, 196], [240, 128], [210, 92]])}
+<circle cx="208" cy="88" r="11" fill="${SKIN}"/>
+${drop(248, 82, 0.7)}${drop(70, 168, 0.7)}${drop(52, 140, 0.55)}`,
+    },
     // ---- Roster: networking ----
     network: {
         name: 'Networking', caption: 'Roster',
@@ -723,7 +811,8 @@ const SETS = {
     clostra: ['bee', 'honey', 'honeycomb', 'beehive', 'dipper', 'sunflower', 'smoker', 'beekeeper'],
     lign: ['bus', 'trafficlight', 'busstop', 'ticket', 'road', 'cone', 'routemap', 'busapp'],
     cropcare: ['wateringcan', 'trowel', 'seedling', 'wheelbarrow', 'rake', 'shears', 'leafcheck', 'carrot'],
-    ontrack: ['workout', 'sneaker', 'stopwatch', 'bottle', 'kettlebell', 'medal', 'heartrate', 'jumprope'],
+    ontrack: ['workout', 'running', 'cycling', 'yoga', 'salad', 'swimming',
+        'sneaker', 'stopwatch', 'bottle', 'kettlebell', 'medal', 'heartrate', 'jumprope'],
     roster: ['network', 'namebadge', 'coffee', 'businesscard', 'goldengate', 'newyork', 'london', 'dubai', 'tokyo', 'paris'],
 };
 SETS.projects = Object.keys(PROJECT_ITEMS);
@@ -742,11 +831,12 @@ const ALL = Object.assign(
     PROJECT_ITEMS);
 
 fs.mkdirSync(OUT, { recursive: true });
+const ROUGH = '<g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">';
 for (const [id, s] of Object.entries(ALL)) {
     fs.writeFileSync(path.join(OUT, `${id}.svg`),
         `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
 <defs>${DEFS}</defs>${s.style ? `\n<style>${s.style}</style>` : ''}
-<g filter="url(#diecut)">${s.raw || ''}<g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<g filter="url(#diecut)">${s.under ? `${ROUGH}\n${s.under}\n</g>` : ''}${s.raw || ''}${ROUGH}
 ${s.art}
 </g></g>
 </svg>
