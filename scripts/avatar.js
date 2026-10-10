@@ -286,7 +286,7 @@
     }
 
     // Pressing it over and over (5 times within 4s) gets told off.
-    const TICKLED = { kind: 'wish', text: 'Shuu! Open a portfolio and stop tickling me' };
+    const TICKLED = { kind: 'wish', text: 'Shuu! Open a project and stop tickling me' };
     let presses = [];
     wrap.addEventListener('click', function () {
         const now = Date.now();
