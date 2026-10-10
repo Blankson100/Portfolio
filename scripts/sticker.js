@@ -3,7 +3,7 @@
 // (or double-click, double-tap, or press Enter) to reveal a drawing in the avatar's style;
 // once revealed it can be dragged anywhere on the page.
 // The script tag picks the set (data-set, from stickers/stickers.js) and how many to show
-// (data-count, default 2; long pages use 6 and spread them down the page). Home/About use
+// (data-count, default 2; Home/About use 3, the long project pages 6). Home/About use
 // "cities", each case study its project's set, Projects mixes them all. With "cities", a
 // visitor's first visit includes Bright's own city (window.brightCity.landmark from
 // avatar.js). Preview one with ?sticker=bee.
@@ -22,8 +22,13 @@
     const count = Math.min(ids.length, parseInt(tag && tag.dataset.count, 10) || 2);
     const LAST = 'stickerLast:' + set;
 
-    const contentEls = document.querySelectorAll('.intro-inner, .about-inner, .project-main, .project-row');
+    // What stickers keep clear of. On Home that's the header and the cards themselves,
+    // since their boxes stretch well past the right-most card.
+    const contentEls = document.querySelectorAll('.profile-header > *, .intro-sub, .intro-inner .grid-container > *, '
+        + '.about-inner, .project-main, .project-row');
     const sidebar = document.querySelector('.project-sidebar');
+    const footer = document.querySelector('footer');
+    const TOP = 110;           // highest a sticker sits, page px
     if (!contentEls.length) return;
 
     function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
@@ -49,7 +54,7 @@
     const asked = new URLSearchParams(window.location.search).get('sticker');
     const recent = (load(LAST) || '').split(',');
     const first = asked && data.items[asked] ? asked : (home && !load(HOME_SEEN) ? home : null);
-    const rest = ids.filter(c => c !== first && c !== home)
+    const rest = ids.filter(c => c !== first)
         .map(c => ({ c: c, k: Math.random() + (recent.indexOf(c) !== -1 ? 1 : 0) }))
         .sort((a, b) => a.k - b.k)
         .map(o => o.c);
@@ -78,29 +83,26 @@
         const label = el.querySelector('.landmark-sticker-label');
         document.body.appendChild(el);
 
-        // A random spot in its side's gap. Short pages: all in the first screen, one per
-        // side, hidden if that side has no room. Long pages: the page is split into one
-        // band per sticker from top to bottom, and a sticker with no room on its side
-        // moves to the other side (the bands keep them apart).
+        // A random spot in its side's gap. The height from the top down to the footer (on
+        // short pages, the first screen above the floating nav) is split into one band per
+        // sticker, so they spread evenly from top to bottom. A sticker with no room on its
+        // side moves to the other side; the bands keep them apart.
         const fx = Math.random(), fy = Math.random();
         let moved = false;
         function place() {
             if (moved) { moveTo(parseFloat(el.style.left), parseFloat(el.style.top)); return; }
-            const vh = window.innerHeight, docH = document.documentElement.scrollHeight;
-            const long = docH > vh * 1.8;
             let s = side;
-            if (!fits(s) && long) s = s === 'left' ? 'right' : 'left';
+            if (!fits(s)) s = s === 'left' ? 'right' : 'left';
             const [x0, x1] = gap(s);
             el.hidden = x1 < x0;
             if (el.hidden) return;
-            let yMin = 110, yMax = Math.max(yMin, vh - SIZE - 200);
-            if (long) {
-                const band = (Math.max(yMin + count * 220, docH - vh * 0.6) - yMin) / count;
-                yMin += index * band;
-                yMax = Math.max(yMin, yMin + band - SIZE - 60);
-            }
+            const vh = window.innerHeight, docH = document.documentElement.scrollHeight;
+            let bottom = footer ? footer.getBoundingClientRect().top + window.scrollY : docH;
+            if (docH < vh * 1.8) bottom = Math.min(bottom, vh - 120);
+            const band = Math.max(SIZE + 60, (bottom - 40 - TOP) / count);
+            const slack = band - SIZE - 60;
             el.style.left = (x0 + fx * (x1 - x0) + window.scrollX) + 'px';
-            el.style.top = (yMin + fy * (yMax - yMin)) + 'px';
+            el.style.top = (TOP + index * band + slack * (0.15 + fy * 0.7)) + 'px';
         }
         place();
         window.addEventListener('resize', place);
