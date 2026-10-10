@@ -49,6 +49,10 @@ window.STICKERS = {
             "name": "Brandenburg Gate",
             "caption": "Berlin, Germany"
         },
+        "cairo": {
+            "name": "Pyramids of Giza",
+            "caption": "Cairo, Egypt"
+        },
         "bee": {
             "name": "Busy bee",
             "caption": "Clostra"
@@ -71,6 +75,14 @@ window.STICKERS = {
         },
         "sunflower": {
             "name": "Sunflower",
+            "caption": "Clostra"
+        },
+        "smoker": {
+            "name": "Bee smoker",
+            "caption": "Clostra"
+        },
+        "beekeeper": {
+            "name": "Beekeeper’s hat",
             "caption": "Clostra"
         },
         "bus": {
@@ -97,6 +109,14 @@ window.STICKERS = {
             "name": "Traffic cone",
             "caption": "Lign"
         },
+        "routemap": {
+            "name": "Route map",
+            "caption": "Lign"
+        },
+        "busapp": {
+            "name": "Bus in 3 min",
+            "caption": "Lign"
+        },
         "wateringcan": {
             "name": "Watering can",
             "caption": "Crop Care"
@@ -119,6 +139,14 @@ window.STICKERS = {
         },
         "shears": {
             "name": "Pruning shears",
+            "caption": "Crop Care"
+        },
+        "leafcheck": {
+            "name": "Leaf check",
+            "caption": "Crop Care"
+        },
+        "carrot": {
+            "name": "Fresh carrot",
             "caption": "Crop Care"
         },
         "workout": {
@@ -145,12 +173,28 @@ window.STICKERS = {
             "name": "Finisher medal",
             "caption": "OnTrack"
         },
+        "heartrate": {
+            "name": "Heart rate",
+            "caption": "OnTrack"
+        },
+        "jumprope": {
+            "name": "Jump rope",
+            "caption": "OnTrack"
+        },
         "network": {
             "name": "Networking",
             "caption": "Roster"
         },
         "namebadge": {
             "name": "Hello badge",
+            "caption": "Roster"
+        },
+        "coffee": {
+            "name": "Coffee chat",
+            "caption": "Roster"
+        },
+        "businesscard": {
+            "name": "Business card",
             "caption": "Roster"
         },
         "goldengate": {
@@ -171,7 +215,8 @@ window.STICKERS = {
             "lagos",
             "nairobi",
             "toronto",
-            "berlin"
+            "berlin",
+            "cairo"
         ],
         "clostra": [
             "bee",
@@ -179,7 +224,9 @@ window.STICKERS = {
             "honeycomb",
             "beehive",
             "dipper",
-            "sunflower"
+            "sunflower",
+            "smoker",
+            "beekeeper"
         ],
         "lign": [
             "bus",
@@ -187,7 +234,9 @@ window.STICKERS = {
             "busstop",
             "ticket",
             "road",
-            "cone"
+            "cone",
+            "routemap",
+            "busapp"
         ],
         "cropcare": [
             "wateringcan",
@@ -195,7 +244,9 @@ window.STICKERS = {
             "seedling",
             "wheelbarrow",
             "rake",
-            "shears"
+            "shears",
+            "leafcheck",
+            "carrot"
         ],
         "ontrack": [
             "workout",
@@ -203,15 +254,21 @@ window.STICKERS = {
             "stopwatch",
             "bottle",
             "kettlebell",
-            "medal"
+            "medal",
+            "heartrate",
+            "jumprope"
         ],
         "roster": [
             "network",
             "namebadge",
+            "coffee",
+            "businesscard",
             "goldengate",
             "newyork",
             "london",
-            "dubai"
+            "dubai",
+            "tokyo",
+            "paris"
         ],
         "projects": [
             "bee",
@@ -220,26 +277,36 @@ window.STICKERS = {
             "beehive",
             "dipper",
             "sunflower",
+            "smoker",
+            "beekeeper",
             "bus",
             "trafficlight",
             "busstop",
             "ticket",
             "road",
             "cone",
+            "routemap",
+            "busapp",
             "wateringcan",
             "trowel",
             "seedling",
             "wheelbarrow",
             "rake",
             "shears",
+            "leafcheck",
+            "carrot",
             "workout",
             "sneaker",
             "stopwatch",
             "bottle",
             "kettlebell",
             "medal",
+            "heartrate",
+            "jumprope",
             "network",
             "namebadge",
+            "coffee",
+            "businesscard",
             "goldengate"
         ]
     }

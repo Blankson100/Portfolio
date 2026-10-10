@@ -153,6 +153,16 @@ ${ground(260, 26, 274)}`,
 ${[44, 82, 120, 162, 200, 238].map(x => `<rect x="${x}" y="142" width="18" height="110" fill="#EADBB6"/>`).join('')}
 <rect x="30" y="252" width="240" height="12" fill="#E3D2A8"/>`,
     },
+    cairo: {
+        name: 'Pyramids of Giza', city: 'Cairo, Egypt',
+        art: `<circle cx="238" cy="62" r="24" fill="#FFD23F"/>
+<path d="M166,256 L226,150 L282,256 Z" fill="#E8C27A"/>
+<path d="M226,150 L282,256 H244 Z" fill="#C99A4E"/>
+<path d="M22,256 L120,90 L216,256 Z" fill="#E8C27A"/>
+<path d="M120,90 L216,256 H152 Z" fill="#C99A4E"/>
+<path d="M84,152 H156 M60,192 H180 M40,228 H200" fill="none" stroke-width="2.5"/>
+<path d="M14,266 Q80,246 150,256 Q220,266 286,248 V272 H14 Z" fill="#F2D9A0"/>`,
+    },
 };
 
 // Themed stickers for the project pages. id -> name, caption, drawing; `raw` is drawn
@@ -163,6 +173,10 @@ const hexPath = (cx, cy, r) => 'M' + [0, 1, 2, 3, 4, 5].map(i => {
 }).join(' L') + ' Z';
 const drop = (x, y, s = 1, fill = '#6CB4E4') =>
     `<path d="M${x},${f(y - 14 * s)} C${f(x + 9 * s)},${f(y - 2 * s)} ${f(x + 9 * s)},${f(y + 8 * s)} ${x},${f(y + 8 * s)} C${f(x - 9 * s)},${f(y + 8 * s)} ${f(x - 9 * s)},${f(y - 2 * s)} ${x},${f(y - 14 * s)} Z" fill="${fill}" stroke-width="4"/>`;
+// A small bee in flight, body centred on (x, y).
+const miniBee = (x, y) => `<ellipse cx="${x + 2}" cy="${y - 26}" rx="12" ry="20" transform="rotate(-30 ${x + 2} ${y - 26})" fill="#EAF6FF"/>
+<ellipse cx="${x}" cy="${y}" rx="20" ry="14" fill="#FFC93C"/>
+<path d="M${x - 6},${y - 12} V${y + 12} M${x + 6},${y - 12} V${y + 12}" fill="none" stroke-width="5"/>`;
 const workoutHead = fs.readFileSync(path.join(__dirname, 'assets', 'workout-head.jpg')).toString('base64');
 
 const PROJECT_ITEMS = {
@@ -234,9 +248,32 @@ const PROJECT_ITEMS = {
 ${Array.from({ length: 12 }, (_, i) => { const a = i * 30, r = a * Math.PI / 180; return `<ellipse cx="${f(150 + Math.sin(r) * 56)}" cy="${f(104 - Math.cos(r) * 56)}" rx="15" ry="30" transform="rotate(${a} ${f(150 + Math.sin(r) * 56)} ${f(104 - Math.cos(r) * 56)})" fill="#FFC93C"/>`; }).join('')}
 <circle cx="150" cy="104" r="40" fill="#7A4A1E"/>
 ${[[136, 92], [156, 86], [168, 104], [148, 108], [132, 116], [158, 124], [142, 128]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="#4A2A0E" stroke="none"/>`).join('')}
-<ellipse cx="246" cy="206" rx="12" ry="20" transform="rotate(-30 246 206)" fill="#EAF6FF"/>
-<ellipse cx="244" cy="232" rx="20" ry="14" fill="#FFC93C"/>
-<path d="M238,220 V244 M250,220 V244" fill="none" stroke-width="5"/>`,
+${miniBee(244, 232)}`,
+    },
+    smoker: {
+        name: 'Bee smoker', caption: 'Clostra',
+        art: `<path d="M120,244 L34,206 L44,186 L58,188 L54,170 L72,160 L76,146 L90,140 L122,226 Z" fill="#7A4A1E"/>
+<path d="M120,244 L30,212 L36,194 L122,232 Z" fill="#C68642"/>
+<path d="M120,240 L80,140 L96,134 L126,226 Z" fill="#C68642"/>
+<rect x="122" y="122" width="90" height="136" rx="10" fill="#C9D1D8"/>
+<path d="M140,150 V230 M158,150 V230 M176,150 V230 M194,150 V230" fill="none" stroke="#8F9AA5" stroke-width="5"/>
+<path d="M118,126 H216 L192,94 H142 Z" fill="#AEB8C2"/>
+<path d="M156,94 L162,66 H180 L178,94 Z" fill="#AEB8C2"/>
+<circle cx="176" cy="46" r="14" fill="#E6E6E6"/><circle cx="198" cy="30" r="18" fill="#E6E6E6"/><circle cx="230" cy="24" r="13" fill="#E6E6E6"/>
+${miniBee(66, 82)}`,
+    },
+    beekeeper: {
+        name: 'Beekeeper’s hat', caption: 'Clostra',
+        art: `<path d="M64,266 C70,228 230,228 236,266 Z" fill="#F7F7F7"/>
+<ellipse cx="150" cy="182" rx="40" ry="50" fill="#8D5524"/>
+<path d="M120,176 a12,12 0 1 0 24,0 a12,12 0 1 0 -24,0 M156,176 a12,12 0 1 0 24,0 a12,12 0 1 0 -24,0 M144,176 H156" fill="none" stroke-width="4"/>
+<path d="M72,120 L58,250 Q150,272 242,250 L228,120 Z" fill="#fff" fill-opacity="0.6"/>
+<path d="M96,130 L90,256 M124,130 L122,262 M150,130 V264 M176,130 L178,262 M204,130 L210,256 M66,170 Q150,184 234,170 M62,212 Q150,226 238,212" fill="none" stroke="#9E9E9E" stroke-width="3"/>
+<path d="M72,120 L58,250 Q150,272 242,250 L228,120" fill="none"/>
+<ellipse cx="150" cy="118" rx="112" ry="26" fill="#F3E3B5"/>
+<path d="M92,116 C92,52 208,52 208,116 Z" fill="#F3E3B5"/>
+<path d="M94,100 Q150,110 206,100 L208,116 Q150,126 92,116 Z" fill="#F2A900"/>
+${miniBee(244, 64)}`,
     },
     // ---- Lign: bus, road and traffic lights ----
     bus: {
@@ -305,6 +342,31 @@ ${[56, 98, 140, 182].map(x => `<rect x="${x}" y="122" width="34" height="38" rx=
 <path d="M118,90 H182 L190,130 H110 Z" fill="#fff"/>
 <path d="M102,170 H198 L206,208 H94 Z" fill="#fff"/>
 <path d="M140,50 L120,226" fill="none" stroke="#FFA766" stroke-width="7"/>`,
+    },
+    routemap: {
+        name: 'Route map', caption: 'Lign',
+        art: `<path d="M40,90 L106,70 L106,240 L40,260 Z" fill="#CDE9FF"/>
+<path d="M106,70 L194,92 L194,262 L106,240 Z" fill="#E8F4FF"/>
+<path d="M194,92 L260,72 L260,242 L194,262 Z" fill="#CDE9FF"/>
+<path d="M150,190 C158,172 186,176 188,196 C190,216 158,222 150,190 Z" fill="#9CD67A"/>
+<path d="M62,226 C92,200 88,168 128,160 C170,152 180,134 212,128" fill="none" stroke="#289AF9" stroke-width="6" stroke-dasharray="12 10"/>
+<circle cx="62" cy="226" r="9" fill="#fff"/>
+<path d="M214,130 C196,106 190,94 190,82 C190,68 200,58 214,58 C228,58 238,68 238,82 C238,94 232,106 214,130 Z" fill="#E63946"/>
+<circle cx="214" cy="82" r="8" fill="#fff"/>`,
+    },
+    busapp: {
+        name: 'Bus in 3 min', caption: 'Lign',
+        art: `<path d="M226,46 L242,32 M230,64 L250,62 M74,46 L58,32 M70,64 L50,62" fill="none" stroke-width="4"/>
+<rect x="88" y="22" width="124" height="254" rx="24" fill="#2B2B2B"/>
+<rect x="100" y="44" width="100" height="210" rx="10" fill="#fff"/>
+<path d="M100,84 V54 Q100,44 110,44 H190 Q200,44 200,54 V84 Z" fill="#289AF9"/>
+<text x="150" y="72" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="18" fill="#fff" stroke="none">LIGN</text>
+<rect x="124" y="102" width="52" height="40" rx="8" fill="#289AF9"/>
+<rect x="130" y="108" width="40" height="14" rx="3" fill="#CDE9FF"/>
+<circle cx="136" cy="146" r="6" fill="#222"/><circle cx="164" cy="146" r="6" fill="#222"/>
+<text x="150" y="190" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#1F1F1F" stroke="none">3 min</text>
+<rect x="114" y="208" width="72" height="10" rx="5" fill="#E3E9EE"/>
+<rect x="114" y="208" width="50" height="10" rx="5" fill="#3BD16F"/>`,
     },
     // ---- Crop Care: gardening tools ----
     wateringcan: {
@@ -376,6 +438,31 @@ ${[90, 109, 128, 147, 166, 185, 204].map(x => `<rect x="${x}" y="212" width="7" 
 <path d="M130,206 C140,196 160,196 170,206" fill="none" stroke-width="5"/>
 </g>`,
     },
+    leafcheck: {
+        name: 'Leaf check', caption: 'Crop Care',
+        art: `<path d="M58,242 L30,270" fill="none" stroke="#3E8E2B" stroke-width="9"/>
+<path d="M58,242 C38,150 90,60 232,42 C252,170 170,252 58,242 Z" fill="#6DBE45"/>
+<path d="M58,242 C110,190 160,130 224,54 M112,182 L96,140 M150,140 L136,92 M128,164 L178,170 M168,118 L212,124" fill="none" stroke="#3E8E2B" stroke-width="4"/>
+<circle cx="92" cy="214" r="6" fill="#8B5A2B"/><circle cx="196" cy="96" r="7" fill="#8B5A2B"/>
+<path d="M174,214 L232,272" fill="none" stroke-width="26"/>
+<path d="M174,214 L232,272" fill="none" stroke="#2B2B2B" stroke-width="14"/>
+<circle cx="140" cy="180" r="50" fill="#2B2B2B"/>
+<circle cx="140" cy="180" r="38" fill="#B5E88F"/>
+<circle cx="132" cy="172" r="15" fill="#8B5A2B"/><circle cx="156" cy="196" r="8" fill="#8B5A2B"/>
+<path d="M114,166 A28,28 0 0 1 132,150" fill="none" stroke="#fff" stroke-width="5"/>`,
+    },
+    carrot: {
+        name: 'Fresh carrot', caption: 'Crop Care',
+        art: `<g transform="rotate(-16 150 150)">
+<path d="M150,104 C140,70 116,52 94,48 C110,72 122,92 140,106 Z" fill="#6DBE45"/>
+<path d="M150,104 C148,64 156,36 168,20 C176,50 168,80 158,106 Z" fill="#6DBE45"/>
+<path d="M156,106 C176,76 200,64 222,62 C208,86 186,102 160,110 Z" fill="#6DBE45"/>
+<path d="M110,112 C110,96 190,96 190,112 C188,172 168,232 150,266 C132,232 112,172 110,112 Z" fill="#FF8C2E"/>
+<path d="M124,138 H146 M160,166 H178 M130,194 H150 M156,222 H166" fill="none" stroke-width="4"/>
+</g>
+<path d="M22,268 C36,214 116,200 150,212 C188,200 262,214 278,268 Z" fill="#6B4423"/>
+<circle cx="84" cy="206" r="6" fill="#6B4423"/><circle cx="222" cy="200" r="5" fill="#6B4423"/>`,
+    },
     // ---- OnTrack: working out ----
     workout: {
         name: 'Me, working out', caption: 'OnTrack',
@@ -444,6 +531,29 @@ ${drop(262, 120)}${drop(36, 104, 0.8)}`,
 ${star(150, 202, 32, '#FFE07A')}
 <path d="M104,170 C96,186 96,206 102,222" fill="none" stroke="#FFE7A3" stroke-width="6"/>`,
     },
+    heartrate: {
+        name: 'Heart rate', caption: 'OnTrack',
+        // The heart beats.
+        style: '.hr{transform-origin:150px 112px;animation:hr 1.1s ease-in-out infinite}'
+            + '@keyframes hr{0%,40%,100%{transform:scale(1)}15%{transform:scale(1.18)}}'
+            + '@media (prefers-reduced-motion:reduce){*{animation:none!important}}',
+        art: `<rect x="112" y="14" width="76" height="80" rx="14" fill="#2E6BE6"/>
+<rect x="112" y="206" width="76" height="80" rx="14" fill="#2E6BE6"/>
+<circle cx="150" cy="242" r="4" fill="#1B4BB0" stroke="none"/><circle cx="150" cy="262" r="4" fill="#1B4BB0" stroke="none"/>
+<rect x="220" y="122" width="14" height="30" rx="5" fill="#9E9E9E"/>
+<rect x="78" y="70" width="144" height="160" rx="36" fill="#2B2B2B"/>
+<path class="hr" d="M150,136 C134,126 122,116 122,102 C122,93 129,88 137,88 C143,88 148,92 150,97 C152,92 157,88 163,88 C171,88 178,93 178,102 C178,116 166,126 150,136 Z" fill="#E63946" stroke="none"/>
+<path d="M100,162 H124 L132,148 L142,178 L152,152 L158,162 H200" fill="none" stroke="#3BD16F" stroke-width="4"/>
+<text x="150" y="208" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="17" fill="#fff" stroke="none">128 BPM</text>`,
+    },
+    jumprope: {
+        name: 'Jump rope', caption: 'OnTrack',
+        art: `<path d="M84,108 C50,220 100,272 150,272 C200,272 250,220 216,108" fill="none" stroke-width="13"/>
+<path d="M84,108 C50,220 100,272 150,272 C200,272 250,220 216,108" fill="none" stroke="#E63946" stroke-width="6"/>
+<g transform="rotate(-20 70 70)"><rect x="56" y="20" width="28" height="80" rx="13" fill="#FFC93C"/><rect x="58" y="96" width="24" height="12" rx="4" fill="#9E9E9E"/></g>
+<g transform="rotate(20 230 70)"><rect x="216" y="20" width="28" height="80" rx="13" fill="#FFC93C"/><rect x="218" y="96" width="24" height="12" rx="4" fill="#9E9E9E"/></g>
+<text x="150" y="180" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="40" fill="#1F1F1F" stroke="none">x100</text>`,
+    },
     // ---- Roster: networking ----
     network: {
         name: 'Networking', caption: 'Roster',
@@ -467,6 +577,39 @@ ${star(150, 202, 32, '#FFE07A')}
 <rect x="54" y="156" width="192" height="64" rx="8" fill="#fff"/>
 <text x="150" y="202" text-anchor="middle" font-family="Segoe Print, Bradley Hand, Comic Sans MS, cursive" font-size="34" fill="#1F1F1F" stroke="none">Bright</text>`,
     },
+    coffee: {
+        name: 'Coffee chat', caption: 'Roster',
+        art: `<path d="M150,82 C150,82 134,72 134,62 C134,56 138,52 143,52 C147,52 150,55 150,58 C150,55 153,52 157,52 C162,52 166,56 166,62 C166,72 150,82 150,82 Z" fill="#E63946"/>
+<g transform="rotate(8 92 190)">
+<path d="M48,160 C18,160 18,214 48,214" fill="none" stroke-width="18"/>
+<path d="M48,160 C18,160 18,214 48,214" fill="none" stroke="#F7941D" stroke-width="7"/>
+<rect x="48" y="132" width="88" height="108" rx="14" fill="#F7941D"/>
+<ellipse cx="92" cy="136" rx="40" ry="8" fill="#6B4423"/>
+<path d="M80,114 C70,100 90,92 80,76 M104,114 C94,100 114,92 104,76" fill="none" stroke-width="5"/>
+</g>
+<g transform="rotate(-8 208 190)">
+<path d="M252,160 C282,160 282,214 252,214" fill="none" stroke-width="18"/>
+<path d="M252,160 C282,160 282,214 252,214" fill="none" stroke="#2E9BF6" stroke-width="7"/>
+<rect x="164" y="132" width="88" height="108" rx="14" fill="#2E9BF6"/>
+<ellipse cx="208" cy="136" rx="40" ry="8" fill="#6B4423"/>
+<path d="M196,114 C186,100 206,92 196,76 M220,114 C210,100 230,92 220,76" fill="none" stroke-width="5"/>
+</g>`,
+    },
+    businesscard: {
+        name: 'Business card', caption: 'Roster',
+        art: `<rect x="56" y="62" width="216" height="128" rx="12" fill="#2E9BF6" transform="rotate(8 164 126)"/>
+<g transform="rotate(-6 150 170)">
+<rect x="32" y="104" width="236" height="134" rx="12" fill="#fff"/>
+<circle cx="84" cy="158" r="28" fill="#CDE9FF"/>
+<path d="M62,182 C62,162 106,162 106,182" fill="#2E9BF6" stroke-width="4"/>
+<circle cx="84" cy="150" r="11" fill="#8D5524" stroke-width="4"/>
+<text x="124" y="160" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#1F1F1F" stroke="none">Bright</text>
+<text x="124" y="182" font-family="Arial, sans-serif" font-size="14" fill="#555" stroke="none">Product Designer</text>
+<path d="M56,206 H150 M56,222 H120" fill="none" stroke="#BDBDBD" stroke-width="4"/>
+<rect x="204" y="190" width="40" height="40" rx="4" fill="#fff" stroke-width="4"/>
+<path d="M210,196 h10 v10 h-10 Z M228,196 h10 v10 h-10 Z M210,214 h10 v10 h-10 Z M228,214 h4 v4 h-4 Z M234,220 h4 v4 h-4 Z" fill="#1F1F1F" stroke="none"/>
+</g>`,
+    },
     goldengate: {
         name: 'Golden Gate Bridge', caption: 'San Francisco',
         art: `<rect x="14" y="236" width="272" height="30" rx="6" fill="#6CB4E4"/>
@@ -484,11 +627,11 @@ ${star(150, 202, 32, '#FFE07A')}
 // set; the Projects page mixes every project's.
 const SETS = {
     cities: Object.keys(LANDMARKS),
-    clostra: ['bee', 'honey', 'honeycomb', 'beehive', 'dipper', 'sunflower'],
-    lign: ['bus', 'trafficlight', 'busstop', 'ticket', 'road', 'cone'],
-    cropcare: ['wateringcan', 'trowel', 'seedling', 'wheelbarrow', 'rake', 'shears'],
-    ontrack: ['workout', 'sneaker', 'stopwatch', 'bottle', 'kettlebell', 'medal'],
-    roster: ['network', 'namebadge', 'goldengate', 'newyork', 'london', 'dubai'],
+    clostra: ['bee', 'honey', 'honeycomb', 'beehive', 'dipper', 'sunflower', 'smoker', 'beekeeper'],
+    lign: ['bus', 'trafficlight', 'busstop', 'ticket', 'road', 'cone', 'routemap', 'busapp'],
+    cropcare: ['wateringcan', 'trowel', 'seedling', 'wheelbarrow', 'rake', 'shears', 'leafcheck', 'carrot'],
+    ontrack: ['workout', 'sneaker', 'stopwatch', 'bottle', 'kettlebell', 'medal', 'heartrate', 'jumprope'],
+    roster: ['network', 'namebadge', 'coffee', 'businesscard', 'goldengate', 'newyork', 'london', 'dubai', 'tokyo', 'paris'],
 };
 SETS.projects = Object.keys(PROJECT_ITEMS);
 
