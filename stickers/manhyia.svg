@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="34" y="132" width="196" height="126" fill="#F3E3B5"/>
+<path d="M22,134 L62,92 H202 L242,134 Z" fill="#B5532F"/>
+<path d="M34,194 H230" fill="none" stroke-width="4"/>
+<path d="M44,180 V156 Q54,144 64,156 V180 Z" fill="#6B4423"/><path d="M83,180 V156 Q93,144 103,156 V180 Z" fill="#6B4423"/><path d="M122,180 V156 Q132,144 142,156 V180 Z" fill="#6B4423"/><path d="M161,180 V156 Q171,144 181,156 V180 Z" fill="#6B4423"/><path d="M200,180 V156 Q210,144 220,156 V180 Z" fill="#6B4423"/>
+<rect x="44" y="210" width="20" height="30" fill="#6B4423"/><rect x="83" y="210" width="20" height="30" fill="#6B4423"/><rect x="161" y="210" width="20" height="30" fill="#6B4423"/>
+<path d="M118,258 V222 Q132,206 146,222 V258 Z" fill="#6B4423"/>
+<path d="M206,212 L204,228 M268,212 L270,228" fill="none" stroke-width="3"/>
+<circle cx="204" cy="232" r="6" fill="#F2A900"/><circle cx="270" cy="232" r="6" fill="#F2A900"/>
+<rect x="208" y="218" width="10" height="32" fill="#F2A900"/>
+<rect x="254" y="218" width="10" height="32" fill="#F2A900"/>
+<rect x="226" y="218" width="20" height="32" fill="#FFC93C"/>
+<path d="M196,198 Q236,222 276,198 L272,214 Q236,234 200,214 Z" fill="#FFC93C"/>
+<rect x="200" y="248" width="72" height="14" rx="4" fill="#FFC93C"/>
+<path d="M22,262 H196" fill="none"/>
+</g></g>
+</svg>

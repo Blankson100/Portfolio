@@ -36,6 +36,99 @@ const LANDMARKS = {
 ${star(150, 52, 36, '#111')}
 ${ground(256)}`,
     },
+    nkrumah: {
+        name: 'Nkrumah Mausoleum', city: 'Accra, Ghana',
+        art: `<rect x="14" y="240" width="272" height="26" rx="6" fill="#6CB4E4"/>
+<rect x="116" y="226" width="148" height="16" fill="#E6E0D6"/>
+<path d="M164,226 L216,226 C208,170 214,116 236,80 H144 C166,116 172,170 164,226 Z" fill="#ECE8E0"/>
+<path d="M176,222 C172,170 166,124 158,86 M190,222 V86 M204,222 C208,170 214,124 222,86" fill="none" stroke-width="2.5"/>
+<rect x="138" y="70" width="104" height="12" rx="3" fill="#D9D3C7"/>
+${star(190, 42, 26, '#111')}
+<rect x="50" y="176" width="48" height="66" fill="#D9D3C7"/>
+<path d="M84,130 L108,100" fill="none" stroke-width="16"/>
+<path d="M84,130 L108,100" fill="none" stroke="#7A5A3A" stroke-width="8"/>
+<path d="M58,176 L62,126 Q74,116 86,126 L90,176 Z" fill="#7A5A3A"/>
+<circle cx="74" cy="106" r="13" fill="#7A5A3A"/>`,
+    },
+    jamestown: {
+        name: 'Jamestown Lighthouse', city: 'Accra, Ghana',
+        art: `<path d="M136,48 L98,30 M136,56 L96,64 M164,48 L202,30 M164,56 L204,64" fill="none" stroke-width="4"/>
+<path d="M96,238 Q150,206 204,238 Z" fill="#8D7B68"/>
+<path d="M118,232 L134,72 H166 L182,232 Z" fill="#fff"/>
+<path d="M134,72 H166 L169.2,104 H130.8 Z M127.6,136 H172.4 L175.6,168 H124.4 Z M121.2,200 H178.8 L182,232 H118 Z" fill="#D7262E" stroke="none"/>
+<path d="M118,232 L134,72 H166 L182,232 Z" fill="none"/>
+<path d="M142,232 V214 Q150,206 158,214 V232 Z" fill="#3B2A14"/>
+<rect x="124" y="62" width="52" height="12" rx="3" fill="#2B2B2B"/>
+<rect x="136" y="36" width="28" height="26" fill="#FFE066"/>
+<path d="M130,38 L150,16 L170,38 Z" fill="#D7262E"/>
+<rect x="14" y="236" width="272" height="30" rx="6" fill="#6CB4E4"/>
+<path d="M122,240 Q200,262 280,236 L266,260 Q200,280 136,262 Z" fill="#FCD116"/>
+<path d="M130,252 Q200,272 272,248" fill="none" stroke="#D7262E" stroke-width="6"/>
+<path d="M36,256 q10,-6 20,0 t20,0" fill="none" stroke="#fff" stroke-width="3"/>`,
+    },
+    capecoast: {
+        name: 'Cape Coast Castle', city: 'Cape Coast, Ghana',
+        art: `<path d="M98,58 V22" fill="none" stroke-width="4"/>
+<rect x="98" y="22" width="36" height="8" fill="#CE1126" stroke="none"/>
+<rect x="98" y="30" width="36" height="8" fill="#FCD116" stroke="none"/>
+<rect x="98" y="38" width="36" height="8" fill="#006B3F" stroke="none"/>
+<rect x="98" y="22" width="36" height="24" fill="none" stroke-width="4"/>
+${[0, 1, 2, 3].map(i => `<rect x="${f(66 + i * 52 / 3)}" y="58" width="12" height="16" fill="#F6F0E6"/>`).join('')}
+<rect x="66" y="72" width="64" height="70" fill="#F6F0E6"/>
+<rect x="90" y="88" width="16" height="22" rx="3" fill="#3B2A14"/>
+${Array.from({ length: 10 }, (_, i) => `<rect x="${36 + i * 24}" y="126" width="12" height="16" fill="#F6F0E6"/>`).join('')}
+<rect x="36" y="140" width="228" height="76" fill="#F6F0E6"/>
+<path d="M136,216 V186 Q150,170 164,186 V216 Z" fill="#3B2A14"/>
+${[58, 100, 192, 232].map(x => `<rect x="${x}" y="166" width="14" height="18" rx="2" fill="#3B2A14"/>`).join('')}
+<path d="M26,240 L36,214 H264 L274,240 Z" fill="#8D7B68"/>
+<rect x="208" y="196" width="58" height="16" rx="7" fill="#2B2B2B" transform="rotate(-18 222 210)"/>
+<circle cx="222" cy="222" r="11" fill="#6B4423"/>
+<rect x="14" y="238" width="272" height="30" rx="6" fill="#6CB4E4"/>
+<path d="M40,254 q10,-6 20,0 t20,0 M150,256 q10,-6 20,0 t20,0" fill="none" stroke="#fff" stroke-width="3"/>`,
+    },
+    larabanga: {
+        name: 'Larabanga Mosque', city: 'Larabanga, Ghana',
+        art: `<path d="M77,100 H63 M107,100 H121 M80,150 H66 M104,150 H118 M84,206 H70 M100,206 H114 M192,130 H180 M216,130 H228 M188,190 H176 M220,190 H232 M50,180 H36 M250,180 H264" fill="none" stroke="#3B2A14" stroke-width="5"/>
+<path d="M14,262 Q150,250 286,262 V272 H14 Z" fill="#E2C391"/>
+<path d="M44,256 L52,150 H248 L256,256 Z" fill="#F4F1EA"/>
+<path d="M66,256 L80,60 Q92,40 104,60 L118,256 Z" fill="#F4F1EA"/>
+<path d="M184,256 L194,92 Q204,76 214,92 L224,256 Z" fill="#F4F1EA"/>
+${[128, 172].map(x => `<path d="M${x - 9},256 L${x - 6},132 Q${x},118 ${x + 6},132 L${x + 9},256 Z" fill="#F4F1EA"/>`).join('')}
+<path d="M140,256 V218 Q150,206 160,218 V256 Z" fill="#3B2A14"/>
+<path d="M88,90 L92,80 L96,90 Z M200,118 L204,108 L208,118 Z" fill="#3B2A14"/>`,
+    },
+    kakum: {
+        name: 'Kakum Canopy Walk', city: 'Central Region, Ghana',
+        art: `<rect x="46" y="80" width="16" height="176" fill="#8B5A2B"/>
+<rect x="238" y="80" width="16" height="176" fill="#8B5A2B"/>
+<circle cx="54" cy="66" r="32" fill="#3E8E2B"/><circle cx="36" cy="92" r="16" fill="#3E8E2B"/><circle cx="76" cy="94" r="18" fill="#3E8E2B"/>
+<circle cx="246" cy="66" r="32" fill="#3E8E2B"/><circle cx="264" cy="92" r="16" fill="#3E8E2B"/><circle cx="224" cy="94" r="18" fill="#3E8E2B"/>
+<rect x="34" y="134" width="44" height="10" rx="3" fill="#A0612B"/>
+<rect x="222" y="134" width="44" height="10" rx="3" fill="#A0612B"/>
+${Array.from({ length: 9 }, (_, i) => { const t = (i + 1) / 10, q = (a, b, c) => f((1 - t) * (1 - t) * a + 2 * (1 - t) * t * b + t * t * c), x = f(74 + 152 * t); return `<path d="M${x},${q(104, 184, 104)} L${x},${q(138, 222, 138)}" fill="none" stroke-width="2.5"/>`; }).join('')}
+<path d="M74,104 Q150,184 226,104" fill="none" stroke-width="4"/>
+<path d="M74,138 Q150,222 226,138" fill="none" stroke-width="14"/>
+<path d="M74,138 Q150,222 226,138" fill="none" stroke="#C68642" stroke-width="7"/>
+<path d="M74,138 Q150,222 226,138" fill="none" stroke="#6B4423" stroke-width="7" stroke-dasharray="2 9"/>
+<path d="M14,268 V236 C24,214 48,214 58,232 C66,210 96,210 104,230 C114,212 140,212 148,232 C158,212 186,212 194,230 C204,210 232,210 240,232 C250,214 276,214 286,236 V268 Z" fill="#6DBE45"/>`,
+    },
+    manhyia: {
+        name: 'Manhyia Palace', city: 'Kumasi, Ghana',
+        art: `<rect x="34" y="132" width="196" height="126" fill="#F3E3B5"/>
+<path d="M22,134 L62,92 H202 L242,134 Z" fill="#B5532F"/>
+<path d="M34,194 H230" fill="none" stroke-width="4"/>
+${[54, 93, 132, 171, 210].map(c => `<path d="M${c - 10},180 V156 Q${c},144 ${c + 10},156 V180 Z" fill="#6B4423"/>`).join('')}
+${[54, 93, 171].map(c => `<rect x="${c - 10}" y="210" width="20" height="30" fill="#6B4423"/>`).join('')}
+<path d="M118,258 V222 Q132,206 146,222 V258 Z" fill="#6B4423"/>
+<path d="M206,212 L204,228 M268,212 L270,228" fill="none" stroke-width="3"/>
+<circle cx="204" cy="232" r="6" fill="#F2A900"/><circle cx="270" cy="232" r="6" fill="#F2A900"/>
+<rect x="208" y="218" width="10" height="32" fill="#F2A900"/>
+<rect x="254" y="218" width="10" height="32" fill="#F2A900"/>
+<rect x="226" y="218" width="20" height="32" fill="#FFC93C"/>
+<path d="M196,198 Q236,222 276,198 L272,214 Q236,234 200,214 Z" fill="#FFC93C"/>
+<rect x="200" y="248" width="72" height="14" rx="4" fill="#FFC93C"/>
+${ground(262, 22, 196)}`,
+    },
     london: {
         name: 'Big Ben', city: 'London, UK',
         art: `<path d="M150,14 L170,62 H130 Z" fill="#6F6250"/>

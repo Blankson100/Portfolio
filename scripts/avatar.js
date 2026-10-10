@@ -2,7 +2,8 @@
 // photochromic glasses that darken with the sun, a beard that grows through the month,
 // and sleep at night. Overlays come from /avatar (built by tools/build-avatars.js).
 // A thought bubble pops up with a holiday wish, Zzz while asleep, or "I need a shave"
-// once the beard starts growing.
+// once the beard starts growing. Pressing it says hello the first time, and pressing it
+// over and over gets a "stop tickling me".
 // Preview any moment with ?avatarDate=2026-12-25T23 (date + hour in the city below),
 // force the weather with ?avatarWeather=rain or =cloudy, and see the Home "still here"
 // nudge after 3s instead of 5 minutes with ?avatarStill.
@@ -283,6 +284,17 @@
             showBubble({ kind: 'wish', text: GREETINGS[Math.floor(Math.random() * GREETINGS.length)] }, SHOW_FOR, true);
         });
     }
+
+    // Pressing it over and over (5 times within 4s) gets told off.
+    const TICKLED = { kind: 'wish', text: 'Shuu! Open a portfolio and stop tickling me' };
+    let presses = [];
+    wrap.addEventListener('click', function () {
+        const now = Date.now();
+        presses = presses.filter(function (t) { return now - t < 4000; }).concat(now);
+        if (presses.length < 5) return;
+        presses = [];
+        showBubble(TICKLED, SHOW_FOR, true);
+    });
 
     if (onHome) {
         new Image().src = 'avatar/wink.svg';

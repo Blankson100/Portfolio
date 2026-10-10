@@ -5,6 +5,30 @@ window.STICKERS = {
             "name": "Black Star Gate",
             "caption": "Accra, Ghana"
         },
+        "nkrumah": {
+            "name": "Nkrumah Mausoleum",
+            "caption": "Accra, Ghana"
+        },
+        "jamestown": {
+            "name": "Jamestown Lighthouse",
+            "caption": "Accra, Ghana"
+        },
+        "capecoast": {
+            "name": "Cape Coast Castle",
+            "caption": "Cape Coast, Ghana"
+        },
+        "larabanga": {
+            "name": "Larabanga Mosque",
+            "caption": "Larabanga, Ghana"
+        },
+        "kakum": {
+            "name": "Kakum Canopy Walk",
+            "caption": "Central Region, Ghana"
+        },
+        "manhyia": {
+            "name": "Manhyia Palace",
+            "caption": "Kumasi, Ghana"
+        },
         "london": {
             "name": "Big Ben",
             "caption": "London, UK"
@@ -205,6 +229,12 @@ window.STICKERS = {
     "sets": {
         "cities": [
             "accra",
+            "nkrumah",
+            "jamestown",
+            "capecoast",
+            "larabanga",
+            "kakum",
+            "manhyia",
             "london",
             "paris",
             "newyork",
