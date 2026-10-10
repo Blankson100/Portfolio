@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="128" y="34" width="44" height="16" rx="7" fill="#9E9E9E"/>
+<rect x="138" y="48" width="24" height="22" fill="#9E9E9E"/>
+<rect x="214" y="78" width="22" height="16" rx="5" transform="rotate(45 225 86)" fill="#9E9E9E"/>
+<circle cx="150" cy="166" r="94" fill="#fff"/>
+<circle cx="150" cy="166" r="78" fill="#F3F6F9"/>
+<path d="M150,88 A78,78 0 0 1 222,196" fill="none" stroke="#3BD16F" stroke-width="12"/>
+<path d="M150,104 L150,94" fill="none" stroke-width="4"/><path d="M181,112.3 L186,103.6" fill="none" stroke-width="4"/><path d="M203.7,135 L212.4,130" fill="none" stroke-width="4"/><path d="M212,166 L222,166" fill="none" stroke-width="4"/><path d="M203.7,197 L212.4,202" fill="none" stroke-width="4"/><path d="M181,219.7 L186,228.4" fill="none" stroke-width="4"/><path d="M150,228 L150,238" fill="none" stroke-width="4"/><path d="M119,219.7 L114,228.4" fill="none" stroke-width="4"/><path d="M96.3,197 L87.6,202" fill="none" stroke-width="4"/><path d="M88,166 L78,166" fill="none" stroke-width="4"/><path d="M96.3,135 L87.6,130" fill="none" stroke-width="4"/><path d="M119,112.3 L114,103.6" fill="none" stroke-width="4"/>
+<path d="M150,166 L196,128" fill="none" stroke="#E63946" stroke-width="6"/>
+<circle cx="150" cy="166" r="8" fill="#1F1F1F"/>
+</g></g>
+</svg>

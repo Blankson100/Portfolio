@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<style>.tl-r,.tl-a,.tl-g{animation-duration:6s;animation-timing-function:steps(1,end);animation-iteration-count:infinite}.tl-r{animation-name:tl-r}.tl-a{animation-name:tl-a}.tl-g{animation-name:tl-g}@keyframes tl-r{0%{fill:#FF4D4D}40%{fill:#5A1B1B}80%{fill:#FF4D4D}}@keyframes tl-g{0%{fill:#1E4D2B}40%{fill:#3BD16F}66%{fill:#1E4D2B}}@keyframes tl-a{0%{fill:#5A4A10}66%{fill:#FFC93C}80%{fill:#5A4A10}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="142" y="212" width="16" height="50" fill="#5A5A5A"/>
+<rect x="116" y="258" width="68" height="12" rx="4" fill="#5A5A5A"/>
+<rect x="102" y="28" width="96" height="188" rx="24" fill="#2E2E2E"/>
+<circle class="tl-r" cx="150" cy="72" r="25" fill="#FF4D4D"/>
+<circle class="tl-a" cx="150" cy="124" r="25" fill="#5A4A10"/>
+<circle class="tl-g" cx="150" cy="176" r="25" fill="#1E4D2B"/>
+<path d="M102,58 L78,46 L78,92 L102,82 M198,58 L222,46 L222,92 L198,82" fill="#2E2E2E"/>
+</g></g>
+</svg>

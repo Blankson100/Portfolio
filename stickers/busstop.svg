@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="144" y="128" width="12" height="134" fill="#9E9E9E"/>
+<rect x="120" y="258" width="60" height="10" rx="4" fill="#7A7A7A"/>
+<rect x="74" y="28" width="152" height="108" rx="16" fill="#289AF9"/>
+<rect x="114" y="42" width="72" height="42" rx="9" fill="#fff" stroke="none"/>
+<rect x="122" y="50" width="56" height="16" rx="3" fill="#289AF9" stroke="none"/>
+<circle cx="130" cy="86" r="6" fill="#fff" stroke="none"/><circle cx="170" cy="86" r="6" fill="#fff" stroke="none"/>
+<text x="150" y="122" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="20" fill="#fff" stroke="none">BUS STOP</text>
+</g></g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="62" y="236" width="176" height="28" rx="7" fill="#D9531E"/>
+<path d="M128,40 Q150,30 172,40 L214,240 H86 Z" fill="#FF7A21"/>
+<path d="M118,90 H182 L190,130 H110 Z" fill="#fff"/>
+<path d="M102,170 H198 L206,208 H94 Z" fill="#fff"/>
+<path d="M140,50 L120,226" fill="none" stroke="#FFA766" stroke-width="7"/>
+</g></g>
+</svg>

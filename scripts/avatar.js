@@ -7,8 +7,10 @@
 // force the weather with ?avatarWeather=rain or =cloudy, and see the Home "still here"
 // nudge after 3s instead of 5 minutes with ?avatarStill.
 (function () {
-    // Where Bright is right now: calendar day, sleeping hours and the live weather.
-    const CITY = { name: 'Accra, Ghana', timeZone: 'Africa/Accra', lat: 5.6037, lon: -0.1870 };
+    // Where Bright is right now: calendar day, sleeping hours, the live weather, and the
+    // landmark sticker a visitor uncovers first (an id from stickers/stickers.js).
+    const CITY = { name: 'Accra, Ghana', timeZone: 'Africa/Accra', lat: 5.6037, lon: -0.1870, landmark: 'accra' };
+    window.brightCity = CITY;
     const SLEEP_FROM = 23;
     const SLEEP_UNTIL = 6;
     const params = new URLSearchParams(window.location.search);

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M84,18 H130 L174,150 L138,162 Z" fill="#2E6BE6"/>
+<path d="M216,18 H170 L126,150 L162,162 Z" fill="#E63946"/>
+<rect x="124" y="130" width="52" height="22" rx="6" fill="#C9A227"/>
+<circle cx="150" cy="200" r="64" fill="#FFC93C"/>
+<circle cx="150" cy="200" r="46" fill="#F2A900"/>
+<path d="M150,170 L157.9,191.1 L180.4,192.1 L162.8,206.2 L168.8,227.9 L150,215.4 L131.2,227.9 L137.2,206.2 L119.6,192.1 L142.1,191.1 Z" fill="#FFE07A"/>
+<path d="M104,170 C96,186 96,206 102,222" fill="none" stroke="#FFE7A3" stroke-width="6"/>
+</g></g>
+</svg>

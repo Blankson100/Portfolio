@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="14" y="236" width="272" height="30" rx="6" fill="#6CB4E4"/>
+<path d="M18,190 Q56,118 93,60 Q150,190 207,60 Q244,118 282,190" fill="none" stroke="#C0362C" stroke-width="6"/>
+<path d="M40,152 V196 M60,118 V196 M120,124 V196 M150,150 V196 M180,124 V196 M240,118 V196 M260,152 V196" fill="none" stroke="#C0362C" stroke-width="2.5"/>
+<rect x="82" y="56" width="22" height="182" fill="#C0362C"/>
+<rect x="196" y="56" width="22" height="182" fill="#C0362C"/>
+<rect x="78" y="88" width="30" height="10" fill="#A62A22"/><rect x="78" y="136" width="30" height="10" fill="#A62A22"/>
+<rect x="192" y="88" width="30" height="10" fill="#A62A22"/><rect x="192" y="136" width="30" height="10" fill="#A62A22"/>
+<rect x="14" y="194" width="272" height="14" fill="#C0362C"/>
+</g></g>
+</svg>
