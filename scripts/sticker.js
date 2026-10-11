@@ -3,24 +3,27 @@
 // (or double-click, double-tap, or press Enter) to reveal a drawing in the avatar's style;
 // once revealed it can be dragged anywhere on the page.
 // The script tag picks the set (data-set, from stickers/stickers.js) and how many to show
-// (data-count, default 2; Home/About use 3, the long project pages 6). Home/About use
-// "cities", each case study its project's set, Projects mixes them all. With "cities", a
-// visitor's first visit includes Bright's own city (window.brightCity.landmark from
-// avatar.js). Preview one with ?sticker=bee.
+// (data-count, default 2; Home uses 3, the long project pages 6). Several sets separated
+// by spaces show one sticker from each: About uses "knicks ghana world". Home uses
+// "cities", each case study its project's set, Projects mixes them all. A visitor's first
+// visit includes Bright's own city (window.brightCity.landmark from avatar.js) wherever
+// the set has it. Preview one with ?sticker=bee.
+// The phone page has no room beside its text, so it uses data-place="free" (stickers go
+// in empty patches between the lines) and a smaller data-size.
 (function () {
-    const SIZE = 130;          // sticker size, css px
-    const BRUSH = 13;          // scratch radius, css px
+    const tag = document.currentScript;
+    const SIZE = parseInt(tag && tag.dataset.size, 10) || 130;   // sticker size, css px
+    const BRUSH = Math.max(10, SIZE / 10);                      // scratch radius, css px
     const REVEAL_AT = 0.5;     // share of the shape scratched before it finishes by itself
     const GRID = 20;           // resolution of the "how much is scratched" check
     const HOME_SEEN = 'stickerHomeCitySeen';
+    const FREE = !!tag && tag.dataset.place === 'free';
 
     const data = window.STICKERS;
-    const tag = document.currentScript;
-    const set = (tag && tag.dataset.set) || 'cities';
-    const ids = data && data.sets[set];
-    if (!ids || ids.length < 2) return;
-    const count = Math.min(ids.length, parseInt(tag && tag.dataset.count, 10) || 2);
-    const LAST = 'stickerLast:' + set;
+    const names = ((tag && tag.dataset.set) || 'cities').split(/\s+/);
+    if (!data || names.some(n => !data.sets[n] || !data.sets[n].length)) return;
+    const count = names.length > 1 ? names.length
+        : Math.min(data.sets[names[0]].length, parseInt(tag && tag.dataset.count, 10) || 2);
 
     // What stickers keep clear of. On Home that's the header and the cards themselves,
     // since their boxes stretch well past the right-most card.
@@ -29,7 +32,7 @@
     const sidebar = document.querySelector('.project-sidebar');
     const footer = document.querySelector('footer');
     const TOP = 110;           // highest a sticker sits, page px
-    if (!contentEls.length) return;
+    if (!FREE && !contentEls.length) return;
 
     function load(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
     function save(key, value) { try { localStorage.setItem(key, value); } catch (e) { /* private mode */ } }
@@ -48,24 +51,103 @@
     }
     const fits = side => { const g = gap(side); return g[1] >= g[0]; };
 
-    // All different: Bright's city first on Home/About (until uncovered), the rest in
-    // random order with the ones shown last time pushed to the back.
-    const home = set === 'cities' && window.brightCity && ids.indexOf(window.brightCity.landmark) !== -1 ? window.brightCity.landmark : null;
-    const asked = new URLSearchParams(window.location.search).get('sticker');
-    const recent = (load(LAST) || '').split(',');
-    const first = asked && data.items[asked] ? asked : (home && !load(HOME_SEEN) ? home : null);
-    const rest = ids.filter(c => c !== first)
-        .map(c => ({ c: c, k: Math.random() + (recent.indexOf(c) !== -1 ? 1 : 0) }))
+    // Free placement: a random empty patch where the sticker and its label (BOX) clear
+    // every line of text and anything marked data-sticker-avoid.
+    const BOX_W = SIZE + 40, BOX_H = SIZE + 36, PAD = 6;
+    let spots = [];
+    function obstacles() {
+        const boxes = [];
+        const add = r => {
+            if (r.width && r.height) boxes.push({ l: r.left + scrollX, r: r.right + scrollX, t: r.top + scrollY, b: r.bottom + scrollY });
+        };
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+            acceptNode: n => n.nodeValue.trim() && !n.parentElement.closest('.landmark-sticker, .avatar-bubble, script, style')
+                ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+        });
+        const range = document.createRange();
+        for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+            range.selectNodeContents(n);
+            Array.prototype.forEach.call(range.getClientRects(), add);
+        }
+        document.querySelectorAll('[data-sticker-avoid]').forEach(el => add(el.getBoundingClientRect()));
+        return boxes;
+    }
+    // If the gaps can't take them all, the page grows a little at the bottom until they fit.
+    function findSpots() {
+        const boxes = obstacles();
+        const vw = document.documentElement.clientWidth;
+        const end = boxes.reduce((m, o) => Math.max(m, o.b), 0);
+        for (let extra = SIZE * 0.7; ; extra += 40) {
+            const free = [];
+            for (let y = 8; y + BOX_H <= end + extra; y += 6) {
+                for (let x = 8; x + BOX_W <= vw - 8; x += 6) {
+                    const l = x - PAD, r = x + BOX_W + PAD, t = y - PAD, b = y + BOX_H + PAD;
+                    if (!boxes.some(o => l < o.r && r > o.l && t < o.b && b > o.t)) free.push([x, y]);
+                }
+            }
+            // A few random tries; keep the one that fits the most.
+            spots = [];
+            for (let attempt = 0; attempt < 12 && spots.length < count; attempt++) {
+                const got = [];
+                for (let i = 0; i < count; i++) {
+                    const open = free.filter(([x, y]) => got.every(s => Math.abs(s[0] - x) >= BOX_W + 24 || Math.abs(s[1] - y) >= BOX_H + 24));
+                    if (!open.length) break;
+                    got.push(open[Math.floor(Math.random() * open.length)]);
+                }
+                if (got.length > spots.length) spots = got;
+            }
+            if (spots.length >= count || extra > SIZE * 8) return;
+        }
+    }
+
+    // All different: Bright's city first (until uncovered) when the set has it, the rest in
+    // random order with the ones shown last time pushed to the back. With several sets,
+    // one from each, in a random order down the page.
+    const home = window.brightCity ? window.brightCity.landmark : null;
+    const shuffle = (list, later) => list
+        .map(c => ({ c: c, k: Math.random() + (later && later.indexOf(c) !== -1 ? 1 : 0) }))
         .sort((a, b) => a.k - b.k)
         .map(o => o.c);
-    const chosen = (first ? [first] : []).concat(rest).slice(0, count);
-    save(LAST, chosen.join(','));
+    function pick(name, n, taken) {
+        const ids = data.sets[name].filter(c => !taken || taken.indexOf(c) === -1), LAST = 'stickerLast:' + name;
+        const first = ids.indexOf(home) !== -1 && !load(HOME_SEEN) ? home : null;
+        const picked = (first ? [first] : [])
+            .concat(shuffle(ids.filter(c => c !== first), (load(LAST) || '').split(',')))
+            .slice(0, n);
+        save(LAST, picked.join(','));
+        return picked;
+    }
+    // Sets can overlap (e.g. "ghana" and "cities"), so each pick skips what's already taken.
+    let chosen = [];
+    if (names.length > 1) {
+        names.forEach(n => chosen.push(...pick(n, 1, chosen)));
+        chosen = shuffle(chosen);
+    } else {
+        chosen = pick(names[0], count);
+    }
+    const asked = new URLSearchParams(window.location.search).get('sticker');
+    if (asked && data.items[asked]) chosen = [asked].concat(chosen.filter(c => c !== asked)).slice(0, count);
 
     // Alternate sides, starting with one that has room right now so the first is seen.
     const sides = Math.random() < 0.5 ? ['left', 'right'] : ['right', 'left'];
-    if (!fits(sides[0]) && fits(sides[1])) sides.reverse();
+    if (!FREE && !fits(sides[0]) && fits(sides[1])) sides.reverse();
 
+    // Re-place on resize and once the page (and its fonts) have loaded. Free placement only
+    // redoes it when the width changes, since phones fire resize as the address bar slides.
+    const placers = [];
+    let laidOutWidth = 0;
+    function relayout(force) {
+        const w = document.documentElement.clientWidth;
+        if (FREE && !force && w === laidOutWidth) return;
+        laidOutWidth = w;
+        if (FREE) findSpots();
+        placers.forEach(p => p());
+    }
+    if (FREE) { findSpots(); laidOutWidth = document.documentElement.clientWidth; }
     chosen.forEach(function (id, i) { makeSticker(id, sides[i % 2], i); });
+    window.addEventListener('resize', () => relayout(false));
+    window.addEventListener('load', () => relayout(true));
+    if (FREE && document.fonts) document.fonts.ready.then(() => relayout(true));
 
     function makeSticker(id, side, index) {
         const info = data.items[id];
@@ -75,6 +157,7 @@
         el.tabIndex = 0;
         el.setAttribute('aria-label', 'Scratch-off sticker. Scratch it, double-tap it, or press Enter to reveal it.');
         el.style.setProperty('--tilt', (Math.random() * 20 - 10).toFixed(1) + 'deg');
+        el.style.setProperty('--sticker-size', SIZE + 'px');
         el.innerHTML = '<div class="landmark-sticker-card"><img class="landmark-sticker-art" alt="" draggable="false">'
             + '<canvas class="landmark-sticker-cover"></canvas></div>'
             + '<div class="landmark-sticker-label">Scratch to reveal</div>';
@@ -91,22 +174,40 @@
         let moved = false;
         function place() {
             if (moved) { moveTo(parseFloat(el.style.left), parseFloat(el.style.top)); return; }
-            let s = side;
-            if (!fits(s)) s = s === 'left' ? 'right' : 'left';
+            if (FREE) {
+                const spot = spots[index];
+                el.hidden = !spot;
+                if (!spot) return;
+                el.style.left = (spot[0] + (BOX_W - SIZE) / 2) + 'px';
+                el.style.top = spot[1] + 'px';
+                return;
+            }
+            const sideNow = s => (fits(s) ? s : s === 'left' ? 'right' : 'left');
+            const s = sideNow(side);
             const [x0, x1] = gap(s);
             el.hidden = x1 < x0;
             if (el.hidden) return;
             const vh = window.innerHeight, docH = document.documentElement.scrollHeight;
+            const short = docH < vh * 1.8;
             let bottom = footer ? footer.getBoundingClientRect().top + window.scrollY : docH;
-            if (docH < vh * 1.8) bottom = Math.min(bottom, vh - 120);
-            const band = Math.max(SIZE + 60, (bottom - 40 - TOP) / count);
+            if (short) bottom = Math.min(bottom, vh - 120);
+            // Long pages: one band per sticker down the whole page. Short pages: the stickers
+            // on each side share that side's height, and any that don't fit stay hidden.
+            let slot = index, slots = count;
+            if (short) {
+                const order = chosen.map((c, i) => sideNow(sides[i % 2]));
+                slots = order.filter(o => o === s).length;
+                slot = order.slice(0, index).filter(o => o === s).length;
+            }
+            const room = bottom - 40 - TOP;
+            const band = Math.max(SIZE + 60, room / slots);
+            if (short && (slot + 1) * band > room + 1) { el.hidden = true; return; }
             const slack = band - SIZE - 60;
             el.style.left = (x0 + fx * (x1 - x0) + window.scrollX) + 'px';
-            el.style.top = (TOP + index * band + slack * (0.15 + fy * 0.7)) + 'px';
+            el.style.top = (TOP + slot * band + slack * (0.15 + fy * 0.7)) + 'px';
         }
         place();
-        window.addEventListener('resize', place);
-        window.addEventListener('load', place);
+        placers.push(place);
 
         let ctx = null, dpr = 1, inside = null, total = GRID * GRID, threshold = 0.35, revealed = false;
         const scratched = new Set();
@@ -267,6 +368,6 @@
         });
 
         art.addEventListener('load', paintCover, { once: true });
-        art.src = 'stickers/' + id + '.svg';
+        art.src = 'stickers/' + (info.file || id + '.svg');
     }
 })();

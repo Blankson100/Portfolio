@@ -1,7 +1,7 @@
 // Builds the scratch-off landmark stickers into /stickers and a review page
 // sticker-preview.html. Same wobbly marker style as the avatar add-ons; each sticker
 // gets a white die-cut border so it reads as something pasted onto the page.
-// Run: node tools/build-stickers.js
+// Run: node tools/build-stickers.js, then node tools/render-stickers.js for the PNGs the pages use.
 const fs = require('fs');
 const path = require('path');
 
@@ -804,10 +804,229 @@ ${drop(248, 82, 0.7)}${drop(70, 168, 0.7)}${drop(52, 140, 0.55)}`,
     },
 };
 
-// Which stickers each page draws from. Home/About use `cities`; each case study its own
-// set; the Projects page mixes every project's.
+// Knicks fan stickers for the About page: team colours and fan gear, not the team's logo.
+const KB = '#006BB6', KO = '#F58426';
+const ball = (cx, cy, r, sw = 4) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${KO}"/>
+<path d="M${cx - r},${cy} H${cx + r} M${cx},${cy - r} V${cy + r} M${f(cx - r * 0.64)},${f(cy - r * 0.77)} Q${f(cx - r * 0.16)},${cy} ${f(cx - r * 0.64)},${f(cy + r * 0.77)} M${f(cx + r * 0.64)},${f(cy - r * 0.77)} Q${f(cx + r * 0.16)},${cy} ${f(cx + r * 0.64)},${f(cy + r * 0.77)}" fill="none" stroke-width="${sw}"/>`;
+const BLACK = 'font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle"';
+const KNICKS = {
+    knicksjersey: {
+        name: 'My Knicks jersey', caption: 'New York Knicks',
+        art: `<path d="M96,34 L124,28 C130,44 140,50 150,50 C160,50 170,44 176,28 L204,34 C206,68 220,96 242,110 L238,266 H62 L58,110 C80,96 94,68 96,34 Z" fill="${KB}"/>
+<path d="M124,28 C130,44 140,50 150,50 C160,50 170,44 176,28 M97,42 C94,70 82,96 62,108 M203,42 C206,70 218,96 238,108" fill="none" stroke="${KO}" stroke-width="7"/>
+<path d="M66,150 L67,258 M234,150 L233,258" fill="none" stroke="${KO}" stroke-width="8"/>
+<text x="150" y="102" ${BLACK} font-size="28" fill="#fff" stroke="${KO}" stroke-width="1.5">BRIGHT</text>
+<text x="150" y="216" ${BLACK} font-size="100" fill="#fff" stroke="${KO}" stroke-width="3">10</text>`,
+    },
+    msg: {
+        name: 'Madison Square Garden', caption: 'New York Knicks',
+        art: `<ellipse cx="150" cy="92" rx="118" ry="26" fill="#C9CDD2"/>
+<rect x="46" y="200" width="208" height="58" fill="#B9C1C9"/>
+<path d="M32,92 A118,26 0 0 0 268,92 V194 A118,26 0 0 1 32,194 Z" fill="#E3E6EA"/>
+${Array.from({ length: 11 }, (_, i) => { const x = 50 + i * 20, e = 26 * Math.sqrt(1 - ((x - 150) / 118) ** 2); return `<path d="M${x},${f(96 + e)} V${f(190 + e)}" fill="none" stroke="#B9C1C9" stroke-width="5"/>`; }).join('')}
+<rect x="84" y="238" width="132" height="20" fill="#6CB4E4"/>
+<rect x="96" y="204" width="108" height="30" rx="5" fill="${KB}"/>
+<text x="150" y="226" ${BLACK} font-size="18" fill="${KO}" stroke="none">KNICKS</text>
+${ground(262, 30, 270)}`,
+    },
+    foamfinger: {
+        name: 'Foam finger', caption: 'New York Knicks',
+        art: `<rect x="128" y="22" width="44" height="120" rx="22" fill="${KO}"/>
+<ellipse cx="86" cy="168" rx="18" ry="34" transform="rotate(-25 86 168)" fill="${KO}"/>
+<path d="M84,130 C84,112 96,104 112,104 H190 C206,104 216,116 216,132 V212 C216,240 196,256 170,256 H130 C104,256 84,240 84,212 Z" fill="${KO}"/>
+<path d="M176,116 Q196,110 214,122" fill="none" stroke-width="4"/>
+<text x="150" y="198" ${BLACK} font-size="56" fill="${KB}" stroke="none">#1</text>
+<text x="150" y="236" ${BLACK} font-size="22" fill="${KB}" stroke="none">KNICKS</text>
+<rect x="108" y="252" width="84" height="24" rx="6" fill="${KB}"/>`,
+    },
+    knicksfan: {
+        name: 'Me, courtside', caption: 'New York Knicks',
+        under: `<rect x="128" y="140" width="44" height="60" fill="${SKIN}"/>
+<path d="M50,280 C50,150 250,150 250,280 Z" fill="${KB}"/>
+<path d="M120,186 L150,220 L180,186 Z" fill="${SKIN}" stroke="none"/>
+<path d="M120,186 L150,220 L180,186" fill="none" stroke="${KO}" stroke-width="8"/>`,
+        raw: myHead(150, 104, 58),
+        art: `<circle cx="150" cy="104" r="58" fill="none"/>
+<path d="M94,82 A58,58 0 0 1 206,82 Q150,64 94,82 Z" fill="${KB}"/>
+<path d="M100,72 Q150,54 200,72" fill="none" stroke="${KO}" stroke-width="8"/>
+<circle cx="150" cy="32" r="12" fill="${KO}"/>
+${ball(234, 222, 36)}
+<circle cx="206" cy="248" r="13" fill="${SKIN}"/>`,
+    },
+    hoop: {
+        name: 'Nothing but net', caption: 'New York Knicks',
+        art: `<rect x="60" y="24" width="180" height="112" rx="6" fill="#fff"/>
+<rect x="116" y="72" width="68" height="54" fill="none" stroke="${KO}" stroke-width="6"/>
+<path d="M126,96 L132,122 M150,92 V120 M174,96 L168,122" fill="none" stroke-width="4"/>
+${ball(150, 178, 30)}
+${(() => { const top = i => f(100 + i * 12.5), bot = i => f(116 + i * 8.5); const d = Array.from({ length: 8 }, (_, i) => `M${top(i)},142 L${bot(i + 1)},212 M${top(i + 1)},142 L${bot(i)},212`).join(' ') + ' M116,212 H184'; return `<path d="${d}" fill="none" stroke-width="6"/><path d="${d}" fill="none" stroke="#fff" stroke-width="3"/>`; })()}
+<ellipse cx="150" cy="142" rx="50" ry="10" fill="none" stroke-width="14"/>
+<ellipse cx="150" cy="142" rx="50" ry="10" fill="none" stroke="${KO}" stroke-width="7"/>`,
+    },
+    gameticket: {
+        name: 'Game night', caption: 'New York Knicks',
+        art: `<g transform="rotate(8 150 150)">
+<path d="M40,92 H260 V132 A18,18 0 0 0 260,168 V208 H40 V168 A18,18 0 0 0 40,132 Z" fill="${KB}"/>
+<path d="M200,100 V200" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="8 8"/>
+<text x="120" y="144" ${BLACK} font-size="28" fill="#fff" stroke="none">KNICKS</text>
+<text x="120" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="11" letter-spacing="1" fill="${KO}" stroke="none">GAME NIGHT · MSG</text>
+<text x="120" y="188" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" fill="#fff" stroke="none">SEC 101 · ROW A · SEAT 10</text>
+${ball(230, 150, 17, 3)}
+</g>`,
+    },
+    pennant: {
+        name: 'Knicks pennant', caption: 'New York Knicks',
+        art: `<g transform="rotate(-8 150 150)">
+<rect x="20" y="40" width="12" height="226" rx="5" fill="#A0612B"/>
+<path d="M32,66 L270,150 L32,234 Z" fill="${KB}"/>
+<rect x="32" y="66" width="22" height="168" fill="${KO}"/>
+<path d="M32,66 L270,150 L32,234" fill="none"/>
+<text x="140" y="162" ${BLACK} font-size="32" fill="${KO}" stroke="none">KNICKS</text>
+</g>`,
+    },
+    hightop: {
+        name: 'Hoop shoes', caption: 'New York Knicks',
+        art: `<path d="M48,236 H262 C272,236 272,264 258,264 H54 C42,264 40,236 48,236 Z" fill="#fff"/>
+<path d="M58,238 L60,96 C60,84 70,76 82,76 H128 C140,76 146,86 148,98 L154,146 C196,154 236,170 252,196 C260,210 260,232 250,238 Z" fill="${KB}"/>
+<path d="M206,178 C230,186 248,198 254,214 C258,226 256,236 250,238 H214 C214,212 212,194 206,178 Z" fill="#fff"/>
+<path d="M74,206 C118,188 176,194 214,218" fill="none" stroke-width="20"/>
+<path d="M74,206 C118,188 176,194 214,218" fill="none" stroke="${KO}" stroke-width="11"/>
+<path d="M140,108 L160,104 M142,124 L164,122 M146,140 L170,140 M152,156 L180,160" fill="none" stroke="#fff" stroke-width="6"/>
+<rect x="56" y="70" width="94" height="22" rx="10" fill="${KO}"/>
+<rect x="48" y="98" width="16" height="54" rx="6" fill="${KO}"/>`,
+    },
+    scoreboard: {
+        name: 'Final score', caption: 'New York Knicks',
+        art: `<path d="M90,14 L110,56 M210,14 L190,56" fill="none" stroke-width="4"/>
+<rect x="30" y="56" width="240" height="184" rx="16" fill="#1F1F1F"/>
+<text x="150" y="90" ${BLACK} font-size="20" fill="#fff" stroke="none">FINAL</text>
+<rect x="46" y="104" width="96" height="94" rx="8" fill="#2B2B2B"/>
+<rect x="158" y="104" width="96" height="94" rx="8" fill="#2B2B2B"/>
+<text x="94" y="128" ${BLACK} font-size="15" fill="#fff" stroke="none">KNICKS</text>
+<text x="206" y="128" ${BLACK} font-size="15" fill="#fff" stroke="none">AWAY</text>
+<text x="94" y="182" ${BLACK} font-size="38" fill="${KO}" stroke="none">112</text>
+<text x="206" y="182" ${BLACK} font-size="38" fill="#7A7A7A" stroke="none">108</text>
+<text x="150" y="226" ${BLACK} font-size="16" fill="#E63946" stroke="none">0:00</text>`,
+    },
+    ballspin: {
+        name: 'On my finger', caption: 'New York Knicks',
+        art: `${limb([[230, 262], [184, 232]], SKIN, 34)}
+${limb([[216, 255], [206, 248]], KB, 34)}
+${limb([[152, 210], [150, 168]], SKIN, 16)}
+<ellipse cx="162" cy="224" rx="30" ry="24" transform="rotate(-30 162 224)" fill="${SKIN}"/>
+<path d="M146,232 Q156,244 170,240 M156,222 Q166,232 180,228" fill="none" stroke-width="3.5"/>
+${ball(150, 104, 70)}
+<path d="M58,92 Q66,52 104,36 M242,116 Q234,156 196,172" fill="none" stroke-width="5"/>
+<path d="M94,28 L106,36 L96,48 M206,180 L194,172 L204,160" fill="none" stroke-width="5"/>`,
+    },
+};
+
+// Manchester United fan stickers (About and the phone page): club colours and fan gear,
+// not the club's crest.
+const UR = '#DA291C', UB = '#1F1F1F';
+const pent = (cx, cy, r, rot) => 'M' + [0, 1, 2, 3, 4].map(i => {
+    const a = (rot + i * 72 - 90) * Math.PI / 180;
+    return `${f(cx + r * Math.cos(a))},${f(cy + r * Math.sin(a))}`;
+}).join(' L') + ' Z';
+const UNITED = {
+    unitedjersey: {
+        name: 'My United shirt', caption: 'Manchester United',
+        art: `<path d="M100,40 C112,52 130,58 150,58 C170,58 188,52 200,40 L248,62 L274,120 L236,138 L226,116 L226,264 H74 L74,116 L64,138 L26,120 L52,62 Z" fill="${UR}"/>
+<path d="M104,44 C116,54 132,60 150,60 C168,60 184,54 196,44" fill="none" stroke="#fff" stroke-width="7"/>
+<path d="M30,113 L66,130 M270,113 L234,130" fill="none" stroke="#fff" stroke-width="7"/>
+<text x="150" y="106" ${BLACK} font-size="28" fill="#fff" stroke="${UB}" stroke-width="1.5">BRIGHT</text>
+<text x="150" y="228" ${BLACK} font-size="112" fill="#fff" stroke="${UB}" stroke-width="3">7</text>`,
+    },
+    oldtrafford: {
+        name: 'Old Trafford', caption: 'Theatre of Dreams',
+        art: `<path d="M18,66 H282 L270,92 H30 Z" fill="#D9D9D9"/>
+<path d="M40,70 L60,88 L80,70 L100,88 L120,70 L140,88 L160,70 L180,88 L200,70 L220,88 L240,70 L260,88" fill="none" stroke="#9E9E9E" stroke-width="3"/>
+<rect x="30" y="92" width="240" height="106" fill="${UR}"/>
+<path d="M30,122 H270 M30,170 H270" fill="none" stroke="#A81E15" stroke-width="4"/>
+<text x="150" y="153" ${BLACK} font-size="17" fill="#fff" stroke="none">MANCHESTER UNITED</text>
+${[0, 1, 2, 3, 4, 5].map(i => `<path d="M${f(14 + i * 45.3)},198 H${f(59.3 + i * 45.3)} L${f(57 + i * 41.2)},262 H${f(16 + i * 41.2)} Z" fill="${i % 2 ? '#5DB85F' : '#43A047'}" stroke="none"/>`).join('')}
+<path d="M14,198 H286 L276,262 H24 Z" fill="none"/>
+<path d="M150,198 V262 M110,262 Q150,232 190,262" fill="none" stroke="#fff" stroke-width="3"/>`,
+    },
+    unitedscarf: {
+        name: 'United scarf', caption: 'Manchester United',
+        art: `<g transform="rotate(-24 150 150)">
+<path d="M26,114 V186 M36,114 V186 M46,114 V186 M254,114 V186 M264,114 V186 M274,114 V186" fill="none" stroke-width="4"/>
+<rect x="50" y="118" width="200" height="64" fill="${UR}"/>
+${[[54, '#fff'], [68, UB], [82, '#fff'], [206, '#fff'], [220, UB], [234, '#fff']].map(([x, c]) => `<rect x="${x}" y="118" width="12" height="64" fill="${c}" stroke="none"/>`).join('')}
+<rect x="50" y="118" width="200" height="64" fill="none"/>
+<text x="150" y="160" ${BLACK} font-size="20" fill="#fff" stroke="none">UNITED</text>
+</g>`,
+    },
+    redfork: {
+        name: 'Red Devil fork', caption: 'Red Devils',
+        art: `<g transform="rotate(18 150 150)">
+<rect x="144" y="104" width="12" height="168" rx="5" fill="${UR}"/>
+<path d="M144,110 C112,110 98,92 98,62 L90,62 L104,30 L118,62 L110,62 C110,84 120,94 144,96 L144,56 L136,56 L150,20 L164,56 L156,56 L156,96 C180,94 190,84 190,62 L182,62 L196,30 L210,62 L202,62 C202,92 188,110 156,110 Z" fill="${UR}"/>
+<path d="M124,40 L118,52 M176,40 L182,52" fill="none" stroke="#fff" stroke-width="3"/>
+</g>`,
+    },
+    matchball: {
+        name: 'Matchday ball', caption: 'Manchester United',
+        art: `<path d="M24,118 H58 M14,148 H52 M24,178 H58" fill="none" stroke-width="5"/>
+<ellipse cx="160" cy="258" rx="74" ry="11" fill="#CFCFCF" stroke="none"/>
+<defs><clipPath id="ballClip"><circle cx="160" cy="146" r="94"/></clipPath></defs>
+<circle cx="160" cy="146" r="94" fill="#fff"/>
+<g clip-path="url(#ballClip)">
+${[0, 1, 2, 3, 4].map(k => { const a = (-90 + k * 72) * Math.PI / 180; return `<path d="${pent(f(160 + Math.cos(a) * 84), f(146 + Math.sin(a) * 84), 28, 180 + k * 72)}" fill="${UB}" stroke="none"/><path d="M${f(160 + Math.cos(a) * 32)},${f(146 + Math.sin(a) * 32)} L${f(160 + Math.cos(a) * 56)},${f(146 + Math.sin(a) * 56)}" fill="none" stroke-width="3"/>`; }).join('')}
+</g>
+<path d="${pent(160, 146, 32, 0)}" fill="${UB}"/>
+<circle cx="160" cy="146" r="94" fill="none"/>
+<path d="M98,92 Q110,72 132,62" fill="none" stroke="${UR}" stroke-width="6"/>`,
+    },
+    unitedfan: {
+        name: 'Me, Red Devil', caption: 'Manchester United',
+        under: `<rect x="128" y="140" width="44" height="60" fill="${SKIN}"/>
+<path d="M50,280 C50,150 250,150 250,280 Z" fill="${UR}"/>
+<path d="M120,184 Q150,204 180,184" fill="none" stroke="#fff" stroke-width="7"/>`,
+        raw: myHead(150, 104, 58),
+        art: `<circle cx="150" cy="104" r="58" fill="none"/>
+<path d="M100,72 C88,52 94,30 110,20 C110,38 118,48 130,52 Z" fill="${UR}"/>
+<path d="M200,72 C212,52 206,30 190,20 C190,38 182,48 170,52 Z" fill="${UR}"/>
+<path d="M96,196 L118,280 L146,280 L128,190 Z" fill="${UR}"/>
+<path d="M104,222 L131,214 M112,250 L138,243" fill="none" stroke="#fff" stroke-width="8"/>
+<path d="M107,236 L134,229" fill="none" stroke="${UB}" stroke-width="7"/>
+<path d="M204,196 L182,280 L154,280 L172,190 Z" fill="${UR}"/>
+<path d="M196,222 L169,214 M188,250 L162,243" fill="none" stroke="#fff" stroke-width="8"/>
+<path d="M193,236 L166,229" fill="none" stroke="${UB}" stroke-width="7"/>`,
+    },
+    unitedticket: {
+        name: 'Matchday', caption: 'Old Trafford',
+        art: `<g transform="rotate(-8 150 150)">
+<path d="M40,92 H260 V132 A18,18 0 0 0 260,168 V208 H40 V168 A18,18 0 0 0 40,132 Z" fill="${UR}"/>
+<path d="M200,100 V200" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="8 8"/>
+<text x="120" y="144" ${BLACK} font-size="24" fill="#fff" stroke="none">MAN UTD</text>
+<text x="120" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="11" letter-spacing="1" fill="${UB}" stroke="none">OLD TRAFFORD</text>
+<text x="120" y="188" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" fill="#fff" stroke="none">STRETFORD END · SEAT 7</text>
+<circle cx="230" cy="150" r="17" fill="#fff" stroke-width="4"/>
+<path d="${pent(230, 150, 7, 0)}" fill="${UB}" stroke="none"/>
+</g>`,
+    },
+    ggmuflag: {
+        name: 'Glory Glory Man United', caption: 'Red Devils',
+        art: `<rect x="56" y="34" width="12" height="240" rx="5" fill="#8F9AA5"/>
+<circle cx="62" cy="30" r="10" fill="#FBE122"/>
+<path d="M68,48 C118,28 172,72 252,50 V170 C172,194 118,148 68,168 Z" fill="${UR}"/>
+<path d="M68,148 C118,128 172,172 252,150 V170 C172,194 118,148 68,168 Z" fill="${UB}"/>
+<text x="160" y="124" ${BLACK} font-size="46" fill="#fff" stroke="${UB}" stroke-width="2" transform="rotate(4 160 110)">GGMU</text>`,
+    },
+};
+
+// Which stickers each page draws from. Home uses `cities`; About takes one each from
+// `knicks`, `united`, `ghana` and `world`; the phone page adds a project and any city; each
+// case study its own set; Projects mixes every project's.
+const isGhana = id => /Ghana$/.test(LANDMARKS[id].city);
 const SETS = {
     cities: Object.keys(LANDMARKS),
+    ghana: Object.keys(LANDMARKS).filter(isGhana),
+    world: Object.keys(LANDMARKS).filter(id => !isGhana(id)),
+    knicks: Object.keys(KNICKS),
+    united: Object.keys(UNITED),
     clostra: ['bee', 'honey', 'honeycomb', 'beehive', 'dipper', 'sunflower', 'smoker', 'beekeeper'],
     lign: ['bus', 'trafficlight', 'busstop', 'ticket', 'road', 'cone', 'routemap', 'busapp'],
     cropcare: ['wateringcan', 'trowel', 'seedling', 'wheelbarrow', 'rake', 'shears', 'leafcheck', 'carrot'],
@@ -828,7 +1047,7 @@ const DEFS = '<filter id="rough" x="-10%" y="-10%" width="120%" height="120%">'
 
 const ALL = Object.assign(
     Object.fromEntries(Object.entries(LANDMARKS).map(([id, l]) => [id, { name: l.name, caption: l.city, art: l.art }])),
-    PROJECT_ITEMS);
+    PROJECT_ITEMS, KNICKS, UNITED);
 
 fs.mkdirSync(OUT, { recursive: true });
 const ROUGH = '<g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">';
@@ -846,11 +1065,12 @@ ${s.art}
 // Labels and per-page sets for scripts/sticker.js (a script, not JSON, so it also loads
 // when a page is opened straight from disk).
 fs.writeFileSync(path.join(OUT, 'stickers.js'), '// Generated by tools/build-stickers.js\nwindow.STICKERS = ' + JSON.stringify({
-    items: Object.fromEntries(Object.entries(ALL).map(([id, s]) => [id, { name: s.name, caption: s.caption }])),
+    // Pages load the PNG render (sharper on phones), or the SVG for animated stickers.
+    items: Object.fromEntries(Object.entries(ALL).map(([id, s]) => [id, { name: s.name, caption: s.caption, file: id + (s.style ? '.svg' : '.png') }])),
     sets: SETS,
 }, null, 4) + ';\n');
 
-const TITLES = { cities: 'Cities (Home & About)', clostra: 'Clostra', lign: 'Lign', cropcare: 'Crop Care', ontrack: 'OnTrack', roster: 'Roster' };
+const TITLES = { ghana: 'Ghana (Home & About)', world: 'World cities (Home & About)', knicks: 'Knicks (About)', united: 'Manchester United (About)', clostra: 'Clostra', lign: 'Lign', cropcare: 'Crop Care', ontrack: 'OnTrack', roster: 'Roster' };
 const sections = Object.entries(TITLES).map(([set, title]) => `<h2>${title}</h2>\n<div class="grid">\n${SETS[set].map(id =>
     `<figure><img src="stickers/${id}.svg" alt="${ALL[id].name}"><figcaption>${ALL[id].name}<span>${ALL[id].caption}</span></figcaption></figure>`).join('\n')}\n</div>`).join('\n');
 fs.writeFileSync(path.join(ROOT, 'sticker-preview.html'), `<!DOCTYPE html>

@@ -21,7 +21,7 @@
     <title>LeafAI - PortoBlknszzz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://api.fontshare.com">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
@@ -44,7 +44,7 @@
             width: 100%;
             margin: 0;
             margin-top: 90px;
-            /* margin-bottom: 100px; */
+            margin-bottom: 100px;
             flex: 1;
         }
         .hero-title-standalone {
@@ -461,7 +461,7 @@
             color: #BDBDBD;
             font-family: Satoshi, sans-serif;
             font-weight: 400;
-            margin-bottom: 24px;
+            margin-bottom: 0;
             text-align: left;
             line-height: 1.7;
         }
@@ -481,6 +481,49 @@
             align-items: center;
             justify-content: flex-start;
         }
+        /* Paragraphs inside "See how it works" */
+        .see-how-desc p {
+            margin: 0 0 14px 0;
+        }
+        .see-how-desc p:last-child {
+            margin-bottom: 0;
+        }
+        /* Challenges table: same look, but the rows grow to fit their text */
+        .chg-card.chg-auto {
+            position: relative;
+            top: auto;
+            left: auto;
+            height: auto;
+        }
+        .chg-grid {
+            height: auto;
+            display: grid;
+            grid-template-columns: 297px 1fr;
+        }
+        .chg-cell {
+            padding: 15px 10px;
+            background: #161616;
+            border-bottom: 0.5px solid #2D2D2D;
+            color: #FFFFFF;
+            font-family: Satoshi, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: -0.48px;
+        }
+        .chg-cell.chg-head {
+            background: #2D2D2D;
+            border-bottom: none;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-weight: 510;
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0;
+        }
+        .chg-grid .chg-cell:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
     </style>
 </head>
 <body class="dark-mode">
@@ -509,7 +552,7 @@
                     <a href="#the-app">The App</a>
                     <a href="#design-process">Design Process</a>
                     <a href="#challenges">Challenges</a>
-                    <a href="#whats-next">What's Next</a>
+                    <a href="#whats-next">View Full Case Study</a>
                 </div>
                 <div class="project-main">
             <h1 class="hero-title-standalone">Crop Care</h1>
@@ -520,18 +563,14 @@
             <div class="toc-section" id="introduction">
                 <h2 class="toc-heading">Introduction</h2>
                 <div class="toc-content">
-                    <p>Crop Care is an AI-powered personal assistant for farmers. Point your phone at a diseased leaf, and it identifies the problem, suggests treatment, and walks you through treatment, in your own language.</p>
-                    <p>No agricultural training needed and no internet connection needed either. It's built for the moment it actually matters: standing in a field, looking at a plant that wasn't there yesterday, needing an answer now instead of in three days.</p>
-                    <p>Whether it's a single potted plant at home or a working farm, the same care applies. Crop Care scales with whoever's using it.</p>
+                    <p>Crop Care is a plant-disease app for growers. Point your phone at a sick leaf, and it names the likely disease, explains it in plain language, shows how sure it is, and suggests what to do next. Every scan is saved, so over time the app becomes a record of what went wrong and what worked. It's built for a farmer on an open plot and for someone with a few tomato plants at home. The idea came from a school project led by students in another department. I joined as the product designer and took it to a working Figma prototype in two months.</p>
                 </div>
             </div>
 
             <div class="toc-section" id="the-problem">
                 <h2 class="toc-heading">The Problem</h2>
                 <div class="toc-content">
-                    <p>Plant diseases destroy 20 to 40 percent of global crop yields every year, costing the world economy over $220 billion. Most of that's preventable if caught early, but for most farmers, expert diagnosis is slow to reach them, if it reaches them at all. In many regions, one extension officer covers several thousand farmers, so by the time help arrives, the disease has already spread.</p>
-                    <p>Existing tools don't close that gap. They're often built around a narrow set of crops and diseases, tested in conditions far removed from an actual field, and rarely account for how a farmer describes what they're seeing, in their own words, their own language.</p>
-                    <p>What's missing is a system that becomes a personal assistant to farmers, one that understands them and translates for them based on where they are and what language they speak, so the answer they get back actually makes sense to them.</p>
+                    <p>Pests and diseases take between a fifth and a third of major staple crops worldwide. In Ghana, one extension officer may serve 700 to 1,500 farmers, and only about 1 in 6 farmers in the North owns a smartphone. In casual chats with farmers near Korle Bu in Accra, none kept a record of crop problems. What they knew lived in memory, passed down from fathers and uncles. So growers face two problems. Right now: what is wrong, and what do I do? Over time: has this happened before, and what worked? Most plant apps answer the first. Crop Care is built for both.</p>
                 </div>
             </div>
 
@@ -540,46 +579,84 @@
                 <div class="case-video" data-video="videos/cropcare.mp4"></div>
                 <div class="see-how-title">See how it works</div>
                 <div class="see-how-desc">
-                    Plant AI: Crop Care uses computer vision to identify diseases across all plant types, and language AI to deliver treatment in local languages. The app connects farmers to nearby supplies through an accessibility-first interface.
+                    <p>Scan a leaf, and the result leads with the disease name, then four plain sections: Symptoms, Cause, Prevention and Treatment. A small coin flips to show how sure the app is: "96%, Very likely". When it isn't sure, it turns amber, says "Not sure" and asks for more leaves. A voice button reads the result aloud and takes questions back. Every scan saves to History automatically, building the crop-health record growers never kept.</p>
                 </div>
             </div>
 
             <div class="toc-section" id="design-process">
                 <h2 class="toc-heading">Design Process</h2>
-                <div class="toc-content">
-                    <p>Research started with FAO and World Bank data to understand the scale of the problem, then a competitive audit across six existing apps: PlantNet, PlantVillage Nuru, iNaturalist, Google Lens, Agrio, and Plantix. None of them met more than half the criteria that actually mattered, language support, treatment guidance, offline use, simplicity.</p>
-                    <p>The camera screen went through three versions. The first had no guidance at all, and testers didn't know how close to hold the phone or how to frame the leaf. The second added instructions, but the text blocked the viewfinder. The final version cut it down to two short prompts that sit above the camera without getting in the way.</p>
-                    <p>The result screen changed the most. Early versions dumped everything, diagnosis, treatment, prevention, into one long scroll, and testers missed half of it. Splitting it into clear sections fixed that: a user can read the diagnosis in under three seconds, then choose how deep to go.</p>
-                    <p>Visually, the whole app leans on deep greens pulled from healthy crop leaves, because it should look like what it's for. White backgrounds keep the result and history screens legible outdoors. Icons always carry a text label, since not every user is used to reading icons alone.</p>
+                <div class="notebook nb-row" tabindex="0" role="region" aria-label="Design process notes. Scroll sideways for more.">
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">1.</span><span class="nb-word">Listening first</span></h3>
+                        <ul class="nb-notes">
+                            <li>Casual chats with farmers near Korle Bu, then published research.</li>
+                        </ul>
+                        <p class="nb-sticky">Nobody kept records. So remembering became half the app.</p>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">2.</span><span class="nb-word">Camera screen</span></h3>
+                        <ul class="nb-versions">
+                            <li class="nb-no"><b>v1</b><s>no guidance</s></li>
+                            <li class="nb-no"><b>v2</b><s>written instructions</s></li>
+                            <li class="nb-yes"><b>v3</b>two short prompts</li>
+                        </ul>
+                        <div class="nb-shots">
+                            <figure class="nb-shot nb-no"><div class="nb-shot-frame"><span>v1</span><img src="crop-care/camera-v1.png" alt="Camera screen, v1" onerror="this.remove()"></div><figcaption>v1</figcaption></figure>
+                            <figure class="nb-shot nb-no"><div class="nb-shot-frame"><span>v2</span><img src="crop-care/camera-v2.png" alt="Camera screen, v2" onerror="this.remove()"></div><figcaption>v2</figcaption></figure>
+                            <figure class="nb-shot nb-yes"><div class="nb-shot-frame"><span>v3</span><img src="crop-care/camera-v3.png" alt="Camera screen, v3" onerror="this.remove()"></div><figcaption>v3</figcaption></figure>
+                        </div>
+                        <p class="nb-sticky">Long instructions don't get read.</p>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">3.</span><span class="nb-word">Result screen</span></h3>
+                        <ul class="nb-versions">
+                            <li class="nb-no"><b>Before:</b><s>disease stated as fact.</s></li>
+                            <li class="nb-yes"><b>After:</b>confidence shown before you act, and an honest "not sure".</li>
+                        </ul>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">4.</span><span class="nb-word">The coin</span></h3>
+                        <ul class="nb-versions">
+                            <li class="nb-no"><b>v1</b><s>flipped non-stop</s></li>
+                            <li class="nb-yes"><b>v2</b>flips once, then rests on the score</li>
+                        </ul>
+                        <p class="nb-sticky">Motion to catch the eye. Stillness to read.</p>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">5.</span><span class="nb-word">Words plus a number</span></h3>
+                        <ul class="nb-versions">
+                            <li class="nb-no"><s>"Likely" alone</s></li>
+                            <li class="nb-yes">"96%, Very likely"</li>
+                        </ul>
+                        <p class="nb-sticky">People read 'likely' very differently.</p>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">6.</span><span class="nb-word">A logbook that fills itself</span></h3>
+                        <ul class="nb-notes">
+                            <li>Every scan saves to History automatically.</li>
+                        </ul>
+                        <p class="nb-sticky">Records die when they feel like work.</p>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">7.</span><span class="nb-word">Look and feel</span></h3>
+                        <ul class="nb-notes">
+                            <li>Greens from healthy leaves.</li>
+                            <li>White backgrounds that stay readable outdoors.</li>
+                        </ul>
+                        <p class="nb-chips"><span class="nb-chip" style="--c:#1E5E3A">deep green</span><span class="nb-chip" style="--c:#6DBE45">leaf green</span><span class="nb-chip" style="--c:#FFFFFF">white</span></p>
+                    </div>
                 </div>
             </div>
 
             <div class="toc-section" id="challenges">
-                <div class="chg-wrap">
-                    <div class="chg-title">Challenges</div>
-                    <div class="chg-card">
-                        <div class="chg-inner">
-                            <div class="chg-row chg-row-header"></div>
-                            <div class="chg-row chg-row-body" style="top:44px; height:74px;"></div>
-                            <div class="chg-row chg-row-body" style="top:118px; height:52px;"></div>
-                            <div class="chg-row chg-row-body" style="top:170px; height:52px;"></div>
-                            <div class="chg-row chg-row-body" style="top:222px; height:74px; border-bottom:none;"></div>
-
-                            <span class="chg-text chg-text-header" style="left:10px; top:15px;">Challenge</span>
-                            <span class="chg-text chg-text-header" style="left:307px; top:15px;">Response</span>
-
-                            <span class="chg-text chg-text-body" style="left:10px; top:70px;">Trust in AI accuracy</span>
-                            <span class="chg-text chg-text-body" style="left:307px; top:59px; width:277px;">Confidence score, calibrated against real<br>outcomes</span>
-
-                            <span class="chg-text chg-text-body" style="left:10px; top:133px;">No connectivity in the field</span>
-                            <span class="chg-text chg-text-body" style="left:297px; top:133px;">On-device model, no server call needed</span>
-
-                            <span class="chg-text chg-text-body" style="left:10px; top:185px;">Dataset bias toward Western crops</span>
-                            <span class="chg-text chg-text-body" style="left:297px; top:185px;">Local image collection to expand coverage</span>
-
-                            <span class="chg-text chg-text-body" style="left:10px; top:248px;">Getting farmers to actually use it</span>
-                            <span class="chg-text chg-text-body" style="left:297px; top:237px; width:287px;">Distribution through people they already<br>trust</span>
-                        </div>
+                <h2 class="toc-heading">Challenges</h2>
+                <div class="chg-card chg-auto">
+                    <div class="chg-inner chg-grid">
+                        <span class="chg-cell chg-head">Challenge</span><span class="chg-cell chg-head">Response</span>
+                        <span class="chg-cell">AI is less accurate in real fields</span><span class="chg-cell">Confidence shown on every result</span>
+                        <span class="chg-cell">A number alone is easy to misread</span><span class="chg-cell">Word, number and colour: "96%, Very likely"</span>
+                        <span class="chg-cell">One photo may not be enough</span><span class="chg-cell">Low confidence asks for more leaves</span>
+                        <span class="chg-cell">Low literacy</span><span class="chg-cell">Voice reads every result aloud</span>
                     </div>
                 </div>
             </div>
@@ -779,5 +856,6 @@
     <script src="scripts/case-video.js"></script>
     <script src="stickers/stickers.js"></script>
     <script src="scripts/sticker.js" data-set="cropcare" data-count="6"></script>
+    <script src="scripts/notebook-row.js"></script>
 </body>
 </html>

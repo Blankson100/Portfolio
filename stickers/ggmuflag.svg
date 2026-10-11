@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="56" y="34" width="12" height="240" rx="5" fill="#8F9AA5"/>
+<circle cx="62" cy="30" r="10" fill="#FBE122"/>
+<path d="M68,48 C118,28 172,72 252,50 V170 C172,194 118,148 68,168 Z" fill="#DA291C"/>
+<path d="M68,148 C118,128 172,172 252,150 V170 C172,194 118,148 68,168 Z" fill="#1F1F1F"/>
+<text x="160" y="124" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="46" fill="#fff" stroke="#1F1F1F" stroke-width="2" transform="rotate(4 160 110)">GGMU</text>
+</g></g>
+</svg>

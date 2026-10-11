@@ -1,0 +1,214 @@
+/* Phone layout (portfolio-mobile-light.html / portfolio-mobile-dark.html). Loaded after
+   BB.css, which brings the page fade, the avatar's thought bubbles and the stickers.
+   Measurements follow the 390px-wide design: 24px side padding, 16px between sections. */
+:root {
+    --m-bg: #FFFFFF;
+    --m-text: #000000;
+    --m-muted: #9F9F9F;
+    --m-bio: #A9A9A9;
+    --m-icon: #898A8B;
+    --m-outline: #000000;
+    --m-mode-bg: rgba(255, 255, 255, 0.78);
+}
+body.dark-mode {
+    --m-bg: #000000;
+    --m-text: #FFFFFF;
+    --m-muted: #7A7A7A;
+    --m-bio: #6A6A6A;
+    --m-icon: #8A8A8A;
+    --m-outline: #FFFFFF;
+    --m-mode-bg: rgba(30, 30, 30, 0.78);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body.m-page {
+    background: var(--m-bg);
+    color: var(--m-text);
+    font-family: Satoshi, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+}
+/* Zero specificity, so the classes below always win */
+:where(.m-page) :where(h1, h2, h3, p) {
+    margin: 0;
+    font: inherit;
+}
+
+.m-main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 40px 24px 0;
+}
+
+/* Header: portrait, name, subtitle */
+.m-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.m-avatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 8px;
+    -webkit-tap-highlight-color: transparent;
+}
+.m-avatar-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: url(#avatarScallop);
+}
+/* The real photo, shown on tap (another tap goes back to the drawing) */
+.m-avatar {
+    cursor: pointer;
+}
+.m-avatar-human {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 65%;
+    clip-path: url(#avatarScallop);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.m-avatar.is-human .m-avatar-human {
+    opacity: 1;
+}
+.m-avatar:focus-visible {
+    outline: 2px solid var(--m-text);
+    outline-offset: 4px;
+    border-radius: 50%;
+}
+.m-avatar-stroke {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+.m-avatar-stroke path {
+    stroke: var(--m-outline);
+}
+.m-name {
+    font-size: 21px;
+    line-height: 28px;
+}
+.m-role {
+    margin-top: 4px;
+    font-weight: 300;
+    color: var(--m-muted);
+}
+
+/* Biography */
+.m-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    color: var(--m-bio);
+    letter-spacing: -0.48px;
+}
+.m-em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--m-text);
+}
+.m-strong {
+    color: var(--m-text);
+}
+/* A fine wavy underline (the browser's own wavy underline is much coarser) */
+.m-link {
+    color: var(--m-text);
+    text-decoration: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Cpath d='M0 1.5Q.75 0 1.5 1.5T3 1.5' fill='none' stroke='%23000' stroke-width='.8'/%3E%3C/svg%3E") repeat-x 0 calc(100% - 2px) / 3px 3px;
+}
+body.dark-mode .m-link {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Cpath d='M0 1.5Q.75 0 1.5 1.5T3 1.5' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3C/svg%3E");
+}
+
+/* Projects, contact, experience */
+.m-projects {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.m-heading,
+.m-title {
+    font-weight: 500;
+    color: var(--m-muted);
+}
+.m-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.m-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+}
+.m-desc {
+    color: var(--m-text);
+}
+.m-handle {
+    color: var(--m-muted);
+    text-decoration: none;
+}
+
+.m-footer {
+    padding: 18px 25px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+    color: var(--m-muted);
+}
+
+/* Light/dark switch, pinned top right (level with the portrait) so it stays put while the
+   page scrolls. The light page shows only the moon (go dark), the dark page only the sun
+   (go light). Once text scrolls underneath, a soft disc fades in behind it. */
+.m-mode {
+    position: fixed;
+    top: 46px;
+    right: 17px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: var(--m-icon);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.m-mode svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+.m-mode.is-floating {
+    background: var(--m-mode-bg);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+/* A bigger, invisible tap target */
+.m-mode::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+}
+.m-mode:active {
+    color: var(--m-text);
+}

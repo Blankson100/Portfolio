@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M90,14 L110,56 M210,14 L190,56" fill="none" stroke-width="4"/>
+<rect x="30" y="56" width="240" height="184" rx="16" fill="#1F1F1F"/>
+<text x="150" y="90" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="20" fill="#fff" stroke="none">FINAL</text>
+<rect x="46" y="104" width="96" height="94" rx="8" fill="#2B2B2B"/>
+<rect x="158" y="104" width="96" height="94" rx="8" fill="#2B2B2B"/>
+<text x="94" y="128" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="15" fill="#fff" stroke="none">KNICKS</text>
+<text x="206" y="128" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="15" fill="#fff" stroke="none">AWAY</text>
+<text x="94" y="182" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="38" fill="#F58426" stroke="none">112</text>
+<text x="206" y="182" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="38" fill="#7A7A7A" stroke="none">108</text>
+<text x="150" y="226" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="16" fill="#E63946" stroke="none">0:00</text>
+</g></g>
+</svg>

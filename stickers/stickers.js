@@ -3,247 +3,398 @@ window.STICKERS = {
     "items": {
         "accra": {
             "name": "Black Star Gate",
-            "caption": "Accra, Ghana"
+            "caption": "Accra, Ghana",
+            "file": "accra.png"
         },
         "nkrumah": {
             "name": "Nkrumah Mausoleum",
-            "caption": "Accra, Ghana"
+            "caption": "Accra, Ghana",
+            "file": "nkrumah.png"
         },
         "jamestown": {
             "name": "Jamestown Lighthouse",
-            "caption": "Accra, Ghana"
+            "caption": "Accra, Ghana",
+            "file": "jamestown.png"
         },
         "capecoast": {
             "name": "Cape Coast Castle",
-            "caption": "Cape Coast, Ghana"
+            "caption": "Cape Coast, Ghana",
+            "file": "capecoast.png"
         },
         "larabanga": {
             "name": "Larabanga Mosque",
-            "caption": "Larabanga, Ghana"
+            "caption": "Larabanga, Ghana",
+            "file": "larabanga.png"
         },
         "kakum": {
             "name": "Kakum Canopy Walk",
-            "caption": "Central Region, Ghana"
+            "caption": "Central Region, Ghana",
+            "file": "kakum.png"
         },
         "manhyia": {
             "name": "Manhyia Palace",
-            "caption": "Kumasi, Ghana"
+            "caption": "Kumasi, Ghana",
+            "file": "manhyia.png"
         },
         "london": {
             "name": "Big Ben",
-            "caption": "London, UK"
+            "caption": "London, UK",
+            "file": "london.png"
         },
         "paris": {
             "name": "Eiffel Tower",
-            "caption": "Paris, France"
+            "caption": "Paris, France",
+            "file": "paris.png"
         },
         "newyork": {
             "name": "Statue of Liberty",
-            "caption": "New York, USA"
+            "caption": "New York, USA",
+            "file": "newyork.png"
         },
         "dubai": {
             "name": "Burj Khalifa",
-            "caption": "Dubai, UAE"
+            "caption": "Dubai, UAE",
+            "file": "dubai.png"
         },
         "tokyo": {
             "name": "Tokyo Tower",
-            "caption": "Tokyo, Japan"
+            "caption": "Tokyo, Japan",
+            "file": "tokyo.png"
         },
         "sydney": {
             "name": "Opera House",
-            "caption": "Sydney, Australia"
+            "caption": "Sydney, Australia",
+            "file": "sydney.png"
         },
         "capetown": {
             "name": "Table Mountain",
-            "caption": "Cape Town, South Africa"
+            "caption": "Cape Town, South Africa",
+            "file": "capetown.png"
         },
         "lagos": {
             "name": "National Theatre",
-            "caption": "Lagos, Nigeria"
+            "caption": "Lagos, Nigeria",
+            "file": "lagos.png"
         },
         "nairobi": {
             "name": "KICC",
-            "caption": "Nairobi, Kenya"
+            "caption": "Nairobi, Kenya",
+            "file": "nairobi.png"
         },
         "toronto": {
             "name": "CN Tower",
-            "caption": "Toronto, Canada"
+            "caption": "Toronto, Canada",
+            "file": "toronto.png"
         },
         "berlin": {
             "name": "Brandenburg Gate",
-            "caption": "Berlin, Germany"
+            "caption": "Berlin, Germany",
+            "file": "berlin.png"
         },
         "cairo": {
             "name": "Pyramids of Giza",
-            "caption": "Cairo, Egypt"
+            "caption": "Cairo, Egypt",
+            "file": "cairo.png"
         },
         "bee": {
             "name": "Busy bee",
-            "caption": "Clostra"
+            "caption": "Clostra",
+            "file": "bee.png"
         },
         "honey": {
             "name": "Honey pot",
-            "caption": "Clostra"
+            "caption": "Clostra",
+            "file": "honey.png"
         },
         "honeycomb": {
             "name": "Honeycomb",
-            "caption": "Clostra"
+            "caption": "Clostra",
+            "file": "honeycomb.png"
         },
         "beehive": {
             "name": "Beehive",
-            "caption": "Clostra"
+            "caption": "Clostra",
+            "file": "beehive.png"
         },
         "dipper": {
             "name": "Honey dipper",
-            "caption": "Clostra"
+            "caption": "Clostra",
+            "file": "dipper.png"
         },
         "sunflower": {
             "name": "Sunflower",
-            "caption": "Clostra"
+            "caption": "Clostra",
+            "file": "sunflower.png"
         },
         "smoker": {
             "name": "Bee smoker",
-            "caption": "Clostra"
+            "caption": "Clostra",
+            "file": "smoker.png"
         },
         "beekeeper": {
             "name": "Beekeeper’s hat",
-            "caption": "Clostra"
+            "caption": "Clostra",
+            "file": "beekeeper.png"
         },
         "bus": {
             "name": "Lign bus",
-            "caption": "Lign"
+            "caption": "Lign",
+            "file": "bus.png"
         },
         "trafficlight": {
             "name": "Traffic light",
-            "caption": "Lign"
+            "caption": "Lign",
+            "file": "trafficlight.svg"
         },
         "busstop": {
             "name": "Bus stop",
-            "caption": "Lign"
+            "caption": "Lign",
+            "file": "busstop.png"
         },
         "ticket": {
             "name": "Bus ticket",
-            "caption": "Lign"
+            "caption": "Lign",
+            "file": "ticket.png"
         },
         "road": {
             "name": "The open road",
-            "caption": "Lign"
+            "caption": "Lign",
+            "file": "road.png"
         },
         "cone": {
             "name": "Traffic cone",
-            "caption": "Lign"
+            "caption": "Lign",
+            "file": "cone.png"
         },
         "routemap": {
             "name": "Route map",
-            "caption": "Lign"
+            "caption": "Lign",
+            "file": "routemap.png"
         },
         "busapp": {
             "name": "Bus in 3 min",
-            "caption": "Lign"
+            "caption": "Lign",
+            "file": "busapp.png"
         },
         "wateringcan": {
             "name": "Watering can",
-            "caption": "Crop Care"
+            "caption": "Crop Care",
+            "file": "wateringcan.png"
         },
         "trowel": {
             "name": "Garden trowel",
-            "caption": "Crop Care"
+            "caption": "Crop Care",
+            "file": "trowel.png"
         },
         "seedling": {
             "name": "Seedling",
-            "caption": "Crop Care"
+            "caption": "Crop Care",
+            "file": "seedling.png"
         },
         "wheelbarrow": {
             "name": "Wheelbarrow",
-            "caption": "Crop Care"
+            "caption": "Crop Care",
+            "file": "wheelbarrow.png"
         },
         "rake": {
             "name": "Garden rake",
-            "caption": "Crop Care"
+            "caption": "Crop Care",
+            "file": "rake.png"
         },
         "shears": {
             "name": "Pruning shears",
-            "caption": "Crop Care"
+            "caption": "Crop Care",
+            "file": "shears.png"
         },
         "leafcheck": {
             "name": "Leaf check",
-            "caption": "Crop Care"
+            "caption": "Crop Care",
+            "file": "leafcheck.png"
         },
         "carrot": {
             "name": "Fresh carrot",
-            "caption": "Crop Care"
+            "caption": "Crop Care",
+            "file": "carrot.png"
         },
         "workout": {
             "name": "Me, working out",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "workout.png"
         },
         "sneaker": {
             "name": "Running shoe",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "sneaker.png"
         },
         "stopwatch": {
             "name": "Stopwatch",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "stopwatch.png"
         },
         "bottle": {
             "name": "Water bottle",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "bottle.png"
         },
         "kettlebell": {
             "name": "Kettlebell",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "kettlebell.png"
         },
         "medal": {
             "name": "Finisher medal",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "medal.png"
         },
         "heartrate": {
             "name": "Heart rate",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "heartrate.svg"
         },
         "jumprope": {
             "name": "Jump rope",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "jumprope.png"
         },
         "running": {
             "name": "Me, out for a run",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "running.png"
         },
         "cycling": {
             "name": "Me, on my bike",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "cycling.png"
         },
         "yoga": {
             "name": "Me, finding my calm",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "yoga.png"
         },
         "salad": {
             "name": "Me, eating clean",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "salad.png"
         },
         "swimming": {
             "name": "Me, doing laps",
-            "caption": "OnTrack"
+            "caption": "OnTrack",
+            "file": "swimming.png"
         },
         "network": {
             "name": "Networking",
-            "caption": "Roster"
+            "caption": "Roster",
+            "file": "network.png"
         },
         "namebadge": {
             "name": "Hello badge",
-            "caption": "Roster"
+            "caption": "Roster",
+            "file": "namebadge.png"
         },
         "coffee": {
             "name": "Coffee chat",
-            "caption": "Roster"
+            "caption": "Roster",
+            "file": "coffee.png"
         },
         "businesscard": {
             "name": "Business card",
-            "caption": "Roster"
+            "caption": "Roster",
+            "file": "businesscard.png"
         },
         "goldengate": {
             "name": "Golden Gate Bridge",
-            "caption": "San Francisco"
+            "caption": "San Francisco",
+            "file": "goldengate.png"
+        },
+        "knicksjersey": {
+            "name": "My Knicks jersey",
+            "caption": "New York Knicks",
+            "file": "knicksjersey.png"
+        },
+        "msg": {
+            "name": "Madison Square Garden",
+            "caption": "New York Knicks",
+            "file": "msg.png"
+        },
+        "foamfinger": {
+            "name": "Foam finger",
+            "caption": "New York Knicks",
+            "file": "foamfinger.png"
+        },
+        "knicksfan": {
+            "name": "Me, courtside",
+            "caption": "New York Knicks",
+            "file": "knicksfan.png"
+        },
+        "hoop": {
+            "name": "Nothing but net",
+            "caption": "New York Knicks",
+            "file": "hoop.png"
+        },
+        "gameticket": {
+            "name": "Game night",
+            "caption": "New York Knicks",
+            "file": "gameticket.png"
+        },
+        "pennant": {
+            "name": "Knicks pennant",
+            "caption": "New York Knicks",
+            "file": "pennant.png"
+        },
+        "hightop": {
+            "name": "Hoop shoes",
+            "caption": "New York Knicks",
+            "file": "hightop.png"
+        },
+        "scoreboard": {
+            "name": "Final score",
+            "caption": "New York Knicks",
+            "file": "scoreboard.png"
+        },
+        "ballspin": {
+            "name": "On my finger",
+            "caption": "New York Knicks",
+            "file": "ballspin.png"
+        },
+        "unitedjersey": {
+            "name": "My United shirt",
+            "caption": "Manchester United",
+            "file": "unitedjersey.png"
+        },
+        "oldtrafford": {
+            "name": "Old Trafford",
+            "caption": "Theatre of Dreams",
+            "file": "oldtrafford.png"
+        },
+        "unitedscarf": {
+            "name": "United scarf",
+            "caption": "Manchester United",
+            "file": "unitedscarf.png"
+        },
+        "redfork": {
+            "name": "Red Devil fork",
+            "caption": "Red Devils",
+            "file": "redfork.png"
+        },
+        "matchball": {
+            "name": "Matchday ball",
+            "caption": "Manchester United",
+            "file": "matchball.png"
+        },
+        "unitedfan": {
+            "name": "Me, Red Devil",
+            "caption": "Manchester United",
+            "file": "unitedfan.png"
+        },
+        "unitedticket": {
+            "name": "Matchday",
+            "caption": "Old Trafford",
+            "file": "unitedticket.png"
+        },
+        "ggmuflag": {
+            "name": "Glory Glory Man United",
+            "caption": "Red Devils",
+            "file": "ggmuflag.png"
         }
     },
     "sets": {
@@ -267,6 +418,51 @@ window.STICKERS = {
             "toronto",
             "berlin",
             "cairo"
+        ],
+        "ghana": [
+            "accra",
+            "nkrumah",
+            "jamestown",
+            "capecoast",
+            "larabanga",
+            "kakum",
+            "manhyia"
+        ],
+        "world": [
+            "london",
+            "paris",
+            "newyork",
+            "dubai",
+            "tokyo",
+            "sydney",
+            "capetown",
+            "lagos",
+            "nairobi",
+            "toronto",
+            "berlin",
+            "cairo"
+        ],
+        "knicks": [
+            "knicksjersey",
+            "msg",
+            "foamfinger",
+            "knicksfan",
+            "hoop",
+            "gameticket",
+            "pennant",
+            "hightop",
+            "scoreboard",
+            "ballspin"
+        ],
+        "united": [
+            "unitedjersey",
+            "oldtrafford",
+            "unitedscarf",
+            "redfork",
+            "matchball",
+            "unitedfan",
+            "unitedticket",
+            "ggmuflag"
         ],
         "clostra": [
             "bee",

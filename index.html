@@ -3,36 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bright Blankson Portfolio</title>
+  <title>PortoBlknszzz</title>
   <script>
-    // Detect dark mode preference
-    var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // Redirect to the appropriate mobile version
-    if (isDark) {
-      window.location.replace('portfolio-mobile-dark.html');
-    } else {
-      window.location.replace('portfolio-mobile-light.html');
-    }
+    // Phones get the one-page mobile version, bigger screens the full site, each in light
+    // or dark to match the device's setting.
+    (function () {
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var phone = window.matchMedia('(max-width: 700px)').matches;
+      var page = phone
+        ? (dark ? 'portfolio-mobile-dark.html' : 'portfolio-mobile-light.html')
+        : (dark ? 'BBDark.html' : 'BB.html');
+      window.location.replace(page + window.location.search + window.location.hash);
+    })();
   </script>
+  <noscript><meta http-equiv="refresh" content="0; url=BB.html"></noscript>
   <style>
     body {
-      background: #fff;
-      color: #222;
-      font-family: 'Jost', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       margin: 0;
+      background: #fff;
     }
-    .loading {
-      font-size: 1.2em;
-      color: #888;
+    @media (prefers-color-scheme: dark) {
+      body { background: #000; }
     }
   </style>
 </head>
-<body>
-  <div class="loading">Loading portfolio...</div>
-  <script src="scripts/logo-rotator.js"></script>
-</body>
+<body></body>
 </html>

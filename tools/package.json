@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-tools",
+  "private": true,
+  "description": "Build tools for the stickers (render-stickers.js)",
+  "devDependencies": {
+    "puppeteer-core": "23.11.1",
+    "sharp": "0.33.5"
+  }
+}

@@ -48,7 +48,7 @@
             window.smartBack();
             return;
         }
-        if (/\/bb(dark)?\.html$/i.test(window.location.pathname)) return;
+        if (/\/(bb(dark)?|portfolio-mobile-(light|dark))\.html$/i.test(window.location.pathname)) return;
         e.preventDefault();
         window.fadeNavigate(document.body.classList.contains('dark-mode') ? 'BBDark.html' : 'BB.html');
     });

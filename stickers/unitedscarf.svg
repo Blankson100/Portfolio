@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<g transform="rotate(-24 150 150)">
+<path d="M26,114 V186 M36,114 V186 M46,114 V186 M254,114 V186 M264,114 V186 M274,114 V186" fill="none" stroke-width="4"/>
+<rect x="50" y="118" width="200" height="64" fill="#DA291C"/>
+<rect x="54" y="118" width="12" height="64" fill="#fff" stroke="none"/><rect x="68" y="118" width="12" height="64" fill="#1F1F1F" stroke="none"/><rect x="82" y="118" width="12" height="64" fill="#fff" stroke="none"/><rect x="206" y="118" width="12" height="64" fill="#fff" stroke="none"/><rect x="220" y="118" width="12" height="64" fill="#1F1F1F" stroke="none"/><rect x="234" y="118" width="12" height="64" fill="#fff" stroke="none"/>
+<rect x="50" y="118" width="200" height="64" fill="none"/>
+<text x="150" y="160" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="20" fill="#fff" stroke="none">UNITED</text>
+</g>
+</g></g>
+</svg>

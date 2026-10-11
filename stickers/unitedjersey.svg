@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M100,40 C112,52 130,58 150,58 C170,58 188,52 200,40 L248,62 L274,120 L236,138 L226,116 L226,264 H74 L74,116 L64,138 L26,120 L52,62 Z" fill="#DA291C"/>
+<path d="M104,44 C116,54 132,60 150,60 C168,60 184,54 196,44" fill="none" stroke="#fff" stroke-width="7"/>
+<path d="M30,113 L66,130 M270,113 L234,130" fill="none" stroke="#fff" stroke-width="7"/>
+<text x="150" y="106" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="28" fill="#fff" stroke="#1F1F1F" stroke-width="1.5">BRIGHT</text>
+<text x="150" y="228" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="112" fill="#fff" stroke="#1F1F1F" stroke-width="3">7</text>
+</g></g>
+</svg>

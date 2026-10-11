@@ -21,7 +21,7 @@
     <title>OnTrack - PortoBlknszzz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://api.fontshare.com">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bb.css">
@@ -44,7 +44,7 @@
             width: 100%;
             margin: 0;
             margin-top: 90px;
-            /* margin-bottom: 100px; */
+            margin-bottom: 100px;
             flex: 1;
         }
         .hero-title-standalone {
@@ -491,7 +491,7 @@
                     <a href="#the-app">The App</a>
                     <a href="#design-process">Design Process</a>
                     <a href="#challenges">Challenges</a>
-                    <a href="#whats-next">What's Next</a>
+                    <a href="#whats-next">View Full Case Study</a>
                 </div>
                 <div class="project-main">
             <h1 class="hero-title-standalone">OnTrack</h1>
@@ -528,11 +528,38 @@
 
             <div class="toc-section" id="design-process">
                 <h2 class="toc-heading">Design Process</h2>
-                <div class="toc-content">
-                    <p>Research started with how people with diabetes currently log readings, mostly paper logbooks or generic health apps that track the number but never connect it to a next action.</p>
-                    <p>The logging flow went through several versions. The first asked for too much per entry, meal details, time, mood, and testers stopped logging consistently within days. The final version cut it down to the reading itself plus one tap for context, everything else became optional.</p>
-                    <p>The meal recommendation screen changed the most. Early versions gave generic diet advice regardless of the reading. The final version ties the suggestion directly to that entry, so a high reading and a normal reading get visibly different guidance.</p>
-                    <p>Visually, the app leans on a simple progress framing, "every entry is a point on the board", so logging feels like forward motion rather than a chore.</p>
+                <div class="notebook">
+                    <div class="nb-entry">
+                        <p class="nb-sticky">They track the number but never connect it to a next step</p>
+                        <h3 class="nb-title"><span class="nb-num">1.</span><span class="nb-word">Research</span></h3>
+                        <ul class="nb-notes">
+                            <li>How people with diabetes log today: paper logbooks, generic health apps</li>
+                        </ul>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">2.</span><span class="nb-word">Logging flow</span></h3>
+                        <ul class="nb-versions">
+                            <li class="nb-no"><b>v1</b><s>meal details, time and mood on every entry</s><span class="nb-why">testers stopped logging within days</span></li>
+                            <li class="nb-yes"><b>final</b>the reading + one tap for context<span class="nb-why">everything else optional</span></li>
+                        </ul>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">3.</span><span class="nb-word">Meal suggestions</span> <small>(changed the most)</small></h3>
+                        <ul class="nb-versions">
+                            <li class="nb-no"><b>before</b><s>the same diet advice whatever the reading</s></li>
+                            <li class="nb-yes"><b>after</b>advice tied to that exact reading</li>
+                        </ul>
+                        <ul class="nb-notes">
+                            <li><mark>a high reading and a normal one get visibly different guidance</mark></li>
+                        </ul>
+                    </div>
+                    <div class="nb-entry">
+                        <p class="nb-sticky">“Every entry is a point on the board”</p>
+                        <h3 class="nb-title"><span class="nb-num">4.</span><span class="nb-word">Look &amp; feel</span></h3>
+                        <ul class="nb-notes">
+                            <li>logging feels like moving forward, not a chore</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

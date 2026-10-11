@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M24,118 H58 M14,148 H52 M24,178 H58" fill="none" stroke-width="5"/>
+<ellipse cx="160" cy="258" rx="74" ry="11" fill="#CFCFCF" stroke="none"/>
+<defs><clipPath id="ballClip"><circle cx="160" cy="146" r="94"/></clipPath></defs>
+<circle cx="160" cy="146" r="94" fill="#fff"/>
+<g clip-path="url(#ballClip)">
+<path d="M160,90 L133.4,70.7 L143.5,39.3 L176.5,39.3 L186.6,70.7 Z" fill="#1F1F1F" stroke="none"/><path d="M160,114 L160,90" fill="none" stroke-width="3"/><path d="M213.3,128.7 L223.4,97.3 L256.4,97.3 L266.5,128.7 L239.9,148 Z" fill="#1F1F1F" stroke="none"/><path d="M190.4,136.1 L213.3,128.7" fill="none" stroke-width="3"/><path d="M192.9,191.3 L225.9,191.3 L236,222.7 L209.4,242 L182.8,222.7 Z" fill="#1F1F1F" stroke="none"/><path d="M178.8,171.9 L192.9,191.3" fill="none" stroke-width="3"/><path d="M127.1,191.3 L137.2,222.7 L110.6,242 L84,222.7 L94.1,191.3 Z" fill="#1F1F1F" stroke="none"/><path d="M141.2,171.9 L127.1,191.3" fill="none" stroke-width="3"/><path d="M106.7,128.7 L80.1,148 L53.5,128.7 L63.6,97.3 L96.6,97.3 Z" fill="#1F1F1F" stroke="none"/><path d="M129.6,136.1 L106.7,128.7" fill="none" stroke-width="3"/>
+</g>
+<path d="M160,114 L190.4,136.1 L178.8,171.9 L141.2,171.9 L129.6,136.1 Z" fill="#1F1F1F"/>
+<circle cx="160" cy="146" r="94" fill="none"/>
+<path d="M98,92 Q110,72 132,62" fill="none" stroke="#DA291C" stroke-width="6"/>
+</g></g>
+</svg>

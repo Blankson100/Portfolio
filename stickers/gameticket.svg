@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<g transform="rotate(8 150 150)">
+<path d="M40,92 H260 V132 A18,18 0 0 0 260,168 V208 H40 V168 A18,18 0 0 0 40,132 Z" fill="#006BB6"/>
+<path d="M200,100 V200" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="8 8"/>
+<text x="120" y="144" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="28" fill="#fff" stroke="none">KNICKS</text>
+<text x="120" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="11" letter-spacing="1" fill="#F58426" stroke="none">GAME NIGHT · MSG</text>
+<text x="120" y="188" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" fill="#fff" stroke="none">SEC 101 · ROW A · SEAT 10</text>
+<circle cx="230" cy="150" r="17" fill="#F58426"/>
+<path d="M213,150 H247 M230,133 V167 M219.1,136.9 Q227.3,150 219.1,163.1 M240.9,136.9 Q232.7,150 240.9,163.1" fill="none" stroke-width="3"/>
+</g>
+</g></g>
+</svg>

@@ -5,7 +5,7 @@
 // once the beard starts growing. Pressing it says hello the first time, and pressing it
 // over and over gets a "stop tickling me".
 // Preview any moment with ?avatarDate=2026-12-25T23 (date + hour in the city below),
-// force the weather with ?avatarWeather=rain or =cloudy, and see the Home "still here"
+// force the weather with ?avatarWeather=rain or =cloudy, and see the Home/About "still here"
 // nudge after 3s instead of 5 minutes with ?avatarStill.
 (function () {
     // Where Bright is right now: calendar day, sleeping hours, the live weather, and the
@@ -191,10 +191,19 @@
             el.style.width = w + 'px';
             el.style.height = (h + 24) + 'px';
         }
+        // Above the head, or beside it when the avatar is too close to the top of the page
+        // (the phone layout); always kept inside the screen's width.
         function place() {
             const r = wrap.getBoundingClientRect();
-            el.style.left = (r.left + window.scrollX + r.width * 0.62) + 'px';
-            el.style.top = (r.top + window.scrollY + r.height * 0.15 - el.offsetHeight) + 'px';
+            let left = r.left + window.scrollX + r.width * 0.62;
+            let top = r.top + window.scrollY + r.height * 0.15 - el.offsetHeight;
+            if (top < 6) {
+                left = r.right + window.scrollX - r.width * 0.05;
+                top = Math.max(6, r.top + window.scrollY + r.height * 0.55 - el.offsetHeight);
+            }
+            const maxLeft = window.scrollX + document.documentElement.clientWidth - el.offsetWidth - 8;
+            el.style.left = Math.max(8, Math.min(maxLeft, left)) + 'px';
+            el.style.top = top + 'px';
         }
         draw();
         place();
@@ -216,15 +225,17 @@
         try { return parseInt(localStorage.getItem(LAST_SHOWN), 10) || 0; } catch (e) { return 0; }
     }
     function maybeShowDaily() {
-        if (!bubble || document.hidden) return;
+        if (!bubble || document.hidden || current) return;
         if (!previewing && Date.now() - lastShown() < EVERY) return;
         try { localStorage.setItem(LAST_SHOWN, String(Date.now())); } catch (e) { /* private mode: just show it */ }
         showBubble(bubble, SHOW_FOR);
     }
 
-    // After 5 minutes on Home: a nudge, then a wink. (?avatarStill triggers it after 3s.)
-    const onHome = /\/bb(dark)?\.html$/i.test(window.location.pathname);
+    // After 5 minutes on Home, About or the phone page: a nudge with a wink, then a pointer
+    // to the socials. (?avatarStill triggers it after 3s.)
+    const nudgeHere = /\/((bb|about)(dark)?|portfolio-mobile-(light|dark))\.html$/i.test(window.location.pathname);
     const STILL_HERE = { kind: 'wish', text: 'Hey, you still here? Be a moving man' };
+    const SOCIALS = { kind: 'wish', text: 'Text me on my socials' };
 
     function wink() {
         if (asleep) return;
@@ -245,6 +256,8 @@
         }
         showBubble(STILL_HERE, SHOW_FOR);
         setTimeout(wink, 1100);
+        // Once that one has gone (it pops in after 0.6s and stays 5s).
+        setTimeout(function () { showBubble(SOCIALS, SHOW_FOR); }, SHOW_FOR + 1400);
     }
 
     function render(weather) {
@@ -296,7 +309,7 @@
         showBubble(TICKLED, SHOW_FOR, true);
     });
 
-    if (onHome) {
+    if (nudgeHere) {
         new Image().src = 'avatar/wink.svg';
         setTimeout(stillHere, params.has('avatarStill') ? 3000 : 5 * 60 * 1000);
     }

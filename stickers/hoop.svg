@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="60" y="24" width="180" height="112" rx="6" fill="#fff"/>
+<rect x="116" y="72" width="68" height="54" fill="none" stroke="#F58426" stroke-width="6"/>
+<path d="M126,96 L132,122 M150,92 V120 M174,96 L168,122" fill="none" stroke-width="4"/>
+<circle cx="150" cy="178" r="30" fill="#F58426"/>
+<path d="M120,178 H180 M150,148 V208 M130.8,154.9 Q145.2,178 130.8,201.1 M169.2,154.9 Q154.8,178 169.2,201.1" fill="none" stroke-width="4"/>
+<path d="M100,142 L124.5,212 M112.5,142 L116,212 M112.5,142 L133,212 M125,142 L124.5,212 M125,142 L141.5,212 M137.5,142 L133,212 M137.5,142 L150,212 M150,142 L141.5,212 M150,142 L158.5,212 M162.5,142 L150,212 M162.5,142 L167,212 M175,142 L158.5,212 M175,142 L175.5,212 M187.5,142 L167,212 M187.5,142 L184,212 M200,142 L175.5,212 M116,212 H184" fill="none" stroke-width="6"/><path d="M100,142 L124.5,212 M112.5,142 L116,212 M112.5,142 L133,212 M125,142 L124.5,212 M125,142 L141.5,212 M137.5,142 L133,212 M137.5,142 L150,212 M150,142 L141.5,212 M150,142 L158.5,212 M162.5,142 L150,212 M162.5,142 L167,212 M175,142 L158.5,212 M175,142 L175.5,212 M187.5,142 L167,212 M187.5,142 L184,212 M200,142 L175.5,212 M116,212 H184" fill="none" stroke="#fff" stroke-width="3"/>
+<ellipse cx="150" cy="142" rx="50" ry="10" fill="none" stroke-width="14"/>
+<ellipse cx="150" cy="142" rx="50" ry="10" fill="none" stroke="#F58426" stroke-width="7"/>
+</g></g>
+</svg>

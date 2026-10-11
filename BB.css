@@ -36,7 +36,7 @@
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-bottom: 60px;
+    padding-bottom: 100px; /* 100px from the last card to the footer, like every page */
     margin-top: 60px;
 }
 
@@ -86,6 +86,11 @@ body.page-loaded{
 body.page-leaving{
     opacity:0 !important;
     transition:opacity 0.12s ease-in;
+}
+
+/* Case studies: the page itself adds 100px above the footer, so the last section adds none. */
+.project-main > .toc-section:last-child {
+    margin-bottom: 0;
 }
 
 /* Progressive blur pinned to the top (projects + case study pages).
@@ -493,6 +498,348 @@ body.dark-mode .case-video-soon {
     color: #7A7A7A;
 }
 
+/* Design Process as a notebook page (case studies): ruled paper with a red margin line and
+   punched holes, notes in handwriting sitting on lines 32px apart. Rejected versions are
+   crossed out with a red cross, the shipped one gets a green tick, and the key insight
+   goes on a sticky note. */
+.notebook {
+    --nb-paper: #FFFDF6;
+    --nb-rule: rgba(66, 103, 178, 0.18);
+    --nb-margin: rgba(214, 69, 65, 0.45);
+    --nb-ink: #24305E;
+    --nb-head: #111111;
+    --nb-muted: #7B8094;
+    --nb-hole: #F0F0F0;
+    --nb-mark: #FFE066;
+    position: relative;
+    margin-top: 12px;
+    padding: 24px 28px 32px 80px;
+    border-radius: 14px;
+    background:
+        linear-gradient(to right, transparent 61px, var(--nb-margin) 61px, var(--nb-margin) 63px, transparent 63px),
+        repeating-linear-gradient(to bottom, transparent 0 31px, var(--nb-rule) 31px 32px) 0 21px,
+        var(--nb-paper);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 28px rgba(0, 0, 0, 0.07);
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--nb-ink);
+}
+.notebook::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    bottom: 30px;
+    width: 18px;
+    background: radial-gradient(circle at 9px 9px, var(--nb-hole) 7px, rgba(0, 0, 0, 0.14) 7.5px, transparent 9px) 0 0 / 18px 96px;
+    background-repeat: no-repeat space;
+}
+.nb-entry {
+    display: flow-root;
+}
+.nb-entry + .nb-entry {
+    margin-top: 32px;
+}
+.nb-title {
+    margin: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 32px;
+    color: var(--nb-head);
+}
+.nb-title .nb-num {
+    margin-right: 6px;
+    color: var(--nb-muted);
+}
+.nb-title .nb-word {
+    background: linear-gradient(transparent 58%, var(--nb-mark) 58%, var(--nb-mark) 90%, transparent 90%);
+}
+.nb-title small {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--nb-muted);
+}
+.nb-notes,
+.nb-versions {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.nb-notes li {
+    position: relative;
+    padding-left: 22px;
+}
+.nb-notes li::before {
+    content: "–";
+    position: absolute;
+    left: 2px;
+}
+.nb-versions li {
+    position: relative;
+    padding-left: 32px;
+}
+.nb-versions li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 21px;
+    height: 21px;
+    background: no-repeat center / contain;
+}
+.nb-versions li.nb-no::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D64541' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M5 5.5l13.5 13M18.5 5L5.5 18.5'/%3E%3C/svg%3E");
+}
+.nb-versions li.nb-yes::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232EAD5B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 13l5.5 5.5L20.5 5'/%3E%3C/svg%3E");
+}
+.nb-versions b {
+    margin-right: 6px;
+    font-weight: 700;
+}
+.nb-versions s {
+    text-decoration-color: #D64541;
+    text-decoration-thickness: 2px;
+}
+.nb-why {
+    display: block;
+    color: var(--nb-muted);
+}
+.nb-why::before {
+    content: "→ ";
+}
+.notebook mark {
+    padding: 0 2px;
+    background: linear-gradient(transparent 55%, var(--nb-mark) 55%, var(--nb-mark) 92%, transparent 92%);
+    color: inherit;
+}
+.nb-sticky {
+    position: relative;
+    float: right;
+    width: 190px;
+    margin: 6px -6px 14px 22px;
+    padding: 16px 16px 18px;
+    border-radius: 2px;
+    background: #FFE58A;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    transform: rotate(2.5deg);
+    font-size: 22px;
+    line-height: 26px;
+    color: #3A2E00;
+}
+.nb-sticky::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    width: 64px;
+    height: 20px;
+    margin-left: -32px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    transform: rotate(-4deg);
+}
+.nb-chips {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 18px;
+}
+.nb-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.nb-chip::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--c);
+    box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.18);
+}
+body.dark-mode .notebook {
+    --nb-paper: #1B1A17;
+    --nb-rule: rgba(160, 180, 255, 0.11);
+    --nb-margin: rgba(214, 69, 65, 0.42);
+    --nb-ink: #D9DEF0;
+    --nb-head: #FFFFFF;
+    --nb-muted: #8A8FA3;
+    --nb-hole: #000000;
+    --nb-mark: rgba(255, 210, 0, 0.32);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+body.dark-mode .nb-sticky {
+    background: #E9CF6B;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Sideways notebook (Crop Care): the same notebook pages, laid out as one row that scrolls
+   sideways (swipe on phones; drag, trackpad or arrow keys on desktop) so the section stays
+   short. Each page has its holes along the top; scripts/notebook-row.js adds mouse dragging. */
+.notebook.nb-row {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    /* The padding leaves room for the shadows and tilted sticky notes; the negative
+       margins stop it adding space between sections. */
+    margin: -10px -6px -22px;
+    padding: 14px 6px 22px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 6px;
+    scrollbar-width: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    font-size: 21px;
+    line-height: 28px;
+    cursor: grab;
+}
+.notebook.nb-row::-webkit-scrollbar {
+    display: none;
+}
+.notebook.nb-row::before {
+    content: none;
+}
+.notebook.nb-row:focus-visible {
+    outline: 2px solid var(--nb-ink);
+    outline-offset: 2px;
+    border-radius: 14px;
+}
+.notebook.nb-row.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.nb-row .nb-entry {
+    position: relative;
+    flex: 0 0 262px;
+    display: flex;
+    flex-direction: column;
+    padding: 44px 16px 18px 44px;
+    border-radius: 12px;
+    scroll-snap-align: start;
+    background:
+        linear-gradient(to right, transparent 31px, var(--nb-margin) 31px, var(--nb-margin) 33px, transparent 33px),
+        repeating-linear-gradient(to bottom, transparent 0 27px, var(--nb-rule) 27px 28px) 0 40px,
+        var(--nb-paper);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+.nb-row .nb-entry + .nb-entry {
+    margin-top: 0;
+}
+.nb-row .nb-entry::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 44px;
+    right: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 8px 8px, var(--nb-hole) 6px, rgba(0, 0, 0, 0.14) 6.5px, transparent 8px) 0 0 / 32px 16px;
+    background-repeat: space no-repeat;
+}
+.nb-row .nb-title {
+    font-size: 27px;
+    line-height: 28px;
+}
+.nb-row .nb-versions li {
+    padding-left: 26px;
+}
+.nb-row .nb-versions li::before {
+    top: 5px;
+    width: 18px;
+    height: 18px;
+}
+.nb-row .nb-sticky {
+    float: none;
+    width: auto;
+    margin: auto 0 0;
+    padding: 10px 12px 12px;
+    font-size: 19px;
+    line-height: 22px;
+    transform: rotate(-1.5deg);
+}
+.nb-row .nb-sticky::before {
+    width: 52px;
+    margin-left: -26px;
+}
+.nb-row .nb-entry > :has(+ .nb-sticky) {
+    margin-bottom: 14px;
+}
+.nb-row img {
+    -webkit-user-drag: none;
+}
+/* Small screens for a note (e.g. camera v1-v3), each marked with a cross or a tick */
+.nb-shots {
+    display: flex;
+    gap: 10px;
+    margin: 8px 0 0;
+}
+.nb-shot {
+    width: 58px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nb-shot-frame {
+    position: relative;
+    width: 58px;
+    aspect-ratio: 9 / 19.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--nb-ink);
+    border-radius: 10px;
+    background: var(--nb-paper);
+    overflow: hidden;
+    transform: rotate(-2deg);
+}
+.nb-shot:nth-child(even) .nb-shot-frame {
+    transform: rotate(2deg);
+}
+.nb-shot-frame span {
+    color: var(--nb-muted);
+    font-size: 16px;
+}
+.nb-shot-frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.nb-shot figcaption {
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 18px;
+}
+.nb-shot figcaption::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background: no-repeat center / contain;
+}
+.nb-shot.nb-no figcaption::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D64541' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M5 5.5l13.5 13M18.5 5L5.5 18.5'/%3E%3C/svg%3E");
+}
+.nb-shot.nb-yes figcaption::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232EAD5B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 13l5.5 5.5L20.5 5'/%3E%3C/svg%3E");
+}
+body.dark-mode .notebook.nb-row {
+    box-shadow: none;
+}
+body.dark-mode .nb-row .nb-entry {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
 /* Thought bubble above the drawn avatar (built by scripts/avatar.js) */
 .avatar-bubble {
     position: absolute;
@@ -515,7 +862,7 @@ body.dark-mode .case-video-soon {
 .landmark-sticker {
     position: absolute;
     z-index: 40;
-    width: 130px;
+    width: var(--sticker-size, 130px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -551,8 +898,8 @@ body.dark-mode .case-video-soon {
 }
 .landmark-sticker-card {
     position: relative;
-    width: 130px;
-    height: 130px;
+    width: var(--sticker-size, 130px);
+    height: var(--sticker-size, 130px);
 }
 .landmark-sticker-art {
     display: block;
@@ -810,13 +1157,12 @@ body.dark-mode .avatar-bubble-cloud circle {
 }
 
 /* new extra-action button placed under the intro CTA */
-.extra-action{display:block;margin-top:20px;margin-bottom:70px;max-width:1100px;margin-left:auto;margin-right:auto}
+.extra-action{display:block;margin-top:20px;margin-bottom:0;max-width:1100px;margin-left:auto;margin-right:auto}
 
 .featured-section{display:flex;flex-direction:column;align-items:center;width:100%;max-width:1100px;margin-left:auto;margin-right:auto}
 
 .featured-content-box{
     width: 960px;
-    height: 554px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

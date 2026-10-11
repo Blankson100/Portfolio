@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="128" y="22" width="44" height="120" rx="22" fill="#F58426"/>
+<ellipse cx="86" cy="168" rx="18" ry="34" transform="rotate(-25 86 168)" fill="#F58426"/>
+<path d="M84,130 C84,112 96,104 112,104 H190 C206,104 216,116 216,132 V212 C216,240 196,256 170,256 H130 C104,256 84,240 84,212 Z" fill="#F58426"/>
+<path d="M176,116 Q196,110 214,122" fill="none" stroke-width="4"/>
+<text x="150" y="198" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="56" fill="#006BB6" stroke="none">#1</text>
+<text x="150" y="236" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="22" fill="#006BB6" stroke="none">KNICKS</text>
+<rect x="108" y="252" width="84" height="24" rx="6" fill="#006BB6"/>
+</g></g>
+</svg>

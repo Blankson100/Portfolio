@@ -1,228 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Mobile Light</title>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --muted: #9f9f9f;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: radial-gradient(circle at top right, #f5f5f5 0%, var(--bg) 40%);
-      color: var(--text);
-      font-family: 'Jost', sans-serif;
-      padding: calc(84px + env(safe-area-inset-top)) 24px calc(10px + env(safe-area-inset-bottom)) 24px;
-      line-height: 1.45;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    body::-webkit-scrollbar {
-      display: none;
-    }
-    .name {
-      font-size: 21px;
-      font-weight: 500;
-      color: var(--text);
-    }
-    .role {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-    .bio {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--muted);
-      margin-top: 0;
-    }
-    .bio-text {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text);
-      margin-top: 4px;
-      margin-bottom: 16px;
-      line-height: 22px;
-    }
-    .section-label {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--muted);
-    }
-    .bio-block {
-      padding: 10px;
-      margin-top: 16px;
-    }
-    .project-title {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--muted);
-      margin-top: 12px;
-    }
-    .project-desc {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text);
-      margin-top: 4px;
-      margin-bottom: 12px;
-      line-height: 22px;
-    }
-    .project-title-next {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--muted);
-      margin-top: 0;
-    }
-    .project-desc-next {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text);
-      margin-top: 4px;
-      margin-bottom: 12px;
-      line-height: 22px;
-    }
-    .project-desc-last {
-      margin-bottom: 16px;
-    }
-    .project-block {
-      padding: 10px;
-      margin-top: 12px;
-      border-radius: 8px;
-      transition: background-color 0.45s var(--transition-easing);
-      -webkit-tap-highlight-color: transparent;
-    }
-    .project-link {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-    .project-link:focus-visible {
-      outline: 2px solid var(--text);
-      outline-offset: 3px;
-      border-radius: 20px;
-    }
-    .project-block:active,
-    .project-block.is-pressed {
-      background: rgba(224, 224, 224, 0.7);
-      border-radius: 20px;
-    }
-    .project-block .project-title {
-      margin-top: 0;
-    }
-    .project-block .project-desc {
-      margin-bottom: 0;
-    }
-    .project-block .project-title-next {
-      margin-top: 0;
-    }
-    .project-block .project-desc-next {
-      margin-bottom: 0;
-    }
-    .contact-title {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text);
-      margin-top: 12px;
-    }
-    .contact-copy {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text);
-      margin-top: 4px;
-      line-height: 22px;
-    }
-    .section-label-spaced {
-      margin-top: 16px;
-    }
-    .muted-handle {
-      color: var(--muted);
-      text-decoration: none;
-    }
-    .muted-handle:visited {
-      color: var(--muted);
-    }
-    .muted-handle:hover {
-      text-decoration: underline;
-    }
-    .muted-handle:focus-visible {
-      outline: 2px solid var(--text);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-    .mobile-footer {
-      padding: 10px 14px;
-      margin-top: 16px;
-      margin-left: -24px;
-      margin-right: -24px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.4;
-      text-align: left;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortoBlknszzz</title>
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,501&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="BB.css">
+    <link rel="stylesheet" href="mobile.css">
+    <script src="scripts/page-fade.js"></script>
 </head>
-<body>
-  <p class="name">Bright Blankson</p>
-  <p class="role">Product Designer</p>
-  <div class="bio-block">
-    <p class="bio">Hi Akwaaba,</p>
-    <p class="bio-text">I am a UX/UI designer and researcher from Accra, Ghana. I have worked closely with people across several projects, and that closeness carries into how I integrate AI, making sure it still feels human on the other end.</p>
-  </div>
-  <p class="section-label">Projects</p>
-  <a class="project-link" href="didoc.html" aria-label="Open Didoc case study">
-    <div class="project-block">
-      <p class="project-title">Didoc</p>
-      <p class="project-desc">A diabetic management app built around patients that track their food intake and records.</p>
-    </div>
-  </a>
-  <div class="project-block">
-    <p class="project-title-next">Crop Care</p>
-    <p class="project-desc-next">AI-powered crop disease diagnosis for farmers in emerging markets.</p>
-  </div>
-  <a class="project-link" href="lign-mobile.html" aria-label="Open Lign mobile page">
-    <div class="project-block">
-      <p class="project-title-next">Lign</p>
-      <p class="project-desc-next">Institutional transport management, made legible and easy to integrate.</p>
-    </div>
-  </a>
-  <div class="project-block">
-    <p class="project-title-next">Cog Archive</p>
-    <p class="project-desc-next">A cognitive performance tracker designed to surface what matters.</p>
-  </div>
-  <div class="project-block">
-    <p class="project-title-next">Clostra</p>
-    <p class="project-desc-next">A desktop escrow app that makes secure transactions feel straightforward.</p>
-  </div>
-  <div class="project-block project-desc-last">
-    <p class="project-title-next">Roster</p>
-    <p class="project-desc-next">LinkedIn, but exclusive for club members.</p>
-  </div>
-  <p class="section-label">Contact</p>
-  <p class="contact-copy">Hit me up, let's talk on X <a class="muted-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="muted-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a>.</p>
-  <p class="section-label section-label-spaced">Experience</p>
-  <p class="contact-copy">Open on your laptop or PC for a much better experience.</p>
-  <footer class="mobile-footer">&copy; 2025 · Nyame Dua Inc · the body is finally at rest</footer>
-  <script>
-    (function () {
-      var blocks = document.querySelectorAll('.project-block');
-      blocks.forEach(function (block) {
-        block.addEventListener('pointerdown', function () {
-          block.classList.add('is-pressed');
-        });
-        var clearPressed = function () {
-          block.classList.remove('is-pressed');
-        };
-        block.addEventListener('pointerup', clearPressed);
-        block.addEventListener('pointercancel', clearPressed);
-        block.addEventListener('pointerleave', clearPressed);
-      });
-    })();
-  </script>
-  <script src="scripts/logo-rotator.js"></script>
+<body class="m-page">
+    <a class="m-mode" href="portfolio-mobile-dark.html" aria-label="Switch to dark mode" data-sticker-avoid><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.6 6.6 0 0 0 10.7 10.7z"/></svg></a>
+    <main class="m-main" id="top">
+        <header class="m-header">
+            <div class="m-avatar" data-sticker-avoid role="button" tabindex="0" aria-pressed="false" aria-label="Tap to switch between the drawing and the photo">
+                <img src="Profile.jpg" alt="Akornor Blankson" class="m-avatar-img">
+                <img src="human.jpg" alt="" class="m-avatar-human">
+                <svg class="m-avatar-stroke" viewBox="0 0 100 100" aria-hidden="true">
+                    <defs>
+                        <clipPath id="avatarScallop" clipPathUnits="objectBoundingBox">
+                                    <path d="M 0.476823,0.019302 Q 0.500000,0.000000 0.523177,0.019302 L 0.528327,0.023591 Q 0.551504,0.042892 0.578394,0.029232 L 0.584370,0.026196 Q 0.611260,0.012536 0.629561,0.036511 L 0.633628,0.041839 Q 0.651928,0.065814 0.681184,0.058480 L 0.687686,0.056850 Q 0.716942,0.049516 0.729449,0.076962 L 0.732228,0.083061 Q 0.744735,0.110507 0.774889,0.109867 L 0.781590,0.109724 Q 0.811745,0.109084 0.817831,0.138625 L 0.819183,0.145190 Q 0.825269,0.174731 0.854810,0.180817 L 0.861375,0.182169 Q 0.890916,0.188255 0.890276,0.218410 L 0.890133,0.225111 Q 0.889493,0.255265 0.916939,0.267772 L 0.923038,0.270551 Q 0.950484,0.283058 0.943150,0.312314 L 0.941520,0.318816 Q 0.934186,0.348072 0.958161,0.366372 L 0.963489,0.370439 Q 0.987464,0.388740 0.973804,0.415630 L 0.970768,0.421606 Q 0.957108,0.448496 0.976409,0.471673 L 0.980698,0.476823 Q 1.000000,0.500000 0.980698,0.523177 L 0.976409,0.528327 Q 0.957108,0.551504 0.970768,0.578394 L 0.973804,0.584370 Q 0.987464,0.611260 0.963489,0.629561 L 0.958161,0.633628 Q 0.934186,0.651928 0.941520,0.681184 L 0.943150,0.687686 Q 0.950484,0.716942 0.923038,0.729449 L 0.916939,0.732228 Q 0.889493,0.744735 0.890133,0.774889 L 0.890276,0.781590 Q 0.890916,0.811745 0.861375,0.817831 L 0.854810,0.819183 Q 0.825269,0.825269 0.819183,0.854810 L 0.817831,0.861375 Q 0.811745,0.890916 0.781590,0.890276 L 0.774889,0.890133 Q 0.744735,0.889493 0.732228,0.916939 L 0.729449,0.923038 Q 0.716942,0.950484 0.687686,0.943150 L 0.681184,0.941520 Q 0.651928,0.934186 0.633628,0.958161 L 0.629561,0.963489 Q 0.611260,0.987464 0.584370,0.973804 L 0.578394,0.970768 Q 0.551504,0.957108 0.528327,0.976409 L 0.523177,0.980698 Q 0.500000,1.000000 0.476823,0.980698 L 0.471673,0.976409 Q 0.448496,0.957108 0.421606,0.970768 L 0.415630,0.973804 Q 0.388740,0.987464 0.370439,0.963489 L 0.366372,0.958161 Q 0.348072,0.934186 0.318816,0.941520 L 0.312314,0.943150 Q 0.283058,0.950484 0.270551,0.923038 L 0.267772,0.916939 Q 0.255265,0.889493 0.225111,0.890133 L 0.218410,0.890276 Q 0.188255,0.890916 0.182169,0.861375 L 0.180817,0.854810 Q 0.174731,0.825269 0.145190,0.819183 L 0.138625,0.817831 Q 0.109084,0.811745 0.109724,0.781590 L 0.109867,0.774889 Q 0.110507,0.744735 0.083061,0.732228 L 0.076962,0.729449 Q 0.049516,0.716942 0.056850,0.687686 L 0.058480,0.681184 Q 0.065814,0.651928 0.041839,0.633628 L 0.036511,0.629561 Q 0.012536,0.611260 0.026196,0.584370 L 0.029232,0.578394 Q 0.042892,0.551504 0.023591,0.528327 L 0.019302,0.523177 Q 0.000000,0.500000 0.019302,0.476823 L 0.023591,0.471673 Q 0.042892,0.448496 0.029232,0.421606 L 0.026196,0.415630 Q 0.012536,0.388740 0.036511,0.370439 L 0.041839,0.366372 Q 0.065814,0.348072 0.058480,0.318816 L 0.056850,0.312314 Q 0.049516,0.283058 0.076962,0.270551 L 0.083061,0.267772 Q 0.110507,0.255265 0.109867,0.225111 L 0.109724,0.218410 Q 0.109084,0.188255 0.138625,0.182169 L 0.145190,0.180817 Q 0.174731,0.174731 0.180817,0.145190 L 0.182169,0.138625 Q 0.188255,0.109084 0.218410,0.109724 L 0.225111,0.109867 Q 0.255265,0.110507 0.267772,0.083061 L 0.270551,0.076962 Q 0.283058,0.049516 0.312314,0.056850 L 0.318816,0.058480 Q 0.348072,0.065814 0.366372,0.041839 L 0.370439,0.036511 Q 0.388740,0.012536 0.415630,0.026196 L 0.421606,0.029232 Q 0.448496,0.042892 0.471673,0.023591 Z"></path>
+                                </clipPath>
+                    </defs>
+                    <path d="M 47.682,1.930 Q 50.000,0.000 52.318,1.930 L 52.833,2.359 Q 55.150,4.289 57.839,2.923 L 58.437,2.620 Q 61.126,1.254 62.956,3.651 L 63.363,4.184 Q 65.193,6.581 68.118,5.848 L 68.769,5.685 Q 71.694,4.952 72.945,7.696 L 73.223,8.306 Q 74.473,11.051 77.489,10.987 L 78.159,10.972 Q 81.174,10.908 81.783,13.863 L 81.918,14.519 Q 82.527,17.473 85.481,18.082 L 86.137,18.217 Q 89.092,18.826 89.028,21.841 L 89.013,22.511 Q 88.949,25.527 91.694,26.777 L 92.304,27.055 Q 95.048,28.306 94.315,31.231 L 94.152,31.882 Q 93.419,34.807 95.816,36.637 L 96.349,37.044 Q 98.746,38.874 97.380,41.563 L 97.077,42.161 Q 95.711,44.850 97.641,47.167 L 98.070,47.682 Q 100.000,50.000 98.070,52.318 L 97.641,52.833 Q 95.711,55.150 97.077,57.839 L 97.380,58.437 Q 98.746,61.126 96.349,62.956 L 95.816,63.363 Q 93.419,65.193 94.152,68.118 L 94.315,68.769 Q 95.048,71.694 92.304,72.945 L 91.694,73.223 Q 88.949,74.473 89.013,77.489 L 89.028,78.159 Q 89.092,81.174 86.137,81.783 L 85.481,81.918 Q 82.527,82.527 81.918,85.481 L 81.783,86.137 Q 81.174,89.092 78.159,89.028 L 77.489,89.013 Q 74.473,88.949 73.223,91.694 L 72.945,92.304 Q 71.694,95.048 68.769,94.315 L 68.118,94.152 Q 65.193,93.419 63.363,95.816 L 62.956,96.349 Q 61.126,98.746 58.437,97.380 L 57.839,97.077 Q 55.150,95.711 52.833,97.641 L 52.318,98.070 Q 50.000,100.000 47.682,98.070 L 47.167,97.641 Q 44.850,95.711 42.161,97.077 L 41.563,97.380 Q 38.874,98.746 37.044,96.349 L 36.637,95.816 Q 34.807,93.419 31.882,94.152 L 31.231,94.315 Q 28.306,95.048 27.055,92.304 L 26.777,91.694 Q 25.527,88.949 22.511,89.013 L 21.841,89.028 Q 18.826,89.092 18.217,86.137 L 18.082,85.481 Q 17.473,82.527 14.519,81.918 L 13.863,81.783 Q 10.908,81.174 10.972,78.159 L 10.987,77.489 Q 11.051,74.473 8.306,73.223 L 7.696,72.945 Q 4.952,71.694 5.685,68.769 L 5.848,68.118 Q 6.581,65.193 4.184,63.363 L 3.651,62.956 Q 1.254,61.126 2.620,58.437 L 2.923,57.839 Q 4.289,55.150 2.359,52.833 L 1.930,52.318 Q 0.000,50.000 1.930,47.682 L 2.359,47.167 Q 4.289,44.850 2.923,42.161 L 2.620,41.563 Q 1.254,38.874 3.651,37.044 L 4.184,36.637 Q 6.581,34.807 5.848,31.882 L 5.685,31.231 Q 4.952,28.306 7.696,27.055 L 8.306,26.777 Q 11.051,25.527 10.987,22.511 L 10.972,21.841 Q 10.908,18.826 13.863,18.217 L 14.519,18.082 Q 17.473,17.473 18.082,14.519 L 18.217,13.863 Q 18.826,10.908 21.841,10.972 L 22.511,10.987 Q 25.527,11.051 26.777,8.306 L 27.055,7.696 Q 28.306,4.952 31.231,5.685 L 31.882,5.848 Q 34.807,6.581 36.637,4.184 L 37.044,3.651 Q 38.874,1.254 41.563,2.620 L 42.161,2.923 Q 44.850,4.289 47.167,2.359 Z" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+                </svg>
+            </div>
+            <h1 class="m-name">Akornor Blankson</h1>
+            <p class="m-role">Product Design</p>
+        </header>
+
+        <section class="m-bio" id="about" aria-label="About">
+            <p>I was born in Accra, Ghana. Used to be a student, still am honestly, since I never really stop learning anything.</p>
+            <p>The whole way I design comes down to one idea: <em class="m-em">Fluency Without Learning</em>. If you have to stop and figure out how something works, I haven't done my job yet. Most of what I build is for rural and low-literacy contexts, stuff that should just make sense the first time you touch it.</p>
+            <p>I also do <span class="m-strong">photography</span>, usually shooting marriage stuff. Different tool, same eye really, just paying attention to what's actually in front of you.</p>
+            <p>Outside of that, I'm a Knicks fan, I watch a lot of anime, and I've got Nolan and Scorsese fighting for favorite director. I'm pretty introverted, but working on it. You can find me on <a class="m-link" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a> and <a class="m-link" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">X</a>, or reach me via <span class="m-link">email</span>.</p>
+        </section>
+
+        <section class="m-projects" id="projects">
+            <h2 class="m-heading">Projects</h2>
+            <div class="m-list">
+                <div class="m-item">
+                    <h3 class="m-title">InForm</h3>
+                    <p class="m-desc">A Diabetic management app built around patients that track their food intakes and records</p>
+                </div>
+                <div class="m-item">
+                    <h3 class="m-title">Crop Care</h3>
+                    <p class="m-desc">AI-powered crop disease diagnosis for farmers in emerging marker</p>
+                </div>
+                <div class="m-item">
+                    <h3 class="m-title">Lign</h3>
+                    <p class="m-desc">Institutional Transport management, made legible and easy to integrate.</p>
+                </div>
+                <div class="m-item">
+                    <h3 class="m-title">Clostra</h3>
+                    <p class="m-desc">A desktop Escrow app that makes secure transactions feel straightforward.</p>
+                </div>
+                <div class="m-item">
+                    <h3 class="m-title">Roster</h3>
+                    <p class="m-desc">LinkedIn but Exclusive for Club members</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="m-item" id="contact">
+            <h2 class="m-title">Contact</h2>
+            <p class="m-desc">hit me up lets talk on twitter <a class="m-handle" href="https://x.com/ob11zz?s=21" target="_blank" rel="noopener noreferrer">@ob11zz</a> and Instagram <a class="m-handle" href="https://www.instagram.com/superman0zz?igsh=MW5mOGJvZXhqbGo3dg%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">@superman0zz</a></p>
+        </section>
+
+        <section class="m-item">
+            <h2 class="m-title">Experience</h2>
+            <p class="m-desc">Open on your laptop or PC for a much better experience.</p>
+        </section>
+
+        <footer class="m-footer">
+            <p>Updated Nov 11,2026</p>
+        </footer>
+    </main>
+
+    <script>
+        // Tap the portrait to switch between the drawing and the photo.
+        (function () {
+            var avatar = document.querySelector('.m-avatar');
+            function flip() { avatar.setAttribute('aria-pressed', avatar.classList.toggle('is-human')); }
+            avatar.addEventListener('click', flip);
+            avatar.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+            });
+        })();
+
+        // Fade in the disc behind the light/dark switch once the page has scrolled under it.
+        (function () {
+            var toggle = document.querySelector('.m-mode');
+            function update() { toggle.classList.toggle('is-floating', window.scrollY > 8); }
+            window.addEventListener('scroll', update, { passive: true });
+            update();
+        })();
+    </script>
+    <script src="scripts/avatar.js"></script>
+    <script src="stickers/stickers.js"></script>
+    <script src="scripts/sticker.js" data-set="knicks united ghana world projects cities" data-place="free" data-size="88"></script>
 </body>
 </html>
