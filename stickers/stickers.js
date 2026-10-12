@@ -395,6 +395,126 @@ window.STICKERS = {
             "name": "Glory Glory Man United",
             "caption": "Red Devils",
             "file": "ggmuflag.png"
+        },
+        "signcarry": {
+            "name": "Site under construction",
+            "caption": "Builders at work",
+            "file": "signcarry.png"
+        },
+        "hammering": {
+            "name": "Nailing it",
+            "caption": "Builders at work",
+            "file": "hammering.png"
+        },
+        "plankcarry": {
+            "name": "Plank run",
+            "caption": "Builders at work",
+            "file": "plankcarry.png"
+        },
+        "crane": {
+            "name": "Tower crane",
+            "caption": "Under construction",
+            "file": "crane.png"
+        },
+        "excavator": {
+            "name": "Digger",
+            "caption": "Under construction",
+            "file": "excavator.png"
+        },
+        "bulldozer": {
+            "name": "Bulldozer",
+            "caption": "Under construction",
+            "file": "bulldozer.png"
+        },
+        "barrier": {
+            "name": "Work in progress",
+            "caption": "Under construction",
+            "file": "barrier.svg"
+        },
+        "siteme": {
+            "name": "Me, on site",
+            "caption": "Under construction",
+            "file": "siteme.png"
+        },
+        "handshake": {
+            "name": "Nice to meet you",
+            "caption": "Networking",
+            "file": "handshake.png"
+        },
+        "waiting": {
+            "name": "Is it ready yet?",
+            "caption": "Networking",
+            "file": "waiting.png"
+        },
+        "suitdeal": {
+            "name": "Deal!",
+            "caption": "Suits on site",
+            "file": "suitdeal.png"
+        },
+        "suitvisit": {
+            "name": "Site visit",
+            "caption": "Suits on site",
+            "file": "suitvisit.png"
+        },
+        "suitwalk": {
+            "name": "On my way!",
+            "caption": "Suits on site",
+            "file": "suitwalk.png"
+        },
+        "suitplans": {
+            "name": "Big plans",
+            "caption": "Suits on site",
+            "file": "suitplans.png"
+        },
+        "combbuild": {
+            "name": "Building the comb",
+            "caption": "Busy bees",
+            "file": "combbuild.png"
+        },
+        "combfill": {
+            "name": "Filling it with honey",
+            "caption": "Busy bees",
+            "file": "combfill.png"
+        },
+        "combcap": {
+            "name": "Capping the cells",
+            "caption": "Busy bees",
+            "file": "combcap.png"
+        },
+        "beecomb": {
+            "name": "Honeycomb going up",
+            "caption": "Busy bees",
+            "file": "beecomb.png"
+        },
+        "beedance": {
+            "name": "Waggle dance",
+            "caption": "Busy bees",
+            "file": "beedance.png"
+        },
+        "hivebusy": {
+            "name": "Busy hive",
+            "caption": "Busy bees",
+            "file": "hivebusy.png"
+        },
+        "flowerbee": {
+            "name": "Gathering nectar",
+            "caption": "Busy bees",
+            "file": "flowerbee.png"
+        },
+        "pollenbee": {
+            "name": "Pollen run",
+            "caption": "Busy bees",
+            "file": "pollenbee.png"
+        },
+        "nectarbee": {
+            "name": "Nectar delivery",
+            "caption": "Busy bees",
+            "file": "nectarbee.png"
+        },
+        "waxbee": {
+            "name": "Fresh wax",
+            "caption": "Busy bees",
+            "file": "waxbee.png"
         }
     },
     "sets": {
@@ -463,6 +583,34 @@ window.STICKERS = {
             "unitedfan",
             "unitedticket",
             "ggmuflag"
+        ],
+        "construction": [
+            "signcarry",
+            "hammering",
+            "plankcarry",
+            "crane",
+            "excavator",
+            "bulldozer",
+            "barrier",
+            "siteme",
+            "handshake",
+            "waiting",
+            "suitdeal",
+            "suitvisit",
+            "suitwalk",
+            "suitplans"
+        ],
+        "bees": [
+            "combbuild",
+            "combfill",
+            "combcap",
+            "beecomb",
+            "beedance",
+            "hivebusy",
+            "flowerbee",
+            "pollenbee",
+            "nectarbee",
+            "waxbee"
         ],
         "clostra": [
             "bee",

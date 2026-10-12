@@ -484,7 +484,7 @@
             color: #BDBDBD;
             font-family: Satoshi, sans-serif;
             font-weight: 400;
-            margin-bottom: 24px;
+            margin-bottom: 0;
             text-align: left;
             line-height: 1.7;
         }
@@ -494,6 +494,49 @@
             margin-bottom: 40px;
             justify-content: flex-end;
         }
+        /* Paragraphs inside "See how it works" */
+        .see-how-desc p {
+            margin: 0 0 14px 0;
+        }
+        .see-how-desc p:last-child {
+            margin-bottom: 0;
+        }
+        /* Challenges table: same look, but the rows grow to fit their text */
+        .chg-card.chg-auto {
+            position: relative;
+            top: auto;
+            left: auto;
+            height: auto;
+        }
+        .chg-grid {
+            height: auto;
+            display: grid;
+            grid-template-columns: 297px 1fr;
+        }
+        .chg-cell {
+            padding: 15px 10px;
+            background: #161616;
+            border-bottom: 0.5px solid #2D2D2D;
+            color: #FFFFFF;
+            font-family: Satoshi, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: -0.48px;
+        }
+        .chg-cell.chg-head {
+            background: #2D2D2D;
+            border-bottom: none;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-weight: 510;
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0;
+        }
+        .chg-grid .chg-cell:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
     </style>
 </head>
 <body class="dark-mode">
@@ -533,18 +576,14 @@
             <div class="toc-section" id="introduction">
                 <h2 class="toc-heading">Introduction</h2>
                 <div class="toc-content">
-                    <p>Lign is a multi-modal transport platform that helps schools, hospitals, and organizations manage their fleets digitally. It brings bus tracking, seat booking, bulk ticketing, and ride history into one app instead of scattered across phone calls and paper logs.</p>
-                    <p>The goal was simple: give fleet managers real-time visibility into where every vehicle is, and give riders a reliable way to book a seat and know their ride is actually coming.</p>
-                    <p>Whether it's a school running a daily shuttle or a hospital coordinating patient transport, Lign scales to fit how that organization already moves people.</p>
+                    <p>Lign is a bus system for schools and workplaces. Each rider signs in with an ID from their own institution, then buys tickets and hops on buses run for their community. Think of it as a trotro personalised to one institution. I started it as a student and designed it as my final year project. It began with student commutes. It is built to fit any school, hospital, factory or company with a regular group of travellers. This version covers the passenger app. The driver app and admin dashboard come in Version 2.</p>
                 </div>
             </div>
 
             <div class="toc-section" id="the-problem">
                 <h2 class="toc-heading">The Problem</h2>
                 <div class="toc-content">
-                    <p>Most schools, hospitals, and small transport operators still manage fleets the manual way: spreadsheets, group chats, and phone calls to figure out which bus is where and who has a seat. That works until it doesn't, a missed pickup, a double-booked seat, a driver nobody can reach.</p>
-                    <p>Riders have no way to see where their bus actually is, so they either show up early and wait, or miss it entirely. Fleet managers have no single source of truth, so every schedule change means more calls and more confusion.</p>
-                    <p>What was missing was a shared system: one place for managers to see and control the fleet, and one place for riders to book and track their ride.</p>
+                    <p>Trotro fares rose with no warning, and drivers kept going on strike. Getting to class on time was never guaranteed. My school had two branches, Tesano and La Paz, so missing the one bus on your side could cost a whole morning. I surveyed 14 commuters (11 students, 3 workers). 13 named long waiting times. 13 just wait at the stop with no way to know when a bus is coming. 8 are often late because of transport. 9 would definitely prefer an institutional bus, and 11 would use one daily. The sample is small, so these are signals, not proof. I also asked 2 fleet managers how they run buses today. Both rated delay and breakdown alerts "very important". Both want the system to connect with the HR and payroll tools they already use.</p>
                 </div>
             </div>
 
@@ -553,69 +592,71 @@
                 <div class="case-video" data-video="videos/lign.mp4"></div>
                 <div class="see-how-title">See how it works</div>
                 <div class="see-how-desc">
-                    This walkthrough shows the Lign Transport platform from request to delivery. You'll see how riders book a seat, how fleet managers track vehicles in real time, and how both sides stay aligned until the trip is complete.
+                    <p>Lign's passenger app does three things. Buy tickets in bulk and activate them as you travel. Hop on the nearest bus when you miss yours. Sign in with your institution's ID. A full walkthrough is coming soon.</p>
                 </div>
             </div>
 
             <div class="toc-section" id="design-process">
                 <h2 class="toc-heading">Design Process</h2>
-                <div class="notebook">
+                <div class="notebook nb-row" tabindex="0" role="region" aria-label="Design process notes. Scroll sideways for more.">
                     <div class="nb-entry">
                         <h3 class="nb-title"><span class="nb-num">1.</span><span class="nb-word">Research</span></h3>
                         <ul class="nb-notes">
-                            <li>Talked to school transport coordinators and small fleet operators</li>
-                            <li>Mapped how they track buses and handle booking changes, day to day</li>
+                            <li>Surveyed 14 commuters.</li>
+                            <li>Asked 2 fleet managers how they run buses.</li>
                         </ul>
+                        <p class="nb-sticky">Small sample. Directional only.</p>
                     </div>
                     <div class="nb-entry">
-                        <h3 class="nb-title"><span class="nb-num">2.</span><span class="nb-word">Booking flow</span></h3>
-                        <ul class="nb-versions">
-                            <li class="nb-no"><b>v1</b><s>route, then time, then seat: 3 screens</s><span class="nb-why">people dropped off between steps</span></li>
-                            <li class="nb-yes"><b>final</b>one screen: route, time and seat together</li>
-                        </ul>
-                    </div>
-                    <div class="nb-entry">
-                        <h3 class="nb-title"><span class="nb-num">3.</span><span class="nb-word">Fleet dashboard</span> <small>(changed the most)</small></h3>
-                        <ul class="nb-versions">
-                            <li class="nb-no"><b>before</b><s>every vehicle on one dense map</s><span class="nb-why">overwhelming past a few routes</span></li>
-                            <li class="nb-yes"><b>after</b>grouped by route, open one at a time</li>
-                        </ul>
+                        <h3 class="nb-title"><span class="nb-num">2.</span><span class="nb-word">Tickets</span></h3>
                         <ul class="nb-notes">
-                            <li><mark>usable at a glance</mark></li>
+                            <li>Students get money in lumps, not weekly.</li>
+                            <li>So tickets are bought in bulk, activated one at a time and refunded if unused at semester end.</li>
+                        </ul>
+                        <p class="nb-sticky">Activation screen still to design.</p>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">3.</span><span class="nb-word">Ticket status</span></h3>
+                        <ul class="nb-notes">
+                            <li>Each ticket is a coin.</li>
+                            <li>Yellow "I" for inactive. Green "A" for active.</li>
+                            <li>Long press to activate.</li>
                         </ul>
                     </div>
                     <div class="nb-entry">
-                        <p class="nb-sticky">Status comes first: the one thing riders and managers both check</p>
-                        <h3 class="nb-title"><span class="nb-num">4.</span><span class="nb-word">Look &amp; feel</span></h3>
-                        <p class="nb-chips"><span class="nb-chip" style="--c:#2EAD5B">on time</span><span class="nb-chip" style="--c:#F2A900">delayed</span><span class="nb-chip" style="--c:#289AF9">arrived</span></p>
+                        <h3 class="nb-title"><span class="nb-num">4.</span><span class="nb-word">Hop-On</span></h3>
+                        <ul class="nb-notes">
+                            <li>Missed your bus? Book Now opens Hop-On.</li>
+                            <li>It shows the nearest bus on your side, seats left and ETA.</li>
+                        </ul>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">5.</span><span class="nb-word">Institutional ID</span></h3>
+                        <ul class="nb-notes">
+                            <li>One ID per school or company.</li>
+                            <li>Student and teacher roles, so each group sees its own buses.</li>
+                        </ul>
+                    </div>
+                    <div class="nb-entry">
+                        <h3 class="nb-title"><span class="nb-num">6.</span><span class="nb-word">What I stopped chasing</span></h3>
+                        <ul class="nb-versions">
+                            <li class="nb-no"><s>Delay alerts as the headline feature.</s></li>
+                            <li class="nb-yes">Uber and Bolt already do ETAs well. The difference is the institutional ID, deferred tickets and Hop-On.</li>
+                        </ul>
+                        <p class="nb-sticky">Driver routing around traffic is planned for Version 2.</p>
                     </div>
                 </div>
             </div>
 
             <div class="toc-section" id="challenges">
                 <h2 class="toc-heading">Challenges</h2>
-                <div class="chg-card">
-                    <div class="chg-inner">
-                        <div class="chg-row chg-row-header"></div>
-                        <div class="chg-row chg-row-body" style="top:44px; height:74px;"></div>
-                        <div class="chg-row chg-row-body" style="top:118px; height:52px;"></div>
-                        <div class="chg-row chg-row-body" style="top:170px; height:52px;"></div>
-                        <div class="chg-row chg-row-body" style="top:222px; height:74px; border-bottom:none;"></div>
-
-                        <span class="chg-text chg-text-header" style="left:10px; top:15px;">Challenge</span>
-                        <span class="chg-text chg-text-header" style="left:307px; top:15px;">Response</span>
-
-                        <span class="chg-text chg-text-body" style="left:10px; top:70px;">Trust in real-time tracking</span>
-                        <span class="chg-text chg-text-body" style="left:307px; top:59px; width:277px;">Live GPS status with clear on-time /<br>delayed indicators</span>
-
-                        <span class="chg-text chg-text-body" style="left:10px; top:133px;">Getting drivers to actually use it</span>
-                        <span class="chg-text chg-text-body" style="left:297px; top:133px;">One-tap status updates, no manual logging</span>
-
-                        <span class="chg-text chg-text-body" style="left:10px; top:185px;">Fleet managers juggling many routes</span>
-                        <span class="chg-text chg-text-body" style="left:297px; top:185px;">Routes grouped, drill into one at a time</span>
-
-                        <span class="chg-text chg-text-body" style="left:10px; top:248px;">Replacing an existing manual system</span>
-                        <span class="chg-text chg-text-body" style="left:297px; top:237px; width:287px;">Import existing routes and rosters on<br>day one</span>
+                <div class="chg-card chg-auto">
+                    <div class="chg-inner chg-grid">
+                        <span class="chg-cell chg-head">Challenge</span><span class="chg-cell chg-head">Response</span>
+                        <span class="chg-cell">Money arrives in lumps, not weekly</span><span class="chg-cell">Bulk tickets, activated one at a time, unused refunded</span>
+                        <span class="chg-cell">Missing your bus between two branches</span><span class="chg-cell">Hop-On shows the nearest bus on your side</span>
+                        <span class="chg-cell">Waiting with no idea when a bus comes</span><span class="chg-cell">ETA and distance shown live in Hop-On</span>
+                        <span class="chg-cell">One app for many institutions</span><span class="chg-cell">Institution-specific ID with student and teacher roles</span>
                     </div>
                 </div>
             </div>
@@ -818,5 +859,6 @@
     <script src="scripts/case-video.js"></script>
     <script src="stickers/stickers.js"></script>
     <script src="scripts/sticker.js" data-set="lign" data-count="6"></script>
+    <script src="scripts/notebook-row.js"></script>
 </body>
 </html>

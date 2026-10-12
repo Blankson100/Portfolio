@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M141,196 L124,228 L118,260" fill="none" stroke-width="23"/><path d="M141,196 L124,228 L118,260" fill="none" stroke="#1F2A44" stroke-width="13"/><path d="M159,196 L172,226 L186,258" fill="none" stroke-width="23"/><path d="M159,196 L172,226 L186,258" fill="none" stroke="#1F2A44" stroke-width="13"/>
+<ellipse cx="116" cy="264" rx="11" ry="6" fill="#1F1F1F"/><ellipse cx="188" cy="264" rx="11" ry="6" fill="#1F1F1F"/>
+<path d="M126,146 Q150,138 174,146 L172,206 H128 Z" fill="#1F2A44"/>
+<path d="M140,142 H160 L150,176 Z" fill="#fff" stroke-width="3"/>
+<path d="M146,143 H154 L152,150 L155,168 L150,174 L145,168 L148,150 Z" fill="#F2A900" stroke-width="2.5"/>
+<path d="M137,143 L145,160 L150,176 M163,143 L155,160 L150,176 V206" fill="none" stroke-width="3"/>
+<path d="M161,170 l4,-6 l4,6 Z" fill="#fff" stroke-width="2"/>
+<circle cx="150" cy="186" r="3" fill="#1F1F1F" stroke="none"/><circle cx="150" cy="200" r="3" fill="#1F1F1F" stroke="none"/>
+<circle cx="150" cy="124" r="16" fill="#E0AC69"/><path d="M134,122 C134,102 166,102 166,122 C158,114 142,114 134,122 Z" fill="#3B2A1A"/>
+<path d="M134,150 L118,178 L108,200" fill="none" stroke-width="22"/><path d="M134,150 L118,178 L108,200" fill="none" stroke="#1F2A44" stroke-width="12"/><circle cx="108" cy="200" r="7" fill="#E0AC69"/><path d="M166,150 L184,138 L168,118" fill="none" stroke-width="22"/><path d="M166,150 L184,138 L168,118" fill="none" stroke="#1F2A44" stroke-width="12"/><circle cx="168" cy="118" r="7" fill="#E0AC69"/>
+<path d="M100,208 V200 H116 V208" fill="none" stroke-width="4"/>
+<rect x="87" y="206" width="42" height="30" rx="4" fill="#6B4423"/><path d="M87,216 H129" fill="none" stroke="#4A2E17" stroke-width="3"/>
+<circle cx="108" cy="200" r="7" fill="#E0AC69"/>
+<rect x="165" y="100" width="12" height="24" rx="3" fill="#2B2B2B"/>
+<circle cx="168" cy="118" r="7" fill="#E0AC69"/>
+<path d="M186,34 H278 Q286,34 286,42 V60 Q286,68 278,68 H212 L200,80 L202,68 H186 Q178,68 178,60 V42 Q178,34 186,34 Z" fill="#fff" stroke-width="4"/>
+<text x="232" y="57" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="14" fill="#1F1F1F" stroke="none">On my way!</text>
+</g></g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="14" y="134" width="276" height="16" rx="3" transform="rotate(-8 150 142)" fill="#D9A066"/>
+<path d="M40,142 H90 M206,142 H256" fill="none" stroke="#B57A3E" stroke-width="3" transform="rotate(-8 150 142)"/>
+<path d="M141,196 L124,228 L118,260" fill="none" stroke-width="23"/><path d="M141,196 L124,228 L118,260" fill="none" stroke="#2E4A7D" stroke-width="13"/><path d="M159,196 L172,226 L186,258" fill="none" stroke-width="23"/><path d="M159,196 L172,226 L186,258" fill="none" stroke="#2E4A7D" stroke-width="13"/>
+<ellipse cx="115" cy="264" rx="12" ry="6" fill="#4A3426"/><ellipse cx="189" cy="264" rx="12" ry="6" fill="#4A3426"/>
+<path d="M126,146 Q150,138 174,146 L171,200 H129 Z" fill="#B9E23B"/>
+<path d="M128,170 H172 M129,188 H171" fill="none" stroke="#F4F4F4" stroke-width="6"/>
+<circle cx="150" cy="124" r="16" fill="#B87A58"/>
+<path d="M132,117 A18,18 0 0 1 168,117 Z" fill="#FFC93C"/>
+<rect x="126" y="113" width="48" height="6" rx="3" fill="#FFC93C"/>
+<path d="M170,150 L188,146 L184,134" fill="none" stroke-width="21"/><path d="M170,150 L188,146 L184,134" fill="none" stroke="#B87A58" stroke-width="11"/><path d="M130,150 L118,182 L126,210" fill="none" stroke-width="21"/><path d="M130,150 L118,182 L126,210" fill="none" stroke="#B87A58" stroke-width="11"/>
+</g></g>
+</svg>

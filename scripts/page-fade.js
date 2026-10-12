@@ -1,5 +1,12 @@
-// Smooth fade between page navigations (nav menu + light/dark mode toggle)
+// A blur crossfade between pages: the old page blurs and fades out while the new one comes
+// in from a blur. Browsers that crossfade pages themselves (Chrome, Edge, Safari 18.2+) do it
+// from the @view-transition rule in BB.css for every move between pages; the new page must
+// show from its first frame for that, so it's marked here, in <head>, before anything is
+// drawn. Other browsers fade and blur the page out on the way out and in on arrival.
 (function () {
+    const crossFade = 'CSSViewTransitionRule' in window;
+    if (crossFade) document.documentElement.classList.add('page-crossfade');
+
     function fadeIn() {
         document.body.classList.remove('page-leaving');
         document.body.classList.add('page-loaded');
@@ -11,12 +18,9 @@
     window.addEventListener('pageshow', fadeIn);
 
     window.fadeNavigate = function (href) {
-        // Modern Chromium handles the cross-page crossfade natively (see the
-        // @view-transition rule in BB.css) and does it off the real last
-        // frame, so a manual opacity fade first would just blank the page
-        // before that capture happens. Only fall back to the manual fade on
-        // browsers without that support.
-        if (document.startViewTransition) {
+        // The browser's own crossfade works off the page's real last frame, so fading it
+        // out first would only blank what it captures.
+        if (crossFade) {
             window.location.href = href;
             return;
         }
@@ -24,16 +28,20 @@
         document.body.classList.add('page-leaving');
         setTimeout(function () {
             window.location.href = href;
-        }, 120);
+        }, 250);
     };
 
+    // Without the browser's crossfade, links to other pages of the site go through the fade
+    // (the menu, project rows, cards). Left alone: new tabs, downloads, other sites, email
+    // links, and jumps within the page.
     document.addEventListener('click', function (e) {
-        const link = e.target.closest('.nav-menu a');
-        if (!link) return;
-        const href = link.getAttribute('href');
-        if (!href) return;
+        if (crossFade || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const link = e.target.closest('a[href]');
+        if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+        const url = new URL(link.href, window.location.href);
+        if (url.origin !== window.location.origin || (url.pathname === window.location.pathname && url.hash)) return;
         e.preventDefault();
-        window.fadeNavigate(href);
+        window.fadeNavigate(link.getAttribute('href'));
     });
 
     // Backspace = the page's Back button where there is one (case studies),

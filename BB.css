@@ -1,11 +1,22 @@
+/* Moving between pages: a blur crossfade. The old page blurs and fades out while the new
+   one sharpens and fades in, at the same time (in browsers that crossfade pages themselves;
+   scripts/page-fade.js does the rest). With reduced motion it's a quick plain fade. */
 @view-transition {
     navigation: auto;
 }
-
-::view-transition-old(root),
+::view-transition-old(root) {
+    animation: page-blur-out 0.5s ease-in-out both;
+}
 ::view-transition-new(root) {
-    animation-duration: 0.4s;
-    animation-timing-function: cubic-bezier(0.22, 1.61, 0.36, 1);
+    animation: page-blur-in 0.5s ease-in-out both;
+}
+@keyframes page-blur-out { to { opacity: 0; filter: blur(14px); } }
+@keyframes page-blur-in { from { opacity: 0; filter: blur(14px); } }
+@keyframes page-fade-out { to { opacity: 0; } }
+@keyframes page-fade-in { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root) { animation: page-fade-out 0.2s ease both; }
+    ::view-transition-new(root) { animation: page-fade-in 0.2s ease both; }
 }
 
 #content {
@@ -79,13 +90,35 @@ body{
     position:relative;
     opacity:0;
 }
+/* The page shows from its first frame when the browser crossfades pages itself; otherwise
+   it fades (and its content blurs) in on arrival and out on leaving (scripts/page-fade.js) */
+html.page-crossfade body{
+    opacity:1;
+}
 body.page-loaded{
     opacity:1;
-    transition:opacity 0.14s ease-out;
+    transition:opacity 0.3s ease-out;
 }
 body.page-leaving{
     opacity:0 !important;
-    transition:opacity 0.12s ease-in;
+    transition:opacity 0.25s ease-in;
+}
+html:not(.page-crossfade) #content{
+    filter:blur(10px);
+    transition:filter 0.3s ease-out;
+}
+html:not(.page-crossfade) body.page-loaded #content{
+    filter:none;
+}
+html:not(.page-crossfade) body.page-leaving #content{
+    filter:blur(10px);
+    transition:filter 0.25s ease-in;
+}
+@media (prefers-reduced-motion: reduce){
+    html:not(.page-crossfade) #content,
+    html:not(.page-crossfade) body.page-leaving #content{
+        filter:none;
+    }
 }
 
 /* Case studies: the page itself adds 100px above the footer, so the last section adds none. */
@@ -856,6 +889,218 @@ body.dark-mode .nb-row .nb-entry {
 }
 .avatar-greetable {
     cursor: pointer;
+}
+
+/* Crews on pages still being built (scripts/sticker-crew.js): Roster's builders and
+   Clostra's bees, stickers that move about */
+/* Cut off at the page's sides, so ones walking or flying off the edge don't make it scroll
+   sideways */
+.crew-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow-x: clip;
+}
+.crew {
+    position: absolute;
+    z-index: 40;
+    width: var(--size, 120px);
+    cursor: grab;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+/* Picked up: a little bigger, with a deeper shadow */
+.crew.is-dragging {
+    cursor: grabbing;
+}
+.crew.is-dragging img {
+    filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.24));
+}
+.crew[hidden] {
+    display: none;
+}
+.crew img {
+    display: block;
+    width: 100%;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.18));
+}
+/* Working in place beside the cover */
+.crew-sway img {
+    transform-origin: 50% 100%;
+    animation: crew-sway 3s ease-in-out infinite alternate;
+}
+.crew-bob img {
+    animation: crew-bob 1.6s ease-in-out infinite alternate var(--delay, 0s);
+}
+.crew-dig img {
+    transform-origin: 30% 90%;
+    animation: crew-dig 1.4s ease-in-out infinite alternate;
+}
+.crew-hammer img {
+    animation: crew-hammer 0.32s ease-in-out infinite alternate;
+}
+.crew-hover img {
+    animation: crew-hover 0.9s ease-in-out infinite alternate var(--delay, 0s);
+}
+.crew-waggle img {
+    animation: crew-waggle 0.22s ease-in-out infinite alternate;
+}
+/* On the move along the bottom of the cover (--rest is where they stand if motion is off) */
+.crew-walk-right,
+.crew-walk-left,
+.crew-fly-right,
+.crew-fly-left,
+.crew-drive {
+    z-index: 41;
+    transform: translateX(var(--rest, 0px));
+}
+.crew-walk-right,
+.crew-fly-right {
+    animation: crew-walk-right var(--time, 20s) linear infinite var(--delay, 0s);
+}
+.crew-walk-left,
+.crew-fly-left {
+    animation: crew-walk-left var(--time, 20s) linear infinite var(--delay, 0s);
+}
+/* Bees already face the way they fly, so no turning round; they dip and rise as they go */
+.crew-fly-right img,
+.crew-fly-left img {
+    animation: crew-fly 0.7s ease-in-out infinite alternate;
+}
+.crew-walk-right img {
+    animation: crew-step 0.45s ease-in-out infinite alternate;
+}
+.crew-walk-left img {
+    animation: crew-step-back 0.45s ease-in-out infinite alternate;
+}
+.crew-drive {
+    animation: crew-drive var(--time, 24s) linear infinite var(--delay, 0s);
+}
+.crew-drive img {
+    animation: crew-rumble 0.18s linear infinite alternate;
+}
+@keyframes crew-sway { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
+@keyframes crew-bob { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+@keyframes crew-dig { from { transform: rotate(-3deg) translateX(-3px); } to { transform: rotate(3deg) translateX(3px); } }
+@keyframes crew-hammer { from { transform: rotate(-2deg); } to { transform: rotate(2deg) translateY(1px); } }
+@keyframes crew-hover { from { transform: translate(-2px, 3px) rotate(-1.5deg); } to { transform: translate(2px, -7px) rotate(1.5deg); } }
+@keyframes crew-waggle { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+@keyframes crew-fly { from { transform: translateY(-9px) rotate(-4deg); } to { transform: translateY(9px) rotate(3deg); } }
+@keyframes crew-walk-right { from { transform: translateX(calc(-1 * var(--size, 120px))); } to { transform: translateX(var(--lane, 100vw)); } }
+@keyframes crew-walk-left { from { transform: translateX(var(--lane, 100vw)); } to { transform: translateX(calc(-1 * var(--size, 120px))); } }
+@keyframes crew-step { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-5px) rotate(3deg); } }
+@keyframes crew-step-back { from { transform: scaleX(-1) translateY(0) rotate(-3deg); } to { transform: scaleX(-1) translateY(-5px) rotate(3deg); } }
+/* The bulldozer is drawn facing left: it turns round to drive right, then comes back. */
+@keyframes crew-drive {
+    0% { transform: translateX(0) scaleX(-1); }
+    48% { transform: translateX(calc(var(--lane, 100vw) - var(--size, 120px))) scaleX(-1); }
+    50% { transform: translateX(calc(var(--lane, 100vw) - var(--size, 120px))) scaleX(1); }
+    98% { transform: translateX(0) scaleX(1); }
+    100% { transform: translateX(0) scaleX(-1); }
+}
+@keyframes crew-rumble { from { transform: translateY(0); } to { transform: translateY(1px); } }
+/* What a crew sticker says when it's tapped: a drawn bubble (an SVG from the script);
+   --tail is where its tail points */
+.crew-say {
+    position: absolute;
+    z-index: 43;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.18));
+    transform-origin: var(--tail, 50%) 100%;
+    animation: avatar-bubble-pop 0.35s var(--transition-easing) both;
+}
+.crew-say svg {
+    display: block;
+    overflow: visible;
+}
+.crew-say.crew-say-leaving {
+    animation: avatar-bubble-out 0.25s ease-in forwards;
+}
+/* Clostra's meadow under the cover: the back half behind the cover, the short grass in
+   front of its bottom edge, both under the bees */
+.meadow {
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+}
+.meadow svg {
+    display: block;
+    overflow: visible;
+}
+.meadow-back {
+    z-index: -1;
+}
+.meadow-front {
+    z-index: 39;
+}
+/* The ground carrying on down to the footer: a deepening green with tufts drawn in, fading
+   into the footer */
+.meadow-field {
+    z-index: -1;
+    width: 100%;
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='70'%3E%3Cg fill='none' stroke='%232E5E1A' stroke-width='2' stroke-linecap='round' opacity='.35'%3E%3Cpath d='M12 26l3-8M17 27v-8M22 26l-2-7'/%3E%3Cpath d='M86 14l3-8M91 15v-8M96 14l-2-7'/%3E%3Cpath d='M54 58l3-8M59 59v-8M64 58l-2-7'/%3E%3Cpath d='M124 46l3-8M129 47v-8M134 46l-2-7'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 150px 70px,
+        linear-gradient(#7CC24A, #5C9F38 220px, #4E9A2E);
+    -webkit-mask-image: linear-gradient(#000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(#000 calc(100% - 28px), transparent);
+}
+body.dark-mode .meadow-field {
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='70'%3E%3Cg fill='none' stroke='%231E4212' stroke-width='2' stroke-linecap='round' opacity='.45'%3E%3Cpath d='M12 26l3-8M17 27v-8M22 26l-2-7'/%3E%3Cpath d='M86 14l3-8M91 15v-8M96 14l-2-7'/%3E%3Cpath d='M54 58l3-8M59 59v-8M64 58l-2-7'/%3E%3Cpath d='M124 46l3-8M129 47v-8M134 46l-2-7'/%3E%3C/g%3E%3C/svg%3E"),
+        linear-gradient(#7CC24A, #4E8F2E 220px, #3B7424);
+}
+/* The time and the menu sit over the field, so they get more contrast there */
+body.has-meadow .time-location-display {
+    color: #1E3D12;
+}
+body.dark-mode.has-meadow .time-location-display {
+    color: rgba(255, 255, 255, 0.85);
+}
+body.dark-mode.has-meadow .navbar {
+    background: rgba(0, 0, 0, 0.45);
+}
+/* The sun or moon peeking out from behind the cover's top-right corner */
+.sky {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+}
+.sky svg {
+    display: block;
+    overflow: visible;
+}
+.sky-spin {
+    transform-origin: 90px 90px;
+    animation: sky-spin 60s linear infinite;
+}
+.sky-star {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sky-twinkle 1.6s ease-in-out infinite alternate var(--d, 0s);
+}
+@keyframes sky-spin { to { transform: rotate(360deg); } }
+@keyframes sky-twinkle { from { transform: scale(0.8); opacity: 0.8; } to { transform: scale(1.1); opacity: 1; } }
+.mw-sway {
+    animation: mw-sway var(--t, 3s) ease-in-out infinite alternate var(--d, 0s);
+}
+.mw-grass {
+    animation-name: mw-grass;
+}
+@keyframes mw-sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+@keyframes mw-grass { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
+@media (prefers-reduced-motion: reduce) {
+    .crew,
+    .crew img,
+    .crew-say,
+    .crew-say.crew-say-leaving,
+    .mw-sway,
+    .sky-spin,
+    .sky-star {
+        animation: none !important;
+    }
 }
 
 /* Scratch-off landmark sticker (scripts/sticker.js) */

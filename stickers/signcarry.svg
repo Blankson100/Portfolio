@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<defs><pattern id="hz" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="14" fill="#1F1F1F"/></pattern></defs>
+<path d="M67,196 L64,260" fill="none" stroke-width="23"/><path d="M67,196 L64,260" fill="none" stroke="#2E4A7D" stroke-width="13"/><path d="M85,196 L88,260" fill="none" stroke-width="23"/><path d="M85,196 L88,260" fill="none" stroke="#2E4A7D" stroke-width="13"/>
+<ellipse cx="61" cy="264" rx="12" ry="6" fill="#4A3426"/><ellipse cx="91" cy="264" rx="12" ry="6" fill="#4A3426"/>
+<path d="M52,146 Q76,138 100,146 L97,200 H55 Z" fill="#FF7A21"/>
+<path d="M54,170 H98 M55,188 H97" fill="none" stroke="#F4F4F4" stroke-width="6"/>
+<circle cx="76" cy="124" r="16" fill="#8D5524"/>
+<path d="M58,117 A18,18 0 0 1 94,117 Z" fill="#FFC93C"/>
+<rect x="52" y="113" width="48" height="6" rx="3" fill="#FFC93C"/>
+<path d="M56,150 L44,126 L54,104" fill="none" stroke-width="21"/><path d="M56,150 L44,126 L54,104" fill="none" stroke="#8D5524" stroke-width="11"/><path d="M96,150 L108,126 L98,104" fill="none" stroke-width="21"/><path d="M96,150 L108,126 L98,104" fill="none" stroke="#8D5524" stroke-width="11"/>
+<path d="M215,196 L212,260" fill="none" stroke-width="23"/><path d="M215,196 L212,260" fill="none" stroke="#2E4A7D" stroke-width="13"/><path d="M233,196 L236,260" fill="none" stroke-width="23"/><path d="M233,196 L236,260" fill="none" stroke="#2E4A7D" stroke-width="13"/>
+<ellipse cx="209" cy="264" rx="12" ry="6" fill="#4A3426"/><ellipse cx="239" cy="264" rx="12" ry="6" fill="#4A3426"/>
+<path d="M200,146 Q224,138 248,146 L245,200 H203 Z" fill="#B9E23B"/>
+<path d="M202,170 H246 M203,188 H245" fill="none" stroke="#F4F4F4" stroke-width="6"/>
+<circle cx="224" cy="124" r="16" fill="#C68642"/>
+<path d="M206,117 A18,18 0 0 1 242,117 Z" fill="#FF7A21"/>
+<rect x="200" y="113" width="48" height="6" rx="3" fill="#FF7A21"/>
+<path d="M204,150 L192,126 L202,104" fill="none" stroke-width="21"/><path d="M204,150 L192,126 L202,104" fill="none" stroke="#C68642" stroke-width="11"/><path d="M244,150 L256,126 L246,104" fill="none" stroke-width="21"/><path d="M244,150 L256,126 L246,104" fill="none" stroke="#C68642" stroke-width="11"/>
+<rect x="30" y="14" width="240" height="88" rx="6" fill="#FFC93C"/>
+<rect x="30" y="14" width="240" height="13" fill="url(#hz)" stroke="none"/>
+<rect x="30" y="89" width="240" height="13" fill="url(#hz)" stroke="none"/>
+<rect x="30" y="14" width="240" height="88" rx="6" fill="none"/>
+<text x="150" y="52" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="23" fill="#1F1F1F" stroke="none">SITE UNDER</text>
+<text x="150" y="79" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="21" fill="#1F1F1F" stroke="none">CONSTRUCTION</text>
+</g></g>
+</svg>

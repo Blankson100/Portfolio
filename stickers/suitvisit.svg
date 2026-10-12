@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M119,196 L117,260" fill="none" stroke-width="23"/><path d="M119,196 L117,260" fill="none" stroke="#5A5F66" stroke-width="13"/><path d="M137,196 L139,260" fill="none" stroke-width="23"/><path d="M137,196 L139,260" fill="none" stroke="#5A5F66" stroke-width="13"/>
+<ellipse cx="115" cy="264" rx="11" ry="6" fill="#1F1F1F"/><ellipse cx="141" cy="264" rx="11" ry="6" fill="#1F1F1F"/>
+<path d="M104,146 Q128,138 152,146 L150,206 H106 Z" fill="#5A5F66"/>
+<path d="M118,142 H138 L128,176 Z" fill="#fff" stroke-width="3"/>
+<path d="M124,143 H132 L130,150 L133,168 L128,174 L123,168 L126,150 Z" fill="#2E9BF6" stroke-width="2.5"/>
+<path d="M115,143 L123,160 L128,176 M141,143 L133,160 L128,176 V206" fill="none" stroke-width="3"/>
+<path d="M139,170 l4,-6 l4,6 Z" fill="#fff" stroke-width="2"/>
+<circle cx="128" cy="186" r="3" fill="#1F1F1F" stroke="none"/><circle cx="128" cy="200" r="3" fill="#1F1F1F" stroke="none"/>
+<circle cx="128" cy="124" r="16" fill="#C68642"/><path d="M110,117 A18,18 0 0 1 146,117 Z" fill="#FFC93C"/><rect x="104" y="113" width="48" height="6" rx="3" fill="#FFC93C"/>
+<path d="M146,150 L170,142 L186,118" fill="none" stroke-width="22"/><path d="M146,150 L170,142 L186,118" fill="none" stroke="#5A5F66" stroke-width="12"/><circle cx="186" cy="118" r="7" fill="#C68642"/><path d="M110,150 L96,176 L86,196" fill="none" stroke-width="22"/><path d="M110,150 L96,176 L86,196" fill="none" stroke="#5A5F66" stroke-width="12"/><circle cx="86" cy="196" r="7" fill="#C68642"/>
+<rect x="34" y="176" width="54" height="74" rx="6" fill="#C68642"/>
+<rect x="41" y="189" width="40" height="54" fill="#fff"/>
+<rect x="50" y="170" width="22" height="12" rx="3" fill="#8F9AA5"/>
+<path d="M47,203 H75 M47,216 H75 M47,229 H68" fill="none" stroke-width="3"/>
+<circle cx="86" cy="196" r="7" fill="#C68642"/>
+<path d="M172,40 H272 Q280,40 280,48 V66 Q280,74 272,74 H198 L186,86 L188,74 H172 Q164,74 164,66 V48 Q164,40 172,40 Z" fill="#fff" stroke-width="4"/>
+<text x="222" y="63" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="13" fill="#1F1F1F" stroke="none">Looking good!</text>
+</g></g>
+</svg>

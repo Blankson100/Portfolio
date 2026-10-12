@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M81,196 L79,260" fill="none" stroke-width="23"/><path d="M81,196 L79,260" fill="none" stroke="#3A3A3A" stroke-width="13"/><path d="M99,196 L101,260" fill="none" stroke-width="23"/><path d="M99,196 L101,260" fill="none" stroke="#3A3A3A" stroke-width="13"/>
+<ellipse cx="77" cy="264" rx="11" ry="6" fill="#1F1F1F"/><ellipse cx="103" cy="264" rx="11" ry="6" fill="#1F1F1F"/>
+<path d="M67,146 Q90,138 113,146 L110,200 H70 Z" fill="#2E9BF6"/>
+<circle cx="90" cy="124" r="16" fill="#E0AC69"/>
+<path d="M74,122 C74,102 106,102 106,122 C98,114 82,114 74,122 Z" fill="#1F1F1F"/>
+<path d="M72,150 L62,186 L68,214" fill="none" stroke-width="20"/><path d="M72,150 L62,186 L68,214" fill="none" stroke="#E0AC69" stroke-width="10"/><path d="M110,150 L128,186 L146,196" fill="none" stroke-width="20"/><path d="M110,150 L128,186 L146,196" fill="none" stroke="#E0AC69" stroke-width="10"/>
+<path d="M202,216 L201,260" fill="none" stroke-width="20"/><path d="M202,216 L201,260" fill="none" stroke="#8D5524" stroke-width="10"/><path d="M218,216 L219,260" fill="none" stroke-width="20"/><path d="M218,216 L219,260" fill="none" stroke="#8D5524" stroke-width="10"/>
+<ellipse cx="197" cy="264" rx="11" ry="6" fill="#1F1F1F"/><ellipse cx="223" cy="264" rx="11" ry="6" fill="#1F1F1F"/>
+<path d="M188,146 Q210,138 232,146 L240,222 H180 Z" fill="#F7941D"/><path d="M192,142 C188,120 194,104 210,104 C226,104 232,120 228,142 Z" fill="#1F1F1F"/>
+<circle cx="210" cy="124" r="16" fill="#8D5524"/>
+<path d="M194,122 C194,102 226,102 226,122 C218,114 202,114 194,122 Z" fill="#1F1F1F"/>
+<path d="M228,150 L238,186 L232,214" fill="none" stroke-width="20"/><path d="M228,150 L238,186 L232,214" fill="none" stroke="#8D5524" stroke-width="10"/><path d="M190,150 L172,186 L154,196" fill="none" stroke-width="20"/><path d="M190,150 L172,186 L154,196" fill="none" stroke="#8D5524" stroke-width="10"/>
+<circle cx="150" cy="196" r="10" fill="#B87A58"/>
+<rect x="76" y="160" width="20" height="13" rx="2" fill="#fff"/><rect x="214" y="160" width="20" height="13" rx="2" fill="#fff"/>
+<path d="M70,22 H230 Q238,22 238,30 V48 Q238,56 230,56 H96 L84,68 L86,56 H70 Q62,56 62,48 V30 Q62,22 70,22 Z" fill="#fff" stroke-width="4"/>
+<text x="150" y="45" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="15" fill="#1F1F1F" stroke="none">Nice to meet you!</text>
+</g></g>
+</svg>

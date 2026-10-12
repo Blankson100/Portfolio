@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M92,24 L40,58 M92,24 L270,58" fill="none" stroke-width="3"/>
+<path d="M82,58 L92,24 L102,58 Z" fill="#FFC93C"/>
+<rect x="40" y="58" width="236" height="16" fill="#FFC93C"/>
+<path d="M40,74 L60,58 L80,74 L100,58 L120,74 L140,58 L160,74 L180,58 L200,74 L220,58 L240,74 L260,58" fill="none" stroke-width="3"/>
+<rect x="40" y="74" width="30" height="24" fill="#8F9AA5"/>
+<rect x="80" y="74" width="24" height="186" fill="#FFC93C"/>
+<path d="M80,74 L104,97 L80,120 L104,143 L80,166 L104,189 L80,212 L104,235 L80,258" fill="none" stroke-width="3"/>
+<rect x="104" y="74" width="22" height="20" rx="3" fill="#CDE9FF"/>
+<rect x="62" y="258" width="60" height="12" rx="3" fill="#8F9AA5"/>
+<rect x="210" y="72" width="20" height="10" fill="#5A5A5A"/>
+<path d="M220,82 V164 M220,164 L188,176 M220,164 L252,176" fill="none" stroke-width="3"/>
+<path d="M216,160 a5,5 0 1 0 8,4" fill="none" stroke-width="3"/>
+<rect x="184" y="176" width="72" height="36" fill="#C1502E"/>
+<path d="M184,188 H256 M184,200 H256 M202,176 V188 M226,176 V188 M250,176 V188 M190,188 V200 M214,188 V200 M238,188 V200 M202,200 V212 M226,200 V212 M250,200 V212" fill="none" stroke="#F3D3C2" stroke-width="2.5"/>
+<rect x="180" y="212" width="80" height="8" fill="#A0612B"/>
+</g></g>
+</svg>

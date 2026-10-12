@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M140,152 L134,176 M160,152 L166,176" fill="none" stroke-width="4"/>
+<path d="M150,174 L184.6,194 L184.6,234 L150,254 L115.4,234 L115.4,194 Z" fill="#F7E3A1"/>
+<path d="M150,190 L170.8,202 L170.8,226 L150,238 L129.2,226 L129.2,202 Z" fill="none" stroke="#E8C66A" stroke-width="4"/>
+<g transform="translate(150,108) scale(0.85,0.85)">
+<ellipse cx="-8" cy="-34" rx="18" ry="28" transform="rotate(-24 -8 -34)" fill="#EAF6FF"/>
+<ellipse cx="14" cy="-36" rx="18" ry="28" transform="rotate(16 14 -36)" fill="#EAF6FF"/>
+<path d="M-12,30 L-16,44 M2,32 L2,46 M16,30 L20,43" fill="none" stroke-width="5"/>
+<path d="M-42,-2 L-58,2 L-42,8 Z" fill="#1F1F1F"/>
+<ellipse cx="0" cy="0" rx="44" ry="32" fill="#FFC93C"/>
+<path d="M-20,-29 C-28,-10 -28,10 -20,29 L-8,31 C-16,10 -16,-10 -8,-31 Z M8,-31 C0,-10 0,10 8,31 L20,28 C12,10 12,-10 20,-28 Z" fill="#1F1F1F" stroke-width="3"/>
+<ellipse cx="0" cy="0" rx="44" ry="32" fill="none"/>
+<path d="M38,-26 Q34,-46 24,-52 M50,-26 Q56,-46 66,-50" fill="none" stroke-width="4"/><circle cx="24" cy="-52" r="4" fill="#1F1F1F"/><circle cx="66" cy="-50" r="4" fill="#1F1F1F"/>
+<circle cx="44" cy="-6" r="22" fill="#2B2B2B"/>
+<circle cx="52" cy="-8" r="6.5" fill="#fff" stroke-width="2.5"/><circle cx="53.5" cy="-7" r="3" fill="#1F1F1F" stroke="none"/>
+<path d="M42,8 Q51,14 60,7" fill="none" stroke="#fff" stroke-width="3"/>
+</g>
+</g></g>
+</svg>

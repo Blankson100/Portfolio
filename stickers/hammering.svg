@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M160,208 L148,264 M180,208 L190,264 M252,208 L242,264 M272,208 L284,264" fill="none" stroke-width="13"/>
+<path d="M160,208 L148,264 M180,208 L190,264 M252,208 L242,264 M272,208 L284,264" fill="none" stroke="#A0612B" stroke-width="6"/>
+<rect x="140" y="192" width="148" height="18" rx="3" fill="#D9A066"/>
+<path d="M156,201 H186 M228,199 H262" fill="none" stroke="#B57A3E" stroke-width="3"/>
+<path d="M214,178 V193" fill="none" stroke="#5A5A5A" stroke-width="5"/><path d="M208,177 H220" fill="none" stroke="#5A5A5A" stroke-width="5"/>
+<path d="M83,196 L80,260" fill="none" stroke-width="23"/><path d="M83,196 L80,260" fill="none" stroke="#2E4A7D" stroke-width="13"/><path d="M101,196 L104,260" fill="none" stroke-width="23"/><path d="M101,196 L104,260" fill="none" stroke="#2E4A7D" stroke-width="13"/>
+<ellipse cx="77" cy="264" rx="12" ry="6" fill="#4A3426"/><ellipse cx="107" cy="264" rx="12" ry="6" fill="#4A3426"/>
+<path d="M68,146 Q92,138 116,146 L113,200 H71 Z" fill="#FF7A21"/>
+<path d="M70,170 H114 M71,188 H113" fill="none" stroke="#F4F4F4" stroke-width="6"/>
+<circle cx="92" cy="124" r="16" fill="#8D5524"/>
+<path d="M74,117 A18,18 0 0 1 110,117 Z" fill="#FFC93C"/>
+<rect x="68" y="113" width="48" height="6" rx="3" fill="#FFC93C"/>
+<path d="M110,150 L148,176 L200,184" fill="none" stroke-width="21"/><path d="M110,150 L148,176 L200,184" fill="none" stroke="#8D5524" stroke-width="11"/><path d="M104,146 L126,112 L156,102" fill="none" stroke-width="21"/><path d="M104,146 L126,112 L156,102" fill="none" stroke="#8D5524" stroke-width="11"/>
+<path d="M154,104 L190,78" fill="none" stroke-width="14"/><path d="M154,104 L190,78" fill="none" stroke="#A0612B" stroke-width="7"/>
+<rect x="180" y="58" width="16" height="38" rx="3" transform="rotate(-36 188 77)" fill="#5A5A5A"/>
+<path d="M206,92 Q224,112 222,140 M216,86 Q238,110 236,140" fill="none" stroke-width="3" stroke-dasharray="6 6"/>
+<path d="M288,146 L272.2,155.2 L276.9,172.9 L259.2,168.2 L250,184 L240.8,168.2 L223.1,172.9 L227.8,155.2 L212,146 L227.8,136.8 L223.1,119.1 L240.8,123.8 L250,108 L259.2,123.8 L276.9,119.1 L272.2,136.8 Z" fill="#FFC93C"/>
+<text x="250" y="151" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="12" fill="#1F1F1F" stroke="none">BANG!</text>
+</g></g>
+</svg>
