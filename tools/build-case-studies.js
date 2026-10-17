@@ -11,8 +11,7 @@ const CONTENT = require('./case-study-content');
 const ROOT = path.join(__dirname, '..');
 const PAGES = {   // content key: the page's file name, its project page, its stickers, and its phone page
     cropcare: { file: 'cropcare-case-study', project: 'leafai', stickers: 'cropcare',
-        mobile: { file: 'cropcare-mobile', tagline: 'AI-powered crop disease diagnosis for farmers in emerging markets',
-            video: 'data-video="videos/cropcare.mp4" data-sources="videos/cropcare.mp4 920p, videos/cropcare-600.mp4 600p" data-fill="#000000" data-silent' } },
+        mobile: { file: 'cropcare-mobile', study: 'cropcare-case-study-mobile', tagline: 'AI-powered crop disease diagnosis for farmers in emerging markets' } },
     ontrack: { file: 'ontrack-case-study', project: 'ontrack', stickers: 'ontrack' },
     lign: { file: 'lign-case-study', project: 'LignTransport', stickers: 'lign' },
 };
@@ -620,102 +619,169 @@ ${html}            <div class="cs-end">
 `;
 }
 
-// The project on a phone: the case study as writing, in the style of the phone homepage
-// (portfolio-mobile-light/dark.html and mobile.css), with the demo video at the top of The app,
-// Listen and Download, Back to Projects pinned top left and the same moon/sun switch pinned top
-// right (it changes mode in place so Listen keeps talking). Three pauses between sections give
-// the stickers somewhere to sit.
+// Phone pages, in the style of the phone homepage (portfolio-mobile-light/dark.html and
+// mobile.css), with Back pinned top left and the moon/sun switch top right (scripts/mobile-page.js
+// changes mode in place). Each project gets two:
+// - the project page (PAGES[key].mobile.file): the desktop project page's sections, read
+//   from it so the two stay the same: cover, Introduction, The Problem, The App (its video
+//   and "See how it works"), the Design Process notebook, Challenges as rows, and the link to
+// - the full case study (PAGES[key].mobile.study): the case study as writing, with Listen and
+//   the PDF.
+// Three pauses between sections on each give the stickers somewhere to sit.
 const MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.6 6.6 0 0 0 10.7 10.7z"/></svg>';
 const SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg>';
 const LEFT_ARROW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
-function mobilePage(key, dark) {
-    const c = CONTENT[key], m = PAGES[key].mobile;
-    let { html } = render(c.body);
-    html = html.replace(/(<section[^>]*id="the-app">\n\s*<h2>.*<\/h2>\n)/, `$1                <div class="case-video" ${m.video} data-sticker-avoid></div>\n`)
-        .replace(/<img class="cs-shot"/g, '<img class="cs-shot" data-sticker-avoid');
-    ['the-app', 'challenges', 'references'].forEach(function (id) {
-        html = html.replace(`<section class="toc-section cs-section${id === 'references' ? ' cs-refs' : ''}" id="${id}">`, '<div class="m-pause" aria-hidden="true"></div>\n            $&');
-    });
-    const light = m.file + '.html', darkPage = m.file + 'Dark.html';
+const RIGHT_ARROW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const PAUSE = '<div class="m-pause" aria-hidden="true"></div>\n';
+const both = name => ({ light: name + '.html', dark: name + 'Dark.html' });
+// A link or image that follows the mode: href/src for this mode, the other in data-*.
+const modal = (attr, pair, dark) => `${attr}="${dark ? pair.dark : pair.light}" data-light="${pair.light}" data-dark="${pair.dark}"`;
+
+function mobileShell({ title, dark, pages, back, body, scripts, extraHead = '' }) {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${esc(c.name)} - PortoBlknszzz</title>
+    <title>${esc(title)} - PortoBlknszzz</title>
     <link rel="preconnect" href="https://api.fontshare.com">
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,501&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,501&display=swap" rel="stylesheet">${extraHead}
     <link rel="stylesheet" href="BB.css">
     <link rel="stylesheet" href="mobile.css">
     <script src="scripts/page-fade.js"></script>
-    <!-- Built by tools/build-case-studies.js from tools/case-study-content.js: edit those, not this file. -->
+    <!-- Built by tools/build-case-studies.js: edit the desktop project page or tools/case-study-content.js, then rebuild. -->
 </head>
-<body class="m-page m-case${dark ? ' dark-mode' : ''}">
+<body class="m-page m-case${dark ? ' dark-mode' : ''}" data-light-page="${pages.light}" data-dark-page="${pages.dark}">
     <button type="button" class="m-mode" aria-label="Switch to ${dark ? 'light' : 'dark'} mode" data-sticker-avoid>${dark ? SUN : MOON}</button>
-    <a class="m-back" href="portfolio-mobile-${dark ? 'dark' : 'light'}.html#projects" data-sticker-avoid>${LEFT_ARROW}<span>Projects</span></a>
+    <a class="m-back" ${modal('href', back.pair, dark)} data-sticker-avoid>${LEFT_ARROW}<span>${esc(back.label)}</span></a>
     <main class="m-main" id="top">
-        <header class="m-header">
-            <h1 class="m-name cs-title">${esc(c.name)}</h1>
+${body}    </main>
+    <script src="scripts/mobile-page.js"></script>
+${scripts}
+</body>
+</html>
+`;
+}
+
+// One element from a hand-written page: from its opening tag to the matching close.
+function element(html, startTag) {
+    const start = html.indexOf(startTag);
+    if (start < 0) return null;
+    const tag = startTag.match(/^<(\w+)/)[1], re = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g');
+    re.lastIndex = start;
+    let depth = 0, m;
+    while ((m = re.exec(html))) {
+        depth += m[0][1] === '/' ? -1 : 1;
+        if (depth === 0) return html.slice(start, m.index + m[0].length);
+    }
+    return null;
+}
+const paragraphs = block => {
+    const ps = (block.match(/<p\b[^>]*>[\s\S]*?<\/p>/g) || []).map(p => p.replace(/^<p\b[^>]*>/, '<p>'));
+    if (ps.length) return ps;
+    const text = block.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    return text ? [`<p>${text}</p>`] : [];
+};
+const textOf = s => s.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+
+function mobileProjectPage(key, dark) {
+    const c = CONTENT[key], p = PAGES[key], m = p.mobile;
+    const desk = fs.readFileSync(path.join(ROOT, p.project + (dark ? 'Dark' : '') + '.html'), 'utf8');
+    const deskOther = fs.readFileSync(path.join(ROOT, p.project + (dark ? '' : 'Dark') + '.html'), 'utf8');
+    const name = (desk.match(/<h1 class="hero-title-standalone">([^<]*)<\/h1>/) || [, c.name])[1];
+    const coverOf = page => page.match(/class="project-hero-inner"><img src="([^"]+)" alt="([^"]*)"/);
+    const cover = coverOf(desk), coverOther = coverOf(deskOther);
+    const covers = { light: dark ? coverOther[1] : cover[1], dark: dark ? cover[1] : coverOther[1] };
+
+    const section = id => element(desk, `<div class="toc-section" id="${id}">`);
+    const heading = s => textOf((s.match(/<h2[^>]*>([\s\S]*?)<\/h2>/) || [, ''])[1]);
+    const out = [];
+    for (const id of ['introduction', 'the-problem', 'the-app', 'design-process', 'challenges']) {
+        const s = section(id);
+        if (!s) continue;
+        let inner = '';
+        if (id === 'the-app') {
+            const video = (s.match(/<div class="case-video"[^>]*><\/div>/) || [''])[0].replace('></div>', ' data-sticker-avoid></div>');
+            const how = textOf((s.match(/<div class="see-how-title">([\s\S]*?)<\/div>/) || [, ''])[1]);
+            const desc = element(s, '<div class="see-how-desc">') || '';
+            inner = `                ${video}\n${how ? `                <h3>${how}</h3>\n` : ''}${paragraphs(desc).map(x => `                ${x}\n`).join('')}`;
+        } else if (id === 'design-process') {
+            // Its cards have blank paper, so stickers are told to keep off it.
+            const notebook = (element(s, '<div class="notebook') || '').replace(/^<div class="notebook([^"]*)"/, '<div class="notebook$1" data-sticker-avoid');
+            inner = `                ${notebook}\n`;
+        } else if (id === 'challenges') {
+            // The table as rows: each challenge, and the response under it.
+            const cells = (s.match(/<span class="chg-cell(?! chg-head)[^"]*">[\s\S]*?<\/span>|<span class="chg-text chg-text-body"[^>]*>[\s\S]*?<\/span>/g) || []).map(textOf);
+            const rows = [];
+            for (let i = 0; i + 1 < cells.length; i += 2) rows.push(`                    <div class="m-chg-row"><p class="m-chg-q">${cells[i]}</p><p class="m-chg-a">${cells[i + 1]}</p></div>`);
+            inner = `                <div class="m-chg">\n${rows.join('\n')}\n                </div>\n`;
+        } else {
+            inner = paragraphs(element(s, '<div class="toc-content">') || '').map(x => `                ${x}\n`).join('');
+        }
+        if (id === 'the-app' || id === 'challenges') out.push('        ' + PAUSE);
+        out.push(`        <section class="cs-section" id="${id}">\n                <h2>${heading(s)}</h2>\n${inner}        </section>\n`);
+    }
+    // The way into the full case study, with the line from the desktop card.
+    const cta = textOf((desk.match(/<p class="cta-compact-text">([\s\S]*?)<\/p>/) || [, ''])[1]);
+    out.push('        ' + PAUSE);
+    out.push(`        <section class="cs-section" id="whats-next">
+                <h2>Full case study</h2>
+${cta ? `                <p>${cta}</p>\n` : ''}                <a class="m-act m-go" ${modal('href', both(m.study), dark)}>Read the full case study ${RIGHT_ARROW}</a>
+        </section>
+`);
+
+    const body = `        <header class="m-header">
+            <h1 class="m-name">${esc(name)}</h1>
             <p class="m-role">${esc(m.tagline)}</p>
+        </header>
+        <img class="m-cover" ${modal('src', covers, dark)} alt="${esc(cover[2])}" data-sticker-avoid>
+${out.join('')}`;
+    return mobileShell({
+        title: name, dark, pages: both(m.file),
+        back: { label: 'Projects', pair: { light: 'portfolio-mobile-light.html#projects', dark: 'portfolio-mobile-dark.html#projects' } },
+        extraHead: '\n    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">',
+        body,
+        scripts: `    <script src="scripts/case-video.js"></script>
+    <script src="scripts/notebook-row.js"></script>
+    <script src="stickers/stickers.js"></script>
+    <script src="scripts/sticker.js" data-set="${p.stickers}" data-count="3" data-place="free" data-size="88"></script>`,
+    });
+}
+
+function mobileStudyPage(key, dark) {
+    const c = CONTENT[key], p = PAGES[key], m = p.mobile;
+    let { html } = render(c.body);
+    html = html.replace(/<img class="cs-shot"/g, '<img class="cs-shot" data-sticker-avoid');
+    ['the-app', 'challenges', 'references'].forEach(function (id) {
+        html = html.replace(`<section class="toc-section cs-section${id === 'references' ? ' cs-refs' : ''}" id="${id}">`, PAUSE + '            $&');
+    });
+    const body = `        <header class="m-header">
+            <h1 class="m-name cs-title">${esc(c.title)}</h1>${c.subtitle ? `\n            <p class="m-role">${esc(c.subtitle)}</p>` : ''}
         </header>
         <div class="m-actions" data-sticker-avoid>
             <button type="button" class="m-act" data-read-aloud>Listen</button>
             <button type="button" class="m-act m-act-stop" data-read-stop hidden>${STOP_ICON}<span>Stop</span></button>
             <a class="m-act" href="${c.pdf}" download="${esc(c.pdfName)}">${DOWNLOAD_ICON}<span>PDF</span><span class="cs-listen-time">${fileSize(c.pdf)}</span></a>
         </div>
-${html}    </main>
-    <script>
-        // The moon/sun switch changes mode in place (with the blur crossfade), so Listen keeps
-        // talking and the place stays; the address becomes the other mode's page.
-        (function () {
-            const btn = document.querySelector('.m-mode'), back = document.querySelector('.m-back');
-            const MOON = '${MOON}', SUN = '${SUN}';
-            btn.addEventListener('click', function () {
-                const dark = !document.body.classList.contains('dark-mode');
-                function apply() {
-                    document.body.classList.toggle('dark-mode', dark);
-                    btn.innerHTML = dark ? SUN : MOON;
-                    btn.setAttribute('aria-label', 'Switch to ' + (dark ? 'light' : 'dark') + ' mode');
-                    back.setAttribute('href', 'portfolio-mobile-' + (dark ? 'dark' : 'light') + '.html#projects');
-                    history.replaceState(history.state, '', (dark ? '${darkPage}' : '${light}') + location.search + location.hash);
-                    document.dispatchEvent(new Event('modechange'));
-                }
-                if (document.startViewTransition) document.startViewTransition(apply);
-                else apply();
-            });
-            // Fade in the discs behind Back and the switch once the page has scrolled under them.
-            function update() {
-                btn.classList.toggle('is-floating', window.scrollY > 8);
-                back.classList.toggle('is-floating', window.scrollY > 8);
-            }
-            window.addEventListener('scroll', update, { passive: true });
-            update();
-            // Back to Projects: straight back if we came from the homepage in this mode (it opens
-            // where it was left), otherwise to its Projects section.
-            back.addEventListener('click', function (e) {
-                const from = document.referrer.split(/[?#]/)[0].split('/').pop();
-                if (from === back.getAttribute('href').split('#')[0]) { e.preventDefault(); history.back(); }
-            });
-        })();
-    </script>
-    <script src="scripts/case-video.js"></script>
-    <script src="scripts/case-read-aloud.js"></script>
+${html}`;
+    return mobileShell({
+        title: c.title, dark, pages: both(m.study),
+        back: { label: c.name, pair: both(m.file) },
+        body,
+        scripts: `    <script src="scripts/case-read-aloud.js"></script>
     <script src="stickers/stickers.js"></script>
-    <script src="scripts/sticker.js" data-set="${PAGES[key].stickers}" data-count="3" data-place="free" data-size="88"></script>
-</body>
-</html>
-`;
+    <script src="scripts/sticker.js" data-set="${p.stickers}" data-count="3" data-place="free" data-size="88"></script>`,
+    });
 }
 
 for (const key of Object.keys(PAGES)) {
     for (const dark of [false, true]) {
-        const name = PAGES[key].file + (dark ? 'Dark' : '') + '.html';
-        fs.writeFileSync(path.join(ROOT, name), page(key, dark));
-        console.log('wrote ' + name);
-        if (PAGES[key].mobile) {
-            const phone = PAGES[key].mobile.file + (dark ? 'Dark' : '') + '.html';
-            fs.writeFileSync(path.join(ROOT, phone), mobilePage(key, dark));
-            console.log('wrote ' + phone);
+        const write = (name, html) => { fs.writeFileSync(path.join(ROOT, name), html); console.log('wrote ' + name); };
+        write(PAGES[key].file + (dark ? 'Dark' : '') + '.html', page(key, dark));
+        const m = PAGES[key].mobile;
+        if (m) {
+            write(m.file + (dark ? 'Dark' : '') + '.html', mobileProjectPage(key, dark));
+            write(m.study + (dark ? 'Dark' : '') + '.html', mobileStudyPage(key, dark));
         }
     }
 }

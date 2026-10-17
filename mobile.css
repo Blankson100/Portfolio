@@ -362,7 +362,7 @@ body.dark-mode.m-case .cs-section a {
 }
 /* Room between some sections for a sticker */
 .m-pause {
-    height: 132px;
+    height: 160px;
 }
 /* The paragraph being read aloud */
 .m-case .cs-reading {
@@ -399,4 +399,43 @@ button.m-mode {
     padding: 0;
     background: transparent;
     cursor: pointer;
+}
+
+/* The project page on the phone (cropcare-mobile.html): the desktop project page's sections */
+.m-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 602 / 431;
+    object-fit: cover;
+    border-radius: 24px;
+}
+/* The Design Process notebook runs to the screen edges, so cards slide in from the side */
+.m-case .notebook.nb-row {
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    scroll-padding-left: 24px;
+}
+/* Challenges as rows: the challenge, and the response under it in grey */
+.m-chg {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.m-chg-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.m-chg-a {
+    color: var(--m-muted);
+}
+.m-chg-a::before {
+    content: "\2192\00a0";
+}
+/* "Read the full case study" */
+.m-go {
+    align-self: flex-start;
 }
