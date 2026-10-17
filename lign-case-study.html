@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lign: a personalised trotro for your school or workplace - PortoBlknszzz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="BB.css">
+    <script src="scripts/page-fade.js"></script>
+    <!-- Built by tools/build-case-studies.js from tools/case-study-content.js: edit those, not this file. -->
+    <style>
+        #content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .project-page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            margin: 90px 0 100px;
+            flex: 1;
+        }
+        .project-layout {
+            width: 100%;
+        }
+        .project-sidebar {
+            width: 140px;
+            position: fixed;
+            left: 70px;
+            top: 90px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .project-sidebar a {
+            font-family: Satoshi, sans-serif;
+            font-size: 15px;
+            color: #a8a8a8;
+            text-decoration: none;
+            transition: color 0.3s var(--transition-easing);
+        }
+        .project-sidebar a:hover,
+        .project-sidebar a.active {
+            color: #0b0b0b;
+        }
+        .back-button {
+            height: 24px;
+            background: none;
+            border: none;
+            padding: 0;
+            margin-bottom: 4px;
+            font-size: 15px;
+            line-height: 24px;
+            font-family: Satoshi, sans-serif;
+            color: #a8a8a8;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s var(--transition-easing);
+        }
+        .back-button:hover {
+            color: #0b0b0b;
+        }
+        .project-sidebar .cs-download {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .project-main {
+            width: 602px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .hero-title-standalone {
+            font-family: Satoshi, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+            margin: 0 0 16px 0;
+        }
+        /* The case study's cover, its title, then the reading */
+        .cs-cover {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 42px;
+            margin: 0 0 40px;
+        }
+        .cs-title {
+            font-family: Satoshi, sans-serif;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 1.25;
+            color: #0b0b0b;
+            margin: 0;
+        }
+        .cs-subtitle {
+            font-family: Satoshi, sans-serif;
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666666;
+            margin: 8px 0 0;
+        }
+        .cs-head {
+            margin-bottom: 40px;
+        }
+        .cs-section {
+            width: 100%;
+            margin-bottom: 48px;
+            scroll-margin-top: 110px;
+        }
+        .cs-section:last-child {
+            margin-bottom: 0;
+        }
+        .cs-section h2 {
+            font-family: Satoshi, sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.3;
+            color: #0b0b0b;
+            margin: 0 0 12px;
+        }
+        .cs-section h3 {
+            font-family: Satoshi, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.4;
+            color: #0b0b0b;
+            margin: 32px 0 8px;
+        }
+        .cs-section p,
+        .cs-section li {
+            font-family: Satoshi, sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666666;
+        }
+        .cs-section p {
+            margin: 0 0 16px;
+        }
+        .cs-section ul,
+        .cs-section ol {
+            margin: 0 0 16px;
+            padding-left: 22px;
+        }
+        .cs-section li {
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+        .cs-section li::marker {
+            color: #a8a8a8;
+        }
+        .cs-section strong {
+            font-weight: 700;
+            color: #0b0b0b;
+        }
+        .cs-section a {
+            color: #0b0b0b;
+            text-decoration: underline;
+            text-decoration-color: rgba(11, 11, 11, 0.3);
+            text-underline-offset: 3px;
+            overflow-wrap: anywhere;
+            transition: text-decoration-color 0.3s var(--transition-easing);
+        }
+        .cs-section a:hover {
+            text-decoration-color: currentColor;
+        }
+        /* Screens from the app, as in the PDF: on black, rounded like the cover */
+        .cs-shot {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 42px;
+            background: #000000;
+            margin: 8px 0 24px;
+        }
+        .cs-section .cs-caption {
+            margin: -12px 0 24px;
+            font-size: 14px;
+            line-height: 1.6;
+            font-style: italic;
+            color: #8a8a8a;
+        }
+        body.dark-mode .cs-section .cs-caption {
+            color: #888888;
+        }
+        .cs-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 24px;
+        }
+        .cs-refs li,
+        .cs-refs p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        body.dark-mode .project-sidebar a {
+            color: #777777;
+        }
+        body.dark-mode .back-button {
+            color: #777777;
+        }
+        body.dark-mode .project-sidebar a:hover,
+        body.dark-mode .project-sidebar a.active,
+        body.dark-mode .back-button:hover,
+        body.dark-mode .hero-title-standalone,
+        body.dark-mode .cs-title,
+        body.dark-mode .cs-section h2,
+        body.dark-mode .cs-section h3,
+        body.dark-mode .cs-section strong,
+        body.dark-mode .cs-section a {
+            color: #f5f5f5;
+        }
+        body.dark-mode .cs-subtitle,
+        body.dark-mode .cs-section p,
+        body.dark-mode .cs-section li {
+            color: #aaaaaa;
+        }
+        body.dark-mode .cs-section li::marker {
+            color: #777777;
+        }
+        body.dark-mode .cs-section a {
+            text-decoration-color: rgba(245, 245, 245, 0.35);
+        }
+        body.dark-mode .cs-section a:hover {
+            text-decoration-color: currentColor;
+        }
+        /* Download the case study: under the title, and again at the end. Black like the
+           "View Full Case Study" button (white in dark mode), with the file's size. */
+        .cs-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 42px;
+            padding: 0 18px;
+            border-radius: 14px;
+            background: #000000;
+            color: #ffffff;
+            font-family: Satoshi, sans-serif;
+            font-size: 15px;
+            line-height: 20px;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: opacity 0.3s var(--transition-easing);
+        }
+        .cs-download-btn:hover {
+            opacity: 0.8;
+        }
+        .cs-download-btn span {
+            opacity: 0.6;
+        }
+        .cs-head .cs-download-btn {
+            margin-top: 20px;
+        }
+        .cs-end {
+            width: 100%;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #dddddd;
+        }
+        .cs-end p {
+            font-family: Satoshi, sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666666;
+            margin: 0 0 16px;
+        }
+        body.dark-mode .cs-download-btn {
+            background: #ffffff;
+            color: #000000;
+        }
+        body.dark-mode .cs-end {
+            border-top-color: #2a2a2a;
+        }
+        body.dark-mode .cs-end p {
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="grad-blur" aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><span class="grad-blur-grain"></span></div>
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="Darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn active" title="Light Mode"><img src="BrightMode.svg" alt="Light"></button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li id="nav-home"><a href="BB.html">Home</a></li>
+            <li id="nav-projects"><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <div class="project-page-container">
+            <div class="project-layout">
+                <div class="project-sidebar">
+                    <button class="back-button" onclick="smartBack()"><svg width="16" height="16" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.06836 12.1833C5.06836 12.4187 5.17038 12.6542 5.35086 12.8268L10.5301 17.9982C10.7185 18.1787 10.9225 18.265 11.1501 18.265C11.6445 18.265 12.0054 17.9119 12.0054 17.4332C12.0054 17.1821 11.9113 16.9702 11.7465 16.8133L9.98082 15.0241L7.70508 12.9445L9.53352 13.0544H19.0445C19.5625 13.0544 19.9234 12.6934 19.9234 12.1833C19.9234 11.6654 19.5625 11.3044 19.0445 11.3044H9.53352L7.71293 11.4143L9.98082 9.33472L11.7465 7.54551C11.9113 7.38857 12.0054 7.17669 12.0054 6.92557C12.0054 6.44688 11.6445 6.09375 11.1501 6.09375C10.9225 6.09375 10.7106 6.18007 10.5066 6.37626L5.35086 11.532C5.17038 11.7046 5.06836 11.94 5.06836 12.1833Z" fill="currentColor"/></svg><span>Back</span></button>
+                    <a href="#introduction">Introduction</a>
+                    <a href="#the-problem">The Problem</a>
+                    <a href="#the-app">The App</a>
+                    <a href="#design-process">Design Process</a>
+                    <a href="#challenges">Challenges</a>
+                    <a href="#whats-next">What's Next</a>
+                    <a href="#references">References</a>
+                    <a class="cs-download" href="case-studies/lign-case-study.pdf" download="Lign case study.pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download PDF</span></a>
+                </div>
+                <main class="project-main">
+            <p class="hero-title-standalone">Lign · Full case study</p>
+            <img class="cs-cover" src="case-studies/lign-cover.png" alt="Lign cover: &quot;Stops lit up&quot;, rows of black star-shaped stops with a few lit in yellow, green, blue and red" width="1588" height="2246">
+            <header class="cs-head">
+                <h1 class="cs-title">Lign: a personalised trotro for your school or workplace</h1>
+                <a class="cs-download-btn" href="case-studies/lign-case-study.pdf" download="Lign case study.pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Download case study <span>PDF · 232 KB</span></a>
+            </header>
+            <section class="toc-section cs-section" id="introduction">
+                <h2>1. Introduction</h2>
+                <p>Lign is a bus app for students and workers travelling to one institution, a school, hospital, factory or company. Each rider signs in with an ID from that institution, buys tickets and books a seat on buses run for their own community.</p>
+                <p>I was the UX/UI designer on Lign, my final year project, and I also supervised the handoff to the developer who built it. The work ran through 2025 and 2026, designed entirely in Figma.</p>
+                <p>The core question: when fares and timetables feel unpredictable, what does a transport app need to give back a sense of control, without pretending to fix the roads themselves?</p>
+            </section>
+            <section class="toc-section cs-section" id="the-problem">
+                <h2>2. The problem</h2>
+                <p>Trotros carry around 70% of trips in Accra, so most students have no real alternative when the service is unreliable. Fares also move often: unions have announced increases of 8 to 20% within the past year alone, usually tied to fuel prices. For a student living on a termly or monthly allowance, that is hard to plan around.</p>
+                <p>I felt this directly. Fares kept rising with no warning, and drivers went on strike often enough that getting to class on time was never guaranteed. My school ran two branches, Tesano and La Paz, so missing the one bus on your side could cost a whole morning. Published research backs this up more broadly: transport problems are linked to late arrival and missed classes for students who depend on public transport.</p>
+                <p>I ran two rounds of research this year to check this wasn't just my own experience. A Google Forms survey reached 14 commuters (11 students, 3 workers) through friends. 13 named long waiting times as a problem, 13 said they just wait at the stop with no information, and 9 said they would definitely want an institutional bus. Separately, I had in-person conversations with 5 to 10 students, mostly about how fare rises affected them and what their school could do. These were casual conversations, not structured interviews, so I treat them as context rather than findings.</p>
+                <p>I also asked 2 fleet managers how they run buses today. Both already track vehicles with a GPS dashboard and want delay alerts, and both want the system to connect with the HR and payroll tools they already use. One operational pain point they raised, driver attitude, echoed what pushed me to build Lign in the first place.</p>
+                <p>I'm told that the University of Ghana and KNUST both run shuttle buses without a system like this, from a friend who studies at KNUST. I haven't confirmed this myself, so I treat it as a steer rather than a fact, and it's part of why I believe the problem isn't unique to my own school.</p>
+            </section>
+            <section class="toc-section cs-section" id="the-app">
+                <h2>3. The app</h2>
+                <p>Sign-in starts with an institutional ID. It unlocks the app, ties the rider to one institution's buses, and carries a role, student or teacher, so a school with both groups can run separate services. A Ghana Telecom ID will not work on a University of Ghana Legon bus, and the reverse is also true.</p>
+                <p>Tickets work as a bulk, deferred-activation model. A rider buys a set of tickets for the term in one purchase, and each ticket sits in a list as a coin. A yellow coin marked I is inactive, a green coin marked A is active. The rider long-presses a coin to activate it before boarding, so only the ticket being used that day is live.</p>
+                <p>Any tickets left unused at the end of the semester are refunded. This only works if the institution agrees to hold and return that money, so it depends on buy-in from the school or company, not just the rider.</p>
+                <p>Hop-On covers the moment the regular bus is missed. The Tickets tab has three views: Incoming, for live buses on the way, Schedules, for the week's timetable, and My Trips, for ride history. From there, Book Now opens Hop-On, which shows the nearest bus passing the rider's side, Tesano or La Paz, with seats left, ETA and distance updating live on screen.</p>
+                <p>The ETA display was not in my first version. I showed early screens to three informal testers, and they were confused about when a bus would actually arrive. Adding a live ETA, making the ticket coins show their state more clearly, and adding empty states to the tickets list and notifications, all came directly from watching that confusion.</p>
+            </section>
+            <section class="toc-section cs-section" id="design-process">
+                <h2>4. Design process</h2>
+                <p>I first considered making transport part of school fees, paid by the institution for every student. I rejected this. It would force fees up for everyone, including students who rarely use the buses.</p>
+                <p>Instead, Lign treats transport as its own operation. A school can run its own buses, or partner with outside investors who bring theirs, and only riders pay into it. This keeps the cost tied to use, not folded into a fee every student carries.</p>
+                <p>I assumed the ticketing side, the coin states and the Tickets tab, would be the hardest part for people to follow. When my brothers used the prototype, the opposite happened. They found My Trips, sitting inside the Tickets tab with past and ongoing trips together, more straightforward than apps like Uber, where trip history sits behind the profile. I kept that structure rather than moving it.</p>
+                <p>The trade-off I kept deliberately is the deferred-activation ticket model itself. Buying a term's worth of tickets in one go, then activating one coin at a time, adds a small extra step before boarding. I judged that step worth keeping, because it lets the refund at semester end work cleanly, unused tickets stay untouched until they are activated.</p>
+            </section>
+            <section class="toc-section cs-section" id="challenges">
+                <h2>5. Challenges</h2>
+                <p>The biggest constraint was scale. Lign is not one app, it is riders, drivers, fleet managers and institutions, all needing their own screens and logic, and I designed it alone.</p>
+                <p>The hardest problem was the driver side. I expected it to add 10 screens at most. Once I started designing it properly, routes, schedules, passenger counts, it kept growing well past that, and I could not finish it inside the project's timeline.</p>
+                <p>The design responds by splitting scope. The rider-facing app, sign-in, tickets, Hop-On, is complete. The driver app and the admin dashboard are pushed to version 2, rather than rushed to an unfinished state alongside the rest.</p>
+                <p>I have not solved the driver side yet. I am still building it, and still working to make the parts that exist better.</p>
+            </section>
+            <section class="toc-section cs-section" id="whats-next">
+                <h2>6. What's next</h2>
+                <p>Lign has not shipped. It exists as a prototype, shown so far only to three informal testers. I have not run any formal usability testing, and I want to be upfront about that rather than imply otherwise.</p>
+                <p>The activate-before-boarding pattern I designed for tickets is not new on its own. Research on mobile fare payment systems elsewhere has studied the same flow, buy a pass, activate it just before boarding, show it to be validated, and found it workable at the scale of a full transit agency. That gives me some confidence the core mechanic holds up, even though my own version hasn't been tested yet.</p>
+                <p>If I tested Lign properly, I would run structured usability sessions with students from my own school's two branches, Tesano and La Paz, since they are the actual riders the app is built for. I would watch them complete real tasks, activate a ticket, book a Hop-On bus, check a schedule, rather than ask what they think of it.</p>
+                <p>Version 2 is already in progress. It adds the driver app and the admin dashboard, plus an AI layer to help drivers navigate around congestion. I also want to build features for institutions themselves, separate from the student-facing side, so a company or hospital running its own fleet can manage it directly.</p>
+            </section>
+            <section class="toc-section cs-section cs-refs" id="references">
+                <h2>References</h2>
+                <ol>
+                    <li>GIZ. (2023). <em>Ghana Mobility Study: Mobility as a Service Opportunities</em>. Informal trotro transport accounts for close to 70% of work trips in Accra.</li>
+                    <li>Agyemang, E., &amp; others. (2026). Ghana's transport system is chaotic: how it can move more people with fewer vehicles. <em>The Conversation</em>. Over 70% of Ghanaians rely on informal transport, trotros and taxis, for daily mobility.</li>
+                    <li>GPRTU/GRTCC fare announcements, reported in Citinewsroom and GhanaWeb (2025 to 2026). Documents fare increases of 8 to 20% tied to fuel prices over the past year.</li>
+                    <li>World Bank. (2020). <em>Policy Note: Addressing Urban Mobility Challenges in Ghanaian Cities</em>. Covers affordability and mode choice constraints for lower-income commuters in Accra, Kumasi and Tamale.</li>
+                    <li>Transportation and academic outcomes review, in <em>Educational Review</em>, 76(3), 2022. Longer travel times and transport challenges are linked to adverse academic outcomes, including lateness and missed classes.</li>
+                    <li>Agbo, D., &amp; others. The case of Paratransit: 'Trotro' service data as a credible location addressing of road networks in Ghana. <em>Journal of Transport Geography</em> (ScienceDirect). Ghana-specific paratransit research used to ground the trotro system described here.</li>
+                    <li>Williams, S., White, A., Waiganjo, P., Orwa, D., &amp; Klopp, J. (2015). The digital matatu project: Using cell phones to create an open source data for Nairobi's semi-formal bus system. <em>Journal of Transport Geography</em>, 49, 39 to 51. Precedent for digitising an informal African transit system with mobile technology.</li>
+                    <li>Yang, H., &amp; others. (2019). An evaluation of the benefits of mobile fare payment technology from the user and operator perspectives. <em>Transportation Research Part A</em> (ScienceDirect). Studies a buy, activate before boarding, display to validate ticketing flow, the same pattern used for Lign's ticket coins.</li>
+                </ol>
+            </section>
+            <div class="cs-end">
+                <p>Want to keep it or share it? Download the full case study as a PDF.</p>
+                <a class="cs-download-btn" href="case-studies/lign-case-study.pdf" download="Lign case study.pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Download case study <span>PDF · 232 KB</span></a>
+            </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
+        <div class="footer-icons">
+            <img src="xxx.svg" alt="X" width="24" height="24">
+            <img src="Linkedin.svg" alt="LinkedIn" width="24" height="24">
+        </div>
+    </footer>
+    <script>
+        // Back returns to this case study's project page: back through history when we came
+        // straight from it (so it opens where it was left), otherwise to it in this mode.
+        function smartBack() {
+            const project = 'LignTransport.html';
+            const from = document.referrer.split(/[?#]/)[0].split('/').pop().toLowerCase();
+            if (from === 'ligntransport.html' || from === 'ligntransportdark.html') {
+                history.back();
+                return;
+            }
+            const params = new URLSearchParams(window.location.search);
+            window.fadeNavigate(project + '?from=' + (params.get('from') || 'projects'));
+        }
+
+        function updateTime() {
+            const now = new Date();
+            let hours = now.getHours() % 12;
+            hours = hours ? hours : 12;
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = now.getHours() >= 12 ? 'pm' : 'am';
+            document.getElementById('time-location').innerHTML = String(hours).padStart(2, '0') + ':' + minutes + ' ' + ampm + ' in Accra, Ghana';
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Mode switching: the same case study in the other mode.
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        modeButtons.forEach(function (btn, index) {
+            btn.addEventListener('click', function () {
+                modeButtons.forEach(function (b) { b.classList.remove('active'); });
+                this.classList.add('active');
+                window.fadeNavigate((index === 0 ? 'lign-case-studyDark.html' : 'lign-case-study.html') + window.location.search);
+            });
+        });
+
+        // The menu shows where the visit came from: Home, or Projects.
+        (function () {
+            const from = new URLSearchParams(window.location.search).get('from');
+            const home = from === 'home' || (!from && /bb(dark)?\.html/.test(document.referrer.toLowerCase()));
+            document.getElementById(home ? 'nav-home' : 'nav-projects').classList.add('nav-item-active');
+        })();
+
+        // The sidebar highlights the section being read.
+        (function () {
+            const sections = document.querySelectorAll('.cs-section');
+            const links = document.querySelectorAll('.project-sidebar a[href^="#"]');
+            function onScroll() {
+                let current = null;
+                sections.forEach(function (s) { if (s.getBoundingClientRect().top <= 150) current = s.id; });
+                if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1].id;
+                links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('pageshow', onScroll);
+            onScroll();
+        })();
+    </script>
+    <script src="stickers/stickers.js"></script>
+    <script src="scripts/sticker.js" data-set="lign" data-count="6"></script>
+</body>
+</html>

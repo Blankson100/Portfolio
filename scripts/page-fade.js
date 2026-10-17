@@ -17,6 +17,33 @@
     // forward and back navigation equally smooth.
     window.addEventListener('pageshow', fadeIn);
 
+    // Switching between light and dark opens the same page in the other mode; it carries on
+    // where the reader was instead of starting from the top. Pressing a mode switch notes the
+    // place, and the other mode's page goes straight there once it's laid out (and again
+    // when its images have loaded, unless the reader has scrolled by then).
+    const MODE_PLACE = 'modeSwitchPlace';
+    const samePage = path => path.split('/').pop().toLowerCase().replace(/(dark|-light|-dark)(?=\.html$)/, '');
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.mode-btn, .m-mode')) return;
+        try {
+            sessionStorage.setItem(MODE_PLACE, JSON.stringify({ page: samePage(location.pathname), y: window.scrollY, at: Date.now() }));
+        } catch (err) { /* storage blocked: the page starts at the top as before */ }
+    }, true);
+    let place = null;
+    try {
+        place = JSON.parse(sessionStorage.getItem(MODE_PLACE));
+        sessionStorage.removeItem(MODE_PLACE);
+    } catch (err) { /* nothing noted */ }
+    if (place && place.y > 0 && place.page === samePage(location.pathname) && Date.now() - place.at < 15000) {
+        let moved = false;
+        const goBack = function () { window.scrollTo({ top: place.y, behavior: 'instant' }); };
+        ['wheel', 'touchstart', 'keydown'].forEach(function (type) {
+            window.addEventListener(type, function () { moved = true; }, { once: true, passive: true });
+        });
+        document.addEventListener('DOMContentLoaded', goBack);
+        window.addEventListener('load', function () { if (!moved) goBack(); });
+    }
+
     window.fadeNavigate = function (href) {
         // The browser's own crossfade works off the page's real last frame, so fading it
         // out first would only blank what it captures.

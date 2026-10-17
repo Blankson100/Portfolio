@@ -448,7 +448,7 @@ body.dark-mode .grad-blur-grain{
     position: relative;
     width: 100%;
     height: 620px;
-    border-radius: 32px;
+    border-radius: 42px;
     overflow: hidden;
 }
 .case-video video {
@@ -456,8 +456,15 @@ body.dark-mode .grad-blur-grain{
     height: 100%;
     object-fit: contain;
     display: block;
-    background: #000;
     cursor: pointer;
+}
+/* On its own plain background (data-fill): the picture sits in the top part of the box, clear
+   of the play bar, so whatever is filmed has room around it */
+.case-video.is-framed video {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    height: calc(100% - 64px);
 }
 .case-video-bar {
     position: absolute;
@@ -512,6 +519,58 @@ body.dark-mode .grad-blur-grain{
     font-weight: 600;
     white-space: nowrap;
 }
+/* The quality menu, opened from the gear in the bar: dark glass like the bar, the current
+   choice ticked, Auto showing what it picked */
+.case-video-menu {
+    position: absolute;
+    right: 12px;
+    bottom: 62px;
+    min-width: 136px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(38, 38, 38, 0.85);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+.case-video-menu[hidden] {
+    display: none;
+}
+.case-video-menu button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 10px;
+    background: none;
+    color: #ffffff;
+    font-family: "Google Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+.case-video-menu button::before {
+    content: "";
+    width: 12px;
+    flex: none;
+}
+.case-video-menu button[aria-checked="true"]::before {
+    content: "\2713";
+}
+.case-video-menu button span {
+    font-weight: 500;
+    opacity: 0.6;
+}
+.case-video-menu button:hover,
+.case-video-menu button:focus-visible {
+    background: rgba(255, 255, 255, 0.14);
+    outline: none;
+}
 .case-video-soon {
     position: absolute;
     inset: 0;
@@ -529,6 +588,91 @@ body.dark-mode .grad-blur-grain{
 body.dark-mode .case-video-soon {
     background: #161616;
     color: #7A7A7A;
+}
+
+/* "The App" screens (scripts/case-shots.js): the same box as the video, showing one screen
+   image at a time with a black pill of tabs along the bottom. Nothing sits behind the
+   images; a plain fill only stands in while an image is missing. */
+.case-shots {
+    position: relative;
+    width: 100%;
+    height: 620px;
+    border-radius: 42px;
+    overflow: hidden;
+}
+.case-shots.is-empty {
+    background: #E4E4E4;
+}
+body.dark-mode .case-shots.is-empty {
+    background: #161616;
+}
+.case-shots img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.case-shots img.is-active {
+    opacity: 1;
+}
+.case-shots img[data-missing] {
+    visibility: hidden;
+}
+/* The tabs: a black pill, labels on one line; the ones that don't fit are cut off at its
+   edge (it scrolls sideways, without a scrollbar). The chosen screen's label is white. */
+.case-shots-nav {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    width: 570px;
+    max-width: calc(100% - 32px);
+    height: 52px;
+    padding: 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    background: #000000;
+    border-radius: 39px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+.case-shots-nav::-webkit-scrollbar {
+    display: none;
+}
+.case-shots-nav button {
+    flex: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: Satoshi, sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: normal;
+    white-space: nowrap;
+    color: #737373;
+    cursor: pointer;
+}
+.case-shots-nav button.is-active {
+    color: #FFFFFF;
+}
+.case-shots-nav button:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .case-shots img {
+        transition: none;
+    }
 }
 
 /* Design Process as a notebook page (case studies): ruled paper with a red margin line and

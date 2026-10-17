@@ -75,7 +75,7 @@
             width: 602px;
             height: 431px;
             background: transparent;
-            border-radius: 24px;
+            border-radius: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -153,7 +153,7 @@
         .project-hero-inner {
             width: 100%;
             height: 100%;
-            border-radius: 18px;
+            border-radius: 42px;
             overflow: hidden;
         }
         .project-hero-inner img {
@@ -528,7 +528,7 @@
 
             <div class="toc-section" id="the-app">
                 <h2 class="toc-heading">The App</h2>
-                <div class="case-video" data-video="videos/ontrack.mp4"></div>
+                <div class="case-video" data-video="videos/inform.mp4" data-sources="videos/inform.mp4 1240p, videos/inform-600.mp4 600p" data-fill="#000000" data-silent></div>
                 <div class="see-how-title">See how it works</div>
                 <div class="see-how-desc">
                     This walkthrough shows how OnTrack turns a glucose reading into a meal recommendation, and how daily entries build into a progress history over time.
@@ -537,13 +537,13 @@
 
             <div class="toc-section" id="design-process">
                 <h2 class="toc-heading">Design Process</h2>
-                <div class="notebook">
+                <div class="notebook nb-row" tabindex="0" role="region" aria-label="Design process notes. Scroll sideways for more.">
                     <div class="nb-entry">
-                        <p class="nb-sticky">They track the number but never connect it to a next step</p>
                         <h3 class="nb-title"><span class="nb-num">1.</span><span class="nb-word">Research</span></h3>
                         <ul class="nb-notes">
                             <li>How people with diabetes log today: paper logbooks, generic health apps</li>
                         </ul>
+                        <p class="nb-sticky">They track the number but never connect it to a next step</p>
                     </div>
                     <div class="nb-entry">
                         <h3 class="nb-title"><span class="nb-num">2.</span><span class="nb-word">Logging flow</span></h3>
@@ -563,11 +563,11 @@
                         </ul>
                     </div>
                     <div class="nb-entry">
-                        <p class="nb-sticky">“Every entry is a point on the board”</p>
                         <h3 class="nb-title"><span class="nb-num">4.</span><span class="nb-word">Look &amp; feel</span></h3>
                         <ul class="nb-notes">
                             <li>logging feels like moving forward, not a chore</li>
                         </ul>
+                        <p class="nb-sticky">“Every entry is a point on the board”</p>
                     </div>
                 </div>
             </div>
@@ -605,7 +605,7 @@
                     <img src="OnTrack Card.png" alt="OnTrack">
                     <div class="cta-compact">
                         <p class="cta-compact-text">Explore the complete research, design process, and iterations behind OnTrack.</p>
-                        <a class="cta-compact-btn" href="casestudy-viewer.html">View Full Case Study</a>
+                        <a class="cta-compact-btn" href="ontrack-case-study.html">View Full Case Study</a>
                     </div>
                 </div>
             </div>
@@ -775,6 +775,7 @@
     <script src="scripts/case-video.js"></script>
     <script src="stickers/stickers.js"></script>
     <script src="scripts/sticker.js" data-set="ontrack" data-count="6"></script>
+    <script src="scripts/notebook-row.js"></script>
 </body>
 </html>
 

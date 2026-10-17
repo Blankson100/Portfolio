@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Care case study - PortoBlknszzz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="BB.css">
+    <script src="scripts/page-fade.js"></script>
+    <!-- Built by tools/build-case-studies.js from tools/case-study-content.js: edit those, not this file. -->
+    <style>
+        #content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .project-page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            margin: 90px 0 100px;
+            flex: 1;
+        }
+        .project-layout {
+            width: 100%;
+        }
+        .project-sidebar {
+            width: 140px;
+            position: fixed;
+            left: 70px;
+            top: 90px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .project-sidebar a {
+            font-family: Satoshi, sans-serif;
+            font-size: 15px;
+            color: #a8a8a8;
+            text-decoration: none;
+            transition: color 0.3s var(--transition-easing);
+        }
+        .project-sidebar a:hover,
+        .project-sidebar a.active {
+            color: #0b0b0b;
+        }
+        .back-button {
+            height: 24px;
+            background: none;
+            border: none;
+            padding: 0;
+            margin-bottom: 4px;
+            font-size: 15px;
+            line-height: 24px;
+            font-family: Satoshi, sans-serif;
+            color: #a8a8a8;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s var(--transition-easing);
+        }
+        .back-button:hover {
+            color: #0b0b0b;
+        }
+        .project-sidebar .cs-download {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .project-main {
+            width: 602px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .hero-title-standalone {
+            font-family: Satoshi, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+            margin: 0 0 16px 0;
+        }
+        /* The case study's cover, its title, then the reading */
+        .cs-cover {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 42px;
+            margin: 0 0 40px;
+        }
+        .cs-title {
+            font-family: Satoshi, sans-serif;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 1.25;
+            color: #0b0b0b;
+            margin: 0;
+        }
+        .cs-subtitle {
+            font-family: Satoshi, sans-serif;
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666666;
+            margin: 8px 0 0;
+        }
+        .cs-head {
+            margin-bottom: 40px;
+        }
+        .cs-section {
+            width: 100%;
+            margin-bottom: 48px;
+            scroll-margin-top: 110px;
+        }
+        .cs-section:last-child {
+            margin-bottom: 0;
+        }
+        .cs-section h2 {
+            font-family: Satoshi, sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.3;
+            color: #0b0b0b;
+            margin: 0 0 12px;
+        }
+        .cs-section h3 {
+            font-family: Satoshi, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.4;
+            color: #0b0b0b;
+            margin: 32px 0 8px;
+        }
+        .cs-section p,
+        .cs-section li {
+            font-family: Satoshi, sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666666;
+        }
+        .cs-section p {
+            margin: 0 0 16px;
+        }
+        .cs-section ul,
+        .cs-section ol {
+            margin: 0 0 16px;
+            padding-left: 22px;
+        }
+        .cs-section li {
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+        .cs-section li::marker {
+            color: #a8a8a8;
+        }
+        .cs-section strong {
+            font-weight: 700;
+            color: #0b0b0b;
+        }
+        .cs-section a {
+            color: #0b0b0b;
+            text-decoration: underline;
+            text-decoration-color: rgba(11, 11, 11, 0.3);
+            text-underline-offset: 3px;
+            overflow-wrap: anywhere;
+            transition: text-decoration-color 0.3s var(--transition-easing);
+        }
+        .cs-section a:hover {
+            text-decoration-color: currentColor;
+        }
+        /* Screens from the app, as in the PDF: on black, rounded like the cover */
+        .cs-shot {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 42px;
+            background: #000000;
+            margin: 8px 0 24px;
+        }
+        .cs-section .cs-caption {
+            margin: -12px 0 24px;
+            font-size: 14px;
+            line-height: 1.6;
+            font-style: italic;
+            color: #8a8a8a;
+        }
+        body.dark-mode .cs-section .cs-caption {
+            color: #888888;
+        }
+        .cs-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 24px;
+        }
+        .cs-refs li,
+        .cs-refs p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        body.dark-mode .project-sidebar a {
+            color: #777777;
+        }
+        body.dark-mode .back-button {
+            color: #777777;
+        }
+        body.dark-mode .project-sidebar a:hover,
+        body.dark-mode .project-sidebar a.active,
+        body.dark-mode .back-button:hover,
+        body.dark-mode .hero-title-standalone,
+        body.dark-mode .cs-title,
+        body.dark-mode .cs-section h2,
+        body.dark-mode .cs-section h3,
+        body.dark-mode .cs-section strong,
+        body.dark-mode .cs-section a {
+            color: #f5f5f5;
+        }
+        body.dark-mode .cs-subtitle,
+        body.dark-mode .cs-section p,
+        body.dark-mode .cs-section li {
+            color: #aaaaaa;
+        }
+        body.dark-mode .cs-section li::marker {
+            color: #777777;
+        }
+        body.dark-mode .cs-section a {
+            text-decoration-color: rgba(245, 245, 245, 0.35);
+        }
+        body.dark-mode .cs-section a:hover {
+            text-decoration-color: currentColor;
+        }
+        /* Download the case study: under the title, and again at the end. Black like the
+           "View Full Case Study" button (white in dark mode), with the file's size. */
+        .cs-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 42px;
+            padding: 0 18px;
+            border-radius: 14px;
+            background: #000000;
+            color: #ffffff;
+            font-family: Satoshi, sans-serif;
+            font-size: 15px;
+            line-height: 20px;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: opacity 0.3s var(--transition-easing);
+        }
+        .cs-download-btn:hover {
+            opacity: 0.8;
+        }
+        .cs-download-btn span {
+            opacity: 0.6;
+        }
+        .cs-head .cs-download-btn {
+            margin-top: 20px;
+        }
+        .cs-end {
+            width: 100%;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #dddddd;
+        }
+        .cs-end p {
+            font-family: Satoshi, sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666666;
+            margin: 0 0 16px;
+        }
+        body.dark-mode .cs-download-btn {
+            background: #ffffff;
+            color: #000000;
+        }
+        body.dark-mode .cs-end {
+            border-top-color: #2a2a2a;
+        }
+        body.dark-mode .cs-end p {
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="grad-blur" aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><span class="grad-blur-grain"></span></div>
+    <div class="time-location-display" id="time-location"></div>
+    <div class="right-pill">
+        <div class="mode-container">
+            <button class="mode-btn" title="Dark Mode"><img src="Darkmode.svg" alt="Dark"></button>
+            <button class="mode-btn active" title="Light Mode"><img src="BrightMode.svg" alt="Light"></button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li id="nav-home"><a href="BB.html">Home</a></li>
+            <li id="nav-projects"><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <div class="project-page-container">
+            <div class="project-layout">
+                <div class="project-sidebar">
+                    <button class="back-button" onclick="smartBack()"><svg width="16" height="16" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.06836 12.1833C5.06836 12.4187 5.17038 12.6542 5.35086 12.8268L10.5301 17.9982C10.7185 18.1787 10.9225 18.265 11.1501 18.265C11.6445 18.265 12.0054 17.9119 12.0054 17.4332C12.0054 17.1821 11.9113 16.9702 11.7465 16.8133L9.98082 15.0241L7.70508 12.9445L9.53352 13.0544H19.0445C19.5625 13.0544 19.9234 12.6934 19.9234 12.1833C19.9234 11.6654 19.5625 11.3044 19.0445 11.3044H9.53352L7.71293 11.4143L9.98082 9.33472L11.7465 7.54551C11.9113 7.38857 12.0054 7.17669 12.0054 6.92557C12.0054 6.44688 11.6445 6.09375 11.1501 6.09375C10.9225 6.09375 10.7106 6.18007 10.5066 6.37626L5.35086 11.532C5.17038 11.7046 5.06836 11.94 5.06836 12.1833Z" fill="currentColor"/></svg><span>Back</span></button>
+                    <a href="#introduction">Introduction</a>
+                    <a href="#the-problem">The Problem</a>
+                    <a href="#the-app">The App</a>
+                    <a href="#design-process">Design Process</a>
+                    <a href="#challenges">Challenges</a>
+                    <a href="#whats-next">What's Next</a>
+                    <a href="#references">References</a>
+                    <a class="cs-download" href="case-studies/crop-care-case-study.pdf" download="Crop Care case study.pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download PDF</span></a>
+                </div>
+                <main class="project-main">
+            <p class="hero-title-standalone">Crop Care · Full case study</p>
+            <img class="cs-cover" src="case-studies/crop-care-cover.png" alt="Crop Care cover: a swirl of green leaves with one orange leaf breaking away" width="1588" height="2246">
+            <header class="cs-head">
+                <h1 class="cs-title">Crop Care case study</h1>
+                <a class="cs-download-btn" href="case-studies/crop-care-case-study.pdf" download="Crop Care case study.pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Download case study <span>PDF · 7.4 MB</span></a>
+            </header>
+            <section class="toc-section cs-section" id="introduction">
+                <h2>1. Introduction</h2>
+                <p>Crop Care is a plant-disease app that helps growers name what's wrong, act on it, and remember what happened.</p>
+                <p class="cs-meta"><span><strong>Role:</strong> Product designer</span><span><strong>Timeline:</strong> 2 months</span><span><strong>Tools:</strong> Figma</span></p>
+                <p>A leaf turns brown. A plant wilts for no clear reason. For a farmer, that could mean a lost season. For someone growing tomatoes at home, it's a small heartbreak. Either way, the question is the same: what is this, and what do I do?</p>
+                <p>Crop Care answers that from a single photo. Point the camera at a sick leaf, and the app names the likely disease, explains it in plain language, and suggests what to do next. Every scan is saved, so over time the app becomes a record of what went wrong and what worked.</p>
+                <p>The idea wasn't mine. It began as a school project led by students in another department, and I joined as the designer. They brought the concept. I took it from early conversations with farmers in Accra through to a working prototype.</p>
+                <p>This case study covers why the problem matters, how the app works, the decisions behind it, and the hardest question it raises: how should an app behave when it might be wrong?</p>
+            </section>
+            <section class="toc-section cs-section" id="the-problem">
+                <h2>2. The problem</h2>
+                <p>When a crop gets sick, most growers in Ghana have no quick way to find out what it is, and no record of what worked last time.</p>
+                <h3>Context</h3>
+                <p>From village farms to open plots in the middle of Accra, most of Ghana's farming is done by smallholders. They make up about 80% of the sector. Globally, pests and diseases take somewhere between a fifth and a third of major staple crops.</p>
+                <p>Help is thin. Estimates put Ghana at one extension officer for every 700 to 1,500 farmers. Rural literacy sits around 55%, against 81% in towns and cities. And in one survey of 1,565 farmers in Northern Ghana, only about 1 in 6 owned a smartphone.</p>
+                <p>So Crop Care had to work for the farmer and for the son, niece or field agent who scans the leaf on their behalf.</p>
+                <h3>What I heard</h3>
+                <p>I spoke informally with four or five farmers growing maize, cabbage and lettuce on open plots near Korle Bu, in central Accra. These were casual chats, not structured interviews. I came away with impressions, not findings, and five people can't speak for every grower in Ghana.</p>
+                <p>Still, a pattern stood out. None of them kept a record of crop problems. What they knew lived in memory, learned from fathers and uncles. Research on African farming describes the same thing: pest knowledge is built from experience and passed down by word of mouth.</p>
+                <p>Even in the capital, with a hospital next door and phones in every pocket, crop knowledge still travelled the old way. That knowledge is valuable. But memory fades, and it doesn't travel.</p>
+                <h3>Two problems, not one</h3>
+                <ul>
+                    <li><strong>Right now:</strong> what is wrong with my plant, and what do I do?</li>
+                    <li><strong>Over time:</strong> has this happened before, and what worked last time?</li>
+                </ul>
+                <p>Most plant apps answer the first question. Crop Care is designed for both.</p>
+                <h3>Who it's for</h3>
+                <p>A farmer near Korle Bu notices brown spots spreading across her cabbage. Across town, someone growing tomatoes in a backyard bed sees the leaves curling. One has income at stake. The other has care and pride. Neither has the words for what they're looking at.</p>
+                <p>They sit at two ends of one spectrum, and they share one need: help me understand what's wrong, and help me remember it. Research on low-literacy design found text-heavy interfaces were unusable for first-time low-literacy users, and error-prone even for literate newcomers. Designing for the farmer makes the app easier for everyone.</p>
+                <p>There's often a quiet third person too: the helper who holds the phone. The flow stays the same for all of them. Scan, understand, act, remember.</p>
+                <h3>The business side</h3>
+                <p>The team behind the idea wanted a tool farmers would actually trust and keep using. As a school project, there was no budget, no engineers and no live AI model. The job was to prove the idea worked as an experience before anyone built it.</p>
+                <p>The tension I watched for was money versus trust. A free diagnosis app can make money by pushing products, and the easiest product to push is a chemical. If every result ends in &quot;buy this spray&quot;, farmers learn the app is selling, not helping. So treatment advice in Crop Care leads with what the grower can do, and stays honest about uncertainty, even when a confident answer would look more impressive.</p>
+                <p>The more sustainable path is partnership. Ghana's Ministry of Food and Agriculture already backs digital extension in its e-extension strategy for 2022 to 2030. A tool that helps thin extension services reach more farmers fits that direction better than a tool built around sales.</p>
+            </section>
+            <section class="toc-section cs-section" id="the-app">
+                <h2>3. The app</h2>
+                <p>Crop Care does four things: scan, understand, act, remember. Each has its own moment in the app.</p>
+                <h3>Getting started</h3>
+                <p>The app opens with two numbered steps: photograph a sick leaf, get a suggestion. That's the whole tutorial. From home, one tap opens the camera or the gallery, with recent scans waiting underneath.</p>
+                <img class="cs-shot" src="case-studies/crop-care-getting-started.png" alt="Four Crop Care screens: the welcome screen with Take Photo and Choose From Gallery, an empty home screen, the camera and gallery menu, and the gallery of leaf photos" width="1871" height="920" loading="lazy" decoding="async">
+                <h3>Scan</h3>
+                <p>The camera fills the screen. While the app works, the leaf shimmers and a rabbit, a turtle and a leaf take turns as the loading icon. A quiet joke about speed and patience, and a nicer thing to watch than a spinner.</p>
+                <img class="cs-shot" src="case-studies/crop-care-scan.png" alt="Two Crop Care screens: the camera pointed at a maize leaf, and the same photo shimmering while the app works" width="1871" height="920" loading="lazy" decoding="async">
+                <h3>Understand and act</h3>
+                <p>The result leads with the disease name in large serif type, set against the photo. Below sit four plain sections: Symptoms, Cause, Prevention and Treatment. As you scroll, the photo shrinks to a thumbnail, so the answer takes over without losing sight of the leaf.</p>
+                <img class="cs-shot" src="case-studies/crop-care-result.png" alt="Two Crop Care result screens for Leaf Rust: the photo with a &quot;Very likely&quot; coin above Symptoms and Cause, and the scrolled view with the photo shrunk to a thumbnail" width="1871" height="920" loading="lazy" decoding="async">
+                <p>In the corner of the photo, a small coin flips on its own to reveal how sure the app is: &quot;96%, Very likely&quot;. On an otherwise still screen, the movement draws the eye to confidence before you act. Then it rests on the score.</p>
+                <p>Beside the disease name sits the voice button. Tap it and the app reads the result aloud, and you can ask it questions back. For a farmer who finds the text hard going, or a helper reading on someone's behalf, the result becomes a conversation rather than a page.</p>
+                <h3>When the app isn't sure</h3>
+                <p>If confidence is low, the coin turns amber and reads &quot;Not sure&quot;. A card at the top says so plainly and asks for photos of two or three more leaves. The app would rather ask for more than guess.</p>
+                <img class="cs-shot" src="case-studies/crop-care-not-sure.png" alt="Two Crop Care result screens where the coin reads &quot;Not sure&quot;, with a card asking for photos of 2 or 3 more leaves and a Scan more leaves button" width="1871" height="920" loading="lazy" decoding="async">
+                <h3>Remember</h3>
+                <p>Every scan saves to History: crop, disease, confidence, date and a one-line recommendation. Each entry is small. Together they become the crop-health record none of the farmers I spoke to kept. Next season, &quot;has this happened before?&quot; finally has an answer.</p>
+                <img class="cs-shot" src="case-studies/crop-care-history.png" alt="The Crop Care history screen: a list of recent scans, each with the disease, crop, confidence and date" width="1871" height="920" loading="lazy" decoding="async">
+            </section>
+            <section class="toc-section cs-section" id="design-process">
+                <h2>4. Design process</h2>
+                <p>Every major decision traces back to something I heard from farmers or read in published research.</p>
+                <h3>Listening, then reading</h3>
+                <p>The farmer conversations shaped the brief. Nobody kept a record of crop problems, so remembering became half the app. I then turned to published research on smallholder farming, low-literacy design and how people trust AI. It told me who the app had to work for, and where it could go wrong.</p>
+                <h3>An assumption I had to drop</h3>
+                <p>I expected to design for rural farmers. The people I actually met were urban growers in central Accra. That pushed me towards one app for a spectrum of growers, rather than a tool only for remote villages.</p>
+                <h3>What I considered, and what I chose</h3>
+                <p><strong>Words only for confidence, or words plus a number.</strong> &quot;Likely&quot; feels friendlier for low-literacy users. But research shows people read words like &quot;likely&quot; very differently, and that pairing a number with a word works better. I chose both: &quot;96%, Very likely&quot;.</p>
+                <p><strong>One confident answer, or an honest &quot;not sure&quot;.</strong> A single confident diagnosis looks more impressive. But plant AI is far less accurate in real fields than in the lab. I designed a low-confidence state that asks for more leaves instead of guessing.</p>
+                <p><strong>A coin that flips forever, or one that settles.</strong> My first version flipped non-stop to keep catching the eye. But constant motion stops being noticed, hides the score half the time, and breaks accessibility guidance on moving content. Now it flips when the result appears, then rests on the score.</p>
+                <p><strong>A logbook you fill in, or one that fills itself.</strong> Research on farm records shows people skip them when they feel like extra work. So every scan saves to History automatically. The record is a by-product, not a chore.</p>
+                <p><strong>Text, or voice too.</strong> Text alone leaves out the people who need the app most. The voice button reads the result aloud and takes questions back.</p>
+                <h3>The trade-off I kept</h3>
+                <p>Hiding the score on the back of the coin keeps the result screen calm, with the disease name and photo leading. The cost is that a still coin is easy to miss. The flip is how I pay that cost: motion pulls the eye to confidence at the moment someone decides what to do.</p>
+            </section>
+            <section class="toc-section cs-section" id="challenges">
+                <h2>5. Challenges</h2>
+                <p>The hardest part of Crop Care isn't recognising a disease. It's what the app should do when it might be wrong.</p>
+                <h3>The constraints I worked within</h3>
+                <ul>
+                    <li><strong>Two months, one designer, Figma only.</strong> No engineers, so every idea had to be shown as an experience, not built.</li>
+                    <li><strong>No real AI model.</strong> I couldn't test accuracy. I had to design for an AI whose mistakes I could only predict from research.</li>
+                    <li><strong>Shared phones.</strong> Many farmers don't own a smartphone, so the person scanning may not be the person whose crop it is.</li>
+                    <li><strong>Mixed literacy.</strong> Every important message had to work without careful reading.</li>
+                    <li><strong>The idea belonged to someone else.</strong> My job was to make their concept work for growers, not replace it with mine.</li>
+                </ul>
+                <h3>Why the AI will be wrong</h3>
+                <p>In one well-known study, a plant disease model scored 99% on clean lab photos. On photos taken in other conditions, it dropped to 31%. Real leaves are dusty, shadowed and photographed in a hurry. Crop Care's AI would face exactly those photos.</p>
+                <p>There's a second risk. When people see an AI make a mistake, they lose faith in it faster than they would in a person. One confident wrong answer could lose a farmer for good. And research shows that showing a confidence score helps people judge when to trust the AI, but doesn't automatically make their decisions better. So simply adding a number wasn't enough.</p>
+                <h3>How the design responds</h3>
+                <ol>
+                    <li><strong>Confidence at the decision moment.</strong> The coin flips as soon as the result appears, so how sure the app is arrives before anyone acts, not later in History.</li>
+                    <li><strong>Word, number and colour together.</strong> &quot;96%, Very likely&quot; in green, or &quot;Not sure&quot; in amber. Each format covers a weakness of the others.</li>
+                    <li><strong>Ask for more instead of guessing.</strong> In a field study of one plant app, accuracy rose from 65% to as high as 88% when six leaves per plant were assessed. So when confidence is low, Crop Care asks for two or three more leaves.</li>
+                    <li><strong>Memory as a check.</strong> Over time, History shows whether past suggestions and treatments actually worked. The record helps people judge the app, not just remember their crops.</li>
+                </ol>
+                <h3>What I haven't solved</h3>
+                <p>I found no published study of how farmers read AI confidence scores. My design rests on research from other fields, so it needs testing with real growers. If a result stays unclear after more photos, the app should also point people to a human: an extension officer or a plant clinic. That route isn't designed yet.</p>
+            </section>
+            <section class="toc-section cs-section" id="whats-next">
+                <h2>6. What's next</h2>
+                <p>Crop Care is a prototype. It hasn't shipped and hasn't been tested with farmers, so there are no results to report yet. I'd rather say that than invent numbers.</p>
+                <h3>What changed</h3>
+                <p>The design itself moved a long way. It started as a scanner that announced a disease as fact. It ended as an app that shows how sure it is at the moment of decision, says &quot;not sure&quot; when it should, can talk instead of only showing text, and remembers every scan without being asked.</p>
+                <h3>How I would test it (not yet done)</h3>
+                <p>The first test would be a small usability study with about five growers in Accra, mixing plot farmers and home growers. Unlike my early chats, these would be planned sessions with set tasks. I'd watch for:</p>
+                <ul>
+                    <li><strong>Noticing confidence.</strong> Do people see the coin before acting, and can they say what it meant?</li>
+                    <li><strong>Acting on &quot;not sure&quot;.</strong> When confidence is low, do people take more photos, or ignore the prompt?</li>
+                    <li><strong>Using voice.</strong> Do people who struggle with the text tap the voice button without being shown?</li>
+                    <li><strong>Returning to History.</strong> Weeks later, do people look back at past scans when a problem returns?</li>
+                </ul>
+                <h3>The next version</h3>
+                <ul>
+                    <li><strong>Crop profiles.</strong> One page per crop showing its scan history over time, so patterns become visible.</li>
+                    <li><strong>Local languages.</strong> The voice conversation in Twi, Ga and other Ghanaian languages, not just English.</li>
+                    <li><strong>A route to a human.</strong> When the app stays unsure, a clear path to an extension officer or plant clinic.</li>
+                    <li><strong>Testing with real growers.</strong> Everything above depends on it.</li>
+                </ul>
+                <h3>Get involved</h3>
+                <p>We're now working to build Crop Care for real. If you'd like to support it, whether through funding, a partnership, or helping us test with growers, we'd love to hear from you.</p>
+            </section>
+            <section class="toc-section cs-section cs-refs" id="references">
+                <h2>References</h2>
+                <ol>
+                    <li>Abate, T., van Huis, A. &amp; Ampofo, J.K.O. (2000). <a href="https://www.annualreviews.org/content/journals/10.1146/annurev.ento.45.1.631" target="_blank" rel="noopener">Pest management strategies in traditional agriculture: an African perspective</a>. <em>Annual Review of Entomology</em>, 45.</li>
+                    <li>Abdulai, A.-R. et al. (2023). <a href="https://link.springer.com/article/10.1186/s40066-023-00416-6" target="_blank" rel="noopener">Is agricultural digitization a reality among smallholder farmers in Africa?</a> <em>Agriculture &amp; Food Security</em>.</li>
+                    <li>Dhami, M.K. &amp; Mandel, D.R. (2022). <a href="https://www.sciencedirect.com/science/article/pii/S1364661322000602" target="_blank" rel="noopener">Communicating uncertainty using words and numbers</a>. <em>Trends in Cognitive Sciences</em>.</li>
+                    <li>Dietvorst, B.J., Simmons, J.P. &amp; Massey, C. (2015). <a href="https://doi.org/10.1037/xge0000033" target="_blank" rel="noopener">Algorithm aversion</a>. <em>Journal of Experimental Psychology: General</em>, 144(1).</li>
+                    <li>Ghana Statistical Service (2021). <a href="https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/2021%20PHC%20General%20Report%20Vol%203D_Literacy%20and%20Education.pdf" target="_blank" rel="noopener">2021 Population and Housing Census, Literacy and Education</a>.</li>
+                    <li>Medhi, I. et al. (2011). <a href="https://doi.org/10.1145/1959022.1959024" target="_blank" rel="noopener">Designing mobile interfaces for novice and low-literacy users</a>. <em>ACM Transactions on Computer-Human Interaction</em>, 18(1).</li>
+                    <li>Mohanty, S.P., Hughes, D.P. &amp; Salathé, M. (2016). <a href="https://arxiv.org/abs/1604.03169" target="_blank" rel="noopener">Using deep learning for image-based plant disease detection</a>. <em>Frontiers in Plant Science</em>, 7.</li>
+                    <li>Mrisho, L.M. et al. (2020). <a href="https://doi.org/10.3389/fpls.2020.590889" target="_blank" rel="noopener">Accuracy of a smartphone-based object detection model, PlantVillage Nuru</a>. <em>Frontiers in Plant Science</em>, 11.</li>
+                    <li>Zhang, Y., Liao, Q.V. &amp; Bellamy, R.K.E. (2020). <a href="https://doi.org/10.1145/3351095.3372852" target="_blank" rel="noopener">Effect of confidence and explanation on accuracy and trust calibration in AI-assisted decision making</a>. <em>Proceedings of FAT* 2020</em>.</li>
+                </ol>
+                <p>Context figures on smallholder share, crop losses and extension officers come from the <a href="https://www.gipc.gov.gh/wp-content/uploads/2023/03/Ghanas-Agriculture-Sector-Report-1.pdf" target="_blank" rel="noopener">Ghana Investment Promotion Centre (2022)</a>, <a href="https://doi.org/10.1038/s41559-018-0793-y" target="_blank" rel="noopener">Savary et al. (2019)</a> and the <a href="https://farmradio.org/wp-content/uploads/2022/05/Agriculture-e-extensions-strategy-digital.pdf" target="_blank" rel="noopener">MoFA e-extension strategy (2022)</a>.</p>
+            </section>
+            <div class="cs-end">
+                <p>Want to keep it or share it? Download the full case study as a PDF.</p>
+                <a class="cs-download-btn" href="case-studies/crop-care-case-study.pdf" download="Crop Care case study.pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Download case study <span>PDF · 7.4 MB</span></a>
+            </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
+        <div class="footer-icons">
+            <img src="xxx.svg" alt="X" width="24" height="24">
+            <img src="Linkedin.svg" alt="LinkedIn" width="24" height="24">
+        </div>
+    </footer>
+    <script>
+        // Back returns to this case study's project page: back through history when we came
+        // straight from it (so it opens where it was left), otherwise to it in this mode.
+        function smartBack() {
+            const project = 'leafai.html';
+            const from = document.referrer.split(/[?#]/)[0].split('/').pop().toLowerCase();
+            if (from === 'leafai.html' || from === 'leafaidark.html') {
+                history.back();
+                return;
+            }
+            const params = new URLSearchParams(window.location.search);
+            window.fadeNavigate(project + '?from=' + (params.get('from') || 'projects'));
+        }
+
+        function updateTime() {
+            const now = new Date();
+            let hours = now.getHours() % 12;
+            hours = hours ? hours : 12;
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = now.getHours() >= 12 ? 'pm' : 'am';
+            document.getElementById('time-location').innerHTML = String(hours).padStart(2, '0') + ':' + minutes + ' ' + ampm + ' in Accra, Ghana';
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Mode switching: the same case study in the other mode.
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        modeButtons.forEach(function (btn, index) {
+            btn.addEventListener('click', function () {
+                modeButtons.forEach(function (b) { b.classList.remove('active'); });
+                this.classList.add('active');
+                window.fadeNavigate((index === 0 ? 'cropcare-case-studyDark.html' : 'cropcare-case-study.html') + window.location.search);
+            });
+        });
+
+        // The menu shows where the visit came from: Home, or Projects.
+        (function () {
+            const from = new URLSearchParams(window.location.search).get('from');
+            const home = from === 'home' || (!from && /bb(dark)?\.html/.test(document.referrer.toLowerCase()));
+            document.getElementById(home ? 'nav-home' : 'nav-projects').classList.add('nav-item-active');
+        })();
+
+        // The sidebar highlights the section being read.
+        (function () {
+            const sections = document.querySelectorAll('.cs-section');
+            const links = document.querySelectorAll('.project-sidebar a[href^="#"]');
+            function onScroll() {
+                let current = null;
+                sections.forEach(function (s) { if (s.getBoundingClientRect().top <= 150) current = s.id; });
+                if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1].id;
+                links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('pageshow', onScroll);
+            onScroll();
+        })();
+    </script>
+    <script src="stickers/stickers.js"></script>
+    <script src="scripts/sticker.js" data-set="cropcare" data-count="6"></script>
+</body>
+</html>
