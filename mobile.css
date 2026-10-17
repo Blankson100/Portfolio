@@ -212,3 +212,191 @@ body.dark-mode .m-link {
 .m-mode:active {
     color: var(--m-text);
 }
+
+/* A project on the phone (cropcare-mobile.html and its dark twin, built by
+   tools/build-case-studies.js): the case study as writing, in the homepage's style. Section
+   names are grey like "Projects", the writing black like the project lines under it. */
+.m-case .m-main {
+    gap: 20px;
+    padding-top: 104px;
+    padding-bottom: 48px;
+}
+/* Back to Projects, pinned top left level with the moon/sun switch, so it's always there
+   while reading; like the switch, a soft pill fades in behind it once text scrolls under it */
+.m-back {
+    position: fixed;
+    top: 46px;
+    left: 12px;
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 38px;
+    padding: 0 14px 0 12px;
+    border-radius: 19px;
+    font-weight: 500;
+    color: var(--m-muted);
+    text-decoration: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.m-back.is-floating {
+    background: var(--m-mode-bg);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+.m-back:active {
+    color: var(--m-text);
+}
+.m-case .m-header {
+    gap: 4px;
+}
+.m-case .m-role {
+    margin-top: 0;
+}
+/* Listen, Stop and the PDF, as words with small icons */
+.m-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+}
+.m-act {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-weight: 500;
+    color: var(--m-text);
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.m-act[hidden] {
+    display: none;
+}
+.m-act .cs-listen-time {
+    font-weight: 400;
+    color: var(--m-muted);
+}
+/* The sections */
+.m-case .cs-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 12px;
+    scroll-margin-top: 24px;
+}
+.m-case .cs-section h2 {
+    font-weight: 500;
+    color: var(--m-muted);
+}
+.m-case .cs-section h3 {
+    margin-top: 6px;
+    font-weight: 500;
+    color: var(--m-text);
+}
+.m-case .cs-section p,
+.m-case .cs-section li {
+    color: var(--m-text);
+}
+.m-case .cs-section ul,
+.m-case .cs-section ol {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.m-case .cs-section strong {
+    font-weight: 500;
+}
+.m-case .cs-section li::marker {
+    color: var(--m-muted);
+}
+.m-case .cs-section a {
+    color: var(--m-text);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    /* each line of a wrapped link gets its own underline, under that line */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Cpath d='M0 1.5Q.75 0 1.5 1.5T3 1.5' fill='none' stroke='%23000' stroke-width='.8'/%3E%3C/svg%3E") repeat-x 0 calc(100% - 2px) / 3px 3px;
+}
+body.dark-mode.m-case .cs-section a {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Cpath d='M0 1.5Q.75 0 1.5 1.5T3 1.5' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3C/svg%3E");
+}
+.m-case .cs-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 16px;
+}
+/* The app's screens and the demo video, the only pictures */
+.m-case .cs-shot {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    background: #000000;
+}
+.m-case .cs-caption {
+    margin-top: -6px;
+    font-size: 13px;
+    line-height: 18px;
+    font-style: italic;
+    color: var(--m-muted);
+}
+.m-case .case-video {
+    height: auto;
+    aspect-ratio: 602 / 620;
+    border-radius: 24px;
+}
+.m-case .cs-refs li,
+.m-case .cs-refs p {
+    font-size: 13px;
+    line-height: 19px;
+    color: var(--m-muted);
+}
+/* Room between some sections for a sticker */
+.m-pause {
+    height: 132px;
+}
+/* The paragraph being read aloud */
+.m-case .cs-reading {
+    background: rgba(255, 201, 60, 0.22);
+    box-shadow: 0 0 0 5px rgba(255, 201, 60, 0.22);
+    border-radius: 4px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+body.dark-mode.m-case .cs-reading {
+    background: rgba(255, 201, 60, 0.16);
+    box-shadow: 0 0 0 5px rgba(255, 201, 60, 0.16);
+}
+/* A project on the homepage that opens its own page, with a small arrow by its name */
+.m-item-link {
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.m-item-link .m-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.m-item-link:active .m-title {
+    color: var(--m-text);
+}
+/* In the smaller reference text the wave sits a little lower, clear of g, p and y */
+.m-case .cs-refs a {
+    background-position: 0 100%;
+}
+/* On the project pages the switch is a button (it changes mode in place): no browser grey */
+button.m-mode {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}

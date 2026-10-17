@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://api.fontshare.com">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="BB.css">
-    <link rel="stylesheet" href="bbdark.css">
+    <link rel="stylesheet" href="bbdark.css"><!-- only styles body.dark-mode: loaded in both modes so switching is instant -->
     <script src="scripts/page-fade.js"></script>
     <!-- Built by tools/build-case-studies.js from tools/case-study-content.js: edit those, not this file. -->
     <style>
@@ -291,6 +291,107 @@
         body.dark-mode .cs-end p {
             color: #aaaaaa;
         }
+        /* Listen: the case study read aloud (scripts/case-read-aloud.js), from the top of the
+           page and from the sidebar. The paragraph being read is highlighted. */
+        .cs-top {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .cs-top .hero-title-standalone {
+            margin: 0;
+        }
+        .cs-listen {
+            display: flex;
+            gap: 8px;
+        }
+        .cs-listen-btn,
+        .cs-listen-stop {
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            border: 1px solid rgba(11, 11, 11, 0.14);
+            border-radius: 999px;
+            background: #ffffff;
+            color: #0b0b0b;
+            font-family: Satoshi, sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s var(--transition-easing), color 0.3s var(--transition-easing);
+        }
+        .cs-listen-btn {
+            padding: 0 14px;
+        }
+        .cs-listen-stop {
+            width: 34px;
+            padding: 0;
+        }
+        .cs-listen-stop[hidden],
+        .cs-listen-btn[hidden],
+        .cs-listen-side[hidden] {
+            display: none;
+        }
+        .cs-listen-btn.is-active {
+            background: #000000;
+            border-color: #000000;
+            color: #ffffff;
+        }
+        .cs-listen-time {
+            opacity: 0.55;
+        }
+        .project-sidebar .cs-listen-side {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0;
+            border: 0;
+            background: none;
+            font-family: Satoshi, sans-serif;
+            font-size: 15px;
+            color: #a8a8a8;
+            cursor: pointer;
+            transition: color 0.3s var(--transition-easing);
+        }
+        .project-sidebar .cs-listen-side:hover,
+        .project-sidebar .cs-listen-side.is-active {
+            color: #0b0b0b;
+        }
+        .cs-listen-side .cs-listen-time {
+            display: none;
+        }
+        .cs-reading {
+            background: rgba(255, 201, 60, 0.22);
+            box-shadow: 0 0 0 6px rgba(255, 201, 60, 0.22);
+            border-radius: 6px;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        body.dark-mode .cs-listen-btn,
+        body.dark-mode .cs-listen-stop {
+            background: #161616;
+            border-color: #2a2a2a;
+            color: #f5f5f5;
+        }
+        body.dark-mode .cs-listen-btn.is-active {
+            background: #ffffff;
+            border-color: #ffffff;
+            color: #000000;
+        }
+        body.dark-mode .project-sidebar .cs-listen-side {
+            color: #777777;
+        }
+        body.dark-mode .project-sidebar .cs-listen-side:hover,
+        body.dark-mode .project-sidebar .cs-listen-side.is-active {
+            color: #f5f5f5;
+        }
+        body.dark-mode .cs-reading {
+            background: rgba(255, 201, 60, 0.16);
+            box-shadow: 0 0 0 6px rgba(255, 201, 60, 0.16);
+        }
     </style>
 </head>
 <body class="dark-mode">
@@ -306,7 +407,7 @@
         <ul class="nav-menu">
             <li id="nav-home"><a href="BBDark.html">Home</a></li>
             <li id="nav-projects"><a href="projectsDark.html">Projects</a></li>
-            <li><a href="aboutDark.html">About</a></li>
+            <li id="nav-about"><a href="aboutDark.html">About</a></li>
         </ul>
     </nav>
     <div id="content">
@@ -322,9 +423,16 @@
                     <a href="#whats-next">What's Next</a>
                     <a href="#references">References</a>
                     <a class="cs-download" href="case-studies/inform-case-study.pdf" download="InForm case study.pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download PDF</span></a>
+                    <button type="button" class="cs-listen-side" data-read-aloud>Listen</button>
                 </div>
                 <main class="project-main">
-            <p class="hero-title-standalone">InForm · Full case study</p>
+            <div class="cs-top">
+                <p class="hero-title-standalone">InForm · Full case study</p>
+                <div class="cs-listen">
+                    <button type="button" class="cs-listen-btn" data-read-aloud>Listen</button>
+                    <button type="button" class="cs-listen-stop" data-read-stop aria-label="Stop reading" hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                </div>
+            </div>
             <img class="cs-cover" src="case-studies/inform-cover.png" alt="InForm cover: a three by three grid of blue squares with one red square" width="1588" height="2246">
             <header class="cs-head">
                 <h1 class="cs-title">InForm: a diabetes logging app</h1>
@@ -425,7 +533,7 @@
         // Back returns to this case study's project page: back through history when we came
         // straight from it (so it opens where it was left), otherwise to it in this mode.
         function smartBack() {
-            const project = 'ontrackDark.html';
+            const project = 'ontrack' + (document.body.classList.contains('dark-mode') ? 'Dark' : '') + '.html';
             const from = document.referrer.split(/[?#]/)[0].split('/').pop().toLowerCase();
             if (from === 'ontrack.html' || from === 'ontrackdark.html') {
                 history.back();
@@ -446,14 +554,29 @@
         updateTime();
         setInterval(updateTime, 60000);
 
-        // Mode switching: the same case study in the other mode.
+        // Mode switching happens in place, with the same blur crossfade as moving between pages,
+        // so a case study being read aloud keeps talking and the place on the page stays. The
+        // address becomes the other mode's page, so reloading or sharing it keeps the mode, and
+        // the menu points at that mode's pages.
         const modeButtons = document.querySelectorAll('.mode-btn');
+        const MENU = { 'nav-home': ['BB.html', 'BBDark.html'], 'nav-projects': ['projects.html', 'projectsDark.html'], 'nav-about': ['about.html', 'aboutDark.html'] };
+        function setMode(dark) {
+            if (document.body.classList.contains('dark-mode') === dark) return;
+            function apply() {
+                document.body.classList.toggle('dark-mode', dark);
+                modeButtons[0].classList.toggle('active', dark);
+                modeButtons[1].classList.toggle('active', !dark);
+                Object.keys(MENU).forEach(function (id) {
+                    document.querySelector('#' + id + ' a').setAttribute('href', MENU[id][dark ? 1 : 0]);
+                });
+                history.replaceState(history.state, '', (dark ? 'ontrack-case-studyDark.html' : 'ontrack-case-study.html') + location.search + location.hash);
+                document.dispatchEvent(new Event('modechange'));
+            }
+            if (document.startViewTransition) document.startViewTransition(apply);
+            else apply();
+        }
         modeButtons.forEach(function (btn, index) {
-            btn.addEventListener('click', function () {
-                modeButtons.forEach(function (b) { b.classList.remove('active'); });
-                this.classList.add('active');
-                window.fadeNavigate((index === 0 ? 'ontrack-case-studyDark.html' : 'ontrack-case-study.html') + window.location.search);
-            });
+            btn.addEventListener('click', function () { setMode(index === 0); });
         });
 
         // The menu shows where the visit came from: Home, or Projects.
@@ -478,6 +601,7 @@
             onScroll();
         })();
     </script>
+    <script src="scripts/case-read-aloud.js"></script>
     <script src="stickers/stickers.js"></script>
     <script src="scripts/sticker.js" data-set="ontrack" data-count="6"></script>
 </body>

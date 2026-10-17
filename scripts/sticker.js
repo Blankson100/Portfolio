@@ -212,13 +212,9 @@
         let ctx = null, dpr = 1, inside = null, total = GRID * GRID, threshold = 0.35, revealed = false;
         const scratched = new Set();
 
-        // The cover is the sticker's own outline filled in as a shadow, with light speckle
-        // so it reads as a scratch coating.
-        function paintCover() {
-            dpr = Math.min(window.devicePixelRatio || 1, 3);
-            cover.width = cover.height = Math.round(SIZE * dpr);
-            ctx = cover.getContext('2d');
-            ctx.drawImage(art, 0, 0, cover.width, cover.height);
+        // The coating: whatever is left of the cover filled in this mode's grey, with light
+        // speckle so it reads as a scratch coating. Scratching then erases it.
+        function coat() {
             ctx.globalCompositeOperation = 'source-in';
             ctx.fillStyle = document.body.classList.contains('dark-mode') ? '#5E5E5E' : '#3A3A3A';
             ctx.fillRect(0, 0, cover.width, cover.height);
@@ -226,6 +222,21 @@
             ctx.fillStyle = 'rgba(255,255,255,0.12)';
             for (let i = 0; i < 420; i++) ctx.fillRect(Math.random() * cover.width, Math.random() * cover.height, 2 * dpr, 2 * dpr);
             ctx.globalCompositeOperation = 'destination-out';
+        }
+        // Pages that switch mode in place (the case studies) send "modechange": the coating
+        // turns the new mode's grey, keeping whatever has already been scratched off.
+        document.addEventListener('modechange', function () {
+            if (ctx && !revealed) coat();
+        });
+
+        // The cover is the sticker's own outline filled in as a shadow, with light speckle
+        // so it reads as a scratch coating.
+        function paintCover() {
+            dpr = Math.min(window.devicePixelRatio || 1, 3);
+            cover.width = cover.height = Math.round(SIZE * dpr);
+            ctx = cover.getContext('2d');
+            ctx.drawImage(art, 0, 0, cover.width, cover.height);
+            coat();
             ctx.lineCap = 'round';
             ctx.lineWidth = BRUSH * 2 * dpr;
 
