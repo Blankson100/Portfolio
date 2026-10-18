@@ -19,7 +19,7 @@
     const script = document.currentScript;
     if (!data || !cover) return;
 
-    const SIZE = 120;
+    const SIZE = parseInt(script && script.dataset.size, 10) || 120;   // smaller on the phone pages (data-size)
     // side: beside the cover, top to bottom on each side. lane: along the bottom of the
     // cover (drop = how far below), or flying across at a height on it (y = 0 top, 1 bottom);
     // ones that stand stay at the cover's bottom right corner, or bottom left (corner: 'left').
@@ -171,6 +171,7 @@
     // over a white die-cut edge, with shapes a little uneven rather than an SVG filter (which
     // Safari draws blurry). The sun's rays turn slowly; the stars twinkle.
     const SKY = 180, MID = SKY / 2;   // the drawing's size; its middle sits on the corner
+    const SHOWN = Math.round(SKY * SIZE / 120);   // drawn smaller with a smaller crew (the phone)
     function accraHour() {
         const preview = new URLSearchParams(window.location.search).get('avatarDate');
         if (preview) { const m = preview.match(/T(\d{1,2})$/); return m ? +m[1] : 12; }
@@ -232,7 +233,7 @@
         if (sky.dataset.time === time) return;
         sky.dataset.time = time;
         sky.className = 'sky sky-' + time;
-        sky.innerHTML = `<svg width="${SKY}" height="${SKY}" viewBox="0 0 ${SKY} ${SKY}" stroke="#1F1F1F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">${time === 'day' ? sun() : moon()}</svg>`;
+        sky.innerHTML = `<svg width="${SHOWN}" height="${SHOWN}" viewBox="0 0 ${SKY} ${SKY}" stroke="#1F1F1F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">${time === 'day' ? sun() : moon()}</svg>`;
     }
     if (sky) {
         drawSky();
@@ -258,8 +259,8 @@
         }
         // The sky's middle just inside the cover's top-right corner.
         if (sky) {
-            sky.style.left = (right - 4 - MID) + 'px';
-            sky.style.top = (top + 4 - MID) + 'px';
+            sky.style.left = (right - 4 - SHOWN / 2) + 'px';
+            sky.style.top = (top + 4 - SHOWN / 2) + 'px';
         }
         const sidebar = document.querySelector('.project-sidebar');
         const edge = sidebar ? sidebar.getBoundingClientRect().right + window.scrollX + 16 : 16;

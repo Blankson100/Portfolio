@@ -1,12 +1,15 @@
 // Reads a full case study aloud with the browser's own voice (no files, no service). Any
-// button marked data-read-aloud starts it, pauses it and picks it up again; the × beside the
-// top one stops it. It reads the title and every section except References, a sentence at a
+// button marked data-read-aloud starts it, pauses it and picks it up again. Pressing it opens
+// its group (data-read-controls), splitting out buttons to go back a paragraph
+// (data-read-prev), on a paragraph (data-read-next) and stop (data-read-stop); a stop button
+// outside a group is simply shown while reading. It reads the title and every section except References, a sentence at a
 // time (Chrome cuts long speech off), highlights the paragraph being read, and follows it
 // down the page while the reader is following along. Hidden where the browser can't speak.
 (function () {
     const synth = window.speechSynthesis;
     const buttons = Array.from(document.querySelectorAll('[data-read-aloud]'));
-    const stopBtn = document.querySelector('[data-read-stop]');
+    const groups = Array.from(document.querySelectorAll('[data-read-controls]'));
+    const all = sel => Array.from(document.querySelectorAll(sel));
     if (!buttons.length) return;
     if (!synth || !window.SpeechSynthesisUtterance) {
         buttons.forEach(function (b) { b.hidden = true; });
@@ -56,17 +59,80 @@
 
     let state = 'idle', at = 0, parts = [], part = 0, current = null, lit = null;
 
+    let rendered = false;
     function render() {
         buttons.forEach(function (b) {
+            // In a group the pill eases to its new width instead of snapping to it.
+            const ease = rendered && !reduced && b.closest('[data-read-controls]');
+            const before = ease ? b.offsetWidth : 0;   // its own width, not squished by a press
+            b.style.width = '';
             const label = state === 'playing' ? 'Pause' : state === 'paused' ? 'Resume' : 'Listen';
             b.innerHTML = (state === 'playing' ? ICON.pause : ICON.listen)
                 + '<span>' + label + '</span>' + (state === 'idle' ? '<span class="cs-listen-time">' + minutes + '</span>' : '');
             b.setAttribute('aria-label', state === 'playing' ? 'Pause reading' : state === 'paused' ? 'Resume reading' : 'Listen to this case study, ' + minutes);
             b.classList.toggle('is-active', state !== 'idle');
+            if (ease) {
+                const after = b.offsetWidth;
+                if (Math.abs(after - before) > 1) {
+                    b.style.width = before + 'px';
+                    b.getBoundingClientRect();
+                    b.style.width = after + 'px';
+                    b.addEventListener('transitionend', function done(e) {
+                        if (e.propertyName === 'width') { b.style.width = ''; b.removeEventListener('transitionend', done); }
+                    });
+                }
+            }
         });
-        if (stopBtn) stopBtn.hidden = state === 'idle';
+        // Groups split open while reading; their extra buttons can't be reached while closed.
+        groups.forEach(function (g) {
+            g.classList.toggle('is-open', state !== 'idle');
+            g.querySelectorAll('[data-read-prev], [data-read-next], [data-read-stop]').forEach(function (b) {
+                b.tabIndex = state === 'idle' ? -1 : 0;
+                b.setAttribute('aria-hidden', state === 'idle' ? 'true' : 'false');
+            });
+        });
+        all('[data-read-stop]').forEach(function (b) { if (!b.closest('[data-read-controls]')) b.hidden = state === 'idle'; });
+        if (rendered) morph(); else shapes();
+        rendered = true;
     }
-    function light(el) {
+
+    // The liquid shapes behind each group's buttons, one per button, kept on top of them.
+    // While things move (morph) they're redrawn every frame through the goo filter, which
+    // joins shapes that are close; then the filter goes off so the resting edges are crisp.
+    function shapes() {
+        groups.forEach(function (g) {
+            const layer = g.querySelector('.cs-listen-blobs');
+            if (!layer) return;
+            const box = layer.getBoundingClientRect();
+            const btns = g.querySelectorAll('.cs-listen-btn, .cs-listen-more');
+            layer.querySelectorAll('span').forEach(function (s, i) {
+                const r = btns[i] && btns[i].getBoundingClientRect();
+                if (!r) return;
+                s.style.left = (r.left - box.left) + 'px';
+                s.style.top = (r.top - box.top) + 'px';
+                s.style.width = r.width + 'px';
+                s.style.height = r.height + 'px';
+            });
+        });
+    }
+    let morphUntil = 0, morphing = false;
+    function morph(ms) {
+        morphUntil = Math.max(morphUntil, performance.now() + (ms || 1100));
+        if (morphing) return;
+        morphing = true;
+        groups.forEach(function (g) { g.classList.add('is-morphing'); });
+        (function frame() {
+            shapes();
+            if (performance.now() < morphUntil) { requestAnimationFrame(frame); return; }
+            morphing = false;
+            groups.forEach(function (g) { g.classList.remove('is-morphing'); });
+        })();
+    }
+    window.addEventListener('resize', shapes);
+    if (document.fonts) document.fonts.ready.then(shapes);
+    // Pressing squishes the pill a little; the shapes follow it.
+    groups.forEach(function (g) { g.addEventListener('pointerdown', function () { morph(500); }); });
+    function light(el, quiet) {
         // Follow down the page only if the reader could see the paragraph before this one.
         let following = true;
         if (lit) {
@@ -78,15 +144,15 @@
         if (!el) return;
         el.classList.add('cs-reading');
         const r = el.getBoundingClientRect();
-        if (following && (r.top < 110 || r.bottom > window.innerHeight - 140)) {
+        if (!quiet && following && (r.top < 110 || r.bottom > window.innerHeight - 140)) {
             el.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
         }
     }
-    function load(i) {
+    function load(i, quiet) {
         at = i;
         parts = pieces(textOf(blocks[i]));
         part = 0;
-        light(blocks[i]);
+        light(blocks[i], quiet);
     }
     function speak() {
         if (state !== 'playing') return;
@@ -113,18 +179,40 @@
         synth.cancel();
         render();
     }
+    // Starting doesn't jump the page: the buttons split open first, then the page glides
+    // down to where it's reading (if that's off screen).
+    let glide = 0;
     function play() {
-        if (state === 'idle') load(0);
+        const fresh = state === 'idle';
+        if (fresh) load(0, true);
         state = 'playing';
         render();
         speak();
+        if (fresh) {
+            clearTimeout(glide);
+            glide = setTimeout(function () {
+                if (state === 'idle' || !lit) return;
+                const r = lit.getBoundingClientRect();
+                if (r.top < 110 || r.bottom > window.innerHeight - 140) lit.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
+            }, reduced ? 0 : 950);
+        }
     }
     function stop() {
+        clearTimeout(glide);
         state = 'idle';
         current = null;
         synth.cancel();
         light(null);
         render();
+    }
+    // Back to the start of this paragraph (or the one before, if it has only just begun), or
+    // on to the next one; it keeps playing, or waits there if paused.
+    function jump(i) {
+        if (i >= blocks.length) { stop(); return; }
+        current = null;
+        synth.cancel();
+        load(Math.max(0, i));
+        if (state === 'playing') speak();
     }
 
     buttons.forEach(function (b) {
@@ -132,7 +220,16 @@
             if (state === 'playing') pause(); else play();
         });
     });
-    if (stopBtn) stopBtn.addEventListener('click', stop);
+    all('[data-read-stop]').forEach(function (b) {
+        b.addEventListener('click', function () {
+            stop();
+            // The stop button folds away, so the Listen button beside it takes the focus.
+            const g = b.closest('[data-read-controls]'), main = g && g.querySelector('[data-read-aloud]');
+            if (main && document.activeElement === b) main.focus({ preventScroll: true });
+        });
+    });
+    all('[data-read-prev]').forEach(function (b) { b.addEventListener('click', function () { if (state !== 'idle') jump(part > 0 ? at : at - 1); }); });
+    all('[data-read-next]').forEach(function (b) { b.addEventListener('click', function () { if (state !== 'idle') jump(at + 1); }); });
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && state !== 'idle') stop();
     });

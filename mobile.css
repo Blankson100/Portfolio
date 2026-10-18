@@ -166,7 +166,7 @@ body.dark-mode .m-link {
 }
 
 .m-footer {
-    padding: 18px 25px 10px;
+    padding: 18px 25px 0;
     font-size: 12px;
     font-weight: 500;
     line-height: 16px;
@@ -219,7 +219,7 @@ body.dark-mode .m-link {
 .m-case .m-main {
     gap: 20px;
     padding-top: 104px;
-    padding-bottom: 48px;
+    padding-bottom: 8px;
 }
 /* Back to Projects, pinned top left level with the moon/sun switch, so it's always there
    while reading; like the switch, a soft pill fades in behind it once text scrolls under it */
@@ -375,16 +375,11 @@ body.dark-mode.m-case .cs-reading {
     background: rgba(255, 201, 60, 0.16);
     box-shadow: 0 0 0 5px rgba(255, 201, 60, 0.16);
 }
-/* A project on the homepage that opens its own page, with a small arrow by its name */
+/* A project on the homepage that opens its own page; its name darkens while tapped */
 .m-item-link {
     color: inherit;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
-}
-.m-item-link .m-title {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
 }
 .m-item-link:active .m-title {
     color: var(--m-text);
@@ -438,4 +433,25 @@ button.m-mode {
 /* "Read the full case study" */
 .m-go {
     align-self: flex-start;
+}
+/* A project still being built (clostra-mobile.html, roster-mobile.html): the cover with its
+   crew working around it. The page fills the screen, so Clostra's meadow grows to the bottom. */
+body.m-wip {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+.m-wip .m-main {
+    flex: 1;
+}
+.m-hero {
+    position: relative;
+    margin-top: 28px;
+}
+
+/* The bees' strip at the end of each phone page (styled in BB.css): close under the last line */
+.m-page .bee-end {
+    margin: 0 0 6px;
+    color: var(--m-text);
 }

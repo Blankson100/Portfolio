@@ -225,15 +225,16 @@ body.dark-mode .grad-blur-grain{
 .navbar{
     background:rgba(11, 11, 11, 0.5);
     backdrop-filter:blur(15px);
-    padding:0;
+    /* sized by its spacing, as in the Figma: 24px all round the words (their text boxes),
+       12px between them, and the current page's name raised 6px (18px from the top, 30px
+       from the bottom) */
+    padding:24px;
     position:fixed;
     bottom:40px;
     left:50%;
     transform:translateX(-50%);
     z-index:100;
-    width:245px;
-    height:75px;
-    border-radius:12px;
+    border-radius:20px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -326,10 +327,9 @@ body.dark-mode .grad-blur-grain{
     margin:0;
     padding:0;
     display:flex;
-    gap:20px;
+    gap:12px;
     align-items:center;
     justify-content:center;
-    width: 100%;
 }
 
 .nav-menu li {
@@ -349,7 +349,7 @@ body.dark-mode .grad-blur-grain{
 }
 
 .nav-menu li.nav-item-active {
-    transform:translateY(-4px);
+    transform:translateY(-6px);
 }
 
 .nav-menu li.nav-item-active a {
@@ -1778,3 +1778,101 @@ body.dark-mode .avatar-bubble-cloud circle {
     max-width: 100%;
 }
 
+
+/* The end of every page, in place of a footer: a thin strip that two tiny stick-drawn bees
+   fly across, left to right, each with a dotted trail, fluttering wings and little Zs floating
+   up. On the computer the strip sits under the floating menu; the phone pages space it in
+   mobile.css. With reduced motion the bees rest in the middle. */
+.bee-end {
+    position: relative;
+    width: 100%;
+    height: 36px;
+    overflow: hidden;
+    color: #0b0b0b;
+    pointer-events: none;
+}
+body.dark-mode .bee-end {
+    color: #ffffff;
+}
+.bee-end .bee {
+    position: absolute;
+    top: 1px;
+    left: -70px;
+    width: 60px;
+    height: auto;
+    overflow: visible;
+    animation: bee-cross var(--cross, 30s) linear infinite;
+}
+.bee-end .bee-2 {
+    top: 9px;
+    width: 46px;
+    --cross: 42s;
+    animation-delay: -17s;
+}
+.m-page .bee-end {
+    height: 40px;
+}
+.m-page .bee-end .bee {
+    top: 2px;
+    width: 66px;
+    --cross: 13s;
+}
+.m-page .bee-end .bee-2 {
+    top: 11px;
+    width: 50px;
+    --cross: 18s;
+    animation-delay: -8s;
+}
+@keyframes bee-cross { from { left: -70px; } to { left: 100%; } }
+.bee-trail {
+    opacity: 0.45;
+}
+.bee-fly {
+    animation: bee-bob 0.7s ease-in-out infinite alternate, bee-drift 3.2s ease-in-out infinite alternate;
+}
+.bee-wing {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: bee-flap 0.09s linear infinite alternate;
+}
+.bee-wing-2 {
+    animation-delay: -0.045s;
+}
+.bee-z {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: bee-z 2.4s ease-in-out infinite;
+}
+.bee-z-2 {
+    animation-delay: 0.6s;
+}
+.bee-z-3 {
+    animation-delay: 1.2s;
+}
+@keyframes bee-bob { from { translate: 0 -1.5px; } to { translate: 0 1.5px; } }
+@keyframes bee-drift { from { transform: translateX(-3px) rotate(-4deg); } to { transform: translateX(3px) rotate(3deg); } }
+@keyframes bee-flap { from { transform: scale(1, 1); } to { transform: scale(0.85, 0.55); } }
+@keyframes bee-z {
+    0%   { opacity: 0; transform: translate(-2px, 3px) scale(0.7); }
+    30%  { opacity: 1; }
+    70%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(2px, -3px) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .bee-fly,
+    .bee-wing,
+    .bee-end .bee {
+        animation: none;
+    }
+    .bee-end .bee {
+        left: calc(50% - 66px);
+    }
+    .bee-end .bee-2 {
+        left: calc(50% + 8px);
+    }
+    .bee-z {
+        animation: none;
+        opacity: 1;
+    }
+}

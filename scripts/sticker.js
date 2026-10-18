@@ -73,13 +73,24 @@
         return boxes;
     }
     // If the gaps can't take them all, the page grows a little at the bottom until they fit.
+    // On a page with a footer the room is made just above the footer, so stickers never end
+    // up below it.
+    const pageFooter = FREE ? document.querySelector('footer') : null;
+    let room = null;
     function findSpots() {
-        const boxes = obstacles();
+        if (pageFooter) {
+            room = room || document.createElement('div');
+            room.setAttribute('aria-hidden', 'true');
+            if (room.nextElementSibling !== pageFooter) pageFooter.parentNode.insertBefore(room, pageFooter);
+        }
         const vw = document.documentElement.clientWidth;
-        const end = boxes.reduce((m, o) => Math.max(m, o.b), 0);
-        for (let extra = SIZE * 0.7; ; extra += 40) {
+        for (let extra = room ? 0 : SIZE * 0.7; ; extra += 40) {
+            if (room) room.style.height = extra + 'px';
+            const boxes = obstacles();
+            const end = room ? room.getBoundingClientRect().bottom + scrollY
+                : boxes.reduce((m, o) => Math.max(m, o.b), 0) + extra;
             const free = [];
-            for (let y = 8; y + BOX_H <= end + extra; y += 6) {
+            for (let y = 8; y + BOX_H <= end; y += 6) {
                 for (let x = 8; x + BOX_W <= vw - 8; x += 6) {
                     const l = x - PAD, r = x + BOX_W + PAD, t = y - PAD, b = y + BOX_H + PAD;
                     if (!boxes.some(o => l < o.r && r > o.l && t < o.b && b > o.t)) free.push([x, y]);

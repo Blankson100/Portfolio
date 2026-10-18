@@ -9,9 +9,8 @@ const path = require('path');
 const CONTENT = require('./case-study-content');
 
 const ROOT = path.join(__dirname, '..');
-const PAGES = {   // content key: the page's file name, its project page, its stickers, and its phone page
-    cropcare: { file: 'cropcare-case-study', project: 'leafai', stickers: 'cropcare',
-        mobile: { file: 'cropcare-mobile', study: 'cropcare-case-study-mobile', tagline: 'AI-powered crop disease diagnosis for farmers in emerging markets' } },
+const PAGES = {   // content key: the page's file name, its project page, its stickers
+    cropcare: { file: 'cropcare-case-study', project: 'leafai', stickers: 'cropcare' },
     ontrack: { file: 'ontrack-case-study', project: 'ontrack', stickers: 'ontrack' },
     lign: { file: 'lign-case-study', project: 'LignTransport', stickers: 'lign' },
 };
@@ -73,7 +72,9 @@ function render(body) {
 }
 
 const BACK_ICON = '<svg width="16" height="16" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.06836 12.1833C5.06836 12.4187 5.17038 12.6542 5.35086 12.8268L10.5301 17.9982C10.7185 18.1787 10.9225 18.265 11.1501 18.265C11.6445 18.265 12.0054 17.9119 12.0054 17.4332C12.0054 17.1821 11.9113 16.9702 11.7465 16.8133L9.98082 15.0241L7.70508 12.9445L9.53352 13.0544H19.0445C19.5625 13.0544 19.9234 12.6934 19.9234 12.1833C19.9234 11.6654 19.5625 11.3044 19.0445 11.3044H9.53352L7.71293 11.4143L9.98082 9.33472L11.7465 7.54551C11.9113 7.38857 12.0054 7.17669 12.0054 6.92557C12.0054 6.44688 11.6445 6.09375 11.1501 6.09375C10.9225 6.09375 10.7106 6.18007 10.5066 6.37626L5.35086 11.532C5.17038 11.7046 5.06836 11.94 5.06836 12.1833Z" fill="currentColor"/></svg>';
-const STOP_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const PREV_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M19 5.5v13L9 12z" fill="currentColor"/></svg>';
+const NEXT_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M5 5.5v13L15 12z" fill="currentColor"/></svg>';
+const STOP_ICON ='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 const DOWNLOAD_ICON ='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 // Layout as on the project pages (fixed sidebar, 602px column), then the reading styles.
@@ -368,42 +369,106 @@ const STYLE = `
         .cs-top .hero-title-standalone {
             margin: 0;
         }
+        /* This row stays pinned at the top (over the top blur) as the page scrolls, so Listen
+           and, while it reads, Pause, back, on and stop are always in reach. */
+        .cs-top {
+            position: sticky;
+            top: 26px;
+            z-index: 60;
+        }
+        /* One pill until it's pressed; then it splits like a drop of liquid: it squishes, the
+           round buttons (back a paragraph, on a paragraph, stop) pull out of it one after
+           another and snap off with a little bounce, and it shrinks to Pause. Stopping melts
+           them back in. The shapes are drawn on a layer behind the buttons (.cs-listen-blobs,
+           kept in step by scripts/case-read-aloud.js) through a "goo" filter that joins them
+           while they're close; at rest the filter is off, so the edges stay crisp. */
         .cs-listen {
+            --blob: #ffffff;
+            --ink: #0b0b0b;
+            position: relative;
             display: flex;
-            gap: 8px;
+            align-items: center;
+        }
+        .cs-listen.is-open {
+            --blob: #000000;
+            --ink: #ffffff;
+        }
+        .cs-goo {
+            position: absolute;
+        }
+        .cs-listen-blobs {
+            position: absolute;
+            inset: -20px;
+            pointer-events: none;
+        }
+        .cs-listen.is-morphing .cs-listen-blobs {
+            filter: url(#cs-goo);
+        }
+        .cs-listen-blobs span {
+            position: absolute;
+            border-radius: 999px;
+            background: var(--blob);
+            transition: background 0.3s var(--transition-easing);
         }
         .cs-listen-btn,
-        .cs-listen-stop {
+        .cs-listen-more {
+            position: relative;
+            z-index: 1;
             height: 34px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 7px;
-            border: 1px solid rgba(11, 11, 11, 0.14);
+            border: 0;
             border-radius: 999px;
-            background: #ffffff;
-            color: #0b0b0b;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            color: var(--ink);
             font-family: Satoshi, sans-serif;
             font-size: 14px;
+            white-space: nowrap;
             cursor: pointer;
-            transition: background 0.3s var(--transition-easing), color 0.3s var(--transition-easing);
+            -webkit-tap-highlight-color: transparent;
         }
         .cs-listen-btn {
             padding: 0 14px;
+            overflow: hidden;
+            transition: color 0.3s var(--transition-easing), width 0.45s var(--transition-easing), transform 0.15s ease;
         }
-        .cs-listen-stop {
+        .cs-listen-btn:active {
+            transform: scale(0.94);
+        }
+        .cs-listen-more {
+            flex: none;
             width: 34px;
+            margin-left: -34px;
             padding: 0;
+            visibility: hidden;
+            transition: margin-left 0.45s cubic-bezier(0.5, 0, 0.75, 0) var(--dc, 0s), color 0.3s, visibility 0s linear 0.6s;
         }
-        .cs-listen-stop[hidden],
+        .cs-listen.is-open .cs-listen-more {
+            margin-left: 8px;
+            visibility: visible;
+            transition: margin-left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0s), color 0.3s, visibility 0s;
+        }
+        .cs-listen-more svg {
+            flex: none;
+            opacity: 0;
+            transform: scale(0.3) rotate(-30deg);
+            transition: opacity 0.15s ease, transform 0.2s ease;
+        }
+        .cs-listen.is-open .cs-listen-more svg {
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.25s ease calc(var(--d, 0s) + 0.2s), transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--d, 0s) + 0.15s);
+        }
+        .cs-listen.is-open .cs-listen-more:hover svg {
+            transform: scale(1.18);
+        }
         .cs-listen-btn[hidden],
         .cs-listen-side[hidden] {
             display: none;
-        }
-        .cs-listen-btn.is-active {
-            background: #000000;
-            border-color: #000000;
-            color: #ffffff;
         }
         .cs-listen-time {
             opacity: 0.55;
@@ -434,16 +499,25 @@ const STYLE = `
             border-radius: 6px;
             transition: background 0.3s ease, box-shadow 0.3s ease;
         }
-        body.dark-mode .cs-listen-btn,
-        body.dark-mode .cs-listen-stop {
-            background: #161616;
-            border-color: #2a2a2a;
-            color: #f5f5f5;
+        body.dark-mode .cs-listen {
+            --blob: #161616;
+            --ink: #f5f5f5;
         }
-        body.dark-mode .cs-listen-btn.is-active {
-            background: #ffffff;
-            border-color: #ffffff;
-            color: #000000;
+        body.dark-mode .cs-listen.is-open {
+            --blob: #ffffff;
+            --ink: #000000;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cs-listen-btn,
+            .cs-listen-more,
+            .cs-listen.is-open .cs-listen-more,
+            .cs-listen-more svg,
+            .cs-listen.is-open .cs-listen-more svg {
+                transition: none;
+            }
+            .cs-listen.is-morphing .cs-listen-blobs {
+                filter: none;
+            }
         }
         body.dark-mode .project-sidebar .cs-listen-side {
             color: #777777;
@@ -481,6 +555,7 @@ function page(key, dark) {
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="BB.css">
     <link rel="stylesheet" href="bbdark.css"><!-- only styles body.dark-mode: loaded in both modes so switching is instant -->
+    <script src="scripts/screen-switch.js"></script>
     <script src="scripts/page-fade.js"></script>
     <!-- Built by tools/build-case-studies.js from tools/case-study-content.js: edit those, not this file. -->
     <style>${STYLE}
@@ -514,9 +589,13 @@ ${sections.map(id => `                    <a href="#${id}">${LABELS[id]}</a>`).j
                 <main class="project-main">
             <div class="cs-top">
                 <p class="hero-title-standalone">${esc(c.name)} · Full case study</p>
-                <div class="cs-listen">
+                <div class="cs-listen" data-read-controls>
+                    <svg class="cs-goo" width="0" height="0" aria-hidden="true"><filter id="cs-goo"><feGaussianBlur stdDeviation="5"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter></svg>
+                    <div class="cs-listen-blobs" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
                     <button type="button" class="cs-listen-btn" data-read-aloud>Listen</button>
-                    <button type="button" class="cs-listen-stop" data-read-stop aria-label="Stop reading" hidden>${STOP_ICON}</button>
+                    <button type="button" class="cs-listen-more" style="--d: 0s; --dc: 0.16s" data-read-prev aria-label="Back a paragraph" tabindex="-1">${PREV_ICON}</button>
+                    <button type="button" class="cs-listen-more" style="--d: 0.09s; --dc: 0.08s" data-read-next aria-label="On a paragraph" tabindex="-1">${NEXT_ICON}</button>
+                    <button type="button" class="cs-listen-more" style="--d: 0.18s; --dc: 0s" data-read-stop aria-label="Stop reading" tabindex="-1">${STOP_ICON}</button>
                 </div>
             </div>
             <img class="cs-cover" src="${c.cover}" alt="${esc(c.coverAlt)}" width="1588" height="2246">
@@ -532,13 +611,7 @@ ${html}            <div class="cs-end">
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
-        <div class="footer-icons">
-            <img src="xxx.svg" alt="X" width="24" height="24">
-            <img src="Linkedin.svg" alt="LinkedIn" width="24" height="24">
-        </div>
-    </footer>
+${M_BEE}
     <script>
         // Back returns to this case study's project page: back through history when we came
         // straight from it (so it opens where it was left), otherwise to it in this mode.
@@ -621,13 +694,23 @@ ${html}            <div class="cs-end">
 
 // Phone pages, in the style of the phone homepage (portfolio-mobile-light/dark.html and
 // mobile.css), with Back pinned top left and the moon/sun switch top right (scripts/mobile-page.js
-// changes mode in place). Each project gets two:
-// - the project page (PAGES[key].mobile.file): the desktop project page's sections, read
-//   from it so the two stay the same: cover, Introduction, The Problem, The App (its video
-//   and "See how it works"), the Design Process notebook, Challenges as rows, and the link to
-// - the full case study (PAGES[key].mobile.study): the case study as writing, with Listen and
-//   the PDF.
-// Three pauses between sections on each give the stickers somewhere to sit.
+// changes mode in place). Every project in the homepage list gets one, under its name and
+// tagline from that list:
+// - a project page (file): the desktop project page's sections, read from it so the two stay
+//   the same: cover, Introduction, The Problem, The App (its video and "See how it works"),
+//   the Design Process notebook, Challenges as rows, and the link to
+// - the full case study (studyFile, from tools/case-study-content.js): the case study as
+//   writing, with Listen and the PDF;
+// - or, for a project still being built (crew), its cover with the crew from
+//   scripts/sticker-crew.js working around it, sized for the phone.
+// Pauses between sections give the scratch-off stickers somewhere to sit.
+const PHONE = [
+    { home: 'InForm', project: 'ontrack', file: 'inform-mobile', study: 'ontrack', studyFile: 'inform-case-study-mobile' },
+    { home: 'Crop Care', project: 'leafai', file: 'cropcare-mobile', study: 'cropcare', studyFile: 'cropcare-case-study-mobile' },
+    { home: 'Lign', project: 'LignTransport', file: 'lign-transport-mobile', study: 'lign', studyFile: 'lign-case-study-mobile' },
+    { home: 'Clostra', project: 'clostra', file: 'clostra-mobile', crew: 'bees' },
+    { home: 'Roster', project: 'roster', file: 'roster-mobile', crew: 'construction' },
+];
 const MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.6 6.6 0 0 0 10.7 10.7z"/></svg>';
 const SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg>';
 const LEFT_ARROW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
@@ -636,8 +719,14 @@ const PAUSE = '<div class="m-pause" aria-hidden="true"></div>\n';
 const both = name => ({ light: name + '.html', dark: name + 'Dark.html' });
 // A link or image that follows the mode: href/src for this mode, the other in data-*.
 const modal = (attr, pair, dark) => `${attr}="${dark ? pair.dark : pair.light}" data-light="${pair.light}" data-dark="${pair.dark}"`;
+const textOf = s => s.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 
-function mobileShell({ title, dark, pages, back, body, scripts, extraHead = '' }) {
+// Each project's name and tagline as the phone homepage lists them.
+const HOME_ROWS = {};
+fs.readFileSync(path.join(ROOT, 'portfolio-mobile-light.html'), 'utf8')
+    .replace(/<(?:div|a) class="m-item[^"]*"[^>]*>\s*<h3 class="m-title">([\s\S]*?)<\/h3>\s*<p class="m-desc">([\s\S]*?)<\/p>/g, (m, t, d) => { HOME_ROWS[textOf(t)] = textOf(d); return m; });
+
+function mobileShell({ title, dark, pages, back, body, scripts, extraHead = '', bodyClass = '' }) {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -648,20 +737,60 @@ function mobileShell({ title, dark, pages, back, body, scripts, extraHead = '' }
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,501&display=swap" rel="stylesheet">${extraHead}
     <link rel="stylesheet" href="BB.css">
     <link rel="stylesheet" href="mobile.css">
+    <script src="scripts/screen-switch.js"></script>
     <script src="scripts/page-fade.js"></script>
     <!-- Built by tools/build-case-studies.js: edit the desktop project page or tools/case-study-content.js, then rebuild. -->
 </head>
-<body class="m-page m-case${dark ? ' dark-mode' : ''}" data-light-page="${pages.light}" data-dark-page="${pages.dark}">
+<body class="m-page m-case${bodyClass}${dark ? ' dark-mode' : ''}" data-light-page="${pages.light}" data-dark-page="${pages.dark}">
     <button type="button" class="m-mode" aria-label="Switch to ${dark ? 'light' : 'dark'} mode" data-sticker-avoid>${dark ? SUN : MOON}</button>
     <a class="m-back" ${modal('href', back.pair, dark)} data-sticker-avoid>${LEFT_ARROW}<span>${esc(back.label)}</span></a>
     <main class="m-main" id="top">
 ${body}    </main>
+${M_BEE}
     <script src="scripts/mobile-page.js"></script>
 ${scripts}
 </body>
 </html>
 `;
 }
+// The end of every page in place of a footer: two tiny stick-drawn bees flying across a thin
+// strip, each with a dotted trail and little Zs (BB.css animates them; the same drawing is
+// pasted into the hand-written pages).
+const M_BEE = `    <footer class="bee-end" aria-hidden="true" data-sticker-avoid>
+        <svg class="bee bee-1" viewBox="0 -12 92 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path class="bee-trail" d="M3 31 C11 31 14 21 21 24 S27 35 33 29 S38 21 42 23" stroke-dasharray="1.5 3.5"/>
+            <g class="bee-fly">
+                <g class="bee-wing"><ellipse cx="51" cy="9.8" rx="4.4" ry="6.6" transform="rotate(-24 51 9.8)"/></g>
+                <g class="bee-wing bee-wing-2"><ellipse cx="57.6" cy="9" rx="4.4" ry="6.6" transform="rotate(18 57.6 9)"/></g>
+                <ellipse cx="55" cy="22" rx="9" ry="6.4"/>
+                <path d="M52 16.2 Q50 22 52 27.8 M57 16 Q55 22 57 28"/>
+                <path d="M46 22 L42.8 22.9"/>
+                <circle cx="66.6" cy="21" r="3.6"/>
+                <circle cx="67.8" cy="20.2" r="0.7" fill="currentColor" stroke="none"/>
+                <path d="M67.5 17.6 Q68.6 13.8 71.6 13 M65.6 17.5 Q65.4 13.6 67.6 12.2"/>
+            </g>
+            <path class="bee-z" d="M74 5.5 h3.2 L74 8.7 h3.2"/>
+            <path class="bee-z bee-z-2" d="M79 -1.5 h4.2 L79 2.7 h4.2"/>
+            <path class="bee-z bee-z-3" d="M85 -10 h5.2 L85 -4.8 h5.2"/>
+        </svg>
+        <svg class="bee bee-2" viewBox="0 -12 92 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path class="bee-trail" d="M3 31 C11 31 14 21 21 24 S27 35 33 29 S38 21 42 23" stroke-dasharray="1.5 3.5"/>
+            <g class="bee-fly">
+                <g class="bee-wing"><ellipse cx="51" cy="9.8" rx="4.4" ry="6.6" transform="rotate(-24 51 9.8)"/></g>
+                <g class="bee-wing bee-wing-2"><ellipse cx="57.6" cy="9" rx="4.4" ry="6.6" transform="rotate(18 57.6 9)"/></g>
+                <ellipse cx="55" cy="22" rx="9" ry="6.4"/>
+                <path d="M52 16.2 Q50 22 52 27.8 M57 16 Q55 22 57 28"/>
+                <path d="M46 22 L42.8 22.9"/>
+                <circle cx="66.6" cy="21" r="3.6"/>
+                <circle cx="67.8" cy="20.2" r="0.7" fill="currentColor" stroke="none"/>
+                <path d="M67.5 17.6 Q68.6 13.8 71.6 13 M65.6 17.5 Q65.4 13.6 67.6 12.2"/>
+            </g>
+            <path class="bee-z" d="M74 5.5 h3.2 L74 8.7 h3.2"/>
+            <path class="bee-z bee-z-2" d="M79 -1.5 h4.2 L79 2.7 h4.2"/>
+            <path class="bee-z bee-z-3" d="M85 -10 h5.2 L85 -4.8 h5.2"/>
+        </svg>
+    </footer>`;
+const TO_HOME = { label: 'Projects', pair: { light: 'portfolio-mobile-light.html#projects', dark: 'portfolio-mobile-dark.html#projects' } };
 
 // One element from a hand-written page: from its opening tag to the matching close.
 function element(html, startTag) {
@@ -682,17 +811,28 @@ const paragraphs = block => {
     const text = block.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
     return text ? [`<p>${text}</p>`] : [];
 };
-const textOf = s => s.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 
-function mobileProjectPage(key, dark) {
-    const c = CONTENT[key], p = PAGES[key], m = p.mobile;
-    const desk = fs.readFileSync(path.join(ROOT, p.project + (dark ? 'Dark' : '') + '.html'), 'utf8');
-    const deskOther = fs.readFileSync(path.join(ROOT, p.project + (dark ? '' : 'Dark') + '.html'), 'utf8');
-    const name = (desk.match(/<h1 class="hero-title-standalone">([^<]*)<\/h1>/) || [, c.name])[1];
+// The header and cover, shared by both kinds of project page. The cover follows the mode.
+function mobileTop(entry, dark) {
+    const read = d => fs.readFileSync(path.join(ROOT, entry.project + (d ? 'Dark' : '') + '.html'), 'utf8');
+    const desk = read(dark);
     const coverOf = page => page.match(/class="project-hero-inner"><img src="([^"]+)" alt="([^"]*)"/);
-    const cover = coverOf(desk), coverOther = coverOf(deskOther);
-    const covers = { light: dark ? coverOther[1] : cover[1], dark: dark ? cover[1] : coverOther[1] };
+    const cover = coverOf(desk), other = coverOf(read(!dark));
+    const covers = { light: dark ? other[1] : cover[1], dark: dark ? cover[1] : other[1] };
+    const tagline = HOME_ROWS[entry.home];
+    const img = `<img class="m-cover" ${modal('src', covers, dark)} alt="${esc(cover[2])}" data-sticker-avoid>`;
+    return {
+        desk,
+        header: `        <header class="m-header">
+            <h1 class="m-name">${esc(entry.home)}</h1>${tagline ? `\n            <p class="m-role">${esc(tagline)}</p>` : ''}
+        </header>
+`,
+        cover: entry.crew ? `        <div class="project-hero m-hero">${img}</div>\n` : `        ${img}\n`,
+    };
+}
 
+function mobileProjectPage(entry, dark) {
+    const top = mobileTop(entry, dark), desk = top.desk;
     const section = id => element(desk, `<div class="toc-section" id="${id}">`);
     const heading = s => textOf((s.match(/<h2[^>]*>([\s\S]*?)<\/h2>/) || [, ''])[1]);
     const out = [];
@@ -726,30 +866,33 @@ function mobileProjectPage(key, dark) {
     out.push('        ' + PAUSE);
     out.push(`        <section class="cs-section" id="whats-next">
                 <h2>Full case study</h2>
-${cta ? `                <p>${cta}</p>\n` : ''}                <a class="m-act m-go" ${modal('href', both(m.study), dark)}>Read the full case study ${RIGHT_ARROW}</a>
+${cta ? `                <p>${cta}</p>\n` : ''}                <a class="m-act m-go" ${modal('href', both(entry.studyFile), dark)}>Read the full case study ${RIGHT_ARROW}</a>
         </section>
 `);
-
-    const body = `        <header class="m-header">
-            <h1 class="m-name">${esc(name)}</h1>
-            <p class="m-role">${esc(m.tagline)}</p>
-        </header>
-        <img class="m-cover" ${modal('src', covers, dark)} alt="${esc(cover[2])}" data-sticker-avoid>
-${out.join('')}`;
     return mobileShell({
-        title: name, dark, pages: both(m.file),
-        back: { label: 'Projects', pair: { light: 'portfolio-mobile-light.html#projects', dark: 'portfolio-mobile-dark.html#projects' } },
+        title: entry.home, dark, pages: both(entry.file), back: TO_HOME,
         extraHead: '\n    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">',
-        body,
+        body: top.header + top.cover + out.join(''),
         scripts: `    <script src="scripts/case-video.js"></script>
     <script src="scripts/notebook-row.js"></script>
     <script src="stickers/stickers.js"></script>
-    <script src="scripts/sticker.js" data-set="${p.stickers}" data-count="3" data-place="free" data-size="88"></script>`,
+    <script src="scripts/sticker.js" data-set="${PAGES[entry.study].stickers}" data-count="3" data-place="free" data-size="88"></script>`,
     });
 }
 
-function mobileStudyPage(key, dark) {
-    const c = CONTENT[key], p = PAGES[key], m = p.mobile;
+// A project still being built: its cover with the crew working around it.
+function mobileCrewPage(entry, dark) {
+    const top = mobileTop(entry, dark);
+    return mobileShell({
+        title: entry.home, dark, pages: both(entry.file), back: TO_HOME, bodyClass: ' m-wip',
+        body: top.header + top.cover,
+        scripts: `    <script src="stickers/stickers.js"></script>
+    <script src="scripts/sticker-crew.js" data-crew="${entry.crew}" data-size="84"></script>`,
+    });
+}
+
+function mobileStudyPage(entry, dark) {
+    const c = CONTENT[entry.study];
     let { html } = render(c.body);
     html = html.replace(/<img class="cs-shot"/g, '<img class="cs-shot" data-sticker-avoid');
     ['the-app', 'challenges', 'references'].forEach(function (id) {
@@ -765,23 +908,21 @@ function mobileStudyPage(key, dark) {
         </div>
 ${html}`;
     return mobileShell({
-        title: c.title, dark, pages: both(m.study),
-        back: { label: c.name, pair: both(m.file) },
+        title: c.title, dark, pages: both(entry.studyFile),
+        back: { label: entry.home, pair: both(entry.file) },
         body,
         scripts: `    <script src="scripts/case-read-aloud.js"></script>
     <script src="stickers/stickers.js"></script>
-    <script src="scripts/sticker.js" data-set="${p.stickers}" data-count="3" data-place="free" data-size="88"></script>`,
+    <script src="scripts/sticker.js" data-set="${PAGES[entry.study].stickers}" data-count="3" data-place="free" data-size="88"></script>`,
     });
 }
 
-for (const key of Object.keys(PAGES)) {
-    for (const dark of [false, true]) {
-        const write = (name, html) => { fs.writeFileSync(path.join(ROOT, name), html); console.log('wrote ' + name); };
-        write(PAGES[key].file + (dark ? 'Dark' : '') + '.html', page(key, dark));
-        const m = PAGES[key].mobile;
-        if (m) {
-            write(m.file + (dark ? 'Dark' : '') + '.html', mobileProjectPage(key, dark));
-            write(m.study + (dark ? 'Dark' : '') + '.html', mobileStudyPage(key, dark));
-        }
+const write = (name, html) => { fs.writeFileSync(path.join(ROOT, name), html); console.log('wrote ' + name); };
+for (const dark of [false, true]) {
+    for (const key of Object.keys(PAGES)) write(PAGES[key].file + (dark ? 'Dark' : '') + '.html', page(key, dark));
+    for (const entry of PHONE) {
+        if (entry.crew) { write(entry.file + (dark ? 'Dark' : '') + '.html', mobileCrewPage(entry, dark)); continue; }
+        write(entry.file + (dark ? 'Dark' : '') + '.html', mobileProjectPage(entry, dark));
+        write(entry.studyFile + (dark ? 'Dark' : '') + '.html', mobileStudyPage(entry, dark));
     }
 }

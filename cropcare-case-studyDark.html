@@ -11,6 +11,7 @@
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="BB.css">
     <link rel="stylesheet" href="bbdark.css"><!-- only styles body.dark-mode: loaded in both modes so switching is instant -->
+    <script src="scripts/screen-switch.js"></script>
     <script src="scripts/page-fade.js"></script>
     <!-- Built by tools/build-case-studies.js from tools/case-study-content.js: edit those, not this file. -->
     <style>
@@ -304,42 +305,106 @@
         .cs-top .hero-title-standalone {
             margin: 0;
         }
+        /* This row stays pinned at the top (over the top blur) as the page scrolls, so Listen
+           and, while it reads, Pause, back, on and stop are always in reach. */
+        .cs-top {
+            position: sticky;
+            top: 26px;
+            z-index: 60;
+        }
+        /* One pill until it's pressed; then it splits like a drop of liquid: it squishes, the
+           round buttons (back a paragraph, on a paragraph, stop) pull out of it one after
+           another and snap off with a little bounce, and it shrinks to Pause. Stopping melts
+           them back in. The shapes are drawn on a layer behind the buttons (.cs-listen-blobs,
+           kept in step by scripts/case-read-aloud.js) through a "goo" filter that joins them
+           while they're close; at rest the filter is off, so the edges stay crisp. */
         .cs-listen {
+            --blob: #ffffff;
+            --ink: #0b0b0b;
+            position: relative;
             display: flex;
-            gap: 8px;
+            align-items: center;
+        }
+        .cs-listen.is-open {
+            --blob: #000000;
+            --ink: #ffffff;
+        }
+        .cs-goo {
+            position: absolute;
+        }
+        .cs-listen-blobs {
+            position: absolute;
+            inset: -20px;
+            pointer-events: none;
+        }
+        .cs-listen.is-morphing .cs-listen-blobs {
+            filter: url(#cs-goo);
+        }
+        .cs-listen-blobs span {
+            position: absolute;
+            border-radius: 999px;
+            background: var(--blob);
+            transition: background 0.3s var(--transition-easing);
         }
         .cs-listen-btn,
-        .cs-listen-stop {
+        .cs-listen-more {
+            position: relative;
+            z-index: 1;
             height: 34px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 7px;
-            border: 1px solid rgba(11, 11, 11, 0.14);
+            border: 0;
             border-radius: 999px;
-            background: #ffffff;
-            color: #0b0b0b;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            color: var(--ink);
             font-family: Satoshi, sans-serif;
             font-size: 14px;
+            white-space: nowrap;
             cursor: pointer;
-            transition: background 0.3s var(--transition-easing), color 0.3s var(--transition-easing);
+            -webkit-tap-highlight-color: transparent;
         }
         .cs-listen-btn {
             padding: 0 14px;
+            overflow: hidden;
+            transition: color 0.3s var(--transition-easing), width 0.45s var(--transition-easing), transform 0.15s ease;
         }
-        .cs-listen-stop {
+        .cs-listen-btn:active {
+            transform: scale(0.94);
+        }
+        .cs-listen-more {
+            flex: none;
             width: 34px;
+            margin-left: -34px;
             padding: 0;
+            visibility: hidden;
+            transition: margin-left 0.45s cubic-bezier(0.5, 0, 0.75, 0) var(--dc, 0s), color 0.3s, visibility 0s linear 0.6s;
         }
-        .cs-listen-stop[hidden],
+        .cs-listen.is-open .cs-listen-more {
+            margin-left: 8px;
+            visibility: visible;
+            transition: margin-left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0s), color 0.3s, visibility 0s;
+        }
+        .cs-listen-more svg {
+            flex: none;
+            opacity: 0;
+            transform: scale(0.3) rotate(-30deg);
+            transition: opacity 0.15s ease, transform 0.2s ease;
+        }
+        .cs-listen.is-open .cs-listen-more svg {
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.25s ease calc(var(--d, 0s) + 0.2s), transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--d, 0s) + 0.15s);
+        }
+        .cs-listen.is-open .cs-listen-more:hover svg {
+            transform: scale(1.18);
+        }
         .cs-listen-btn[hidden],
         .cs-listen-side[hidden] {
             display: none;
-        }
-        .cs-listen-btn.is-active {
-            background: #000000;
-            border-color: #000000;
-            color: #ffffff;
         }
         .cs-listen-time {
             opacity: 0.55;
@@ -370,16 +435,25 @@
             border-radius: 6px;
             transition: background 0.3s ease, box-shadow 0.3s ease;
         }
-        body.dark-mode .cs-listen-btn,
-        body.dark-mode .cs-listen-stop {
-            background: #161616;
-            border-color: #2a2a2a;
-            color: #f5f5f5;
+        body.dark-mode .cs-listen {
+            --blob: #161616;
+            --ink: #f5f5f5;
         }
-        body.dark-mode .cs-listen-btn.is-active {
-            background: #ffffff;
-            border-color: #ffffff;
-            color: #000000;
+        body.dark-mode .cs-listen.is-open {
+            --blob: #ffffff;
+            --ink: #000000;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cs-listen-btn,
+            .cs-listen-more,
+            .cs-listen.is-open .cs-listen-more,
+            .cs-listen-more svg,
+            .cs-listen.is-open .cs-listen-more svg {
+                transition: none;
+            }
+            .cs-listen.is-morphing .cs-listen-blobs {
+                filter: none;
+            }
         }
         body.dark-mode .project-sidebar .cs-listen-side {
             color: #777777;
@@ -428,9 +502,13 @@
                 <main class="project-main">
             <div class="cs-top">
                 <p class="hero-title-standalone">Crop Care · Full case study</p>
-                <div class="cs-listen">
+                <div class="cs-listen" data-read-controls>
+                    <svg class="cs-goo" width="0" height="0" aria-hidden="true"><filter id="cs-goo"><feGaussianBlur stdDeviation="5"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter></svg>
+                    <div class="cs-listen-blobs" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
                     <button type="button" class="cs-listen-btn" data-read-aloud>Listen</button>
-                    <button type="button" class="cs-listen-stop" data-read-stop aria-label="Stop reading" hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                    <button type="button" class="cs-listen-more" style="--d: 0s; --dc: 0.16s" data-read-prev aria-label="Back a paragraph" tabindex="-1"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M19 5.5v13L9 12z" fill="currentColor"/></svg></button>
+                    <button type="button" class="cs-listen-more" style="--d: 0.09s; --dc: 0.08s" data-read-next aria-label="On a paragraph" tabindex="-1"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M5 5.5v13L15 12z" fill="currentColor"/></svg></button>
+                    <button type="button" class="cs-listen-more" style="--d: 0.18s; --dc: 0s" data-read-stop aria-label="Stop reading" tabindex="-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
                 </div>
             </div>
             <img class="cs-cover" src="case-studies/crop-care-cover.png" alt="Crop Care cover: a swirl of green leaves with one orange leaf breaking away" width="1588" height="2246">
@@ -580,12 +658,39 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <p>© 2025 • Nyame Dua Inc • the body is finally at rest.</p>
-        <div class="footer-icons">
-            <img src="xxx.svg" alt="X" width="24" height="24">
-            <img src="Linkedin.svg" alt="LinkedIn" width="24" height="24">
-        </div>
+    <footer class="bee-end" aria-hidden="true" data-sticker-avoid>
+        <svg class="bee bee-1" viewBox="0 -12 92 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path class="bee-trail" d="M3 31 C11 31 14 21 21 24 S27 35 33 29 S38 21 42 23" stroke-dasharray="1.5 3.5"/>
+            <g class="bee-fly">
+                <g class="bee-wing"><ellipse cx="51" cy="9.8" rx="4.4" ry="6.6" transform="rotate(-24 51 9.8)"/></g>
+                <g class="bee-wing bee-wing-2"><ellipse cx="57.6" cy="9" rx="4.4" ry="6.6" transform="rotate(18 57.6 9)"/></g>
+                <ellipse cx="55" cy="22" rx="9" ry="6.4"/>
+                <path d="M52 16.2 Q50 22 52 27.8 M57 16 Q55 22 57 28"/>
+                <path d="M46 22 L42.8 22.9"/>
+                <circle cx="66.6" cy="21" r="3.6"/>
+                <circle cx="67.8" cy="20.2" r="0.7" fill="currentColor" stroke="none"/>
+                <path d="M67.5 17.6 Q68.6 13.8 71.6 13 M65.6 17.5 Q65.4 13.6 67.6 12.2"/>
+            </g>
+            <path class="bee-z" d="M74 5.5 h3.2 L74 8.7 h3.2"/>
+            <path class="bee-z bee-z-2" d="M79 -1.5 h4.2 L79 2.7 h4.2"/>
+            <path class="bee-z bee-z-3" d="M85 -10 h5.2 L85 -4.8 h5.2"/>
+        </svg>
+        <svg class="bee bee-2" viewBox="0 -12 92 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path class="bee-trail" d="M3 31 C11 31 14 21 21 24 S27 35 33 29 S38 21 42 23" stroke-dasharray="1.5 3.5"/>
+            <g class="bee-fly">
+                <g class="bee-wing"><ellipse cx="51" cy="9.8" rx="4.4" ry="6.6" transform="rotate(-24 51 9.8)"/></g>
+                <g class="bee-wing bee-wing-2"><ellipse cx="57.6" cy="9" rx="4.4" ry="6.6" transform="rotate(18 57.6 9)"/></g>
+                <ellipse cx="55" cy="22" rx="9" ry="6.4"/>
+                <path d="M52 16.2 Q50 22 52 27.8 M57 16 Q55 22 57 28"/>
+                <path d="M46 22 L42.8 22.9"/>
+                <circle cx="66.6" cy="21" r="3.6"/>
+                <circle cx="67.8" cy="20.2" r="0.7" fill="currentColor" stroke="none"/>
+                <path d="M67.5 17.6 Q68.6 13.8 71.6 13 M65.6 17.5 Q65.4 13.6 67.6 12.2"/>
+            </g>
+            <path class="bee-z" d="M74 5.5 h3.2 L74 8.7 h3.2"/>
+            <path class="bee-z bee-z-2" d="M79 -1.5 h4.2 L79 2.7 h4.2"/>
+            <path class="bee-z bee-z-3" d="M85 -10 h5.2 L85 -4.8 h5.2"/>
+        </svg>
     </footer>
     <script>
         // Back returns to this case study's project page: back through history when we came

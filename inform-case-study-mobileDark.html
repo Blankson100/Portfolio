@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InForm: a diabetes logging app - PortoBlknszzz</title>
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,501&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="BB.css">
+    <link rel="stylesheet" href="mobile.css">
+    <script src="scripts/screen-switch.js"></script>
+    <script src="scripts/page-fade.js"></script>
+    <!-- Built by tools/build-case-studies.js: edit the desktop project page or tools/case-study-content.js, then rebuild. -->
+</head>
+<body class="m-page m-case dark-mode" data-light-page="inform-case-study-mobile.html" data-dark-page="inform-case-study-mobileDark.html">
+    <button type="button" class="m-mode" aria-label="Switch to light mode" data-sticker-avoid><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg></button>
+    <a class="m-back" href="inform-mobileDark.html" data-light="inform-mobile.html" data-dark="inform-mobileDark.html" data-sticker-avoid><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>InForm</span></a>
+    <main class="m-main" id="top">
+        <header class="m-header">
+            <h1 class="m-name cs-title">InForm: a diabetes logging app</h1>
+            <p class="m-role">An interaction design redesign of an untested prototype</p>
+        </header>
+        <div class="m-actions" data-sticker-avoid>
+            <button type="button" class="m-act" data-read-aloud>Listen</button>
+            <button type="button" class="m-act m-act-stop" data-read-stop hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Stop</span></button>
+            <a class="m-act" href="case-studies/inform-case-study.pdf" download="InForm case study.pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>PDF</span><span class="cs-listen-time">1.5 MB</span></a>
+        </div>
+            <section class="toc-section cs-section" id="introduction">
+                <h2>1. Introduction</h2>
+                <p>InForm is a mobile app that helps people with diabetes log their blood sugar, insulin and meals, and get food suggestions back.</p>
+                <p>The idea came from my grandmother, who lives with diabetes. A friend and I talked it through, and he took it on as his final year project. I designed the screens so he would have something concrete to build from.</p>
+                <p>That was around a year ago. Since then I have redesigned the app on my own in Figma. The onboarding is shorter, the screens are cleaner, and the logging flow is clearer.</p>
+                <p>I have not tested InForm with users. What I know so far comes from watching my grandmother, which I treat as context, not evidence.</p>
+                <p>The question running through this project: how do you make daily health logging simple enough that someone keeps doing it?</p>
+            </section>
+            <section class="toc-section cs-section" id="the-problem">
+                <h2>2. The problem</h2>
+                <p>Seeing how daily choices move blood sugar starts with logging both. InForm tries to make that logging quick.</p>
+                <p>The scale is large. An estimated 589 million adults aged 20 to 79 live with diabetes, and about 252 million of them are undiagnosed (IDF, 2025). In Ghana, a 2023 national survey of 5,438 adults found that 5.2% had raised fasting blood glucose, and 70.3% had never had their blood sugar checked (WHO Ghana et al., 2023).</p>
+                <p>Logging is worth the effort. A 2024 meta-analysis of 54 trials of diabetes apps found a larger average drop in HbA1c in studies that included self-monitoring of behaviour (0.46 points) than in those that did not (0.15) (Tarricone et al., 2024). That is an association across studies, not proof that logging causes the gain.</p>
+                <p>The catch is that people struggle to keep logging. A 2022 review of 28 studies named frequent data entry, lack of time and difficulty with technology as barriers (Alaslawi et al., 2022). It looked at who starts using apps, not who keeps using them.</p>
+                <p>Diabetes also takes an emotional toll. A 2017 review of 55 studies found that 36% of people with type 2 diabetes reported diabetes-specific emotional distress (Perrin et al., 2017). The apps are not always easy to read either: a 2015 review of 110 diabetes apps, searched in 2014, found that free apps were less likely than paid ones to use everyday words or avoid undefined medical terms (Caburnay et al., 2015).</p>
+                <p>Picture someone who eats rice and stew at midday, checks their sugar two hours later and sees a high number. Nothing connects the two. This is an illustrative sketch, not a participant.</p>
+                <p>My starting point was informal. My grandmother finds it hard to link her meals to her blood sugar, and watching that shaped my questions. A conversation with one person is context, not a research finding.</p>
+                <p>For now, InForm is for any adult living with diabetes. Version 2 will narrow to a more specific group. The app also assumes a smartphone, and in the 2021 census 4.9 million Ghanaians aged 15 and over did not own a smartphone (Ghana Statistical Service, 2023).</p>
+                <p>There is no client or business model behind InForm. The nearest thing to a business constraint was scope, because the project began as a friend's final year project.</p>
+            </section>
+            <div class="m-pause" aria-hidden="true"></div>
+            <section class="toc-section cs-section" id="the-app">
+                <h2>3. The app</h2>
+                <p>InForm asks for little up front, then puts every logging action behind one button. These are the moments in the order someone meets them.</p>
+                <p><strong>Setup takes two screens.</strong> After a short intro, the app asks for diabetes type, age at diagnosis and insulin use, then says welcome. That is three questions on two screens. The earlier version asked four questions across four screens, including body weight.</p>
+                <p><strong>Home shows today at a glance.</strong> A week strip, a streak prompt, the latest reading, shortcuts to records and the meal plan, meal suggestions and a water counter sit on one screen. Nothing needs to be opened to see how the day is going.</p>
+                <p><strong>One button starts every log.</strong> The plus button sits beside the navigation bar, so it is on every main screen. It opens four options: Log Water, Log Meal, Log Insulin and Log Blood Sugar. I put it there to make logging quick, wherever you are in the app.</p>
+                <img class="cs-shot" data-sticker-avoid src="case-studies/inform-setup-home.png" alt="Four InForm screens: the splash screen, the intro with Create Account, the home screen showing 98 mg/dL, and the plus menu with Log Water, Log Meal, Log Insulin and Log Blood Sugar" width="1914" height="908" loading="lazy" decoding="async">
+                <p class="cs-caption">Left to right: splash, intro, home, and the plus menu with its four options. Screens from the Figma prototype.</p>
+                <p><strong>Logging blood sugar is a short form.</strong> You enter the reading, say when it was taken, such as Before Breakfast, set the date and save. A range guide sits underneath: below 80 is Low (blue), 80 to 130 is Good (green), above 130 is High (red).</p>
+                <p><strong>Logging a meal is a list and a plus.</strong> Each meal has a photo, a short nutrition note and a plus to log it. No typing is needed on this screen.</p>
+                <p><strong>Looking back is a chart and a list.</strong> Records show readings by day, week, month, six months or year, in the same three colours. Below the chart, each reading is listed with its time, a label such as Normal and an optional note.</p>
+                <img class="cs-shot" data-sticker-avoid src="case-studies/inform-logging.png" alt="Three InForm screens: the blood sugar form with its range guide, the meal plan with Avocado Toast with Egg, and the records chart with readings coloured by range" width="1444" height="908" loading="lazy" decoding="async">
+                <p class="cs-caption">Left to right: the blood sugar form, the meal plan and the records chart. Names, dates and readings are placeholder content.</p>
+                <p><em>Meal names, nutrition notes and readings in the prototype are placeholder content. This case study is about the interaction, not the nutrition data.</em></p>
+            </section>
+            <section class="toc-section cs-section" id="design-process">
+                <h2>4. Design process</h2>
+                <p>I considered a PDF export, so someone could hand their doctor a printed summary. I set it aside for this version because of file size and scope constraints. I want to find a way around them in a later one.</p>
+                <p>I also considered logging more health metrics than blood sugar, insulin and meals. I kept the set narrow to keep the app focused. Frequent data entry is a reported barrier to using diabetes apps, so each extra field has a cost.</p>
+                <p>The clearest change was to onboarding. The earlier version asked four questions over four screens, including body weight. I dropped that version when it started to feel too long for a first use. Body weight was the easiest cut: a hospital already checks and records it at every visit, so asking again added a step without adding anything new. I made that call by reviewing the flow myself, not from user testing.</p>
+                <p>The plus button puts one extra step between someone and a log: one tap to open the menu, one to choose an action. I chose it because it sits beside the navigation on every main screen, so logging is reachable from anywhere in the app. I have not tested whether that is faster than other layouts.</p>
+            </section>
+            <div class="m-pause" aria-hidden="true"></div>
+            <section class="toc-section cs-section" id="challenges">
+                <h2>5. Challenges</h2>
+                <p>The hardest problem was logging that someone would actually keep doing. Frequent data entry is one of the barriers reported in the research, and that research looks at who starts using diabetes apps, not who keeps using them. InForm answers this with the single plus button and short forms, so each log takes as few steps as possible, but a short form is not proof that someone will open the app on day thirty.</p>
+                <p>A few things are still unsolved. I have not tested InForm with anyone outside informal conversations, so I do not know if the logging flow is actually fast in practice. The meal names, nutrition notes and blood sugar readings in the prototype are placeholder content, not verified figures, which is fine for showing the interaction but means none of it should be read as real guidance yet. I also found the same morning's blood sugar reading shown as three different numbers across the home screen, the check screen and the reading list, a consistency bug I have since fixed in a cleaned copy of the file but which shows how easily small inconsistencies creep into a prototype built over time.</p>
+                <p>The response to these gaps is not to claim they are solved. It is to say plainly what is tested, what is placeholder, and what would need checking before this became a real product.</p>
+            </section>
+            <section class="toc-section cs-section" id="whats-next">
+                <h2>6. What's next</h2>
+                <p>Nothing about InForm has been measured yet, so the next step is to test it.</p>
+                <p>InForm is a prototype in Figma, and nobody beyond informal conversations has used it. What I can describe is what changed in the design. Onboarding went from four questions over four screens to three questions over two, and every log now starts from one button. I cannot yet say that either change helped.</p>
+                <p><strong>How I would test it.</strong> I would run a small usability test with five people, including some who are not confident with smartphones. Each would try three tasks: log a blood sugar reading, log a meal, and find yesterday's reading. I would watch where they hesitate, listen to what they say aloud, and count how many finish without help.</p>
+                <p>I would then ask a few of them to use it for two weeks, to see whether logging continues past the first day. Five people cannot prove anything, so I would report the result as a first look, not a finding.</p>
+                <p><strong>What version 2 would add.</strong></p>
+                <ul>
+                    <li><strong>A narrower audience.</strong> Version 1 is for any adult living with diabetes. Version 2 will pick a more specific group, so the choices fit that group and not everyone.</li>
+                    <li><strong>Blood pressure logging.</strong> It is not in the prototype yet. I want it because a doctor can ask a patient to track it between visits.</li>
+                    <li><strong>User profiles.</strong> An option to say, for example, that you are breastfeeding, so food suggestions can fit that situation. Any real guidance would need checking by a dietitian first.</li>
+                    <li><strong>A summary for the doctor.</strong> The PDF export I set aside, once I find a way around the file size.</li>
+                    <li><strong>Real content.</strong> Replace the placeholder names, dates and meal data, and check the nutrition notes with a professional.</li>
+                </ul>
+            </section>
+            <div class="m-pause" aria-hidden="true"></div>
+            <section class="toc-section cs-section cs-refs" id="references">
+                <h2>References</h2>
+                <ol>
+                    <li>International Diabetes Federation. (2025, 7 April). <a href="https://idf.org/news-and-resources/news/idf-diabetes-atlas-11th-edition/" target="_blank" rel="noopener">Over 250 million people worldwide unaware they have diabetes, according to new IDF research</a>. Press release for the IDF Diabetes Atlas, 11th edition.</li>
+                    <li>WHO Country Office Ghana, Ministry of Health, Ghana Health Service and Ghana Statistical Service. (2023). <a href="https://files.aho.afro.who.int/afahobckpcontainer/production/files/Raised_blood_glucose.pdf" target="_blank" rel="noopener">Ghana analytic factsheet: 2023 STEPS survey findings, raised blood glucose</a>.</li>
+                    <li>Tarricone, R., Petracca, F., Svae, L., Cucciniello, M., &amp; Ciani, O. (2024). Which behaviour change techniques work best for diabetes self-management mobile apps? A systematic review and meta-analysis of randomised controlled trials. <em>eBioMedicine, 103</em>, 105091. <a href="https://doi.org/10.1016/j.ebiom.2024.105091" target="_blank" rel="noopener">https://doi.org/10.1016/j.ebiom.2024.105091</a></li>
+                    <li>Alaslawi, H., Berrou, I., Al Hamid, A., Alhuwail, D., &amp; Aslanpour, Z. (2022). Diabetes self-management apps: systematic review of adoption determinants and future research agenda. <em>JMIR Diabetes, 7</em>(3), e28153. <a href="https://doi.org/10.2196/28153" target="_blank" rel="noopener">https://doi.org/10.2196/28153</a></li>
+                    <li>Perrin, N. E., Davies, M. J., Robertson, N., Snoek, F. J., &amp; Khunti, K. (2017). The prevalence of diabetes-specific emotional distress in people with type 2 diabetes: a systematic review and meta-analysis. <em>Diabetic Medicine, 34</em>(11), 1508-1520. <a href="https://doi.org/10.1111/dme.13448" target="_blank" rel="noopener">https://doi.org/10.1111/dme.13448</a></li>
+                    <li>Caburnay, C. A., Graff, K., Harris, J. K., McQueen, A., Smith, M., Fairchild, M., &amp; Kreuter, M. W. (2015). <a href="https://www.cdc.gov/pcd/issues/2015/14_0433.htm" target="_blank" rel="noopener">Evaluating diabetes mobile applications for health literate designs and functionality, 2014</a>. <em>Preventing Chronic Disease, 12</em>.</li>
+                    <li>Ghana Statistical Service. (2023). <a href="https://statsghana.gov.gh/gssmain/fileUpload/pressrelease/Thematic%20Brief%20on%20Digital%20Exclusion_260423a.pdf" target="_blank" rel="noopener">The 2021 PHC thematic brief on digital exclusion</a>.</li>
+                </ol>
+            </section>
+    </main>
+    <footer class="bee-end" aria-hidden="true" data-sticker-avoid>
+        <svg class="bee bee-1" viewBox="0 -12 92 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path class="bee-trail" d="M3 31 C11 31 14 21 21 24 S27 35 33 29 S38 21 42 23" stroke-dasharray="1.5 3.5"/>
+            <g class="bee-fly">
+                <g class="bee-wing"><ellipse cx="51" cy="9.8" rx="4.4" ry="6.6" transform="rotate(-24 51 9.8)"/></g>
+                <g class="bee-wing bee-wing-2"><ellipse cx="57.6" cy="9" rx="4.4" ry="6.6" transform="rotate(18 57.6 9)"/></g>
+                <ellipse cx="55" cy="22" rx="9" ry="6.4"/>
+                <path d="M52 16.2 Q50 22 52 27.8 M57 16 Q55 22 57 28"/>
+                <path d="M46 22 L42.8 22.9"/>
+                <circle cx="66.6" cy="21" r="3.6"/>
+                <circle cx="67.8" cy="20.2" r="0.7" fill="currentColor" stroke="none"/>
+                <path d="M67.5 17.6 Q68.6 13.8 71.6 13 M65.6 17.5 Q65.4 13.6 67.6 12.2"/>
+            </g>
+            <path class="bee-z" d="M74 5.5 h3.2 L74 8.7 h3.2"/>
+            <path class="bee-z bee-z-2" d="M79 -1.5 h4.2 L79 2.7 h4.2"/>
+            <path class="bee-z bee-z-3" d="M85 -10 h5.2 L85 -4.8 h5.2"/>
+        </svg>
+        <svg class="bee bee-2" viewBox="0 -12 92 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path class="bee-trail" d="M3 31 C11 31 14 21 21 24 S27 35 33 29 S38 21 42 23" stroke-dasharray="1.5 3.5"/>
+            <g class="bee-fly">
+                <g class="bee-wing"><ellipse cx="51" cy="9.8" rx="4.4" ry="6.6" transform="rotate(-24 51 9.8)"/></g>
+                <g class="bee-wing bee-wing-2"><ellipse cx="57.6" cy="9" rx="4.4" ry="6.6" transform="rotate(18 57.6 9)"/></g>
+                <ellipse cx="55" cy="22" rx="9" ry="6.4"/>
+                <path d="M52 16.2 Q50 22 52 27.8 M57 16 Q55 22 57 28"/>
+                <path d="M46 22 L42.8 22.9"/>
+                <circle cx="66.6" cy="21" r="3.6"/>
+                <circle cx="67.8" cy="20.2" r="0.7" fill="currentColor" stroke="none"/>
+                <path d="M67.5 17.6 Q68.6 13.8 71.6 13 M65.6 17.5 Q65.4 13.6 67.6 12.2"/>
+            </g>
+            <path class="bee-z" d="M74 5.5 h3.2 L74 8.7 h3.2"/>
+            <path class="bee-z bee-z-2" d="M79 -1.5 h4.2 L79 2.7 h4.2"/>
+            <path class="bee-z bee-z-3" d="M85 -10 h5.2 L85 -4.8 h5.2"/>
+        </svg>
+    </footer>
+    <script src="scripts/mobile-page.js"></script>
+    <script src="scripts/case-read-aloud.js"></script>
+    <script src="stickers/stickers.js"></script>
+    <script src="scripts/sticker.js" data-set="ontrack" data-count="3" data-place="free" data-size="88"></script>
+</body>
+</html>
