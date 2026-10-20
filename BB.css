@@ -1876,3 +1876,22 @@ body.dark-mode .bee-end {
         opacity: 1;
     }
 }
+
+/* Staggered reveal (scripts/reveal.js): each block stays hidden until the script has
+   started its fade (.reveal-seen); .reveal-later ones wait until they're scrolled to. */
+html.reveal-pending .project-sidebar:not(.reveal-seen),
+html.reveal-pending .profile-header:not(.reveal-seen),
+html.reveal-pending .intro-sub:not(.reveal-seen),
+html.reveal-pending .featured-content-box > .grid-container > a:not(.reveal-seen),
+html.reveal-pending .about-inner > :not(.about-paragraphs):not(.reveal-seen),
+html.reveal-pending .about-paragraphs > *:not(.reveal-seen),
+html.reveal-pending .projects-btn:not(.reveal-seen),
+html.reveal-pending .project-row:not(.reveal-seen),
+html.reveal-pending .project-main > :not(script):not(.reveal-seen),
+html.reveal-pending .m-main > :not(.m-bio):not(.m-projects):not(.m-pause):not(.reveal-seen),
+html.reveal-pending .m-bio > *:not(.reveal-seen),
+html.reveal-pending .m-projects > .m-heading:not(.reveal-seen),
+html.reveal-pending .m-list > *:not(.reveal-seen),
+.reveal-later {
+    opacity: 0;
+}
