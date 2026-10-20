@@ -590,7 +590,7 @@
 
             <div class="toc-section" id="the-app">
                 <h2 class="toc-heading">The App</h2>
-                <div class="case-video" data-video="videos/lign.mp4"></div>
+                <div class="case-video" data-video="videos/lign.mp4" data-sources="videos/lign.mp4 1240p, videos/lign-620.mp4 620p" data-fill="#000000" data-silent></div>
                 <div class="see-how-title">See how it works</div>
                 <div class="see-how-desc">
                     <p>Lign's passenger app does three things. Buy tickets in bulk and activate them as you travel. Hop on the nearest bus when you miss yours. Sign in with your institution's ID. A full walkthrough is coming soon.</p>
@@ -786,16 +786,10 @@
     </script>
     <script>
         function updateTime() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'pm' : 'am';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            const hoursStr = String(hours).padStart(2, '0');
-            const timeString = `${hoursStr}:${minutes} ${ampm}`;
-            const locationString = `Accra, Ghana`;
-            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
+            // The time in Accra, whatever the visitor's own time zone is.
+            const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Accra', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+            const hour = parseInt(parts.find(p => p.type === 'hour').value, 10), minute = parts.find(p => p.type === 'minute').value;
+            document.getElementById('time-location').innerHTML = String(hour % 12 || 12).padStart(2, '0') + ':' + minute + ' ' + (hour >= 12 ? 'pm' : 'am') + ' in Accra, Ghana';
         }
         updateTime();
         setInterval(updateTime, 60000);

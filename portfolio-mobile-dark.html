@@ -17,7 +17,7 @@
         <header class="m-header">
             <div class="m-avatar" data-sticker-avoid role="button" tabindex="0" aria-pressed="false" aria-label="Tap to switch between the drawing and the photo">
                 <img src="Profile.jpg" alt="Akornor Blankson" class="m-avatar-img">
-                <img src="human.jpg" alt="" class="m-avatar-human">
+                <img data-src="human.jpg" alt="" class="m-avatar-human">
                 <svg class="m-avatar-stroke" viewBox="0 0 100 100" aria-hidden="true">
                     <defs>
                         <clipPath id="avatarScallop" clipPathUnits="objectBoundingBox">
@@ -41,23 +41,23 @@
         <section class="m-projects" id="projects">
             <h2 class="m-heading">Projects</h2>
             <div class="m-list">
-                <a class="m-item m-item-link" href="inform-mobileDark.html">
+                <a class="m-item m-item-link" href="inform-mobileDark.html" data-cover="OnTrack Cover.png">
                     <h3 class="m-title">InForm</h3>
                     <p class="m-desc">A Diabetic management app built around patients that track their food intakes and records</p>
                 </a>
-                <a class="m-item m-item-link" href="cropcare-mobileDark.html">
+                <a class="m-item m-item-link" href="cropcare-mobileDark.html" data-cover="ProtoHand DarkLeaf.png">
                     <h3 class="m-title">Crop Care</h3>
                     <p class="m-desc">AI-powered crop disease diagnosis for farmers in emerging markets</p>
                 </a>
-                <a class="m-item m-item-link" href="lign-transport-mobileDark.html">
+                <a class="m-item m-item-link" href="lign-transport-mobileDark.html" data-cover="Lign Cover.png">
                     <h3 class="m-title">Lign</h3>
                     <p class="m-desc">Institutional Transport management, made legible and easy to integrate.</p>
                 </a>
-                <a class="m-item m-item-link" href="clostra-mobileDark.html">
+                <a class="m-item m-item-link" href="clostra-mobileDark.html" data-cover="Clostra Cover.png">
                     <h3 class="m-title">Clostra</h3>
                     <p class="m-desc">A desktop Escrow app that makes secure transactions feel straightforward.</p>
                 </a>
-                <a class="m-item m-item-link" href="roster-mobileDark.html">
+                <a class="m-item m-item-link" href="roster-mobileDark.html" data-cover="Rooster Cover.png">
                     <h3 class="m-title">Roster</h3>
                     <p class="m-desc">LinkedIn but Exclusive for Club members</p>
                 </a>
@@ -75,7 +75,7 @@
         </section>
 
         <footer class="m-footer">
-            <p>Updated Nov 11,2026</p>
+            <p id="m-now">Accra, Ghana</p>
         </footer>
     </main>
     <footer class="bee-end" aria-hidden="true" data-sticker-avoid>
@@ -117,12 +117,29 @@
         // Tap the portrait to switch between the drawing and the photo.
         (function () {
             var avatar = document.querySelector('.m-avatar');
-            function flip() { avatar.setAttribute('aria-pressed', avatar.classList.toggle('is-human')); }
+            // The real photo (only seen after a tap) loads once the rest of the page has.
+            var human = avatar.querySelector('.m-avatar-human');
+            function loadHuman() { if (!human.getAttribute('src')) human.src = human.dataset.src; }
+            if (document.readyState === 'complete') loadHuman(); else window.addEventListener('load', loadHuman);
+            function flip() { loadHuman(); avatar.setAttribute('aria-pressed', avatar.classList.toggle('is-human')); }
             avatar.addEventListener('click', flip);
             avatar.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
             });
         })();
+
+        // Touching a project starts its page and cover downloading, a moment before it opens.
+        document.querySelectorAll('.m-item-link[data-cover]').forEach(function (link) {
+            function warm() {
+                var page = document.createElement('link');
+                page.rel = 'prefetch';
+                page.href = link.getAttribute('href');
+                document.head.appendChild(page);
+                new Image().src = link.dataset.cover;
+            }
+            link.addEventListener('pointerdown', warm, { once: true });
+            link.addEventListener('touchstart', warm, { once: true, passive: true });
+        });
 
         // Fade in the disc behind the light/dark switch once the page has scrolled under it.
         (function () {
@@ -133,6 +150,26 @@
         })();
     </script>
     <script src="scripts/avatar.js"></script>
+    <script>
+        // Today's date and the time in Bright's city (window.brightCity, from avatar.js), as on
+        // the computer pages: "Mon 20 Oct 2026 · 08:42 am in Accra, Ghana". Updated every minute.
+        (function () {
+            var line = document.getElementById('m-now');
+            if (!line) return;
+            var city = window.brightCity || { name: 'Accra, Ghana', timeZone: 'Africa/Accra' };
+            function update() {
+                var now = new Date();
+                var date = new Intl.DateTimeFormat('en-GB', { timeZone: city.timeZone, weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }).format(now);
+                var parts = new Intl.DateTimeFormat('en-GB', { timeZone: city.timeZone, hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).formatToParts(now);
+                var get = function (t) { return parseInt(parts.find(function (p) { return p.type === t; }).value, 10); };
+                var h = get('hour'), m = get('minute');
+                var time = String(h % 12 || 12).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ' ' + (h >= 12 ? 'pm' : 'am');
+                line.textContent = date.replace(/,/g, '') + ' \u00b7 ' + time + ' in ' + city.name;
+            }
+            update();
+            setInterval(update, 30000);
+        })();
+    </script>
     <script src="stickers/stickers.js"></script>
     <script src="scripts/sticker.js" data-set="knicks united ghana world projects cities" data-place="free" data-size="88"></script>
 </body>

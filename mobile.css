@@ -404,6 +404,9 @@ button.m-mode {
     aspect-ratio: 602 / 431;
     object-fit: cover;
     border-radius: 24px;
+    /* the tiny preview set by the page, softly filling the frame until the cover arrives */
+    background-size: cover;
+    background-position: center;
 }
 /* The Design Process notebook runs to the screen edges, so cards slide in from the side */
 .m-case .notebook.nb-row {

@@ -322,16 +322,10 @@
 
         // --- Standard page scripts ---
         function updateTime() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'pm' : 'am';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            const hoursStr = String(hours).padStart(2, '0');
-            const timeString = `${hoursStr}:${minutes} ${ampm}`;
-            const locationString = `Accra, Ghana`;
-            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
+            // The time in Accra, whatever the visitor's own time zone is.
+            const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Accra', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+            const hour = parseInt(parts.find(p => p.type === 'hour').value, 10), minute = parts.find(p => p.type === 'minute').value;
+            document.getElementById('time-location').innerHTML = String(hour % 12 || 12).padStart(2, '0') + ':' + minute + ' ' + (hour >= 12 ? 'pm' : 'am') + ' in Accra, Ghana';
         }
         updateTime();
         setInterval(updateTime, 60000);

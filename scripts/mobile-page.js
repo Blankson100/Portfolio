@@ -21,7 +21,13 @@
                 btn.innerHTML = dark ? ICON.sun : ICON.moon;
                 btn.setAttribute('aria-label', 'Switch to ' + (dark ? 'light' : 'dark') + ' mode');
                 document.querySelectorAll('a[data-light]').forEach(function (a) { a.setAttribute('href', dark ? a.dataset.dark : a.dataset.light); });
-                document.querySelectorAll('img[data-light]').forEach(function (img) { img.src = dark ? img.dataset.dark : img.dataset.light; });
+                document.querySelectorAll('img[data-light]').forEach(function (img) {
+                    const src = dark ? img.dataset.dark : img.dataset.light;
+                    if (img.getAttribute('src') === src) return;
+                    // its tiny preview shows until the other mode's cover has arrived
+                    if (img.dataset.previewLight) img.style.backgroundImage = 'url(' + (dark ? img.dataset.previewDark : img.dataset.previewLight) + ')';
+                    img.src = src;
+                });
                 history.replaceState(history.state, '', (dark ? body.dataset.darkPage : body.dataset.lightPage) + location.search + location.hash);
                 document.dispatchEvent(new Event('modechange'));
             }
@@ -29,6 +35,15 @@
             else apply();
         });
     }
+
+    // A cover's tiny preview steps aside once the full cover has arrived (the covers have
+    // see-through corners it would otherwise show behind). It comes back while a mode switch
+    // loads the other cover, and goes again when that arrives.
+    document.querySelectorAll('img[data-preview-light]').forEach(function (img) {
+        function arrived() { if (img.complete && img.naturalWidth) img.style.backgroundImage = 'none'; }
+        img.addEventListener('load', arrived);
+        arrived();
+    });
 
     if (back) {
         back.addEventListener('click', function (e) {

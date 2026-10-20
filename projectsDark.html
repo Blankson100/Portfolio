@@ -300,7 +300,7 @@
                 </div>
                 <div class="project-description-box">
                     <h3 class="project-name">Plant AI: Crop Care</h3>
-                    <p>Leaf Disease Detector is a smart mobile app that uses AI to detect plant diseases from leaf images. Just snap a photo, get an instant diagnosis, and receive treatment tips—helping you protect crops, reduce losses, and boost yields with ease.</p>
+                    <p>Crop Care is a smart mobile app that uses AI to detect plant diseases from leaf images. Just snap a photo, get an instant diagnosis, and receive treatment tips that help you protect crops, reduce losses, and boost yields with ease.</p>
                 </div>
                 </a>
                 <a href="LignTransportDark.html?from=projects" class="project-row" data-project="Lign" style="text-decoration: none; color: inherit;">
@@ -309,7 +309,7 @@
                 </div>
                 <div class="project-description-box">
                     <h3 class="project-name">Lign</h3>
-                    <p>Lign is a multi-modal transport platform that helps schools, hospitals, and organizations manage their fleets digitally. Track buses in real time, book seats, buy tickets in bulk, and never miss a ride again — all in one app.</p>
+                    <p>Lign is a multi-modal transport platform that helps schools, hospitals, and organisations manage their fleets digitally. Track buses in real time, book seats, buy tickets in bulk, and never miss a ride again, all in one app.</p>
                 </div>
                 </a>
                 <a href="clostraDark.html?from=projects" class="project-row" data-project="Clostra" style="text-decoration: none; color: inherit;">
@@ -319,7 +319,7 @@
                 </div>
                 <div class="project-description-box">
                     <h3 class="project-name">Clostra</h3>
-                    <p>Description of your second project goes here. Share what you built and the impact it had.</p>
+                    <p>A secure digital escrow platform designed to protect both parties by holding funds safely and releasing them only when all agreed conditions have been successfully fulfilled. Built for trust, transparency, and seamless transactions.</p>
                 </div>
                 </a>
                 <a href="rosterDark.html?from=projects" class="project-row" data-project="Roster" style="text-decoration: none; color: inherit;">
@@ -329,7 +329,7 @@
                 </div>
                 <div class="project-description-box">
                     <h3 class="project-name">Roster</h3>
-                    <p>An invite-only network where verified professionals share work, job opportunities, and connect in a trusted, private community—no public profiles or algorithms.</p>
+                    <p>An invite-only network where verified professionals share work, job opportunities, and connect in a trusted, private community, with no public profiles or algorithms.</p>
                 </div>
                 </a>
                 <a href="ontrackDark.html?from=projects" class="project-row" data-project="On Track" style="text-decoration: none; color: inherit;">
@@ -451,16 +451,10 @@
 
         // --- Standard page scripts ---
         function updateTime() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'pm' : 'am';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            const hoursStr = String(hours).padStart(2, '0');
-            const timeString = `${hoursStr}:${minutes} ${ampm}`;
-            const locationString = `Accra, Ghana`;
-            document.getElementById('time-location').innerHTML = `${timeString} in ${locationString}`;
+            // The time in Accra, whatever the visitor's own time zone is.
+            const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Accra', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+            const hour = parseInt(parts.find(p => p.type === 'hour').value, 10), minute = parts.find(p => p.type === 'minute').value;
+            document.getElementById('time-location').innerHTML = String(hour % 12 || 12).padStart(2, '0') + ':' + minute + ' ' + (hour >= 12 ? 'pm' : 'am') + ' in Accra, Ghana';
         }
         updateTime();
         setInterval(updateTime, 60000);

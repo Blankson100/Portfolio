@@ -627,12 +627,10 @@ ${M_BEE}
         }
 
         function updateTime() {
-            const now = new Date();
-            let hours = now.getHours() % 12;
-            hours = hours ? hours : 12;
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const ampm = now.getHours() >= 12 ? 'pm' : 'am';
-            document.getElementById('time-location').innerHTML = String(hours).padStart(2, '0') + ':' + minutes + ' ' + ampm + ' in Accra, Ghana';
+            // The time in Accra, whatever the visitor's own time zone is.
+            const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Accra', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+            const hour = parseInt(parts.find(p => p.type === 'hour').value, 10), minute = parts.find(p => p.type === 'minute').value;
+            document.getElementById('time-location').innerHTML = String(hour % 12 || 12).padStart(2, '0') + ':' + minute + ' ' + (hour >= 12 ? 'pm' : 'am') + ' in Accra, Ghana';
         }
         updateTime();
         setInterval(updateTime, 60000);
@@ -820,9 +818,17 @@ function mobileTop(entry, dark) {
     const cover = coverOf(desk), other = coverOf(read(!dark));
     const covers = { light: dark ? other[1] : cover[1], dark: dark ? cover[1] : other[1] };
     const tagline = HOME_ROWS[entry.home];
-    const img = `<img class="m-cover" ${modal('src', covers, dark)} alt="${esc(cover[2])}" data-sticker-avoid>`;
+    // While the full cover downloads, a tiny soft preview of it shows underneath (from
+    // tools/cover-previews.json; the cover itself is never changed). It follows the mode too.
+    const previews = JSON.parse(fs.readFileSync(path.join(__dirname, 'cover-previews.json'), 'utf8'));
+    const prev = { light: previews[covers.light] || '', dark: previews[covers.dark] || '' };
+    const img = `<img class="m-cover" ${modal('src', covers, dark)} alt="${esc(cover[2])}" fetchpriority="high"`
+        + (prev.light ? ` style="background-image: url(${dark ? prev.dark : prev.light})" data-preview-light="${prev.light}" data-preview-dark="${prev.dark}"` : '')
+        + ' data-sticker-avoid>';
     return {
         desk,
+        // The cover starts downloading as soon as the page arrives.
+        preload: `\n    <link rel="preload" as="image" href="${esc(dark ? covers.dark : covers.light)}" fetchpriority="high">`,
         header: `        <header class="m-header">
             <h1 class="m-name">${esc(entry.home)}</h1>${tagline ? `\n            <p class="m-role">${esc(tagline)}</p>` : ''}
         </header>
@@ -871,7 +877,7 @@ ${cta ? `                <p>${cta}</p>\n` : ''}                <a class="m-act m
 `);
     return mobileShell({
         title: entry.home, dark, pages: both(entry.file), back: TO_HOME,
-        extraHead: '\n    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">',
+        extraHead: top.preload + '\n    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">',
         body: top.header + top.cover + out.join(''),
         scripts: `    <script src="scripts/case-video.js"></script>
     <script src="scripts/notebook-row.js"></script>
@@ -884,7 +890,7 @@ ${cta ? `                <p>${cta}</p>\n` : ''}                <a class="m-act m
 function mobileCrewPage(entry, dark) {
     const top = mobileTop(entry, dark);
     return mobileShell({
-        title: entry.home, dark, pages: both(entry.file), back: TO_HOME, bodyClass: ' m-wip',
+        title: entry.home, dark, pages: both(entry.file), back: TO_HOME, bodyClass: ' m-wip', extraHead: top.preload,
         body: top.header + top.cover,
         scripts: `    <script src="stickers/stickers.js"></script>
     <script src="scripts/sticker-crew.js" data-crew="${entry.crew}" data-size="84"></script>`,
