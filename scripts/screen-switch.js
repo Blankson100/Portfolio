@@ -51,6 +51,7 @@
         }
         // Keep the section being looked at, unless the partner names its own (e.g. #projects).
         const [file, hash] = target.split('#');
+        window.screenSwitching = true;   // scripts/analytics.js leaves this page uncounted
         location.replace(file + (hash ? '#' + hash : location.hash));
     }
     go();
