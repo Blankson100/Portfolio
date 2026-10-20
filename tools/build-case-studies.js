@@ -694,8 +694,8 @@ ${M_BEE}
 
 // Phone pages, in the style of the phone homepage (portfolio-mobile-light/dark.html and
 // mobile.css), with Back pinned top left and the moon/sun switch top right (scripts/mobile-page.js
-// changes mode in place). Every project in the homepage list gets one, under its name and
-// tagline from that list:
+// changes mode in place). Every project in the homepage list gets one, under its name from
+// that list (its one-line description stays on the homepage only):
 // - a project page (file): the desktop project page's sections, read from it so the two stay
 //   the same: cover, Introduction, The Problem, The App (its video and "See how it works"),
 //   the Design Process notebook, Challenges as rows, and the link to
@@ -720,11 +720,6 @@ const both = name => ({ light: name + '.html', dark: name + 'Dark.html' });
 // A link or image that follows the mode: href/src for this mode, the other in data-*.
 const modal = (attr, pair, dark) => `${attr}="${dark ? pair.dark : pair.light}" data-light="${pair.light}" data-dark="${pair.dark}"`;
 const textOf = s => s.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-
-// Each project's name and tagline as the phone homepage lists them.
-const HOME_ROWS = {};
-fs.readFileSync(path.join(ROOT, 'portfolio-mobile-light.html'), 'utf8')
-    .replace(/<(?:div|a) class="m-item[^"]*"[^>]*>\s*<h3 class="m-title">([\s\S]*?)<\/h3>\s*<p class="m-desc">([\s\S]*?)<\/p>/g, (m, t, d) => { HOME_ROWS[textOf(t)] = textOf(d); return m; });
 
 function mobileShell({ title, dark, pages, back, body, scripts, extraHead = '', bodyClass = '' }) {
     return `<!DOCTYPE html>
@@ -821,7 +816,6 @@ function mobileTop(entry, dark) {
     const coverOf = page => page.match(/class="project-hero-inner"><img src="([^"]+)" alt="([^"]*)"/);
     const cover = coverOf(desk), other = coverOf(read(!dark));
     const covers = { light: dark ? other[1] : cover[1], dark: dark ? cover[1] : other[1] };
-    const tagline = HOME_ROWS[entry.home];
     // While the full cover downloads, a tiny soft preview of it shows underneath (from
     // tools/cover-previews.json; the cover itself is never changed). It follows the mode too.
     const previews = JSON.parse(fs.readFileSync(path.join(__dirname, 'cover-previews.json'), 'utf8'));
@@ -834,7 +828,7 @@ function mobileTop(entry, dark) {
         // The cover starts downloading as soon as the page arrives.
         preload: `\n    <link rel="preload" as="image" href="${esc(dark ? covers.dark : covers.light)}" fetchpriority="high">`,
         header: `        <header class="m-header">
-            <h1 class="m-name">${esc(entry.home)}</h1>${tagline ? `\n            <p class="m-role">${esc(tagline)}</p>` : ''}
+            <h1 class="m-name">${esc(entry.home)}</h1>
         </header>
 `,
         cover: entry.crew ? `        <div class="project-hero m-hero">${img}</div>\n` : `        ${img}\n`,
