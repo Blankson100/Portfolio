@@ -108,12 +108,18 @@ body.m-page {
     font-weight: 300;
     color: var(--m-muted);
 }
+/* View the CV (it opens in a new tab, where it can be downloaded), under the name and role:
+   a link with the wavy underline, like the others */
+.m-cv {
+    margin-top: 10px;
+}
 
 /* Biography */
 .m-bio {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 14px;
+    line-height: 21px;
     color: var(--m-bio);
     letter-spacing: -0.48px;
 }
@@ -125,9 +131,11 @@ body.m-page {
 .m-strong {
     color: var(--m-text);
 }
-/* A fine wavy underline (the browser's own wavy underline is much coarser) */
+/* Links: medium-bold, with a fine wavy underline (the browser's own wavy underline is much
+   coarser) */
 .m-link {
     color: var(--m-text);
+    font-weight: 500;
     text-decoration: none;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Cpath d='M0 1.5Q.75 0 1.5 1.5T3 1.5' fill='none' stroke='%23000' stroke-width='.8'/%3E%3C/svg%3E") repeat-x 0 calc(100% - 2px) / 3px 3px;
 }
@@ -135,38 +143,89 @@ body.dark-mode .m-link {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Cpath d='M0 1.5Q.75 0 1.5 1.5T3 1.5' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3C/svg%3E");
 }
 
-/* Projects, contact, experience */
+/* Projects, contact, experience: everything lines up with the text above */
 .m-projects {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
 }
 .m-heading,
 .m-title {
     font-weight: 500;
     color: var(--m-muted);
 }
+/* The Projects heading in the main text colour (black, or white in dark mode) */
+.m-heading {
+    color: var(--m-text);
+}
+/* Two vinyl stickers beside Projects (tools/build-projects-stickers.js), fixed in place:
+   "don't just read", a yellow label with two eyes and a peeling corner, tucked just under
+   "tap on projects", a long cobalt oval. The heading grows upwards to make room for them,
+   and the scratch-off stickers keep clear of the whole heading. */
+.m-projects .m-heading {
+    position: relative;
+    padding-top: 72px;
+}
+.m-read-sticker {
+    position: absolute;
+    right: 132px;
+    bottom: 24px;
+    width: 137px;
+    height: 70px;
+    overflow: visible;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.18));
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+/* Before scripts/peel.js takes over (or without it): the plain label, tilted */
+img.m-read-sticker {
+    transform: rotate(5deg);
+}
+/* Its peeling corner can be dragged (scripts/peel.js) */
+.m-peel-handle {
+    pointer-events: auto;
+    cursor: grab;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.m-read-sticker.is-peeling .m-peel-handle {
+    cursor: grabbing;
+}
+.m-tap-sticker {
+    position: absolute;
+    right: -4px;
+    bottom: 0;
+    width: 152px;
+    height: auto;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.18));
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
 .m-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 2px;
 }
 .m-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 10px;
+    gap: 2px;
+    padding: 8px 0;
 }
 .m-desc {
     color: var(--m-text);
 }
-.m-handle {
+/* Under the Contact and Experience headings, the line is grey like the project descriptions
+   (Contact's email and handles stand out as links) */
+#contact .m-desc,
+#experience .m-desc {
     color: var(--m-muted);
-    text-decoration: none;
 }
 
 .m-footer {
-    padding: 18px 10px 0;
+    padding: 14px 0 0;
     font-size: 12px;
     font-weight: 500;
     line-height: 16px;
@@ -375,14 +434,22 @@ body.dark-mode.m-case .cs-reading {
     background: rgba(255, 201, 60, 0.16);
     box-shadow: 0 0 0 5px rgba(255, 201, 60, 0.16);
 }
-/* A project on the homepage that opens its own page; its name darkens while tapped */
+/* A project on the homepage that opens its own page: its name in the main text colour
+   (black, or white in dark mode) over its line in grey, and the row dims while tapped */
 .m-item-link {
     color: inherit;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.15s ease;
 }
-.m-item-link:active .m-title {
+.m-item-link .m-title {
     color: var(--m-text);
+}
+.m-item-link .m-desc {
+    color: var(--m-muted);
+}
+.m-item-link:active {
+    opacity: 0.55;
 }
 /* In the smaller reference text the wave sits a little lower, clear of g, p and y */
 .m-case .cs-refs a {
