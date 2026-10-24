@@ -9,7 +9,8 @@
 // visitor keeps meeting new ones: stickers they've been shown anywhere on the site wait
 // until they've seen the rest, and on about half of page views one comes from the whole
 // collection as a surprise. A visitor's very first sticker is Bright's own city
-// (window.brightCity.landmark from avatar.js) wherever the set has it. Preview one with
+// (window.brightCity.landmark from avatar.js) wherever the set has it. On a holiday they all
+// come from that day's set (window.brightHoliday from holiday.js). Preview one with
 // ?sticker=bee.
 // The phone page has no room beside its text, so it uses data-place="free" (stickers go
 // in empty patches between the lines) and a smaller data-size.
@@ -131,12 +132,19 @@
         return shuffle(left.filter(c => seen.indexOf(c) === -1))
             .concat(left.filter(c => seen.indexOf(c) !== -1).sort((a, b) => seen.indexOf(a) - seen.indexOf(b)));
     }
-    // Sets can overlap (e.g. "ghana" and "cities"), so they're pooled without repeats.
-    const pool = names.reduce((all, n) => all.concat(data.sets[n].filter(c => all.indexOf(c) === -1)), []);
-    let chosen = home && !seen.length && pool.indexOf(home) !== -1 ? [home] : [];
-    const surprise = Math.random() < 0.5 ? 1 : 0;
+    // Sets can overlap (e.g. "ghana" and "cities"), so they're pooled without repeats. On a
+    // holiday (scripts/holiday.js) every sticker comes from that day's set instead, with no
+    // surprises from the rest.
+    const holiday = window.brightHoliday && data.sets[window.brightHoliday.id] ? window.brightHoliday.id : null;
+    const pool = holiday ? data.sets[holiday]
+        : names.reduce((all, n) => all.concat(data.sets[n].filter(c => all.indexOf(c) === -1)), []);
+    // Holiday stickers never turn up as a surprise on other days.
+    const seasonal = (data.holidays || []).reduce((all, n) => all.concat(data.sets[n] || []), []);
+    const everyday = Object.keys(data.items).filter(c => seasonal.indexOf(c) === -1);
+    let chosen = !holiday && home && !seen.length && pool.indexOf(home) !== -1 ? [home] : [];
+    const surprise = !holiday && Math.random() < 0.5 ? 1 : 0;
     chosen = chosen.concat(freshest(pool, chosen).slice(0, Math.max(0, count - chosen.length - surprise)));
-    chosen = chosen.concat(freshest(Object.keys(data.items), chosen).slice(0, count - chosen.length));
+    chosen = chosen.concat(freshest(holiday ? pool : everyday, chosen).slice(0, count - chosen.length));
     chosen = chosen.slice(0, 1).concat(shuffle(chosen.slice(1)));
     save(SEEN, seen.filter(c => chosen.indexOf(c) === -1).concat(chosen).join(','));
     const asked = new URLSearchParams(window.location.search).get('sticker');

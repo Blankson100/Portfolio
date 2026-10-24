@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M232,256 C258,216 260,154 244,122 C238,110 224,108 218,116" fill="none" stroke-width="17"/><path d="M232,256 C258,216 260,154 244,122 C238,110 224,108 218,116" fill="none" stroke="#A0612B" stroke-width="9"/>
+<ellipse cx="150" cy="236" rx="56" ry="16" fill="#E8D3A4"/>
+<path d="M96,74 C138,120 138,190 96,236 H204 C162,190 162,120 204,74 Z" fill="#A0612B"/>
+<path d="M134,155 H166" fill="none" stroke="#7A4A22" stroke-width="6"/>
+<path d="M100,78 Q135,155 100,232 M110,78 Q138,155 110,232 M120,78 Q141,155 120,232 M130,78 Q144,155 130,232 M140,78 Q147,155 140,232 M150,78 Q150,155 150,232 M160,78 Q153,155 160,232 M170,78 Q156,155 170,232 M180,78 Q159,155 180,232 M190,78 Q162,155 190,232 M200,78 Q165,155 200,232" fill="none" stroke-width="5"/><path d="M100,78 Q135,155 100,232 M110,78 Q138,155 110,232 M120,78 Q141,155 120,232 M130,78 Q144,155 130,232 M140,78 Q147,155 140,232 M150,78 Q150,155 150,232 M160,78 Q153,155 160,232 M170,78 Q156,155 170,232 M180,78 Q159,155 180,232 M190,78 Q162,155 190,232 M200,78 Q165,155 200,232" fill="none" stroke="#F3E3B5" stroke-width="2.4"/>
+<ellipse cx="150" cy="74" rx="56" ry="16" fill="#F3E3B5"/>
+<ellipse cx="150" cy="74" rx="48" ry="11" fill="none" stroke="#C9B48A" stroke-width="3"/>
+<path d="M58,52 Q48,42 56,30 M74,40 Q68,30 74,20" fill="none" stroke-width="4"/>
+</g></g>
+</svg>

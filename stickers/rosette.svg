@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M120,190 L92,282 L114,270 L128,288 L150,200 Z" fill="#CE1126"/>
+<path d="M180,190 L208,282 L186,270 L172,288 L150,200 Z" fill="#006B3F"/>
+<path d="M260,128 L245.4,138.7 L257.2,152.5 L240.6,159.7 L249.1,175.7 L231.3,179.1 L236,196.6 L217.9,195.9 L218.6,214 L201.1,209.3 L197.7,227.1 L181.7,218.6 L174.5,235.2 L160.7,223.4 L150,238 L139.3,223.4 L125.5,235.2 L118.3,218.6 L102.3,227.1 L98.9,209.3 L81.4,214 L82.1,195.9 L64,196.6 L68.7,179.1 L50.9,175.7 L59.4,159.7 L42.8,152.5 L54.6,138.7 L40,128 L54.6,117.3 L42.8,103.5 L59.4,96.3 L50.9,80.3 L68.7,76.9 L64,59.4 L82.1,60.1 L81.4,42 L98.9,46.7 L102.3,28.9 L118.3,37.4 L125.5,20.8 L139.3,32.6 L150,18 L160.7,32.6 L174.5,20.8 L181.7,37.4 L197.7,28.9 L201.1,46.7 L218.6,42 L217.9,60.1 L236,59.4 L231.3,76.9 L249.1,80.3 L240.6,96.3 L257.2,103.5 L245.4,117.3 Z" fill="#CE1126"/>
+<circle cx="150" cy="128" r="88" fill="#FCD116"/>
+<circle cx="150" cy="128" r="72" fill="#006B3F"/>
+<circle cx="150" cy="128" r="56" fill="#fff"/>
+<g stroke-width="4"><path d="M150,83 L153.2,91.6 L162.4,92 L155.2,97.7 L157.6,106.5 L150,101.5 L142.4,106.5 L144.8,97.7 L137.6,92 L146.8,91.6 Z" fill="#111"/></g>
+<text x="150" y="141" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="30" fill="#1F1F1F" stroke="none">1957</text>
+<text x="150" y="163" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="12" fill="#CE1126" stroke="none">6 MARCH</text>
+</g></g>
+</svg>

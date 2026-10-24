@@ -515,6 +515,306 @@ window.STICKERS = {
             "name": "Fresh wax",
             "caption": "Busy bees",
             "file": "waxbee.png"
+        },
+        "pumpkin": {
+            "name": "Jack-o’-lantern",
+            "caption": "Halloween",
+            "file": "pumpkin.png"
+        },
+        "batmoon": {
+            "name": "Night flyer",
+            "caption": "Halloween",
+            "file": "batmoon.png"
+        },
+        "ghost": {
+            "name": "Friendly ghost",
+            "caption": "Halloween",
+            "file": "ghost.png"
+        },
+        "witchhat": {
+            "name": "Witch’s hat",
+            "caption": "Halloween",
+            "file": "witchhat.png"
+        },
+        "cauldron": {
+            "name": "Bubbling cauldron",
+            "caption": "Halloween",
+            "file": "cauldron.png"
+        },
+        "treatbucket": {
+            "name": "Trick or treat",
+            "caption": "Halloween",
+            "file": "treatbucket.png"
+        },
+        "spider": {
+            "name": "Little spider",
+            "caption": "Halloween",
+            "file": "spider.png"
+        },
+        "blackcat": {
+            "name": "Black cat",
+            "caption": "Halloween",
+            "file": "blackcat.png"
+        },
+        "hauntedhouse": {
+            "name": "Haunted house",
+            "caption": "Halloween",
+            "file": "hauntedhouse.png"
+        },
+        "mummy": {
+            "name": "Peeking mummy",
+            "caption": "Halloween",
+            "file": "mummy.png"
+        },
+        "xmastree": {
+            "name": "Christmas tree",
+            "caption": "Christmas",
+            "file": "xmastree.png"
+        },
+        "santahat": {
+            "name": "Santa hat",
+            "caption": "Christmas",
+            "file": "santahat.png"
+        },
+        "reindeer": {
+            "name": "Red-nosed reindeer",
+            "caption": "Christmas",
+            "file": "reindeer.png"
+        },
+        "present": {
+            "name": "A present for you",
+            "caption": "Christmas",
+            "file": "present.png"
+        },
+        "gingerbread": {
+            "name": "Gingerbread man",
+            "caption": "Christmas",
+            "file": "gingerbread.png"
+        },
+        "snowman": {
+            "name": "Snowman in Accra",
+            "caption": "Christmas",
+            "file": "snowman.png"
+        },
+        "candycane": {
+            "name": "Candy cane",
+            "caption": "Christmas",
+            "file": "candycane.png"
+        },
+        "stocking": {
+            "name": "Christmas stocking",
+            "caption": "Christmas",
+            "file": "stocking.png"
+        },
+        "bells": {
+            "name": "Jingle bells",
+            "caption": "Christmas",
+            "file": "bells.png"
+        },
+        "jollof": {
+            "name": "Christmas jollof",
+            "caption": "Christmas",
+            "file": "jollof.png"
+        },
+        "fireworks": {
+            "name": "Fireworks",
+            "caption": "New Year",
+            "file": "fireworks.png"
+        },
+        "rocket": {
+            "name": "Rocket",
+            "caption": "New Year",
+            "file": "rocket.png"
+        },
+        "partypopper": {
+            "name": "Party popper",
+            "caption": "New Year",
+            "file": "partypopper.png"
+        },
+        "midnight": {
+            "name": "The countdown",
+            "caption": "New Year",
+            "file": "midnight.png"
+        },
+        "partyhat": {
+            "name": "Party hat",
+            "caption": "New Year",
+            "file": "partyhat.png"
+        },
+        "sparkler": {
+            "name": "Sparkler",
+            "caption": "New Year",
+            "file": "sparkler.png"
+        },
+        "discoball": {
+            "name": "Disco ball",
+            "caption": "New Year",
+            "file": "discoball.png"
+        },
+        "calendar": {
+            "name": "Fresh start",
+            "caption": "New Year",
+            "file": "calendar.png"
+        },
+        "cheers": {
+            "name": "Cheers!",
+            "caption": "New Year",
+            "file": "cheers.png"
+        },
+        "balloons": {
+            "name": "Balloons",
+            "caption": "New Year",
+            "file": "balloons.png"
+        },
+        "cupidheart": {
+            "name": "Cupid’s arrow",
+            "caption": "Valentine’s Day",
+            "file": "cupidheart.png"
+        },
+        "loveletter": {
+            "name": "Love letter",
+            "caption": "Valentine’s Day",
+            "file": "loveletter.png"
+        },
+        "chocbox": {
+            "name": "Box of chocolates",
+            "caption": "Chocolate Day",
+            "file": "chocbox.png"
+        },
+        "cocoapod": {
+            "name": "Ghana cocoa",
+            "caption": "Chocolate Day",
+            "file": "cocoapod.png"
+        },
+        "rose": {
+            "name": "Red rose",
+            "caption": "Valentine’s Day",
+            "file": "rose.png"
+        },
+        "teddy": {
+            "name": "Teddy bear",
+            "caption": "Valentine’s Day",
+            "file": "teddy.png"
+        },
+        "heartballoon": {
+            "name": "Heart balloon",
+            "caption": "Valentine’s Day",
+            "file": "heartballoon.png"
+        },
+        "lovebirds": {
+            "name": "Lovebirds",
+            "caption": "Valentine’s Day",
+            "file": "lovebirds.png"
+        },
+        "candyhearts": {
+            "name": "Sweet hearts",
+            "caption": "Valentine’s Day",
+            "file": "candyhearts.png"
+        },
+        "heartshades": {
+            "name": "Heart shades",
+            "caption": "Valentine’s Day",
+            "file": "heartshades.png"
+        },
+        "ghflag": {
+            "name": "Ghana flag",
+            "caption": "Independence Day",
+            "file": "ghflag.png"
+        },
+        "blackstar": {
+            "name": "The Black Star",
+            "caption": "Independence Day",
+            "file": "blackstar.png"
+        },
+        "kente": {
+            "name": "Kente cloth",
+            "caption": "Independence Day",
+            "file": "kente.png"
+        },
+        "talkingdrum": {
+            "name": "Talking drum",
+            "caption": "Independence Day",
+            "file": "talkingdrum.png"
+        },
+        "marchpast": {
+            "name": "March past",
+            "caption": "Independence Day",
+            "file": "marchpast.png"
+        },
+        "blackstars": {
+            "name": "Black Stars",
+            "caption": "Independence Day",
+            "file": "blackstars.png"
+        },
+        "rosette": {
+            "name": "6 March 1957",
+            "caption": "Independence Day",
+            "file": "rosette.png"
+        },
+        "bunting": {
+            "name": "Bunting",
+            "caption": "Independence Day",
+            "file": "bunting.png"
+        },
+        "motto": {
+            "name": "Freedom and Justice",
+            "caption": "Independence Day",
+            "file": "motto.png"
+        },
+        "fugu": {
+            "name": "Fugu smock",
+            "caption": "Independence Day",
+            "file": "fugu.png"
+        },
+        "easteregg": {
+            "name": "Easter egg",
+            "caption": "Easter",
+            "file": "easteregg.png"
+        },
+        "bunny": {
+            "name": "Easter bunny",
+            "caption": "Easter",
+            "file": "bunny.png"
+        },
+        "chick": {
+            "name": "Just hatched",
+            "caption": "Easter",
+            "file": "chick.png"
+        },
+        "eggbasket": {
+            "name": "Egg hunt",
+            "caption": "Easter",
+            "file": "eggbasket.png"
+        },
+        "paraglider": {
+            "name": "Kwahu paragliding",
+            "caption": "Easter",
+            "file": "paraglider.png"
+        },
+        "hotcrossbun": {
+            "name": "Hot cross bun",
+            "caption": "Easter",
+            "file": "hotcrossbun.png"
+        },
+        "lily": {
+            "name": "Easter lily",
+            "caption": "Easter",
+            "file": "lily.png"
+        },
+        "chocbunny": {
+            "name": "Chocolate bunny",
+            "caption": "Easter",
+            "file": "chocbunny.png"
+        },
+        "sunrise": {
+            "name": "Sunrise service",
+            "caption": "Easter",
+            "file": "sunrise.png"
+        },
+        "eggspoon": {
+            "name": "Egg and spoon race",
+            "caption": "Easter",
+            "file": "eggspoon.png"
         }
     },
     "sets": {
@@ -712,6 +1012,86 @@ window.STICKERS = {
             "coffee",
             "businesscard",
             "goldengate"
+        ],
+        "halloween": [
+            "pumpkin",
+            "batmoon",
+            "ghost",
+            "witchhat",
+            "cauldron",
+            "treatbucket",
+            "spider",
+            "blackcat",
+            "hauntedhouse",
+            "mummy"
+        ],
+        "christmas": [
+            "xmastree",
+            "santahat",
+            "reindeer",
+            "present",
+            "gingerbread",
+            "snowman",
+            "candycane",
+            "stocking",
+            "bells",
+            "jollof"
+        ],
+        "newyear": [
+            "fireworks",
+            "rocket",
+            "partypopper",
+            "midnight",
+            "partyhat",
+            "sparkler",
+            "discoball",
+            "calendar",
+            "cheers",
+            "balloons"
+        ],
+        "valentine": [
+            "cupidheart",
+            "loveletter",
+            "chocbox",
+            "cocoapod",
+            "rose",
+            "teddy",
+            "heartballoon",
+            "lovebirds",
+            "candyhearts",
+            "heartshades"
+        ],
+        "ghana-independence": [
+            "ghflag",
+            "blackstar",
+            "kente",
+            "talkingdrum",
+            "marchpast",
+            "blackstars",
+            "rosette",
+            "bunting",
+            "motto",
+            "fugu"
+        ],
+        "easter": [
+            "easteregg",
+            "bunny",
+            "chick",
+            "eggbasket",
+            "paraglider",
+            "hotcrossbun",
+            "lily",
+            "chocbunny",
+            "sunrise",
+            "eggspoon"
         ]
-    }
+    },
+    "holidays": [
+        "halloween",
+        "christmas",
+        "newyear",
+        "valentine",
+        "ghana-independence",
+        "easter"
+    ]
 };

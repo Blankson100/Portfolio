@@ -49,10 +49,11 @@
             target = /dark/.test(here) ? dark(part) : part;
             history.replaceState(history.state, '', location.pathname + location.search);   // the hash is used up
         }
-        // Keep the section being looked at, unless the partner names its own (e.g. #projects).
+        // Keep the section being looked at, unless the partner names its own (e.g. #projects),
+        // and any preview settings (e.g. ?avatarDate=2026-10-31).
         const [file, hash] = target.split('#');
         window.screenSwitching = true;   // scripts/analytics.js leaves this page uncounted
-        location.replace(file + (hash ? '#' + hash : location.hash));
+        location.replace(file + location.search + (hash ? '#' + hash : location.hash));
     }
     go();
     if (phone.addEventListener) phone.addEventListener('change', go);

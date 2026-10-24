@@ -1877,6 +1877,102 @@ body.dark-mode .bee-end {
     }
 }
 
+/* Holidays (scripts/holiday.js): the strip's bees make way for the day's flyers, which cross it
+   as the bees do (.bee-1/.bee-2). The bees stay hidden until they've been swapped, so they
+   never flash up first. Bats flap, reindeer gallop, hearts flutter on bee wings, the black
+   star spins with the flag's colours streaming behind it, bunnies hop, and at New Year
+   fireworks climb and burst along the strip instead. */
+html[data-holiday] .bee-end:not(.is-dressed) {
+    visibility: hidden;
+}
+.bat-wing {
+    transform-box: fill-box;
+    transform-origin: 100% 40%;
+    animation: bat-flap 0.2s ease-in-out infinite alternate;
+}
+.bat-wing-2 {
+    transform-origin: 0% 40%;
+    animation-name: bat-flap-2;
+}
+@keyframes bat-flap { from { transform: rotate(-24deg); } to { transform: rotate(16deg); } }
+@keyframes bat-flap-2 { from { transform: rotate(24deg); } to { transform: rotate(-16deg); } }
+.deer-legs {
+    transform-box: fill-box;
+    transform-origin: 50% 0;
+    animation: deer-kick 0.45s ease-in-out infinite alternate;
+}
+.deer-legs-2 {
+    animation-direction: alternate-reverse;
+}
+@keyframes deer-kick { from { transform: rotate(-16deg); } to { transform: rotate(12deg); } }
+.star-spin {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: star-spin 3s linear infinite;
+}
+@keyframes star-spin { to { transform: rotate(360deg); } }
+.streamer {
+    opacity: 0.85;
+    animation: streamer 0.6s ease-in-out infinite alternate;
+}
+@keyframes streamer { from { transform: translateY(-1.2px); } to { transform: translateY(1.2px); } }
+.bunny-hop {
+    animation: bunny-hop 0.6s ease-in-out infinite;
+}
+@keyframes bunny-hop {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px) rotate(-6deg); }
+}
+.bee-end .firework {
+    position: absolute;
+    top: 0;
+    width: 34px;
+    height: 34px;
+    margin-left: -17px;
+    overflow: visible;
+}
+.fw-trail,
+.fw-burst {
+    opacity: 0;
+    animation: fw-rise var(--dur, 3s) ease-out var(--delay, 0s) infinite;
+}
+.fw-trail {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+}
+.fw-burst {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation-name: fw-pop;
+}
+@keyframes fw-rise {
+    0%       { opacity: 0.6; transform: scaleY(0); }
+    26%      { opacity: 0.6; transform: scaleY(1); }
+    34%, 100% { opacity: 0; transform: scaleY(1); }
+}
+@keyframes fw-pop {
+    0%, 26%   { opacity: 0; transform: scale(0.2); }
+    30%       { opacity: 1; transform: scale(0.55); }
+    60%       { opacity: 0.9; transform: scale(1); }
+    80%, 100% { opacity: 0; transform: scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .bat-wing,
+    .deer-legs,
+    .star-spin,
+    .streamer,
+    .bunny-hop {
+        animation: none;
+    }
+    .fw-trail {
+        display: none;
+    }
+    .fw-burst {
+        animation: none;
+        opacity: 1;
+    }
+}
+
 /* Staggered reveal (scripts/reveal.js): each block stays hidden until the script has
    started its fade (.reveal-seen); .reveal-later ones wait until they're scrolled to. */
 html.reveal-pending .project-sidebar:not(.reveal-seen),

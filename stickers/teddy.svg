@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="104" cy="56" r="22" fill="#B07A4F"/><circle cx="196" cy="56" r="22" fill="#B07A4F"/>
+<circle cx="104" cy="56" r="11" fill="#E3B98E" stroke-width="4"/><circle cx="196" cy="56" r="11" fill="#E3B98E" stroke-width="4"/>
+<ellipse cx="100" cy="248" rx="30" ry="22" fill="#B07A4F"/><ellipse cx="200" cy="248" rx="30" ry="22" fill="#B07A4F"/>
+<ellipse cx="96" cy="252" rx="14" ry="11" fill="#E3B98E" stroke-width="4"/><ellipse cx="204" cy="252" rx="14" ry="11" fill="#E3B98E" stroke-width="4"/>
+<ellipse cx="150" cy="196" rx="66" ry="64" fill="#B07A4F"/>
+<circle cx="150" cy="94" r="54" fill="#B07A4F"/>
+<ellipse cx="150" cy="114" rx="24" ry="18" fill="#E3B98E"/>
+<ellipse cx="150" cy="105" rx="9" ry="6.5" fill="#1F1F1F" stroke="none"/>
+<path d="M150,110 V118 M150,118 Q142,126 136,120 M150,118 Q158,126 164,120" fill="none" stroke-width="3.5"/>
+<circle cx="128" cy="82" r="6.5" fill="#1F1F1F" stroke="none"/><circle cx="172" cy="82" r="6.5" fill="#1F1F1F" stroke="none"/>
+<circle cx="130" cy="80" r="2.2" fill="#fff" stroke="none"/><circle cx="174" cy="80" r="2.2" fill="#fff" stroke="none"/>
+<path d="M150,241 C110,211 95,186 103,165 C110,146 136,143 150,164 C164,143 190,146 197,165 C205,186 190,211 150,241 Z" fill="#E63946"/>
+<path d="M118,170 C112,180 112,192 116,200" fill="none" stroke="#fff" stroke-width="6"/>
+<ellipse cx="106" cy="190" rx="17" ry="36" transform="rotate(-30 106 190)" fill="#B07A4F"/>
+<ellipse cx="194" cy="190" rx="17" ry="36" transform="rotate(30 194 190)" fill="#B07A4F"/>
+</g></g>
+</svg>

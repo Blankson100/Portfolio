@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M110,200 L84,282 L106,268 L120,288 L140,210 Z" fill="#CE1126"/>
+<path d="M190,200 L216,282 L194,268 L180,288 L160,210 Z" fill="#006B3F"/>
+<path d="M270,140 L248.1,159.5 L260.9,185.9 L233.1,195.6 L234.9,224.9 L205.6,223.1 L195.9,250.9 L169.5,238.1 L150,260 L130.5,238.1 L104.1,250.9 L94.4,223.1 L65.1,224.9 L66.9,195.6 L39.1,185.9 L51.9,159.5 L30,140 L51.9,120.5 L39.1,94.1 L66.9,84.4 L65.1,55.1 L94.4,56.9 L104.1,29.1 L130.5,41.9 L150,20 L169.5,41.9 L195.9,29.1 L205.6,56.9 L234.9,55.1 L233.1,84.4 L260.9,94.1 L248.1,120.5 Z" fill="#FCD116"/>
+<circle cx="150" cy="140" r="88" fill="#FCD116"/>
+<path d="M150,64 L170.2,118.1 L228,120.7 L182.8,156.6 L198.2,212.3 L150,180.4 L101.8,212.3 L117.2,156.6 L72,120.7 L129.8,118.1 Z" fill="#111"/>
+<path d="M118,108 L136,96" fill="none" stroke="#fff" stroke-width="6" opacity="0.6"/>
+</g></g>
+</svg>

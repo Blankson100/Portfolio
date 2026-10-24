@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<g transform="translate(150,270) scale(1.15) translate(-150,-270)">
+<path d="M112,206 V56" fill="none" stroke-width="10"/><path d="M112,206 V56" fill="none" stroke="#A0612B" stroke-width="4"/>
+<path d="M52,58 H112 V72 H52 Z" fill="#CE1126" stroke="none"/><path d="M52,72 H112 V86 H52 Z" fill="#FCD116" stroke="none"/><path d="M52,86 H112 V100 H52 Z" fill="#006B3F" stroke="none"/>
+<g stroke-width="4"><path d="M82,72 L83.7,76.6 L88.7,76.8 L84.8,79.9 L86.1,84.7 L82,81.9 L77.9,84.7 L79.2,79.9 L75.3,76.8 L80.3,76.6 Z" fill="#111"/></g><rect x="52" y="58" width="60" height="42" fill="none" stroke-width="5"/>
+<path d="M141,192 L139,256" fill="none" stroke-width="23"/><path d="M141,192 L139,256" fill="none" stroke="#7A4A22" stroke-width="13"/><path d="M159,192 L161,256" fill="none" stroke-width="23"/><path d="M159,192 L161,256" fill="none" stroke="#7A4A22" stroke-width="13"/>
+<ellipse cx="137" cy="260" rx="11" ry="6" fill="#1F1F1F"/><ellipse cx="163" cy="260" rx="11" ry="6" fill="#1F1F1F"/>
+<path d="M127,142 Q150,134 173,142 L170,196 H130 Z" fill="#F2B33D"/>
+<circle cx="150" cy="120" r="16" fill="#6B3E26"/>
+<path d="M134,118 C134,98 166,98 166,118 C158,110 142,110 134,118 Z" fill="#1F1F1F"/>
+<path d="M171,148 L192,132 L166,112" fill="none" stroke-width="20"/><path d="M171,148 L192,132 L166,112" fill="none" stroke="#6B3E26" stroke-width="10"/><path d="M129,148 L118,172 L112,186" fill="none" stroke-width="20"/><path d="M129,148 L118,172 L112,186" fill="none" stroke="#6B3E26" stroke-width="10"/>
+<path d="M141,146 L150,160 L159,146" fill="none" stroke="#7A4A22" stroke-width="4"/>
+</g>
+</g></g>
+</svg>

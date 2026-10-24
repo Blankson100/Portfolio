@@ -1,4 +1,5 @@
-// Dresses the drawn avatar (Profile.jpg) for the day: holidays, Harmattan, live rain,
+// Dresses the drawn avatar (Profile.jpg) for the day: holidays (which days, from
+// scripts/holiday.js), Harmattan, live rain,
 // photochromic glasses that darken with the sun, a beard that grows through the month,
 // and sleep at night. Overlays come from /avatar (built by tools/build-avatars.js).
 // A thought bubble pops up with a holiday wish, Zzz while asleep, or "I need a shave"
@@ -25,28 +26,6 @@
         }).formatToParts(new Date());
         const get = type => parseInt(parts.find(p => p.type === type).value, 10);
         return { y: get('year'), m: get('month'), d: get('day'), h: get('hour') };
-    }
-
-    // Easter Sunday as a UTC timestamp (anonymous Gregorian algorithm).
-    function easterSunday(y) {
-        const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4;
-        const f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3);
-        const h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4;
-        const l = (32 + 2 * e + 2 * i - h - k) % 7, n = Math.floor((a + 11 * h + 22 * l) / 451);
-        return Date.UTC(y, Math.floor((h + l - 7 * n + 114) / 31) - 1, ((h + l - 7 * n + 114) % 31) + 1);
-    }
-
-    // `hat` = the layer covers the head, so no nightcap or umbrella alongside it.
-    function holiday({ y, m, d }) {
-        const md = m * 100 + d;
-        if (md >= 1231 || md <= 102) return { layer: 'newyear', wish: 'Happy New Year!', hat: true };
-        if (md >= 1224 && md <= 1226) return { layer: 'christmas', wish: 'Merry Christmas!', hat: true };
-        if (md === 214) return { layer: 'valentine', wish: 'Happy Valentine’s Day!' };
-        if (md === 306) return { layer: 'ghana-independence', wish: 'Happy Independence Day!' };
-        if (md === 1031) return { layer: 'halloween', wish: 'Happy Halloween!', hat: true };
-        const day = 86400000, today = Date.UTC(y, m - 1, d), easter = easterSunday(y);
-        if (today >= easter - 2 * day && today <= easter + day) return { layer: 'easter', wish: 'Happy Easter!', hat: true };
-        return null;
     }
 
     // Ghana's dusty Harmattan wind blows Dec–Feb.
@@ -88,7 +67,7 @@
 
     const now = cityNow();
     const asleep = now.h >= SLEEP_FROM || now.h < SLEEP_UNTIL;
-    const hol = holiday(now);
+    const hol = window.brightHoliday || null;   // today's holiday, from scripts/holiday.js
     const stage = beardStage(now.d);
 
     // Rain always falls when it's raining; the umbrella only comes out while awake and
@@ -102,7 +81,7 @@
         layers.push('earring');
         if (asleep) layers.push('sleep');
         else layers.push('glasses-' + lensTint(now.h, weather.gloomy));
-        if (hol) layers.push(hol.layer);
+        if (hol) layers.push(hol.id);
         if (umbrella) layers.push('rainy');
         else if (weather.raining) layers.push('rain');
         if (asleep && !hat) layers.push('nightcap');

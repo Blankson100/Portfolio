@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<g stroke-width="4"><path d="M96,203 L98.7,210.3 L106.5,210.6 L100.4,215.4 L102.5,222.9 L96,218.6 L89.5,222.9 L91.6,215.4 L85.5,210.6 L93.3,210.3 Z" fill="#FFC93C"/></g><g stroke-width="4"><path d="M70,160 L72,165.3 L77.6,165.5 L73.2,169 L74.7,174.5 L70,171.4 L65.3,174.5 L66.8,169 L62.4,165.5 L68,165.3 Z" fill="#FF5FA2"/></g><g stroke-width="4"><path d="M128,254 L130,259.3 L135.6,259.5 L131.2,263 L132.7,268.5 L128,265.4 L123.3,268.5 L124.8,263 L120.4,259.5 L126,259.3 Z" fill="#FFC93C"/></g><g stroke-width="4"><path d="M54,229 L55.7,233.6 L60.7,233.8 L56.8,236.9 L58.1,241.7 L54,238.9 L49.9,241.7 L51.2,236.9 L47.3,233.8 L52.3,233.6 Z" fill="#2EC4B6"/></g>
+<g transform="rotate(30 150 150)">
+<path d="M132,186 Q140,222 150,240 Q160,222 168,186 Z" fill="#FF7A21"/>
+<path d="M141,186 Q146,206 150,216 Q154,206 159,186 Z" fill="#FFC93C" stroke="none"/>
+<rect x="146" y="180" width="8" height="96" rx="4" fill="#C68642"/>
+<path d="M122,150 L94,194 L124,184 Z M178,150 L206,194 L176,184 Z" fill="#2E9BF6"/>
+<rect x="122" y="76" width="56" height="112" rx="8" fill="#D7262E"/>
+<rect x="122" y="100" width="56" height="14" fill="#fff" stroke-width="3"/><rect x="122" y="158" width="56" height="14" fill="#fff" stroke-width="3"/>
+<g stroke-width="4"><path d="M150,123 L153.2,131.6 L162.4,132 L155.2,137.7 L157.6,146.5 L150,141.5 L142.4,146.5 L144.8,137.7 L137.6,132 L146.8,131.6 Z" fill="#FFC93C"/></g>
+<path d="M116,80 L150,22 L184,80 Z" fill="#FFC93C"/>
+<path d="M134,52 L142,40" fill="none" stroke="#fff" stroke-width="5"/>
+</g>
+</g></g>
+</svg>

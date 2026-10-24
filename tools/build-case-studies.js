@@ -561,6 +561,7 @@ function page(key, dark) {
     <script src="scripts/screen-switch.js"></script>
     <script src="scripts/reveal.js"></script>
     <script src="scripts/analytics.js"></script>
+    <script src="scripts/holiday.js"></script>
     <script src="scripts/page-fade.js"></script>
     <!-- Built by tools/build-case-studies.js from tools/case-study-content.js: edit those, not this file. -->
     <style>${STYLE}
@@ -741,6 +742,7 @@ function mobileShell({ title, dark, pages, back, body, scripts, extraHead = '', 
     <script src="scripts/screen-switch.js"></script>
     <script src="scripts/reveal.js"></script>
     <script src="scripts/analytics.js"></script>
+    <script src="scripts/holiday.js"></script>
     <script src="scripts/page-fade.js"></script>
     <!-- Built by tools/build-case-studies.js: edit the desktop project page or tools/case-study-content.js, then rebuild. -->
 </head>

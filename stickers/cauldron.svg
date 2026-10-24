@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="196" y="30" width="14" height="110" rx="7" fill="#A0612B" transform="rotate(24 203 85)"/>
+<rect x="88" y="222" width="16" height="30" rx="4" fill="#2B2B2B"/><rect x="196" y="222" width="16" height="30" rx="4" fill="#2B2B2B"/>
+<path d="M126,224 C129.2,238 142,242 142,254 C142,260.8 134,264 126,264 C118,264 110,260.8 110,254 C110,242 122.8,238 126,224 Z" fill="#FF7A21"/><path d="M174,224 C177.2,238 190,242 190,254 C190,260.8 182,264 174,264 C166,264 158,260.8 158,254 C158,242 170.8,238 174,224 Z" fill="#FF7A21"/><path d="M150,216 C154,234.2 170,239.4 170,255 C170,263.8 160,268 150,268 C140,268 130,263.8 130,255 C130,239.4 146,234.2 150,216 Z" fill="#FF7A21"/>
+<path d="M150,238 C152,247.8 160,250.6 160,259 C160,263.8 155,266 150,266 C145,266 140,263.8 140,259 C140,250.6 148,247.8 150,238 Z" fill="#FFD23F"/>
+<rect x="90" y="262" width="120" height="14" rx="6" fill="#8B5A2B"/>
+<path d="M70,120 C46,186 84,236 150,236 C216,236 254,186 230,120 Z" fill="#2B2B2B"/>
+<path d="M92,150 C88,180 100,206 122,218" fill="none" stroke="#5A5A5A" stroke-width="7"/>
+<ellipse cx="150" cy="120" rx="92" ry="20" fill="#3A3A3A"/>
+<ellipse cx="150" cy="118" rx="76" ry="11" fill="#7CD957"/>
+<path d="M98,124 C98,148 112,148 112,126 Z M186,126 C186,142 198,142 198,124 Z" fill="#7CD957"/>
+<circle cx="122" cy="94" r="12" fill="#7CD957"/><circle cx="168" cy="76" r="16" fill="#7CD957"/><circle cx="202" cy="100" r="8" fill="#7CD957"/><circle cx="138" cy="52" r="8" fill="#7CD957"/><circle cx="184" cy="38" r="5" fill="#7CD957"/>
+</g></g>
+</svg>

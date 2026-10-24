@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="150" cy="146" r="104" fill="#FFE9A8"/>
+<circle cx="96" cy="212" r="16" fill="#F2D27A"/><circle cx="206" cy="216" r="11" fill="#F2D27A"/><circle cx="214" cy="84" r="13" fill="#F2D27A"/>
+<g transform="translate(150,152) scale(2.5)" stroke-width="2.4">
+<path d="M6,-6 C18,-16 32,-20 46,-18 C41,-13 40,-7 41,-1 C36,-5 30,-4 27,1 C23,-3 17,-2 15,4 C12,1 9,1 6,4 Z M-6,-6 C-18,-16 -32,-20 -46,-18 C-41,-13 -40,-7 -41,-1 C-36,-5 -30,-4 -27,1 C-23,-3 -17,-2 -15,4 C-12,1 -9,1 -6,4 Z" fill="#1F1F1F"/>
+<path d="M-6,-14 L-8,-24 L-1,-17 Z M6,-14 L8,-24 L1,-17 Z" fill="#1F1F1F"/>
+<ellipse cx="0" cy="2" rx="8" ry="11" fill="#1F1F1F"/><circle cx="0" cy="-11" r="7.5" fill="#1F1F1F"/>
+<circle cx="-3" cy="-12" r="1.9" fill="#fff" stroke="none"/><circle cx="3" cy="-12" r="1.9" fill="#fff" stroke="none"/>
+<path d="M-3.4,-6.6 L-2.4,-3.6 L-1.4,-6.6 Z M1.4,-6.6 L2.4,-3.6 L3.4,-6.6 Z" fill="#fff" stroke="none"/></g>
+<g stroke-width="4"><path d="M44,36 L47.5,45.2 L57.3,45.7 L49.6,51.8 L52.2,61.3 L44,55.9 L35.8,61.3 L38.4,51.8 L30.7,45.7 L40.5,45.2 Z" fill="#FFD23F"/></g><g stroke-width="4"><path d="M264,243 L266.7,250.3 L274.5,250.6 L268.4,255.4 L270.5,262.9 L264,258.6 L257.5,262.9 L259.6,255.4 L253.5,250.6 L261.3,250.3 Z" fill="#FFD23F"/></g><g stroke-width="4"><path d="M268,32 L270,37.3 L275.6,37.5 L271.2,41 L272.7,46.5 L268,43.4 L263.3,46.5 L264.8,41 L260.4,37.5 L266,37.3 Z" fill="#FFD23F"/></g>
+</g></g>
+</svg>

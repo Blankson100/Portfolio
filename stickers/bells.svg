@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M150,84 L114,122 M150,84 L186,122" fill="none" stroke-width="15"/><path d="M150,84 L114,122 M150,84 L186,122" fill="none" stroke="#D7262E" stroke-width="7"/>
+<g transform="rotate(-16 110 166)"><circle cx="110" cy="226" r="12" fill="#F2A900"/>
+<path d="M70,210 C76,176 74,132 110,122 C146,132 144,176 150,210 Z" fill="#FFC93C"/>
+<rect x="64" y="204" width="92" height="16" rx="8" fill="#F2A900"/>
+<path d="M92,144 C84,166 84,184 86,196" fill="none" stroke="#FFE7A3" stroke-width="7"/></g><g transform="rotate(16 190 166)"><circle cx="190" cy="226" r="12" fill="#F2A900"/>
+<path d="M150,210 C156,176 154,132 190,122 C226,132 224,176 230,210 Z" fill="#FFC93C"/>
+<rect x="144" y="204" width="92" height="16" rx="8" fill="#F2A900"/>
+<path d="M172,144 C164,166 164,184 166,196" fill="none" stroke="#FFE7A3" stroke-width="7"/></g>
+<path d="M150,90 C139.5,73.5 120,72 111,84 C123,94.5 139.5,96 150,90 Z M150,90 C157.5,72 177,66 187.5,75 C178.5,88.5 160.5,93 150,90 Z" fill="#2E8B3E" stroke-width="3.8"/>
+<path d="M147,88.5 L120,82.5 M153,87.8 L178.5,76.5" fill="none" stroke="#8FD18F" stroke-width="2.3"/>
+<circle cx="145.5" cy="91.5" r="6.8" fill="#D7262E" stroke-width="3.8"/><circle cx="157.5" cy="93" r="6.8" fill="#D7262E" stroke-width="3.8"/><circle cx="151.5" cy="83.3" r="6.8" fill="#D7262E" stroke-width="3.8"/>
+<path d="M150,84 C120,50 92,56 100,78 C106,92 128,92 150,84 Z M150,84 C180,50 208,56 200,78 C194,92 172,92 150,84 Z" fill="#D7262E"/>
+<ellipse cx="150" cy="84" rx="12" ry="10" fill="#A81E25"/>
+<path d="M44,126 Q34,148 42,170 M30,138 Q24,150 28,162 M256,126 Q266,148 258,170 M270,138 Q276,150 272,162" fill="none" stroke-width="4"/>
+</g></g>
+</svg>

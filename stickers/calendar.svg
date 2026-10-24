@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="58" y="54" width="184" height="210" rx="16" fill="#fff"/>
+<path d="M58,118 V70 Q58,54 74,54 H226 Q242,54 242,70 V118 Z" fill="#D7262E"/>
+<text x="150" y="98" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="24" fill="#fff" stroke="none">JANUARY</text>
+<text x="150" y="238" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="118" fill="#1F1F1F" stroke="none">1</text>
+<path d="M58,232 L80,264 H74 Q58,264 58,248 Z" fill="#E6E6E6" stroke-width="4"/>
+<rect x="96" y="34" width="16" height="40" rx="8" fill="#9EA7B0"/><rect x="188" y="34" width="16" height="40" rx="8" fill="#9EA7B0"/>
+<g stroke-width="4"><path d="M34,140 L37,147.9 L45.4,148.3 L38.8,153.6 L41.1,161.7 L34,157 L26.9,161.7 L29.2,153.6 L22.6,148.3 L31,147.9 Z" fill="#FFC93C"/></g><g stroke-width="4"><path d="M268,101 L270.7,108.3 L278.5,108.6 L272.4,113.4 L274.5,120.9 L268,116.6 L261.5,120.9 L263.6,113.4 L257.5,108.6 L265.3,108.3 Z" fill="#FF5FA2"/></g><g stroke-width="4"><path d="M262,233 L265.2,241.6 L274.4,242 L267.2,247.7 L269.6,256.5 L262,251.5 L254.4,256.5 L256.8,247.7 L249.6,242 L258.8,241.6 Z" fill="#FFC93C"/></g><g stroke-width="4"><path d="M38,37 L40.2,42.9 L46.6,43.2 L41.6,47.2 L43.3,53.3 L38,49.8 L32.7,53.3 L34.4,47.2 L29.4,43.2 L35.8,42.9 Z" fill="#2EC4B6"/></g>
+</g></g>
+</svg>

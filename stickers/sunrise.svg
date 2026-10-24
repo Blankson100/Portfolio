@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M57.7,151.5 L28.9,143.3 M70.9,123.6 L46.2,106.6 M92.2,101.3 L74.2,77.4 M119.5,87 L110,58.5 M150,82 L150,52 M180.5,87 L190,58.5 M207.8,101.3 L225.8,77.4 M229.1,123.6 L253.8,106.6 M242.3,151.5 L271.1,143.3" fill="none" stroke-width="15"/><path d="M57.7,151.5 L28.9,143.3 M70.9,123.6 L46.2,106.6 M92.2,101.3 L74.2,77.4 M119.5,87 L110,58.5 M150,82 L150,52 M180.5,87 L190,58.5 M207.8,101.3 L225.8,77.4 M229.1,123.6 L253.8,106.6 M242.3,151.5 L271.1,143.3" fill="none" stroke="#FFB020" stroke-width="7"/>
+<circle cx="150" cy="178" r="84" fill="#FFD23F"/>
+<rect x="142" y="78" width="16" height="114" rx="3" fill="#A0612B"/>
+<rect x="112" y="106" width="76" height="15" rx="3" fill="#A0612B"/>
+<path d="M14,276 V214 C70,172 230,172 286,214 V276 Z" fill="#6DBE45"/>
+<circle cx="60" cy="236" r="7" fill="#fff" stroke-width="3.5"/><circle cx="60" cy="236" r="2.4" fill="#FFB020" stroke="none"/><circle cx="92" cy="214" r="7" fill="#FFB3C6" stroke-width="3.5"/><circle cx="92" cy="214" r="2.4" fill="#FFB020" stroke="none"/><circle cx="214" cy="222" r="7" fill="#fff" stroke-width="3.5"/><circle cx="214" cy="222" r="2.4" fill="#FFB020" stroke="none"/><circle cx="244" cy="244" r="7" fill="#C9B6F2" stroke-width="3.5"/><circle cx="244" cy="244" r="2.4" fill="#FFB020" stroke="none"/><circle cx="126" cy="252" r="7" fill="#FFE066" stroke-width="3.5"/><circle cx="126" cy="252" r="2.4" fill="#FFB020" stroke="none"/><circle cx="180" cy="248" r="7" fill="#FFB3C6" stroke-width="3.5"/><circle cx="180" cy="248" r="2.4" fill="#FFB020" stroke="none"/>
+<path d="M44,70 q6,-6 12,0 q6,-6 12,0 M236,48 q5,-5 10,0 q5,-5 10,0" fill="none" stroke-width="3.5"/>
+</g></g>
+</svg>

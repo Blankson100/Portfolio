@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<g transform="rotate(-14 92 104)"><path d="M92,152.6 C48.8,120.2 32.6,93.2 41.2,70.5 C48.8,50 76.9,46.8 92,69.4 C107.1,46.8 135.2,50 142.8,70.5 C151.4,93.2 135.2,120.2 92,152.6 Z" fill="#C8F2D4"/>
+<text x="92" y="106.9" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="20" fill="#E63946" stroke="none">XOXO</text></g>
+<g transform="rotate(12 214 100)"><path d="M214,145 C174,115 159,90 167,69 C174,50 200,47 214,68 C228,47 254,50 261,69 C269,90 254,115 214,145 Z" fill="#D9C8FF"/>
+<text x="214" y="92.9" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="19" fill="#E63946" stroke="none">HUG</text><text x="214" y="112.8" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="19" fill="#E63946" stroke="none">ME</text></g>
+<g transform="rotate(18 236 226)"><path d="M236,258.4 C207.2,236.8 196.4,218.8 202.2,203.7 C207.2,190 225.9,187.8 236,203 C246.1,187.8 264.8,190 269.8,203.7 C275.6,218.8 264.8,236.8 236,258.4 Z" fill="#FFF1A8"/>
+<text x="236" y="228.2" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="14" fill="#E63946" stroke="none">LOVE</text></g>
+<g transform="rotate(-4 140 186)"><path d="M140,254.4 C79.2,208.8 56.4,170.8 68.6,138.9 C79.2,110 118.7,105.4 140,137.4 C161.3,105.4 200.8,110 211.4,138.9 C223.6,170.8 200.8,208.8 140,254.4 Z" fill="#FFD1DC"/>
+<text x="140" y="175" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="30" fill="#E63946" stroke="none">BE</text><text x="140" y="206.5" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="30" fill="#E63946" stroke="none">MINE</text></g>
+</g></g>
+</svg>

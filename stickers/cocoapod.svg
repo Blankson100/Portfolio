@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<g transform="rotate(-28 156 118)">
+<path d="M56,118 L30,112" fill="none" stroke-width="15"/><path d="M56,118 L30,112" fill="none" stroke="#7A4A22" stroke-width="7"/>
+<path d="M56,118 C56,74 104,52 156,52 C214,52 258,82 270,118 C258,154 214,184 156,184 C104,184 56,162 56,118 Z" fill="#F2A900"/>
+<path d="M72,118 C120,104 200,104 256,118 M78,96 C126,80 200,80 246,96 M78,140 C126,156 200,156 246,140" fill="none" stroke="#C97A00" stroke-width="5"/>
+</g>
+<g transform="rotate(10 150 214)">
+<rect x="70" y="176" width="160" height="80" rx="8" fill="#6B3A1E"/>
+<path d="M110,176 V256 M150,176 V256 M70,216 H150" fill="none" stroke="#4A2614" stroke-width="5"/>
+<path d="M150,170 H236 V262 H150 Z" fill="#E63946"/>
+<path d="M150,170 V262" fill="none" stroke="#FFC93C" stroke-width="10"/>
+<text x="194" y="214" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="18" fill="#fff" stroke="none">GHANA</text>
+<text x="194" y="236" font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle" font-size="13" fill="#FFC93C" stroke="none">COCOA</text>
+</g>
+</g></g>
+</svg>

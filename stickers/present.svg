@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="60" y="126" width="180" height="134" rx="6" fill="#D7262E"/>
+<circle cx="86" cy="162" r="7" fill="#fff" stroke="none"/><circle cx="106" cy="216" r="7" fill="#fff" stroke="none"/><circle cx="208" cy="172" r="7" fill="#fff" stroke="none"/><circle cx="196" cy="234" r="7" fill="#fff" stroke="none"/><circle cx="88" cy="246" r="7" fill="#fff" stroke="none"/><circle cx="214" cy="206" r="7" fill="#fff" stroke="none"/>
+<rect x="136" y="126" width="28" height="134" fill="#FFC93C"/>
+<rect x="48" y="100" width="204" height="38" rx="6" fill="#E8454C"/>
+<rect x="136" y="100" width="28" height="38" fill="#FFC93C"/>
+<rect x="48" y="100" width="204" height="38" rx="6" fill="none"/>
+<path d="M146,100 L128,134 L138,130 L140,142 Z M154,100 L172,134 L162,130 L160,142 Z" fill="#FFC93C" stroke-width="4"/>
+<path d="M150,98 C120,60 82,62 92,86 C98,100 124,102 150,98 Z" fill="#FFC93C"/>
+<path d="M150,98 C180,60 218,62 208,86 C202,100 176,102 150,98 Z" fill="#FFC93C"/>
+<ellipse cx="150" cy="98" rx="14" ry="11" fill="#F2A900"/>
+<path d="M210,196 Q188,180 166,160" fill="none" stroke-width="3"/>
+<g transform="rotate(14 236 196)"><path d="M218,182 H262 V210 H218 L208,196 Z" fill="#FFF4D6"/><circle cx="217" cy="196" r="3" fill="#1F1F1F" stroke="none"/><path d="M242,205.1 C234.8,199.7 232.1,195.2 233.5,191.4 C234.8,188 239.5,187.5 242,191.2 C244.5,187.5 249.2,188 250.5,191.4 C251.9,195.2 249.2,199.7 242,205.1 Z" fill="#D7262E" stroke-width="3"/></g>
+</g></g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="120" cy="60" rx="20" ry="52" transform="rotate(-10 120 60)" fill="#F7F2EA"/><ellipse cx="121" cy="66" rx="9" ry="38" transform="rotate(-10 121 66)" fill="#FFB3C6" stroke-width="3"/>
+<ellipse cx="180" cy="60" rx="20" ry="52" transform="rotate(10 180 60)" fill="#F7F2EA"/><ellipse cx="179" cy="66" rx="9" ry="38" transform="rotate(10 179 66)" fill="#FFB3C6" stroke-width="3"/>
+<ellipse cx="150" cy="212" rx="70" ry="58" fill="#F7F2EA"/>
+<ellipse cx="104" cy="262" rx="30" ry="14" fill="#F7F2EA"/><ellipse cx="196" cy="262" rx="30" ry="14" fill="#F7F2EA"/>
+<ellipse cx="150" cy="130" rx="58" ry="50" fill="#F7F2EA"/>
+<circle cx="128" cy="122" r="7" fill="#1F1F1F" stroke="none"/><circle cx="172" cy="122" r="7" fill="#1F1F1F" stroke="none"/>
+<circle cx="130" cy="119" r="2.4" fill="#fff" stroke="none"/><circle cx="174" cy="119" r="2.4" fill="#fff" stroke="none"/>
+<circle cx="112" cy="142" r="9" fill="#FFB3C6" stroke="none" opacity="0.8"/><circle cx="188" cy="142" r="9" fill="#FFB3C6" stroke="none" opacity="0.8"/>
+<path d="M144,140 H156 L150,148 Z" fill="#FFB3C6" stroke-width="3"/>
+<rect x="144" y="155" width="12" height="11" rx="2" fill="#fff" stroke-width="3"/>
+<path d="M150,148 V155 M150,155 Q142,162 134,156 M150,155 Q158,162 166,156 M104,146 L80,140 M104,154 L82,158 M196,146 L220,140 M196,154 L218,158" fill="none" stroke-width="3"/>
+<g transform="rotate(0 150 214)"><defs><clipPath id="bunnyEgg"><path d="M150,176 C168.6,176 180,204.5 180,223.5 C180,241.4 166.8,252 150,252 C133.2,252 120,241.4 120,223.5 C120,204.5 131.4,176 150,176 Z"/></clipPath></defs>
+<path d="M150,176 C168.6,176 180,204.5 180,223.5 C180,241.4 166.8,252 150,252 C133.2,252 120,241.4 120,223.5 C120,204.5 131.4,176 150,176 Z" fill="#9CD3F0"/><g clip-path="url(#bunnyEgg)"><path d="M110,201 L118,215 L126,201 L134,215 L142,201 L150,215 L158,201 L166,215 L174,201 L182,215 L190,201" fill="none" stroke="#FFE066" stroke-width="8"/><path d="M110,232 H190" fill="none" stroke="#FFB3C6" stroke-width="8"/></g><path d="M150,176 C168.6,176 180,204.5 180,223.5 C180,241.4 166.8,252 150,252 C133.2,252 120,241.4 120,223.5 C120,204.5 131.4,176 150,176 Z" fill="none"/></g>
+<ellipse cx="118" cy="224" rx="16" ry="12" fill="#F7F2EA"/><ellipse cx="182" cy="224" rx="16" ry="12" fill="#F7F2EA"/>
+</g></g>
+</svg>

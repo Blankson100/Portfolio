@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M66,206 C70,128 118,66 188,62 C232,60 258,92 254,132 C242,112 222,106 208,114 C220,142 230,172 236,206 Z" fill="#D7262E"/>
+<path d="M104,196 C108,150 136,108 178,92" fill="none" stroke="#A81E25" stroke-width="9"/>
+<rect x="44" y="194" width="212" height="54" rx="27" fill="#fff"/>
+<path d="M72,212 q8,-8 16,0 M108,226 q8,-8 16,0 M150,210 q8,-8 16,0 M190,228 q8,-8 16,0 M222,212 q8,-8 16,0" fill="none" stroke="#D9D9D9" stroke-width="4"/>
+<circle cx="252" cy="146" r="28" fill="#fff"/>
+<path d="M240,140 q6,-6 12,0 M250,156 q6,-6 12,0" fill="none" stroke="#D9D9D9" stroke-width="4"/>
+</g></g>
+</svg>

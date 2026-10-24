@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<g fill="#000" stroke-width="12"><ellipse cx="160" cy="204" rx="70" ry="60"/><circle cx="118" cy="128" r="44"/>
+<ellipse cx="102" cy="58" rx="17" ry="46" transform="rotate(-14 102 58)"/>
+<path d="M120,100 C116,62 124,26 140,16 L146,26 L138,32 L148,38 L142,48 L152,54 C154,74 148,94 140,102 Z"/>
+<ellipse cx="116" cy="258" rx="38" ry="14"/><circle cx="232" cy="214" r="16"/></g><g fill="#7A4A2B" stroke="none"><ellipse cx="160" cy="204" rx="70" ry="60"/><circle cx="118" cy="128" r="44"/>
+<ellipse cx="102" cy="58" rx="17" ry="46" transform="rotate(-14 102 58)"/>
+<path d="M120,100 C116,62 124,26 140,16 L146,26 L138,32 L148,38 L142,48 L152,54 C154,74 148,94 140,102 Z"/>
+<ellipse cx="116" cy="258" rx="38" ry="14"/><circle cx="232" cy="214" r="16"/></g>
+<path d="M98,26 C92,48 92,72 98,90 M140,30 C134,52 134,74 136,92" fill="none" stroke="#A0673A" stroke-width="6"/>
+<path d="M200,168 C222,184 226,214 214,238" fill="none" stroke="#A0673A" stroke-width="7"/>
+<path d="M98,124 Q106,116 114,124" fill="none" stroke="#3E2010" stroke-width="5"/>
+<path d="M80,140 L88,136 L84,146 Z" fill="#3E2010" stroke="none"/>
+<path d="M104,252 Q116,244 128,252" fill="none" stroke="#3E2010" stroke-width="4"/>
+<path d="M84,164 Q120,182 160,158" fill="none" stroke-width="17"/><path d="M84,164 Q120,182 160,158" fill="none" stroke="#E63946" stroke-width="9"/>
+<path d="M150,162 C130,140 112,148 120,162 C126,172 140,170 150,162 Z M150,162 C172,144 190,152 182,166 C176,176 162,172 150,162 Z" fill="#E63946"/>
+<circle cx="150" cy="163" r="7" fill="#A81E2D" stroke-width="4"/>
+<circle cx="150" cy="186" r="9" fill="#FFC93C" stroke-width="4"/>
+<circle cx="160" cy="30" r="3.5" fill="#7A4A2B" stroke-width="2.5"/><circle cx="170" cy="44" r="3.5" fill="#7A4A2B" stroke-width="2.5"/><circle cx="162" cy="52" r="3.5" fill="#7A4A2B" stroke-width="2.5"/>
+</g></g>
+</svg>
