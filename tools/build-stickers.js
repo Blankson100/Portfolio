@@ -1357,8 +1357,8 @@ ${beeFig(150, 108, 0.85)}`,
 // scripts/holiday.js.
 const HOLIDAYS = require('./holiday-stickers.js')({ f, star, person, BLACK });
 
-// Which stickers each page draws from. Home uses `cities`; About takes one each from
-// `knicks`, `united`, `ghana` and `world`; the phone page adds a project and any city; each
+// Which stickers each page draws from. Home takes one from `ghana` and two from `world`; About
+// one each from `knicks`, `united`, `ghana` and `world`; the phone page adds a project and any city; each
 // case study its own set; Projects mixes every project's. On a holiday every page draws from
 // that holiday's set instead (scripts/sticker.js).
 const isGhana = id => /Ghana$/.test(LANDMARKS[id].city);

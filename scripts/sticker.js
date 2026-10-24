@@ -3,12 +3,13 @@
 // (or double-click, double-tap, or press Enter) to reveal a drawing in the avatar's style;
 // once revealed it can be dragged anywhere on the page.
 // The script tag picks the set (data-set, from stickers/stickers.js) and how many to show
-// (data-count, default 2; Home uses 3, the long project pages 6). Several sets separated
-// by spaces are pooled, as many stickers as sets: About uses "knicks united ghana world".
-// Home uses "cities", each case study its project's set, Projects mixes them all. Each
+// (data-count, default 2; the long project pages 6). Several sets separated by spaces show
+// one sticker from each: Home uses "ghana world world" (always one from Ghana and two from
+// elsewhere), About "knicks united ghana world", the phone page adds a project and a city
+// from anywhere. Each case study uses its project's set, Projects mixes them all, and on
+// about half of those page views one comes from the whole collection as a surprise. Each
 // visitor keeps meeting new ones: stickers they've been shown anywhere on the site wait
-// until they've seen the rest, and on about half of page views one comes from the whole
-// collection as a surprise. A visitor's very first sticker is Bright's own city
+// until they've seen the rest. A visitor's very first sticker is Bright's own city
 // (window.brightCity.landmark from avatar.js) wherever the set has it. On a holiday they all
 // come from that day's set (window.brightHoliday from holiday.js). Preview one with
 // ?sticker=bee.
@@ -117,9 +118,8 @@
     // Every visitor keeps meeting new stickers. What they've been shown anywhere on the site
     // is remembered (longest ago first). A page picks, from its sets, the ones they haven't
     // seen yet in a random order, and only repeats once they've seen them all, starting with
-    // the ones from longest ago. On about half of page views one of them comes from the whole
-    // collection instead, as a surprise. All different on a page; Bright's own city leads a
-    // visitor's very first stickers.
+    // the ones from longest ago. All different on a page; Bright's own city leads a visitor's
+    // very first stickers.
     const SEEN = 'stickerSeen';
     const home = window.brightCity ? window.brightCity.landmark : null;
     const seen = (load(SEEN) || '').split(',').filter(id => data.items[id]);
@@ -132,20 +132,35 @@
         return shuffle(left.filter(c => seen.indexOf(c) === -1))
             .concat(left.filter(c => seen.indexOf(c) !== -1).sort((a, b) => seen.indexOf(a) - seen.indexOf(b)));
     }
-    // Sets can overlap (e.g. "ghana" and "cities"), so they're pooled without repeats. On a
-    // holiday (scripts/holiday.js) every sticker comes from that day's set instead, with no
-    // surprises from the rest.
+    // Holiday stickers never turn up on other days.
     const holiday = window.brightHoliday && data.sets[window.brightHoliday.id] ? window.brightHoliday.id : null;
-    const pool = holiday ? data.sets[holiday]
-        : names.reduce((all, n) => all.concat(data.sets[n].filter(c => all.indexOf(c) === -1)), []);
-    // Holiday stickers never turn up as a surprise on other days.
     const seasonal = (data.holidays || []).reduce((all, n) => all.concat(data.sets[n] || []), []);
     const everyday = Object.keys(data.items).filter(c => seasonal.indexOf(c) === -1);
-    let chosen = !holiday && home && !seen.length && pool.indexOf(home) !== -1 ? [home] : [];
-    const surprise = !holiday && Math.random() < 0.5 ? 1 : 0;
-    chosen = chosen.concat(freshest(pool, chosen).slice(0, Math.max(0, count - chosen.length - surprise)));
-    chosen = chosen.concat(freshest(holiday ? pool : everyday, chosen).slice(0, count - chosen.length));
-    chosen = chosen.slice(0, 1).concat(shuffle(chosen.slice(1)));
+    let chosen = [];
+    if (holiday) {
+        // On a holiday (scripts/holiday.js) every sticker comes from that day's set.
+        chosen = freshest(data.sets[holiday], []).slice(0, count);
+    } else if (names.length > 1) {
+        // A mix (Home, About, the phone page): one from each set named, so Home always shows
+        // one from Ghana and two from elsewhere. Sets can overlap (e.g. "ghana" and "cities"),
+        // so each one skips what's already been picked; Bright's own city fills its set's turn
+        // on a visitor's very first visit.
+        names.forEach(function (n) {
+            const set = data.sets[n];
+            const pick = home && !seen.length && set.indexOf(home) !== -1 && chosen.indexOf(home) === -1
+                ? home : freshest(set, chosen)[0];
+            if (pick) chosen.push(pick);
+        });
+    } else {
+        // One set (a project page): on about half of page views one of its stickers makes
+        // way for a surprise from the rest of the collection.
+        const surprise = Math.random() < 0.5 ? 1 : 0;
+        chosen = freshest(data.sets[names[0]], []).slice(0, count - surprise);
+        chosen = chosen.concat(freshest(everyday, chosen).slice(0, count - chosen.length));
+    }
+    // Shuffled about the page, with Bright's own city first when it's there.
+    chosen = shuffle(chosen);
+    if (chosen.indexOf(home) > 0) chosen = [home].concat(chosen.filter(c => c !== home));
     save(SEEN, seen.filter(c => chosen.indexOf(c) === -1).concat(chosen).join(','));
     const asked = new URLSearchParams(window.location.search).get('sticker');
     if (asked && data.items[asked]) chosen = [asked].concat(chosen.filter(c => c !== asked)).slice(0, count);
