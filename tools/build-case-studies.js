@@ -548,6 +548,17 @@ function page(key, dark) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${esc(c.title)} - PortoBlknszzz</title>
+    <meta name="description" content="Product designer from Accra, Ghana. I design products that make sense the very first time you use them.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Akornor Blankson">
+    <meta property="og:title" content="Akornor Blankson, Product Designer">
+    <meta property="og:description" content="Product designer from Accra, Ghana. I design products that make sense the very first time you use them.">
+    <meta property="og:image" content="https://portoblankson.vercel.app/share-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Akornor Blankson, Product Design. I Make things.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://portoblankson.vercel.app/share-card.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
@@ -732,6 +743,17 @@ function mobileShell({ title, dark, pages, back, body, scripts, extraHead = '', 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${esc(title)} - PortoBlknszzz</title>
+    <meta name="description" content="Product designer from Accra, Ghana. I design products that make sense the very first time you use them.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Akornor Blankson">
+    <meta property="og:title" content="Akornor Blankson, Product Designer">
+    <meta property="og:description" content="Product designer from Accra, Ghana. I design products that make sense the very first time you use them.">
+    <meta property="og:image" content="https://portoblankson.vercel.app/share-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Akornor Blankson, Product Design. I Make things.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://portoblankson.vercel.app/share-card.jpg">
     <link rel="preconnect" href="https://api.fontshare.com">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,501&display=swap" rel="stylesheet">${extraHead}
     <link rel="icon" href="favicon.ico" sizes="any">

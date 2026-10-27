@@ -8,9 +8,11 @@
 //     Independence Day, bunnies hopping at Easter, bats at Halloween and reindeer at Christmas
 //     (the first with a red nose). They're drawn like the bees and BB.css moves them.
 // Preview any day as for the avatar, e.g. ?avatarDate=2026-10-31.
+// The share card behind every link preview (api/share-card.js) uses the same calendar: in
+// Node this file just hands over holidayOn and accraToday.
 (function () {
-    function today() {
-        const preview = new URLSearchParams(window.location.search).get('avatarDate');
+    // Today's date in Accra, or the date in a "YYYY-MM-DD..." string.
+    function accraToday(preview) {
         const m = preview && preview.match(/^(\d{4})-(\d{2})-(\d{2})/);
         if (m) return { y: +m[1], m: +m[2], d: +m[3] };
         const parts = new Intl.DateTimeFormat('en-US', {
@@ -43,7 +45,12 @@
         return null;
     }
 
-    const holiday = holidayOn(today());
+    if (typeof window === 'undefined') {
+        module.exports = { holidayOn: holidayOn, accraToday: accraToday };
+        return;
+    }
+
+    const holiday = holidayOn(accraToday(new URLSearchParams(window.location.search).get('avatarDate')));
     window.brightHoliday = holiday;
     if (!holiday) return;
     // BB.css keeps the bees hidden from here on, so they never flash up before the flyers.
