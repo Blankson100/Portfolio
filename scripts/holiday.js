@@ -1,20 +1,22 @@
 // The holidays the site dresses up for, by the calendar in Accra: New Year (31 Dec to 2 Jan),
 // Valentine's Day (14 Feb), Ghana's Independence Day (6 Mar), Easter (Good Friday to Easter
-// Monday), Halloween (31 Oct) and Christmas (24 to 26 Dec). On one of them:
+// Monday), Halloween (31 Oct), Bright's birthday (29 Nov) and Christmas (24 to 26 Dec). On
+// one of them:
 //   - the avatar wears the day's outfit and says the wish (scripts/avatar.js),
 //   - every scratch-off sticker comes from the day's set (scripts/sticker.js),
 //   - the bees at the end of each page make way for the day's flyers: fireworks going off at
 //     New Year, hearts on wings for Valentine's Day, black stars trailing the flag's colours on
-//     Independence Day, bunnies hopping at Easter, bats at Halloween and reindeer at Christmas
-//     (the first with a red nose). They're drawn like the bees and BB.css moves them.
+//     Independence Day, bunnies hopping at Easter, bats at Halloween, a cake chasing a
+//     stickman and splatting him in the face on the birthday, and reindeer at Christmas (the
+//     first with a red nose). They're drawn like the bees and BB.css moves them.
 // Preview any day as for the avatar, e.g. ?avatarDate=2026-10-31.
 // The share card behind every link preview (api/share-card.js) uses the same calendar: in
 // Node this file just hands over holidayOn and accraToday.
 (function () {
-    // Today's date in Accra, or the date in a "YYYY-MM-DD..." string.
+    // Today's date in Accra, or the date in a "YYYY-MM-DD..." string (when it's a real date).
     function accraToday(preview) {
         const m = preview && preview.match(/^(\d{4})-(\d{2})-(\d{2})/);
-        if (m) return { y: +m[1], m: +m[2], d: +m[3] };
+        if (m && +m[2] >= 1 && +m[2] <= 12 && +m[3] >= 1 && +m[3] <= 31) return { y: +m[1], m: +m[2], d: +m[3] };
         const parts = new Intl.DateTimeFormat('en-US', {
             timeZone: 'Africa/Accra', year: 'numeric', month: 'numeric', day: 'numeric'
         }).formatToParts(new Date());
@@ -40,6 +42,7 @@
         if (md === 214) return { id: 'valentine', wish: 'Happy Valentine’s Day!' };
         if (md === 306) return { id: 'ghana-independence', wish: 'Happy Independence Day!' };
         if (md === 1031) return { id: 'halloween', wish: 'Happy Halloween!', hat: true };
+        if (md === 1129) return { id: 'birthday', wish: 'It’s my birthday!', hat: true };
         const day = 86400000, now = Date.UTC(y, m - 1, d), easter = easterSunday(y);
         if (now >= easter - 2 * day && now <= easter + day) return { id: 'easter', wish: 'Happy Easter!', hat: true };
         return null;
@@ -96,7 +99,32 @@
             + '<path d="M56.4 29.6 H62 M61 27 L62.6 29"/>'
             + '<circle cx="65.6" cy="17.7" r="0.6" fill="currentColor" stroke="none"/><circle cx="67.9" cy="18.9" r="0.55" fill="currentColor" stroke="none"/>'
             + '</g>',
+        // A wider drawing (viewBox 0 -12 120 52): a cake on legs, eyebrows down and candle lit,
+        // runs after a stickman who looks back in a panic; it leaps, splats in his face and
+        // knocks him off balance, then a fresh cake comes after him.
+        birthday: () => '<path class="bee-trail" d="M4 26 H16 M8 30 H24" stroke-dasharray="1.5 3.5"/>'
+            + '<g class="cake-run">'
+            + '<path class="cake-leg" d="M34 29 L32.6 32.4"/><path class="cake-leg cake-leg-2" d="M42 29 L43.4 32.4"/>'
+            + '<rect x="30" y="18" width="16" height="11" rx="1.2"/>'
+            + '<path d="M30 20.4 Q30 18 32.4 18 H43.6 Q46 18 46 20.4 Q45.2 23 44.2 21.2 Q42.8 23.8 41.4 21.2 Q39.8 23.6 38.2 21.2 Q36.6 23.8 35.2 21.2 Q33.6 23.6 32.2 21.2 Q31 22.8 30 20.4 Z" fill="#FF8FAB"/>'
+            + '<path d="M38 18 V14"/>'
+            + '<path class="cake-flame" d="M38 9.6 C39.5 11.4 39.6 12.6 38 13.4 C36.4 12.6 36.5 11.4 38 9.6 Z" fill="#FFB020" stroke="#FFB020" stroke-width="0.6"/>'
+            + '<path d="M39.6 23.8 L41.6 24.6 M44.6 23.8 L42.6 24.6" stroke-width="1"/>'
+            + '<circle cx="41" cy="26" r="0.65" fill="currentColor" stroke="none"/><circle cx="43.4" cy="26" r="0.65" fill="currentColor" stroke="none"/>'
+            + '</g>'
+            + '<g class="stick-run">'
+            + '<path class="stick-leg" d="M95 21.5 L99.4 25.8 L98.4 32"/><path class="stick-leg stick-leg-2" d="M95 21.5 L91.4 26.2 L87.6 29.6"/>'
+            + '<path d="M98 10.2 L95 21.5"/>'
+            + '<path class="stick-arm" d="M97.2 13 L101.5 16.5 L104.6 14.2"/><path class="stick-arm stick-arm-2" d="M97.2 13 L93 16.6 L90.2 15"/>'
+            + '<circle cx="99" cy="6" r="4.2"/>'
+            + '<circle cx="96.4" cy="5.2" r="0.55" fill="currentColor" stroke="none"/><circle cx="98.4" cy="5" r="0.55" fill="currentColor" stroke="none"/>'
+            + '<circle cx="96.6" cy="8.1" r="0.8" stroke-width="0.9"/>'
+            + '<g class="cake-splat"><path d="M92.6 3.8 Q93.6 0.2 96.8 1.4 Q98.4 -0.6 100 1.8 Q99.6 4 100.2 6 Q99.4 9 97.2 9.4 L96.8 12.2 Q96.2 13.4 95.6 12.2 L95.4 9.8 Q93.6 10.2 93 8.2 Q91.4 7 92.6 3.8 Z" fill="#FF8FAB"/>'
+            + '<circle cx="90" cy="1.6" r="0.8" fill="#FF8FAB"/><circle cx="88.6" cy="6.6" r="0.7" fill="#FF8FAB"/><circle cx="91" cy="11" r="0.6" fill="#FF8FAB"/></g>'
+            + '</g>',
     };
+    // The birthday chase needs more room than one bee.
+    const VIEWBOX = { birthday: '0 -12 120 52' };
     function starPath(cx, cy, r) {
         let d = '';
         for (let i = 0; i < 10; i++) {
@@ -126,7 +154,7 @@
     function dress() {
         document.querySelectorAll('.bee-end').forEach(function (end) {
             end.innerHTML = holiday.id === 'newyear' ? fireworks() : [1, 2].map(n =>
-                '<svg class="bee bee-' + n + ' flyer-' + holiday.id + '" viewBox="0 -12 92 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">'
+                '<svg class="bee bee-' + n + ' flyer-' + holiday.id + '" viewBox="' + (VIEWBOX[holiday.id] || '0 -12 92 52') + '" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">'
                 + FLYERS[holiday.id](n) + '</svg>').join('');
             end.classList.add('is-dressed');
         });

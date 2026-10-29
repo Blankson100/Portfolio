@@ -7,7 +7,8 @@ const path = require('path');
 const { holidayOn, accraToday } = require('../scripts/holiday.js');
 
 module.exports = function (req, res) {
-    const day = holidayOn(accraToday(req.query && req.query.date));
+    const asked = req.query && req.query.date;
+    const day = holidayOn(accraToday(typeof asked === 'string' ? asked : undefined));
     const card = path.join(__dirname, '..', 'share-cards', (day ? day.id : 'everyday') + '.jpg');
     res.setHeader('Content-Type', 'image/jpeg');
     // Kept for an hour at most, so the card changes soon after midnight on a holiday.

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="144" y="60" width="12" height="40" rx="2" fill="#FF8FB8" stroke-width="4"/>
+<path d="M144,72 L156,66 M144,86 L156,80" fill="none" stroke="#fff" stroke-width="3"/>
+<path d="M150,34 C151.6,41.7 158,43.9 158,50.5 C158,54.2 154,56 150,56 C146,56 142,54.2 142,50.5 C142,43.9 148.4,41.7 150,34 Z" fill="#FFD23F"/>
+<path d="M92,172 L208,172 L190,262 H110 Z" fill="#3BA7F0"/>
+<path d="M112,176 L120,258 M132,176 L136,260 M150,176 V260 M168,176 L164,260 M188,176 L180,258" fill="none" stroke="#2A86CC" stroke-width="5"/>
+<path d="M80,176 C66,150 92,130 110,140 C108,112 140,98 156,114 C170,96 204,110 196,138 C220,136 234,162 220,180 Q150,196 80,176 Z" fill="#FF8FB8"/>
+<path d="M104,160 Q150,174 196,158 M120,136 Q150,146 176,134" fill="none" stroke="#FF6FA3" stroke-width="5"/>
+<rect x="100" y="147.5" width="12" height="5" rx="2.5" fill="#FFD23F" stroke="none" transform="rotate(30 106 150)"/><rect x="128" y="125.5" width="12" height="5" rx="2.5" fill="#3BA7F0" stroke="none" transform="rotate(-20 134 128)"/><rect x="162" y="121.5" width="12" height="5" rx="2.5" fill="#4CC36A" stroke="none" transform="rotate(40 168 124)"/><rect x="184" y="149.5" width="12" height="5" rx="2.5" fill="#FFD23F" stroke="none" transform="rotate(-30 190 152)"/><rect x="144" y="157.5" width="12" height="5" rx="2.5" fill="#8E5CF7" stroke="none" transform="rotate(10 150 160)"/><rect x="114" y="167.5" width="12" height="5" rx="2.5" fill="#3BA7F0" stroke="none" transform="rotate(-50 120 170)"/>
+<g stroke-width="4"><path d="M60,77 L62.7,84.3 L70.5,84.6 L64.4,89.4 L66.5,96.9 L60,92.6 L53.5,96.9 L55.6,89.4 L49.5,84.6 L57.3,84.3 Z" fill="#FFD23F"/></g><g stroke-width="4"><path d="M244,83 L246.2,88.9 L252.6,89.2 L247.6,93.2 L249.3,99.3 L244,95.8 L238.7,99.3 L240.4,93.2 L235.4,89.2 L241.8,88.9 Z" fill="#FF8FB8"/></g>
+</g></g>
+</svg>

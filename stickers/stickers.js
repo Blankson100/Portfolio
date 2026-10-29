@@ -516,6 +516,56 @@ window.STICKERS = {
             "caption": "Busy bees",
             "file": "waxbee.png"
         },
+        "bdaycake": {
+            "name": "Birthday cake",
+            "caption": "My birthday",
+            "file": "bdaycake.png"
+        },
+        "cupcake": {
+            "name": "Cupcake",
+            "caption": "My birthday",
+            "file": "cupcake.png"
+        },
+        "cakeslice": {
+            "name": "Slice of cake",
+            "caption": "My birthday",
+            "file": "cakeslice.png"
+        },
+        "bdaygift": {
+            "name": "Birthday present",
+            "caption": "My birthday",
+            "file": "bdaygift.png"
+        },
+        "bdaycard": {
+            "name": "Birthday card",
+            "caption": "My birthday",
+            "file": "bdaycard.png"
+        },
+        "bdaybunting": {
+            "name": "Birthday bunting",
+            "caption": "My birthday",
+            "file": "bdaybunting.png"
+        },
+        "icecream": {
+            "name": "Ice cream",
+            "caption": "My birthday",
+            "file": "icecream.png"
+        },
+        "crown": {
+            "name": "Birthday crown",
+            "caption": "My birthday",
+            "file": "crown.png"
+        },
+        "partyhorn": {
+            "name": "Party blower",
+            "caption": "My birthday",
+            "file": "partyhorn.png"
+        },
+        "cakeface": {
+            "name": "Cake to the face",
+            "caption": "My birthday",
+            "file": "cakeface.png"
+        },
         "pumpkin": {
             "name": "Jack-o’-lantern",
             "caption": "Halloween",
@@ -1013,6 +1063,18 @@ window.STICKERS = {
             "businesscard",
             "goldengate"
         ],
+        "birthday": [
+            "bdaycake",
+            "cupcake",
+            "cakeslice",
+            "bdaygift",
+            "bdaycard",
+            "bdaybunting",
+            "icecream",
+            "crown",
+            "partyhorn",
+            "cakeface"
+        ],
         "halloween": [
             "pumpkin",
             "batmoon",
@@ -1087,6 +1149,7 @@ window.STICKERS = {
         ]
     },
     "holidays": [
+        "birthday",
         "halloween",
         "christmas",
         "newyear",

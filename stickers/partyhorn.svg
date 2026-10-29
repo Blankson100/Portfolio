@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<defs><clipPath id="horn"><path d="M98,134 H232 C252,134 252,166 232,166 H98 Z"/></clipPath></defs>
+<g transform="rotate(-18 150 150)">
+<path d="M98,134 H232 C252,134 252,166 232,166 H98 Z" fill="#FF8FB8"/>
+<g clip-path="url(#horn)"><path d="M96,170 L116,130" stroke="#3BA7F0" stroke-width="9" fill="none"/><path d="M124,170 L144,130" stroke="#3BA7F0" stroke-width="9" fill="none"/><path d="M152,170 L172,130" stroke="#3BA7F0" stroke-width="9" fill="none"/><path d="M180,170 L200,130" stroke="#3BA7F0" stroke-width="9" fill="none"/><path d="M208,170 L228,130" stroke="#3BA7F0" stroke-width="9" fill="none"/><path d="M236,170 L256,130" stroke="#3BA7F0" stroke-width="9" fill="none"/></g>
+<path d="M98,134 H232 C252,134 252,166 232,166 H98 Z" fill="none"/>
+<path d="M246,150 L278,128 M248,150 L284,150 M246,150 L278,172" fill="none" stroke="#FFD23F" stroke-width="9"/>
+<rect x="52" y="138" width="50" height="24" rx="6" fill="#FFD23F"/>
+<path d="M52,138 V162" fill="none" stroke-width="4"/>
+</g>
+<path d="M60,94 Q50,80 60,66 M40,104 Q26,86 38,68" fill="none" stroke-width="4"/>
+<rect x="193" y="66" width="14" height="8" rx="2" fill="#8E5CF7" stroke-width="3" transform="rotate(30 200 70)"/><rect x="233" y="232" width="14" height="8" rx="2" fill="#FFD23F" stroke-width="3" transform="rotate(-20 240 236)"/><rect x="73" y="216" width="14" height="8" rx="2" fill="#3BA7F0" stroke-width="3" transform="rotate(15 80 220)"/><rect x="143" y="236" width="14" height="8" rx="2" fill="#FF8FB8" stroke-width="3" transform="rotate(-40 150 240)"/>
+</g></g>
+</svg>

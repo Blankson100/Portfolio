@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<defs><clipPath id="cone"><path d="M100,166 L200,166 L150,284 Z"/></clipPath></defs>
+<path d="M100,166 L200,166 L150,284 Z" fill="#E3A35B"/>
+<g clip-path="url(#cone)"><path d="M70,150 L150,290 M230,150 L150,290 M98,150 L178,290 M202,150 L122,290 M126,150 L206,290 M174,150 L94,290 M154,150 L234,290 M146,150 L66,290 M182,150 L262,290 M118,150 L38,290 M210,150 L290,290 M90,150 L10,290" fill="none" stroke="#B8752E" stroke-width="5"/></g>
+<path d="M100,166 L200,166 L150,284 Z" fill="none"/>
+<circle cx="116" cy="148" r="36" fill="#A8E6C1"/><circle cx="184" cy="148" r="36" fill="#7A4A2B"/>
+<circle cx="150" cy="96" r="42" fill="#FF8FB8"/>
+<path d="M112,170 C112,186 124,186 124,172 M174,174 C174,190 186,190 186,176" fill="#A8E6C1" stroke-width="4"/>
+<path d="M150,46 C152,30 164,22 172,26" fill="none" stroke="#3E8E2B" stroke-width="5"/>
+<circle cx="150" cy="52" r="15" fill="#E63946"/>
+<rect x="124" y="83.5" width="12" height="5" rx="2.5" fill="#FFD23F" stroke="none" transform="rotate(30 130 86)"/><rect x="154" y="73.5" width="12" height="5" rx="2.5" fill="#3BA7F0" stroke="none" transform="rotate(-30 160 76)"/><rect x="166" y="101.5" width="12" height="5" rx="2.5" fill="#fff" stroke="none" transform="rotate(50 172 104)"/><rect x="130" y="109.5" width="12" height="5" rx="2.5" fill="#8E5CF7" stroke="none" transform="rotate(-20 136 112)"/><rect x="98" y="137.5" width="12" height="5" rx="2.5" fill="#FF8FB8" stroke="none" transform="rotate(20 104 140)"/><rect x="190" y="137.5" width="12" height="5" rx="2.5" fill="#FFD23F" stroke="none" transform="rotate(-30 196 140)"/>
+</g></g>
+</svg>

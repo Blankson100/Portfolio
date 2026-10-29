@@ -899,7 +899,163 @@ ${decoEgg(202, 98, 30, 38, EPINK, `<path d="${zigBand(168, 236, 96, 6, 8)}" fill
         },
     };
 
+    // ---------------- Bright's birthday (29 November) ----------------
+    const BPINK = '#FF8FB8', BBLUE = '#3BA7F0', BPURPLE = '#8E5CF7', BYELLOW = '#FFD23F', BCREAM = '#FFF4D6', SPONGE = '#F7E1B5', CHOCO = '#7A4A2B';
+    // Icing along the top of a cake from x0 to x1, h deep, with n drips hanging off it.
+    const drips = (x0, x1, y, h, n, fill) => {
+        const w = (x1 - x0) / n;
+        let d = `M${x0},${y} H${x1} V${y + h}`;
+        for (let i = n; i > 0; i--) {
+            const right = x0 + i * w, mid = right - w / 2, deep = y + h + (i % 2 ? w * 0.75 : w * 0.4);
+            d += ` L${f(mid + w * 0.28)},${y + h} C${f(mid + w * 0.3)},${f(deep)} ${f(mid - w * 0.3)},${f(deep)} ${f(mid - w * 0.28)},${y + h} L${f(right - w)},${y + h}`;
+        }
+        return `<path d="${d} Z" fill="${fill}"/>`;
+    };
+    // Sprinkles: little rounded bars, [x, y, angle, colour].
+    const sprinkles = list => list.map(([x, y, a, c]) => `<rect x="${x - 6}" y="${y - 2.5}" width="12" height="5" rx="2.5" fill="${c}" stroke="none" transform="rotate(${a} ${x} ${y})"/>`).join('');
+    // A striped candle standing on y with its flame.
+    const candle = (x, y, h = 40, fill = BBLUE) => `<rect x="${x - 6}" y="${y - h}" width="12" height="${h}" rx="2" fill="${fill}" stroke-width="4"/>
+<path d="M${x - 6},${y - h + 12} L${x + 6},${y - h + 6} M${x - 6},${y - h + 26} L${x + 6},${y - h + 20}" fill="none" stroke="#fff" stroke-width="3"/>
+${flame(x, y - h - 26, 22, 8, BYELLOW)}`;
+    const BIRTHDAY = {
+        bdaycake: {
+            name: 'Birthday cake', caption: 'My birthday',
+            art: `<ellipse cx="150" cy="254" rx="112" ry="16" fill="#E6EBEF"/>
+<rect x="62" y="170" width="176" height="82" rx="10" fill="${BCREAM}"/>
+${drips(62, 238, 170, 12, 7, BPINK)}
+${sprinkles([[92, 222, 30, BBLUE], [130, 236, -20, BYELLOW], [176, 220, 50, BPURPLE], [212, 236, -40, BBLUE], [150, 214, 10, '#4CC36A']])}
+${candle(120, 112)}${candle(150, 108, 44, BPINK)}${candle(180, 112, 40, BYELLOW)}
+<rect x="96" y="108" width="108" height="64" rx="10" fill="${BCREAM}"/>
+${drips(96, 204, 108, 10, 5, CHOCO)}
+${sprinkles([[118, 152, 20, BPINK], [150, 160, -30, BBLUE], [184, 150, 40, BYELLOW]])}
+${sparkles([[54, 100, 12, BYELLOW], [252, 96, 10, BPINK], [40, 200, 8, BBLUE]])}`,
+        },
+        cupcake: {
+            name: 'Cupcake', caption: 'My birthday',
+            art: `${candle(150, 100, 40, BPINK)}
+<path d="M92,172 L208,172 L190,262 H110 Z" fill="${BBLUE}"/>
+<path d="M112,176 L120,258 M132,176 L136,260 M150,176 V260 M168,176 L164,260 M188,176 L180,258" fill="none" stroke="#2A86CC" stroke-width="5"/>
+<path d="M80,176 C66,150 92,130 110,140 C108,112 140,98 156,114 C170,96 204,110 196,138 C220,136 234,162 220,180 Q150,196 80,176 Z" fill="${BPINK}"/>
+<path d="M104,160 Q150,174 196,158 M120,136 Q150,146 176,134" fill="none" stroke="#FF6FA3" stroke-width="5"/>
+${sprinkles([[106, 150, 30, BYELLOW], [134, 128, -20, BBLUE], [168, 124, 40, '#4CC36A'], [190, 152, -30, BYELLOW], [150, 160, 10, BPURPLE], [120, 170, -50, BBLUE]])}
+${sparkles([[60, 88, 11, BYELLOW], [244, 92, 9, BPINK]])}`,
+        },
+        cakeslice: {
+            name: 'Slice of cake', caption: 'My birthday',
+            art: `<ellipse cx="150" cy="238" rx="124" ry="28" fill="#fff"/><ellipse cx="150" cy="234" rx="96" ry="18" fill="#F2F2F2"/>
+<path d="M66,228 L232,228 L232,140 L66,190 Z" fill="${SPONGE}"/>
+<path d="M66,208 L232,182" fill="none" stroke="#E63946" stroke-width="12"/>
+<path d="M66,196 L232,160" fill="none" stroke="#fff" stroke-width="8"/>
+<path d="M66,228 L232,228 L232,140 L66,190 Z" fill="none"/>
+<path d="M60,190 L236,136 L240,152 C228,164 218,150 208,164 C196,176 186,160 174,172 C160,184 150,170 136,182 C122,194 112,180 98,194 C86,204 76,196 66,204 Z" fill="${BPINK}"/>
+<path d="M214,118 C230,112 242,126 236,140 C230,152 210,152 204,140 C198,128 204,120 214,118 Z" fill="#E63946"/>
+<path d="M212,118 L218,104 M218,110 L228,106" fill="none" stroke="#3E8E2B" stroke-width="5"/>
+${band('M262,96 L208,214', '#9EA7B0', 6)}
+<path d="M250,78 L262,96 M260,74 L268,92 M270,74 L272,92" fill="none" stroke-width="5"/>`,
+        },
+        bdaygift: {
+            name: 'Birthday present', caption: 'My birthday',
+            art: `<defs><clipPath id="bdBox"><rect x="68" y="128" width="164" height="132" rx="6"/></clipPath></defs>
+<rect x="68" y="128" width="164" height="132" rx="6" fill="${BPURPLE}"/>
+<g clip-path="url(#bdBox)">${[0, 1, 2, 3, 4, 5, 6].map(i => `<path d="M${40 + i * 40},270 L${130 + i * 40},120" stroke="${BYELLOW}" stroke-width="12" fill="none"/>`).join('')}</g>
+<rect x="68" y="128" width="164" height="132" rx="6" fill="none"/>
+<rect x="136" y="128" width="28" height="132" fill="${BPINK}"/>
+<rect x="56" y="104" width="188" height="34" rx="6" fill="#A57BFA"/>
+<rect x="136" y="104" width="28" height="34" fill="${BPINK}"/>
+<rect x="56" y="104" width="188" height="34" rx="6" fill="none"/>
+<path d="M150,102 C122,62 84,64 94,88 C100,102 126,104 150,102 Z M150,102 C178,62 216,64 206,88 C200,102 174,104 150,102 Z" fill="${BPINK}"/>
+<ellipse cx="150" cy="102" rx="13" ry="10" fill="#FF6FA3"/>
+${confetti([[44, 70, BYELLOW, 30], [256, 66, BBLUE, -20], [40, 200, BPINK, 15], [262, 196, '#4CC36A', -40]])}`,
+        },
+        bdaycard: {
+            name: 'Birthday card', caption: 'My birthday',
+            art: `<g transform="rotate(-6 150 160)">
+<path d="M84,58 L236,70 L224,262 L84,250 Z" fill="#FFE3EE"/>
+<rect x="64" y="56" width="160" height="200" rx="8" fill="${BCREAM}"/>
+<text x="144" y="104" ${BLACK} font-size="30" fill="${BPURPLE}" stroke="none">HAPPY</text>
+<text x="144" y="136" ${BLACK} font-size="22" fill="${BPINK}" stroke="none">BIRTHDAY</text>
+<path d="M120,226 C118,206 126,196 122,180 M168,226 C170,206 160,196 166,178" fill="none" stroke-width="3"/>
+<ellipse cx="120" cy="166" rx="18" ry="22" fill="${BBLUE}" stroke-width="4"/><ellipse cx="168" cy="164" rx="18" ry="22" fill="${BYELLOW}" stroke-width="4"/>
+<path d="M144,226 L144,186" fill="none" stroke-width="3"/><ellipse cx="144" cy="172" rx="16" ry="20" fill="${BPINK}" stroke-width="4"/>
+</g>
+${sparkles([[254, 80, 12, BYELLOW], [46, 236, 10, BPINK], [258, 230, 8, BBLUE]])}`,
+        },
+        bdaybunting: {
+            name: 'Birthday bunting', caption: 'My birthday',
+            art: (() => {
+                // Letters on pennants along two strings: HAPPY above, B-DAY below.
+                const row = (a, b, c, letters, offset) => {
+                    let out = band(`M${a.join(',')} Q${b.join(',')} ${c.join(',')}`, '#8B5A2B', 3);
+                    const colours = [BPINK, BBLUE, BYELLOW, BPURPLE, '#4CC36A'], n = letters.length;
+                    letters.forEach((l, i) => {
+                        const t = (i + 0.5) / n, q = (u, k) => (1 - u) * (1 - u) * a[k] + 2 * (1 - u) * u * b[k] + u * u * c[k];
+                        const p0 = [q(t - 0.085, 0), q(t - 0.085, 1)], p1 = [q(t + 0.085, 0), q(t + 0.085, 1)];
+                        const mx = (p0[0] + p1[0]) / 2, my = (p0[1] + p1[1]) / 2, dx = p1[0] - p0[0], dy = p1[1] - p0[1], len = Math.hypot(dx, dy);
+                        const tip = [mx - dy / len * 70, my + dx / len * 70], ang = Math.atan2(dy, dx) * 180 / Math.PI;
+                        out += `<path d="M${f(p0[0])},${f(p0[1])} L${f(p1[0])},${f(p1[1])} L${f(tip[0])},${f(tip[1])} Z" fill="${colours[(i + offset) % 5]}"/>`;
+                        const lx = f(mx - dy / len * 21), ly = f(my + dx / len * 21);
+                        out += `<text x="${lx}" y="${f(ly + 9)}" ${BLACK} font-size="26" fill="#fff" stroke="#000" stroke-width="5" paint-order="stroke" transform="rotate(${f(ang)} ${lx} ${ly})">${l}</text>`;
+                    });
+                    return out;
+                };
+                return `${row([16, 46], [150, 104], [284, 46], ['H', 'A', 'P', 'P', 'Y'], 0)}
+${row([16, 156], [150, 214], [284, 156], ['B', '-', 'D', 'A', 'Y'], 2)}
+<circle cx="16" cy="46" r="7" fill="#9EA7B0" stroke-width="4"/><circle cx="284" cy="46" r="7" fill="#9EA7B0" stroke-width="4"/>
+<circle cx="16" cy="156" r="7" fill="#9EA7B0" stroke-width="4"/><circle cx="284" cy="156" r="7" fill="#9EA7B0" stroke-width="4"/>`;
+            })(),
+        },
+        icecream: {
+            name: 'Ice cream', caption: 'My birthday',
+            art: `<defs><clipPath id="cone"><path d="M100,166 L200,166 L150,284 Z"/></clipPath></defs>
+<path d="M100,166 L200,166 L150,284 Z" fill="#E3A35B"/>
+<g clip-path="url(#cone)"><path d="${[0, 1, 2, 3, 4, 5].map(i => `M${70 + i * 28},150 L${150 + i * 28},290 M${230 - i * 28},150 L${150 - i * 28},290`).join(' ')}" fill="none" stroke="#B8752E" stroke-width="5"/></g>
+<path d="M100,166 L200,166 L150,284 Z" fill="none"/>
+<circle cx="116" cy="148" r="36" fill="#A8E6C1"/><circle cx="184" cy="148" r="36" fill="${CHOCO}"/>
+<circle cx="150" cy="96" r="42" fill="${BPINK}"/>
+<path d="M112,170 C112,186 124,186 124,172 M174,174 C174,190 186,190 186,176" fill="#A8E6C1" stroke-width="4"/>
+<path d="M150,46 C152,30 164,22 172,26" fill="none" stroke="#3E8E2B" stroke-width="5"/>
+<circle cx="150" cy="52" r="15" fill="#E63946"/>
+${sprinkles([[130, 86, 30, BYELLOW], [160, 76, -30, BBLUE], [172, 104, 50, '#fff'], [136, 112, -20, BPURPLE], [104, 140, 20, BPINK], [196, 140, -30, BYELLOW]])}`,
+        },
+        crown: {
+            name: 'Birthday crown', caption: 'My birthday',
+            art: `<path d="M56,214 L48,96 L102,150 L150,70 L198,150 L252,96 L244,214 Z" fill="${BYELLOW}"/>
+<rect x="52" y="200" width="196" height="40" rx="8" fill="#F2A900"/>
+${[[48, 96], [150, 70], [252, 96]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="13" fill="${BPINK}"/>`).join('')}
+${[[96, 220, '#E63946'], [150, 220, BBLUE], [204, 220, '#4CC36A']].map(([x, y, c]) => `<circle cx="${x}" cy="${y}" r="11" fill="${c}" stroke-width="4"/>`).join('')}
+${twinkle(150, 160, 18, '#fff')}
+<path d="M84,128 L92,184" fill="none" stroke="#fff" stroke-width="6" opacity="0.7"/>
+${sparkles([[30, 60, 11, BYELLOW], [272, 56, 10, BPINK], [270, 252, 9, BYELLOW]])}`,
+        },
+        partyhorn: {
+            name: 'Party blower', caption: 'My birthday',
+            art: `<defs><clipPath id="horn"><path d="M98,134 H232 C252,134 252,166 232,166 H98 Z"/></clipPath></defs>
+<g transform="rotate(-18 150 150)">
+<path d="M98,134 H232 C252,134 252,166 232,166 H98 Z" fill="${BPINK}"/>
+<g clip-path="url(#horn)">${[0, 1, 2, 3, 4, 5].map(i => `<path d="M${96 + i * 28},170 L${116 + i * 28},130" stroke="${BBLUE}" stroke-width="9" fill="none"/>`).join('')}</g>
+<path d="M98,134 H232 C252,134 252,166 232,166 H98 Z" fill="none"/>
+<path d="M246,150 L278,128 M248,150 L284,150 M246,150 L278,172" fill="none" stroke="${BYELLOW}" stroke-width="9"/>
+<rect x="52" y="138" width="50" height="24" rx="6" fill="${BYELLOW}"/>
+<path d="M52,138 V162" fill="none" stroke-width="4"/>
+</g>
+<path d="M60,94 Q50,80 60,66 M40,104 Q26,86 38,68" fill="none" stroke-width="4"/>
+${confetti([[200, 70, BPURPLE, 30], [240, 236, BYELLOW, -20], [80, 220, BBLUE, 15], [150, 240, BPINK, -40]])}`,
+        },
+        cakeface: {
+            name: 'Cake to the face', caption: 'My birthday',
+            art: `${band('M150,146 L150,214 M150,164 L106,130 M150,164 L196,126 M150,214 L120,268 M150,214 L182,268', INK, 7)}
+<circle cx="150" cy="98" r="48" fill="#fff"/>
+<path d="M104,92 C100,60 128,44 146,54 C160,36 196,46 196,72 C214,82 208,112 196,118 L194,140 C192,150 184,150 182,140 L180,124 C170,132 160,128 156,124 L154,146 C152,156 144,156 142,146 L140,126 C120,128 100,116 104,92 Z" fill="${BPINK}"/>
+<path d="M118,74 Q150,58 180,72" fill="none" stroke="#fff" stroke-width="6"/>
+<g transform="rotate(20 162 52)">${candle(162, 66, 34, BBLUE)}</g>
+<circle cx="126" cy="104" r="11" fill="#fff" stroke-width="4"/><circle cx="128" cy="106" r="4.5" fill="${INK}" stroke="none"/>
+${[[84, 60], [70, 104], [222, 84], [230, 128], [92, 142], [214, 46]].map(([x, y], i) => `<rect x="${x - 7}" y="${y - 6}" width="14" height="12" rx="3" fill="${i % 2 ? SPONGE : BPINK}" stroke-width="3" transform="rotate(${i * 25} ${x} ${y})"/>`).join('')}
+${sparkles([[246, 190, 10, BYELLOW], [52, 196, 9, BYELLOW]])}`,
+        },
+    };
+
     return {
+        birthday: BIRTHDAY,
         halloween: HALLOWEEN,
         christmas: CHRISTMAS,
         newyear: NEWYEAR,

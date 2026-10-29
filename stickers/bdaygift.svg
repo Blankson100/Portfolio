@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<defs><clipPath id="bdBox"><rect x="68" y="128" width="164" height="132" rx="6"/></clipPath></defs>
+<rect x="68" y="128" width="164" height="132" rx="6" fill="#8E5CF7"/>
+<g clip-path="url(#bdBox)"><path d="M40,270 L130,120" stroke="#FFD23F" stroke-width="12" fill="none"/><path d="M80,270 L170,120" stroke="#FFD23F" stroke-width="12" fill="none"/><path d="M120,270 L210,120" stroke="#FFD23F" stroke-width="12" fill="none"/><path d="M160,270 L250,120" stroke="#FFD23F" stroke-width="12" fill="none"/><path d="M200,270 L290,120" stroke="#FFD23F" stroke-width="12" fill="none"/><path d="M240,270 L330,120" stroke="#FFD23F" stroke-width="12" fill="none"/><path d="M280,270 L370,120" stroke="#FFD23F" stroke-width="12" fill="none"/></g>
+<rect x="68" y="128" width="164" height="132" rx="6" fill="none"/>
+<rect x="136" y="128" width="28" height="132" fill="#FF8FB8"/>
+<rect x="56" y="104" width="188" height="34" rx="6" fill="#A57BFA"/>
+<rect x="136" y="104" width="28" height="34" fill="#FF8FB8"/>
+<rect x="56" y="104" width="188" height="34" rx="6" fill="none"/>
+<path d="M150,102 C122,62 84,64 94,88 C100,102 126,104 150,102 Z M150,102 C178,62 216,64 206,88 C200,102 174,104 150,102 Z" fill="#FF8FB8"/>
+<ellipse cx="150" cy="102" rx="13" ry="10" fill="#FF6FA3"/>
+<rect x="37" y="66" width="14" height="8" rx="2" fill="#FFD23F" stroke-width="3" transform="rotate(30 44 70)"/><rect x="249" y="62" width="14" height="8" rx="2" fill="#3BA7F0" stroke-width="3" transform="rotate(-20 256 66)"/><rect x="33" y="196" width="14" height="8" rx="2" fill="#FF8FB8" stroke-width="3" transform="rotate(15 40 200)"/><rect x="255" y="192" width="14" height="8" rx="2" fill="#4CC36A" stroke-width="3" transform="rotate(-40 262 196)"/>
+</g></g>
+</svg>

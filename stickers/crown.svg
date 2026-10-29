@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<defs><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="diecut" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/><feFlood flood-color="#fff"/><feComposite in2="grown" operator="in" result="border"/><feMerge><feMergeNode in="border"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#diecut)"><g filter="url(#rough)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M56,214 L48,96 L102,150 L150,70 L198,150 L252,96 L244,214 Z" fill="#FFD23F"/>
+<rect x="52" y="200" width="196" height="40" rx="8" fill="#F2A900"/>
+<circle cx="48" cy="96" r="13" fill="#FF8FB8"/><circle cx="150" cy="70" r="13" fill="#FF8FB8"/><circle cx="252" cy="96" r="13" fill="#FF8FB8"/>
+<circle cx="96" cy="220" r="11" fill="#E63946" stroke-width="4"/><circle cx="150" cy="220" r="11" fill="#3BA7F0" stroke-width="4"/><circle cx="204" cy="220" r="11" fill="#4CC36A" stroke-width="4"/>
+<g stroke-width="6"><path d="M150,142 L154.4,153.9 L167.1,154.4 L157.2,162.3 L160.6,174.6 L150,167.6 L139.4,174.6 L142.8,162.3 L132.9,154.4 L145.6,153.9 Z" fill="#fff"/></g>
+<path d="M84,128 L92,184" fill="none" stroke="#fff" stroke-width="6" opacity="0.7"/>
+<g stroke-width="4"><path d="M30,49 L32.7,56.3 L40.5,56.6 L34.4,61.4 L36.5,68.9 L30,64.6 L23.5,68.9 L25.6,61.4 L19.5,56.6 L27.3,56.3 Z" fill="#FFD23F"/></g><g stroke-width="4"><path d="M272,46 L274.5,52.6 L281.5,52.9 L276,57.3 L277.9,64.1 L272,60.2 L266.1,64.1 L268,57.3 L262.5,52.9 L269.5,52.6 Z" fill="#FF8FB8"/></g><g stroke-width="4"><path d="M270,243 L272.2,248.9 L278.6,249.2 L273.6,253.2 L275.3,259.3 L270,255.8 L264.7,259.3 L266.4,253.2 L261.4,249.2 L267.8,248.9 Z" fill="#FFD23F"/></g>
+</g></g>
+</svg>

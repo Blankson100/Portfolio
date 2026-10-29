@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1085 1450" width="1085" height="1450">
+<defs><filter id="rough" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter><clipPath id="bdHat"><path d="M436,394 L556,212 L668,386 Z"/></clipPath></defs>
+<style>
+.a{transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translateY(-40px) rotate(0);opacity:0}15%,85%{opacity:1}100%{transform:translateY(80px) rotate(140deg);opacity:0}}
+@keyframes flutter{0%{transform:translateY(-18px) rotate(0);opacity:0}20%,80%{opacity:1}100%{transform:translateY(34px) rotate(200deg);opacity:0}}
+@keyframes rise{0%{transform:translateY(24px) scale(.8);opacity:0}25%,80%{opacity:1}100%{transform:translateY(-46px) scale(1.1);opacity:0}}
+@keyframes rain{0%{transform:translateY(-60px);opacity:0}15%{opacity:1}100%{transform:translateY(110px);opacity:0}}
+@keyframes drift{0%{transform:translateX(-24px);opacity:0}30%,70%{opacity:.8}100%{transform:translateX(36px);opacity:0}}
+@keyframes twinkle{0%,100%{transform:scale(.75);opacity:.4}50%{transform:scale(1.15);opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes wave{0%,100%{transform:skewY(-5deg)}50%{transform:skewY(4deg) scaleX(.95)}}
+@keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
+@keyframes toot{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+@keyframes blink{0%,100%{opacity:0}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+
+<g filter="url(#rough)" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M436,394 L556,212 L668,386 Z" fill="#8E5CF7" stroke="none"/>
+<g clip-path="url(#bdHat)" stroke="none"><circle cx="522" cy="302" r="19" fill="#FFD23F"/><circle cx="590" cy="294" r="19" fill="#FF4FA3"/><circle cx="494" cy="362" r="19" fill="#3BA7F0"/><circle cx="566" cy="350" r="19" fill="#FFD23F"/><circle cx="630" cy="366" r="19" fill="#FF4FA3"/><circle cx="554" cy="254" r="19" fill="#3BA7F0"/></g>
+<path d="M436,394 L556,212 L668,386 Z" fill="none"/>
+<path d="M424,398 Q446,372 468,394 Q490,368 512,390 Q534,364 556,386 Q578,360 600,382 Q622,356 644,378 Q664,354 684,374" fill="none" stroke-width="34"/>
+<path d="M424,398 Q446,372 468,394 Q490,368 512,390 Q534,364 556,386 Q578,360 600,382 Q622,356 644,378 Q664,354 684,374" fill="none" stroke="#FF4FA3" stroke-width="20"/>
+<path d="M556,212 L556,176 M556,212 L582,186 M556,212 L530,186 M556,212 L590,212 M556,212 L522,212" fill="none" stroke="#FFD23F" stroke-width="11"/>
+<circle cx="556" cy="206" r="20" fill="#FFD23F"/>
+<g class="a" style="animation:bob 3s ease-in-out -1.2s infinite"><path d="M958,700 C944,780 984,850 952,950" fill="none" stroke-width="5"/>
+<path d="M948,694 L958,682 L968,694 Z" fill="#3BA7F0" stroke-width="5"/>
+<ellipse cx="958" cy="628" rx="46" ry="58" fill="#3BA7F0"/>
+<path d="M936,594 Q930,612 936,630" fill="none" stroke="#fff" stroke-width="9"/></g>
+<g class="a" style="animation:bob 2.6s ease-in-out infinite"><path d="M890,598 C874,690 924,780 900,880" fill="none" stroke-width="5"/>
+<path d="M880,592 L890,580 L900,592 Z" fill="#FF4FA3" stroke-width="5"/>
+<ellipse cx="890" cy="514" rx="58" ry="72" fill="#FF4FA3"/>
+<path d="M862,470 Q855,494 862,518" fill="none" stroke="#fff" stroke-width="10"/></g>
+<rect x="232" y="934" width="16" height="70" fill="#3BA7F0"/>
+<path d="M232,952 L248,944 M232,976 L248,968 M232,998 L248,990" fill="none" stroke="#fff" stroke-width="5"/>
+<g class="a" style="animation:twinkle .7s ease-in-out infinite"><path d="M240,880 C254,900 256,916 240,924 C224,916 226,900 240,880 Z" fill="#FFB020" stroke-width="5"/></g>
+<path d="M160,1060 H306 V990 L160,1024 Z" fill="#F7E1B5"/>
+<path d="M160,1044 L306,1028" fill="none" stroke="#E63946" stroke-width="10"/>
+<path d="M156,1022 L308,986 L310,1000 C296,1014 286,1000 278,1012 C266,1024 256,1008 244,1018 C230,1028 220,1014 206,1024 C192,1034 182,1022 166,1034 Z" fill="#FF8FB8"/>
+</g>
+
+</svg>

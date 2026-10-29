@@ -248,6 +248,34 @@ ${anim(anim(`<path d="M885,478 C865,450 835,445 815,458 C830,462 836,474 832,486
 <path d="M170,1040 l12,10 l12,-10 l12,10 l12,-10 l12,10 l12,-10 l12,10" fill="none" stroke-width="7"/>`,
 });
 
+// Bright's birthday (29 November): a polka-dot party hat, balloons bobbing at one side and a
+// slice of cake at the other with its candle flickering.
+V['birthday'] = svg({
+    defs: '<clipPath id="bdHat"><path d="M436,394 L556,212 L668,386 Z"/></clipPath>',
+    body: `<path d="M436,394 L556,212 L668,386 Z" fill="#8E5CF7" stroke="none"/>
+<g clip-path="url(#bdHat)" stroke="none">${[[522, 302, '#FFD23F'], [590, 294, '#FF4FA3'], [494, 362, '#3BA7F0'], [566, 350, '#FFD23F'], [630, 366, '#FF4FA3'], [554, 254, '#3BA7F0']]
+        .map(([x, y, c]) => `<circle cx="${x}" cy="${y}" r="19" fill="${c}"/>`).join('')}</g>
+<path d="M436,394 L556,212 L668,386 Z" fill="none"/>
+<path d="M424,398 Q446,372 468,394 Q490,368 512,390 Q534,364 556,386 Q578,360 600,382 Q622,356 644,378 Q664,354 684,374" fill="none" stroke-width="34"/>
+<path d="M424,398 Q446,372 468,394 Q490,368 512,390 Q534,364 556,386 Q578,360 600,382 Q622,356 644,378 Q664,354 684,374" fill="none" stroke="#FF4FA3" stroke-width="20"/>
+<path d="M556,212 L556,176 M556,212 L582,186 M556,212 L530,186 M556,212 L590,212 M556,212 L522,212" fill="none" stroke="#FFD23F" stroke-width="11"/>
+<circle cx="556" cy="206" r="20" fill="#FFD23F"/>
+${anim(`<path d="M958,700 C944,780 984,850 952,950" fill="none" stroke-width="5"/>
+<path d="M948,694 L958,682 L968,694 Z" fill="#3BA7F0" stroke-width="5"/>
+<ellipse cx="958" cy="628" rx="46" ry="58" fill="#3BA7F0"/>
+<path d="M936,594 Q930,612 936,630" fill="none" stroke="#fff" stroke-width="9"/>`, 'animation:bob 3s ease-in-out -1.2s infinite')}
+${anim(`<path d="M890,598 C874,690 924,780 900,880" fill="none" stroke-width="5"/>
+<path d="M880,592 L890,580 L900,592 Z" fill="#FF4FA3" stroke-width="5"/>
+<ellipse cx="890" cy="514" rx="58" ry="72" fill="#FF4FA3"/>
+<path d="M862,470 Q855,494 862,518" fill="none" stroke="#fff" stroke-width="10"/>`, 'animation:bob 2.6s ease-in-out infinite')}
+<rect x="232" y="934" width="16" height="70" fill="#3BA7F0"/>
+<path d="M232,952 L248,944 M232,976 L248,968 M232,998 L248,990" fill="none" stroke="#fff" stroke-width="5"/>
+${anim('<path d="M240,880 C254,900 256,916 240,924 C224,916 226,900 240,880 Z" fill="#FFB020" stroke-width="5"/>', 'animation:twinkle .7s ease-in-out infinite')}
+<path d="M160,1060 H306 V990 L160,1024 Z" fill="#F7E1B5"/>
+<path d="M160,1044 L306,1028" fill="none" stroke="#E63946" stroke-width="10"/>
+<path d="M156,1022 L308,986 L310,1000 C296,1014 286,1000 278,1012 C266,1024 256,1008 244,1018 C230,1028 220,1014 206,1024 C192,1034 182,1022 166,1034 Z" fill="#FF8FB8"/>`,
+});
+
 const RAINDROPS = [[170, 470], [232, 600], [140, 690], [215, 800], [152, 905], [255, 470], [195, 640], [880, 470], [930, 600], [860, 700], [925, 800], [872, 905], [830, 560], [950, 450]]
     .map(([x, y], i) => anim(drop(x, y), `animation:rain 1.1s linear -${((i * 0.37) % 1.1).toFixed(2)}s infinite`)).join('');
 
@@ -342,7 +370,7 @@ const outline = bb.match(/class="profile-avatar-stroke"[\s\S]*?<\/defs>\s*(<path
 const cards = [
     ['Default', []],
     ['Christmas', ['christmas']], ['New Year', ['newyear']], ['Valentine’s Day', ['valentine']],
-    ['Ghana Independence Day', ['ghana-independence']], ['Easter', ['easter']], ['Halloween', ['halloween']],
+    ['Ghana Independence Day', ['ghana-independence']], ['Easter', ['easter']], ['Halloween', ['halloween']], ['Birthday (29 Nov)', ['birthday']],
     ['Rainy season', ['rainy']], ['Harmattan', ['harmattan']],
     ['Beard · week 1 (stubble)', ['beard-1']], ['Beard · week 2', ['beard-2']], ['Beard · week 3', ['beard-3']], ['Beard · week 4', ['beard-4']],
     ['Earring', ['earring']],

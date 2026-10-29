@@ -25,6 +25,7 @@ const W = 600, H = 315, SCALE = 2;
 const CARDS = {
     everyday: '2026-10-05T19',
     halloween: '2026-10-31T19',
+    birthday: '2026-11-29T19',
     christmas: '2026-12-25T19',
     newyear: '2027-01-01T19',
     valentine: '2027-02-14T19',
@@ -57,6 +58,8 @@ body { opacity: 1 !important; margin: 0; background: #F0F0F0; }
 .share-strip .bee-end { height: 54px; }
 .share-strip .bee-end .bee-1 { left: 14%; top: 2px; width: 92px; }
 .share-strip .bee-end .bee-2 { left: 66%; top: 14px; width: 72px; }
+.share-strip .bee-end .flyer-birthday.bee-1 { width: 124px; }
+.share-strip .bee-end .flyer-birthday.bee-2 { width: 98px; }
 .share-strip .bee-end .firework { top: 4px; width: 46px; height: 46px; margin-left: -23px; }
 </style></head><body>
 <div class="share-me">
