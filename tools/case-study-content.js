@@ -13,7 +13,7 @@ module.exports = {
         title: 'Crop Care case study',
         pdf: 'case-studies/crop-care-case-study.pdf',
         pdfName: 'Crop Care case study.pdf',
-        cover: 'case-studies/crop-care-cover.png',
+        cover: 'web/case-studies/crop-care-cover.webp',
         coverAlt: 'Crop Care cover: a swirl of green leaves with one orange leaf breaking away',
         body: `
 ## 1. Introduction {#introduction}
@@ -81,19 +81,19 @@ Crop Care does four things: scan, understand, act, remember. Each has its own mo
 
 The app opens with two numbered steps: photograph a sick leaf, get a suggestion. That's the whole tutorial. From home, one tap opens the camera or the gallery, with recent scans waiting underneath.
 
-![Four Crop Care screens: the welcome screen with Take Photo and Choose From Gallery, an empty home screen, the camera and gallery menu, and the gallery of leaf photos](case-studies/crop-care-getting-started.png)
+![Four Crop Care screens: the welcome screen with Take Photo and Choose From Gallery, an empty home screen, the camera and gallery menu, and the gallery of leaf photos](web/case-studies/crop-care-getting-started.webp)
 
 ### Scan
 
 The camera fills the screen. While the app works, the leaf shimmers and a rabbit, a turtle and a leaf take turns as the loading icon. A quiet joke about speed and patience, and a nicer thing to watch than a spinner.
 
-![Two Crop Care screens: the camera pointed at a maize leaf, and the same photo shimmering while the app works](case-studies/crop-care-scan.png)
+![Two Crop Care screens: the camera pointed at a maize leaf, and the same photo shimmering while the app works](web/case-studies/crop-care-scan.webp)
 
 ### Understand and act
 
 The result leads with the disease name in large serif type, set against the photo. Below sit four plain sections: Symptoms, Cause, Prevention and Treatment. As you scroll, the photo shrinks to a thumbnail, so the answer takes over without losing sight of the leaf.
 
-![Two Crop Care result screens for Leaf Rust: the photo with a "Very likely" coin above Symptoms and Cause, and the scrolled view with the photo shrunk to a thumbnail](case-studies/crop-care-result.png)
+![Two Crop Care result screens for Leaf Rust: the photo with a "Very likely" coin above Symptoms and Cause, and the scrolled view with the photo shrunk to a thumbnail](web/case-studies/crop-care-result.webp)
 
 In the corner of the photo, a small coin flips on its own to reveal how sure the app is: "96%, Very likely". On an otherwise still screen, the movement draws the eye to confidence before you act. Then it rests on the score.
 
@@ -103,13 +103,13 @@ Beside the disease name sits the voice button. Tap it and the app reads the resu
 
 If confidence is low, the coin turns amber and reads "Not sure". A card at the top says so plainly and asks for photos of two or three more leaves. The app would rather ask for more than guess.
 
-![Two Crop Care result screens where the coin reads "Not sure", with a card asking for photos of 2 or 3 more leaves and a Scan more leaves button](case-studies/crop-care-not-sure.png)
+![Two Crop Care result screens where the coin reads "Not sure", with a card asking for photos of 2 or 3 more leaves and a Scan more leaves button](web/case-studies/crop-care-not-sure.webp)
 
 ### Remember
 
 Every scan saves to History: crop, disease, confidence, date and a one-line recommendation. Each entry is small. Together they become the crop-health record none of the farmers I spoke to kept. Next season, "has this happened before?" finally has an answer.
 
-![The Crop Care history screen: a list of recent scans, each with the disease, crop, confidence and date](case-studies/crop-care-history.png)
+![The Crop Care history screen: a list of recent scans, each with the disease, crop, confidence and date](web/case-studies/crop-care-history.webp)
 
 ## 4. Design process {#design-process}
 
@@ -263,7 +263,7 @@ InForm asks for little up front, then puts every logging action behind one butto
 
 **One button starts every log.** The plus button sits beside the navigation bar, so it is on every main screen. It opens four options: Log Water, Log Meal, Log Insulin and Log Blood Sugar. I put it there to make logging quick, wherever you are in the app.
 
-![Four InForm screens: the splash screen, the intro with Create Account, the home screen showing 98 mg/dL, and the plus menu with Log Water, Log Meal, Log Insulin and Log Blood Sugar](case-studies/inform-setup-home.png)
+![Four InForm screens: the splash screen, the intro with Create Account, the home screen showing 98 mg/dL, and the plus menu with Log Water, Log Meal, Log Insulin and Log Blood Sugar](web/case-studies/inform-setup-home.webp)
 
 _Left to right: splash, intro, home, and the plus menu with its four options. Screens from the Figma prototype._
 
@@ -273,7 +273,7 @@ _Left to right: splash, intro, home, and the plus menu with its four options. Sc
 
 **Looking back is a chart and a list.** Records show readings by day, week, month, six months or year, in the same three colours. Below the chart, each reading is listed with its time, a label such as Normal and an optional note.
 
-![Three InForm screens: the blood sugar form with its range guide, the meal plan with Avocado Toast with Egg, and the records chart with readings coloured by range](case-studies/inform-logging.png)
+![Three InForm screens: the blood sugar form with its range guide, the meal plan with Avocado Toast with Egg, and the records chart with readings coloured by range](web/case-studies/inform-logging.webp)
 
 _Left to right: the blood sugar form, the meal plan and the records chart. Names, dates and readings are placeholder content._
 

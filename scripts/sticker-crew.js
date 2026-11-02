@@ -248,11 +248,10 @@
         const left = r.left + window.scrollX, right = r.right + window.scrollX;
 
         // The meadow's ground just below the cover, and the field from there down to the
-        // footer; the plants are redrawn only when the page gets wider.
+        // bottom of the page; the plants are redrawn only when the page gets wider.
         if (meadow) {
             if (vw > meadow.w) grow(Math.ceil(vw / 400) * 400);
-            const ground = bottom + 6, footer = document.querySelector('.footer');
-            const end = footer ? footer.getBoundingClientRect().top + window.scrollY : document.documentElement.scrollHeight;
+            const ground = bottom + 6, end = document.documentElement.scrollHeight;
             meadow.back.style.top = meadow.front.style.top = (ground - GROUND) + 'px';
             meadow.field.style.top = (ground + 4) + 'px';
             meadow.field.style.height = Math.max(0, end - ground - 4) + 'px';

@@ -15,23 +15,6 @@ body.dark-mode .time-location-display {
     color:rgba(255, 255, 255, 0.5);
 }
 
-body.dark-mode .footer {
-    background:#ffffff;
-    color:#000000;
-}
-
-body.dark-mode .footer-icons img {
-    filter: brightness(0);
-}
-
-body.dark-mode .intro-heading {
-    color:#ffffff;
-}
-
-body.dark-mode .barcode-logo {
-    color:#ffffff;
-}
-
 body.dark-mode .profile-role {
     color:rgba(255, 255, 255, 0.55);
 }
@@ -40,21 +23,6 @@ body.dark-mode .intro-sub {
     color:#e0e0e0;
     font-family: 'Satoshi', 'Google Sans', Arial, sans-serif;
     font-weight: 300;
-}
-
-body.dark-mode .intro-cta {
-    background:#ffffff;
-    color:#0a0a0a;
-}
-
-body.dark-mode .mail {
-    background:#ffffff;
-    color:#0a0a0a;
-}
-
-body.dark-mode .FP {
-    background:#D9D9D9;
-    color:#0b0b0b;
 }
 
 body.dark-mode .leafAi {
@@ -73,8 +41,4 @@ body.dark-mode .projects-btn {
     background-color: #4C4C4C !important;
     color: #BDBDBD !important;
     font-weight: 300 !important;
-}
-
-body.dark-mode .contact-space-container {
-    background: rgba(255, 255, 255, 0.2);
 }

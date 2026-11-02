@@ -3,19 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        .green-canvas {
-            /* background: url('BG LEAF.svg') center center/cover no-repeat; */
-            width: 100vw;
-            min-width: 100vw;
-            max-width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            transform: translateX(-50%);
-            height: 1483px;
-            margin-top: 15px;
-            border-radius: 0;
-        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clostra Platform - PortoBlknszzz</title>
@@ -32,7 +19,7 @@
     <meta name="twitter:image" content="https://portoblankson.vercel.app/share-card.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://api.fontshare.com">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -98,17 +85,6 @@
             flex-direction: column;
             gap: 8px;
         }
-        .project-sidebar a {
-            font-family: Satoshi, sans-serif;
-            font-size: 15px;
-            color: #777777;
-            text-decoration: none;
-            transition: color 0.3s var(--transition-easing);
-        }
-        .project-sidebar a:hover,
-        .project-sidebar a.active {
-            color: #f5f5f5;
-        }
         .project-main {
             width: 602px;
             margin: 0 auto;
@@ -142,17 +118,6 @@
         .back-button svg {
             flex-shrink: 0;
         }
-        .title-button {
-            background: #4C4C4C;
-            border: none;
-            border-radius: 50px 0 0 50px;
-            padding: 0 20px;
-            height: 45px;
-            font-size: 16px;
-            font-weight: 300;
-            font-family: "Google Sans", sans-serif;
-            color: #BDBDBD;
-        }
         .project-hero-inner {
             width: 100%;
             height: 100%;
@@ -164,145 +129,7 @@
             height: 100%;
             object-fit: cover;
         }
-        .project-header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 5px;
-        }
-        .project-title {
-            font-size: 28px;
-            font-weight: 900;
-            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
-            color: #f5f5f5;
-            margin: 0;
-        }
-            .features-cards-row {
-                display: flex;
-                gap: 10px;
-                margin-bottom: 40px;
-                justify-content: flex-end;
-            }
-        
-        .project-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 40px;
-            width: 100%;
-        }
-        .meta-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-        }
-        .meta-row .meta-item:first-child {
-            flex: 1;
-        }
-        .meta-row .meta-item:last-child {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .meta-label {
-            font-size: 18px;
-            color: #f5f5f5;
-            font-family: Satoshi, sans-serif;
-            font-weight: 700;
-        }
-        .meta-value {
-            font-size: 16px;
-            color: #f5f5f5;
-            font-family: Satoshi, sans-serif;
-            font-weight: 500;
-        }
-        .meta-value-content {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #aaaaaa;
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            margin: 0;
-        }
-        .project-section {
-            width: 100%;
-            margin-bottom: 40px;
-        }
-        .section-title {
-            font-size: 24px;
-            font-weight: 600;
-            font-family: Satoshi, sans-serif;
-            color: #f5f5f5;
-            margin-bottom: 15px;
-        }
-        .section-content {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #aaaaaa;
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            margin: 0;
-        }
-        .project-gallery {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .gallery-image {
-            width: 100%;
-            height: 250px;
-            background: #252525;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        .gallery-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .cta-section {
-            width: 100%;
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .cta-button {
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 500;
-            font-family: Satoshi, sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .cta-primary {
-            background: #87B069;
-            color: #ffffff;
-            border: none;
-        }
-        .cta-primary:hover {
-            background: #759c5a;
-        }
-        .cta-secondary {
-            background: transparent;
-            color: #f5f5f5;
-            border: 1.5px solid #f5f5f5;
-        }
-        .cta-secondary:hover {
-            background: #f5f5f5;
-            color: #000000;
-        }
         .navbar {
-            /* background-color: #252525 !important; */
         }
         .navbar ul li a {
             color: #f5f5f5;
@@ -317,170 +144,6 @@
         }
         .time-location-display {
             color: #f5f5f5;
-        }
-        .see-how-title {
-            font-size: 18px;
-            color: #f5f5f5;
-            font-family: Satoshi, sans-serif;
-            font-weight: 700;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-        .see-how-desc {
-            font-size: 16px;
-            color: #BDBDBD;
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            margin-bottom: 24px;
-            text-align: left;
-            line-height: 1.7;
-        }
-        .features-cards-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 40px;
-            justify-content: flex-end;
-        }
-        .feature-card {
-            width: 230px;
-            height: 380px;
-            border-radius: 18px;
-            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-        .toc-section {
-            width: 100%;
-            margin-bottom: 16px;
-            scroll-margin-top: 110px;
-        }
-        .toc-heading {
-            font-family: Satoshi, sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            color: #f5f5f5;
-            margin: 0 0 4px 0;
-        }
-        .toc-content p {
-            font-family: Satoshi, sans-serif;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #aaaaaa;
-            margin: 0 0 16px 0;
-        }
-        .toc-content p:last-child {
-            margin-bottom: 0;
-        }
-        .chg-card {
-            position: relative;
-            width: 602px;
-            height: 304px;
-            background: #2D2D2D;
-            border-radius: 32px;
-            padding: 4px;
-            box-sizing: border-box;
-        }
-        .chg-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: #161616;
-            border-radius: 28px;
-            border: 1px solid #1C1C1C;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-        .chg-row {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .chg-row-header {
-            top: 0;
-            height: 44px;
-            background: #2D2D2D;
-        }
-        .chg-row-body {
-            background: #161616;
-            border-bottom: 0.5px solid #2D2D2D;
-        }
-        .chg-text {
-            position: absolute;
-            color: #FFFFFF;
-        }
-        .chg-text-header {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            font-weight: 510;
-            font-size: 12px;
-            line-height: 14px;
-            letter-spacing: 0;
-        }
-        .chg-text-body {
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 22px;
-            letter-spacing: -0.48px;
-        }
-        .whatsnext-box {
-            position: relative;
-            width: 602px;
-            height: 170px;
-            border-radius: 32px;
-            overflow: hidden;
-        }
-        .whatsnext-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .cta-compact {
-            position: absolute;
-            left: 32px;
-            top: 26px;
-            width: 250px;
-            height: 119px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 11px;
-            padding: 0;
-        }
-        .cta-compact-text {
-            width: 250px;
-            height: 66px;
-            font-family: Satoshi, sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 22px;
-            letter-spacing: 0;
-            color: #0b0b0b;
-            text-align: left;
-            margin: 0;
-        }
-        .cta-compact-btn {
-            width: 173px;
-            height: 42px;
-            box-sizing: border-box;
-            background: #FFFFFF;
-            border-radius: 14px;
-            padding: 11px 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            font-size: 15px;
-            line-height: 20px;
-            letter-spacing: 0;
-            color: #000000;
-            white-space: nowrap;
-            text-decoration: none;
         }
     </style>
 <script>
@@ -517,7 +180,7 @@
                 <div class="project-main">
             <h1 class="hero-title-standalone">Clostra</h1>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="Clostra Cover.png" alt="Clostra"></div>
+                <div class="project-hero-inner"><img src="web/Clostra Cover.webp" alt="Clostra"></div>
             </div>
 
                 </div>
@@ -666,109 +329,6 @@
 
 
     </script>
-<script>
-(function () {
-    const logoSources = ['Logo 1.svg', 'Logo 2.svg', 'Logo 3.svg', 'Logo 4.svg', 'Logo 5.svg', 'Logo 6.svg'];
-    const logos = document.querySelectorAll('.barcode-logo img');
-    const intervalMs = 5000;
-    const fadeOutMs = 220;
-    const storageKey = 'logoCycleStartMs';
-
-    if (!logos.length) {
-        return;
-    }
-
-    let startMs;
-    try {
-        const stored = parseInt(localStorage.getItem(storageKey) || '', 10);
-        if (Number.isNaN(stored)) {
-            startMs = Date.now();
-            localStorage.setItem(storageKey, String(startMs));
-        } else {
-            startMs = stored;
-        }
-    } catch (e) {
-        startMs = Date.now();
-    }
-
-    function getCurrentIndex() {
-        const elapsed = Date.now() - startMs;
-        return Math.floor(elapsed / intervalMs) % logoSources.length;
-    }
-
-    logos.forEach(function (img) {
-        img.width = 50;
-        img.height = 50;
-        img.style.width = '50px';
-        img.style.height = '50px';
-        img.style.objectFit = 'cover';
-        img.style.transition = 'opacity 0.45s ease';
-        img.style.opacity = '1';
-        img.src = logoSources[getCurrentIndex()];
-
-        const delayToNext = intervalMs - ((Date.now() - startMs) % intervalMs);
-
-        setTimeout(function () {
-            img.style.opacity = '0.35';
-            setTimeout(function () {
-                img.src = logoSources[getCurrentIndex()];
-                img.style.opacity = '1';
-            }, fadeOutMs);
-
-            setInterval(function () {
-                img.style.opacity = '0.35';
-                setTimeout(function () {
-                    img.src = logoSources[getCurrentIndex()];
-                    img.style.opacity = '1';
-                }, fadeOutMs);
-            }, intervalMs);
-        }, delayToNext);
-    });
-})();
-</script>
-<script>
-    (function() {
-        const sections = document.querySelectorAll('.toc-section');
-        const navLinks = document.querySelectorAll('.project-sidebar a[href^="#"]');
-        if (!sections.length || !navLinks.length) {
-            return;
-        }
-
-        function onScroll() {
-            const triggerLine = 150;
-            let currentId = null;
-
-            sections.forEach(function(section) {
-                if (section.getBoundingClientRect().top <= triggerLine) {
-                    currentId = section.id;
-                }
-            });
-
-            const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-            if (atBottom) {
-                currentId = sections[sections.length - 1].id;
-            }
-
-            navLinks.forEach(function(link) {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
-            });
-        }
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('pageshow', onScroll);
-        onScroll();
-
-        navLinks.forEach(function(link) {
-            link.addEventListener('mouseenter', function() {
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    })();
-</script>
-    <script src="scripts/case-video.js"></script>
     <script src="stickers/stickers.js"></script>
     <script src="scripts/sticker-crew.js" data-crew="bees"></script>
 </body>

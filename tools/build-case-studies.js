@@ -30,10 +30,13 @@ function inline(s) {
     return s.replace(/\u0000(\d+)\u0000/g, (m, i) => `<a href="${esc(links[i][1])}" target="_blank" rel="noopener">${esc(links[i][0])}</a>`);
 }
 // The markup in case-study-content.js to HTML, and the list of sections for the sidebar.
-// A PNG's width and height, read from its header, so the page saves the image's space
-// before it loads.
+// An image's width and height, read from its PNG header, so the page saves the image's space
+// before it loads. A web copy (web/...webp) is measured by its original PNG, which has the
+// same shape (tools/build-web-images.js).
+const { IMAGES, webPath } = require('./build-web-images.js');
 function pngSize(file) {
-    const head = fs.readFileSync(path.join(ROOT, file)).subarray(16, 24);
+    const original = Object.keys(IMAGES).find(o => webPath(o) === file) || file;
+    const head = fs.readFileSync(path.join(ROOT, original)).subarray(16, 24);
     return [head.readUInt32BE(0), head.readUInt32BE(4)];
 }
 function render(body) {
@@ -561,7 +564,7 @@ function page(key, dark) {
     <meta name="twitter:image" content="https://portoblankson.vercel.app/share-card.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://api.fontshare.com">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" sizes="any">

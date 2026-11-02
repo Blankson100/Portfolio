@@ -34,15 +34,6 @@
     align-items: center;
 }
 
-.logo {
-    position: relative;
-}
-
-.button-row {
-    position: relative;
-    z-index: 101;
-}
-
 .introduction {
     flex: 1;
     overflow-y: auto;
@@ -380,21 +371,6 @@ body.dark-mode .grad-blur-grain{
     background: transparent;
 }
 
-
-
-.logo{
-    display:flex;
-    align-items:center;
-    position:relative;
-    height:72px;
-}
-.logo img{
-    width:72px;
-    height:72px;
-    object-fit:cover;
-    display:block;
-}
-
 .profile-header {
     width: 960px;
     max-width: 100%;
@@ -450,6 +426,11 @@ body.dark-mode .grad-blur-grain{
     height: 620px;
     border-radius: 42px;
     overflow: hidden;
+}
+/* On the dark pages the video's black would melt into the black page, so it gets a fine dark
+   grey frame: a ring (box-shadow) rather than a border, so the player keeps its size. */
+body.dark-mode .case-video {
+    box-shadow: 0 0 0 1px #161616;
 }
 .case-video video {
     width: 100%;
@@ -1428,74 +1409,13 @@ body.dark-mode .avatar-bubble-cloud circle {
     font-weight: 400;
     margin-top: 4px;
 }
-.barcode-logo{
-    font-family:'Libre Barcode 39', cursive;
-    font-size:40px;
-    color:var(--black);
-    text-decoration:none;
-    line-height:1;
-    white-space:nowrap;
-}
-
-.button-row{
-    display:flex;
-    gap:12px;
-    align-items:center;
-    margin-right:0;
-    position:fixed;
-    right:5%;
-    top:20px;
-    z-index:101;
-}
-
-.button-row button,
-.button-row a.mail{
-    padding:7px 29px;
-    height:50px;
-    background:#0b0b0b;
-    color:#fff;
-    font-size:17.5px;
-    font-weight:400;
-    border:none;
-    cursor:pointer;
-    border-radius:999px;
-    box-shadow:0 6px 18px rgba(2,6,23,0.08);
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.button-row button{
-    padding:7px 29px;
-    height:50px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:var(--btn-radius);
-    border:1px solid rgba(0,0,0,0.06);
-    background:var(--black);
-    color:#fff;
-    cursor:pointer;
-    font-weight:400;
-    font-size:17.5px;
-    box-shadow: 0 6px 18px rgba(2,6,23,0.08);
-}
-.button-row button:focus{outline:none;outline-offset:0}
-
-/* keep .mail class available in case of different styling later */
 @media (max-width:820px){
     .container{padding:8px;gap:12px}
 }
 
 @media (max-width:640px){
     .container{flex-direction:column;align-items:stretch}
-    .logo{justify-content:flex-start}
-    .button-row{justify-content:flex-end;padding-top:8px}
-    .logo img{width:60px;height:60px}
 }
-
-/* small utility to center page content vertically if needed */
-.page-center{min-height:100vh;display:flex;align-items:center;justify-content:center}
 
 .introduction{
     width:100%;
@@ -1529,23 +1449,7 @@ body.dark-mode .avatar-bubble-cloud circle {
     text-align:left;
 }
 
-.intro-actions{display:block;text-align:center;margin-top:20px}
-.intro-cta{
-    display:inline-block;
-    padding:18px 29.5px; /* requested vertical and horizontal padding */
-    line-height:normal;
-    border-radius:var(--btn-radius);
-    background:var(--black);
-    color:#fff;
-    border:1px solid rgba(0,0,0,0.06);
-    cursor:pointer;
-    font-family:Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
-    font-weight:400; /* match other buttons */
-    font-size:17.5px;
-    box-shadow: 0 6px 18px rgba(2,6,23,0.08);
-}
-
-/* new extra-action button placed under the intro CTA */
+/* Home's project cards, under the intro line */
 .extra-action{display:block;margin-top:20px;margin-bottom:0;max-width:1100px;margin-left:auto;margin-right:auto}
 
 .featured-section{display:flex;flex-direction:column;align-items:center;width:100%;max-width:1100px;margin-left:auto;margin-right:auto}
@@ -1568,28 +1472,6 @@ body.dark-mode .avatar-bubble-cloud circle {
 
 .featured-section .grid-container{
     justify-content:flex-start;
-}
-.FP{
-    padding:12px 28px;
-    background:#D9D9D9;
-    color:var(--black);
-    border:none;
-    cursor:pointer;
-    font-weight:400;
-    font-size:17.5px;
-    line-height:normal;
-    box-shadow:0 6px 18px rgba(2,6,23,0.08);
-    border-radius:0 100px 100px 0;
-    display:inline-block;
-}
-
-
-.intro-heading{
-    margin:0;
-    font-size:40px;
-    font-weight:400;
-    font-family:'Libre Barcode 39', cursive;
-    color:var(--black);
 }
 
 /* Grid container styling */
@@ -1638,32 +1520,9 @@ body.dark-mode .avatar-bubble-cloud circle {
 .Lign .grid-container{
     width:290px;
     height:230px;
-    background:url('image0.png') center/cover no-repeat;
+    background:url('web/image0.webp') center/cover no-repeat;
     border-radius:20px;
     border:1px solid #9BD1FF;
-}
-
-.Clostra{
-    width:300px;
-    height:240px;
-    border-radius:25px;
-    background:#F7DC83;
-    box-shadow:0 6px 18px rgba(2,6,23,0.08);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding-top:2px;
-    padding-right:5px;
-    padding-bottom:8px;
-    padding-left:5px;
-}
-
-.Clostra .grid-container{
-    width:290px;
-    height:230px;
-    background:url('ProtoHand.svg') center/cover no-repeat;
-    border-radius:20px;
-    border:1px solid #000000;
 }
 
 .IncFig{
@@ -1684,67 +1543,15 @@ body.dark-mode .avatar-bubble-cloud circle {
 .IncFig .grid-container{
     width:610px;
     height:230px;
-    background:url('Buzz Bees.png') center/cover no-repeat;
+    background:url('web/Buzz Bees.webp') center/cover no-repeat;
     border-radius:20px;
     border:1px solid #FFFFFF;
-}
-
-.footer{
-    height:44px;
-    background:#000000;
-    text-align:center;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 50px;
-    font-size:18px;
-    font-family:"Google Sans", sans-serif;
-    font-weight:400;
-    color:#ffffff;
-    margin:0;
-    width:100vw;
-    position:relative;
-    left:50%;
-    right:50%;
-    margin-left:-50vw;
-    margin-right:-50vw;
-    overflow-x:hidden;
-}
-
-.footer p {
-    margin:0;
-    font-size:14px;
-}
-
-.footer-links {
-    display:flex;
-    gap:20px;
-    align-items:center;
-}
-
-.footer-icons {
-    display:flex;
-    gap:12px;
-    align-items:center;
-}
-
-.footer-links a {
-    color:#ffffff;
-    text-decoration:none;
-    transition: opacity 0.6s var(--transition-easing);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.footer-links a:hover {
-    opacity:0.7;
 }
 
 .leafAi .grid-container{
     width:290px;
     height:230px;
-    background:url('Crop Care Cover.png') center/cover no-repeat;
+    background:url('web/Crop Care Cover.webp') center/cover no-repeat;
     padding-bottom: 5px;
     border-radius:20px;
     border:1px solid #EEEEEE;
@@ -1769,16 +1576,6 @@ body.dark-mode .avatar-bubble-cloud circle {
     filter:none;
 }
 
-.contact-space-container{
-    width: 1035px;
-    height: 434px;
-    background: rgba(11, 11, 11, 0.5);
-    backdrop-filter: blur(15px);
-    border-radius: 65px;
-    max-width: 100%;
-}
-
-
 /* The end of every page, in place of a footer: a thin strip that two tiny stick-drawn bees
    fly across, left to right, each with a dotted trail, fluttering wings and little Zs floating
    up. On the computer the strip sits under the floating menu; the phone pages space it in
@@ -1790,6 +1587,9 @@ body.dark-mode .avatar-bubble-cloud circle {
     overflow: hidden;
     color: #0b0b0b;
     pointer-events: none;
+    /* The flyers cross it by its own width (cqw), moved by transform so the graphics chip
+       does the work rather than the page being laid out again every frame. */
+    container-type: inline-size;
 }
 body.dark-mode .bee-end {
     color: #ffffff;
@@ -1823,7 +1623,11 @@ body.dark-mode .bee-end {
     --cross: 18s;
     animation-delay: -8s;
 }
-@keyframes bee-cross { from { left: -70px; } to { left: 100%; } }
+/* From just off the left edge (left: -70px) to the right edge; 100vw where cqw isn't known. */
+@keyframes bee-cross {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(100vw + 70px)); transform: translateX(calc(100cqw + 70px)); }
+}
 .bee-trail {
     opacity: 0.45;
 }
@@ -1941,7 +1745,11 @@ html[data-holiday] .bee-end:not(.is-dressed) {
 .m-page .bee-end .flyer-birthday.bee-2 {
     width: 70px;
 }
-@keyframes chase-cross { from { left: -100px; } to { left: 100%; } }
+/* Starts further off the edge (it's wider), still from left: -70px. */
+@keyframes chase-cross {
+    from { transform: translateX(-30px); }
+    to   { transform: translateX(calc(100vw + 70px)); transform: translateX(calc(100cqw + 70px)); }
+}
 .cake-run {
     transform-box: fill-box;
     transform-origin: center;

@@ -17,7 +17,7 @@
     <meta name="twitter:image" content="https://portoblankson.vercel.app/share-card.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://api.fontshare.com">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -85,17 +85,6 @@
             flex-direction: column;
             gap: 8px;
         }
-        .project-sidebar a {
-            font-family: Satoshi, sans-serif;
-            font-size: 15px;
-            color: #777777;
-            text-decoration: none;
-            transition: color 0.3s var(--transition-easing);
-        }
-        .project-sidebar a:hover,
-        .project-sidebar a.active {
-            color: #f5f5f5;
-        }
         .project-main {
             width: 602px;
             margin: 0 auto;
@@ -129,17 +118,6 @@
         .back-button svg {
             flex-shrink: 0;
         }
-        .title-button {
-            background: #4C4C4C;
-            border: none;
-            border-radius: 50px 0 0 50px;
-            padding: 0 20px;
-            height: 45px;
-            font-size: 16px;
-            font-weight: 300;
-            font-family: "Google Sans", sans-serif;
-            color: #BDBDBD;
-        }
         .project-hero-inner {
             width: 100%;
             height: 100%;
@@ -150,13 +128,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-        .project-title {
-            font-size: 28px;
-            font-weight: 900;
-            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
-            color: #f5f5f5;
-            margin: 0;
         }
         .navbar ul li a {
             color: #f5f5f5;
@@ -171,154 +142,6 @@
         }
         .time-location-display {
             color: #f5f5f5;
-        }
-        .see-how-title {
-            font-size: 18px;
-            color: #f5f5f5;
-            font-family: Satoshi, sans-serif;
-            font-weight: 700;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-        .see-how-desc {
-            font-size: 16px;
-            color: #BDBDBD;
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            margin-bottom: 24px;
-            text-align: left;
-            line-height: 1.7;
-        }
-        .toc-section {
-            width: 100%;
-            margin-bottom: 16px;
-            scroll-margin-top: 110px;
-        }
-        .toc-heading {
-            font-family: Satoshi, sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            color: #f5f5f5;
-            margin: 0 0 4px 0;
-        }
-        .toc-content p {
-            font-family: Satoshi, sans-serif;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #aaaaaa;
-            margin: 0 0 16px 0;
-        }
-        .toc-content p:last-child {
-            margin-bottom: 0;
-        }
-        .chg-card {
-            position: relative;
-            width: 602px;
-            height: 304px;
-            background: #2D2D2D;
-            border-radius: 32px;
-            padding: 4px;
-            box-sizing: border-box;
-        }
-        .chg-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: #161616;
-            border-radius: 28px;
-            border: 1px solid #1C1C1C;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-        .chg-row {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .chg-row-header {
-            top: 0;
-            height: 44px;
-            background: #2D2D2D;
-        }
-        .chg-row-body {
-            background: #161616;
-            border-bottom: 0.5px solid #2D2D2D;
-        }
-        .chg-text {
-            position: absolute;
-            color: #FFFFFF;
-        }
-        .chg-text-header {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            font-weight: 510;
-            font-size: 12px;
-            line-height: 14px;
-            letter-spacing: 0;
-        }
-        .chg-text-body {
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 22px;
-            letter-spacing: -0.48px;
-        }
-        .whatsnext-box {
-            position: relative;
-            width: 602px;
-            height: 170px;
-            border-radius: 32px;
-            overflow: hidden;
-        }
-        .whatsnext-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .cta-compact {
-            position: absolute;
-            left: 320px;
-            top: 26px;
-            width: 250px;
-            height: 119px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 11px;
-            padding: 0;
-        }
-        .cta-compact-text {
-            width: 250px;
-            height: 66px;
-            font-family: Satoshi, sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 22px;
-            letter-spacing: 0;
-            color: #FFFFFF;
-            text-align: left;
-            margin: 0;
-        }
-        .cta-compact-btn {
-            width: 173px;
-            height: 42px;
-            box-sizing: border-box;
-            background: #FFFFFF;
-            border-radius: 14px;
-            padding: 11px 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Satoshi, sans-serif;
-            font-weight: 400;
-            font-size: 15px;
-            line-height: 20px;
-            letter-spacing: 0;
-            color: #000000;
-            white-space: nowrap;
-            text-decoration: none;
         }
     </style>
 </head>
@@ -347,7 +170,7 @@
                 <div class="project-main">
             <h1 class="hero-title-standalone">Roster</h1>
             <div class="project-hero">
-                <div class="project-hero-inner"><img src="Rooster Cover.png" alt="Roster"></div>
+                <div class="project-hero-inner"><img src="web/Rooster Cover.webp" alt="Roster"></div>
             </div>
 
                 </div>
@@ -499,50 +322,6 @@
         });
 
     </script>
-    <script>
-        (function() {
-            const sections = document.querySelectorAll('.toc-section');
-            const navLinks = document.querySelectorAll('.project-sidebar a[href^="#"]');
-            if (!sections.length || !navLinks.length) {
-                return;
-            }
-
-            function onScroll() {
-                const triggerLine = 150;
-                let currentId = null;
-
-                sections.forEach(function(section) {
-                    if (section.getBoundingClientRect().top <= triggerLine) {
-                        currentId = section.id;
-                    }
-                });
-
-                const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-                if (atBottom) {
-                    currentId = sections[sections.length - 1].id;
-                }
-
-                navLinks.forEach(function(link) {
-                    link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
-                });
-            }
-
-            window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('pageshow', onScroll);
-            onScroll();
-
-            navLinks.forEach(function(link) {
-                link.addEventListener('mouseenter', function() {
-                    const target = document.querySelector(link.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-        })();
-    </script>
-    <script src="scripts/logo-rotator.js"></script>
-    <script src="scripts/case-video.js"></script>
     <script src="stickers/stickers.js"></script>
     <script src="scripts/sticker-crew.js" data-crew="construction"></script>
 </body>

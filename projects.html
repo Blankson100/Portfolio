@@ -17,7 +17,7 @@
     <meta name="twitter:image" content="https://portoblankson.vercel.app/share-card.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://api.fontshare.com">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -44,13 +44,6 @@
             margin-top: 90px;
             margin-bottom: 100px;
             flex: 1;
-        }
-        .projects-heading {
-            font-size: 48px;
-            font-weight: 700;
-            font-family: Satoshi, 'Segoe UI', Roboto, Arial, sans-serif;
-            color: #0b0b0b;
-            margin-bottom: 40px;
         }
         .projects-btn {
             width: 162px;
@@ -161,64 +154,12 @@
             text-align: left;
             margin: 0;
         }
-        .view-button {
-            width: 100px;
-            height: 40px;
-            background: rgba(215, 215, 215, 0.8);
-            color: #000000;
-            border: none;
-            border-radius: 36px;
-            font-family: Satoshi, sans-serif;
-            font-size: 21px;
-            font-weight: 300;
-            cursor: pointer;
-            margin: 0;
-            backdrop-filter: blur(15px);
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .view-button img {
-            width: 26px;
-            height: 26px;
-            filter: brightness(0);
-        }
         .project-name {
             font-size: 25px;
             font-weight: 500;
             font-family: Satoshi, sans-serif;
             color: #0b0b0b;
             margin: 0 0 5px 0;
-        }
-        .project-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #0b0b0b;
-            font-family: Satoshi, sans-serif;
-        }
-        .project-description {
-            font-size: 16px;
-            color: #666666;
-            line-height: 1.6;
-            font-family: Satoshi, sans-serif;
-        }
-        .project-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .project-tag {
-            background: #f0f0f0;
-            color: #0b0b0b;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            font-family: Satoshi, sans-serif;
         }
         .projects-section {
             width: 100%;
@@ -267,43 +208,12 @@
             position: relative;
             z-index: 2;
         }
-        .projects-button {
-            width: 97px;
-            padding: 10px 20px;
-            background: #e9e9e9;
-            color: #0b0b0b;
-            border: none;
-            cursor: pointer;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: normal;
-            font-family: Satoshi, sans-serif;
-            transition: all 0.6s var(--transition-easing);
-            text-align: left;
-            border-radius: 0 100px 100px 0;
-        }
-        .projects-button:hover {
-            background: #d0d0d0;
-        }
-        body.dark-mode .projects-heading {
-            color: #ffffff;
-        }
         body.dark-mode .project-card {
             background: #1a1a1a;
             border: 1px solid #333333;
         }
         body.dark-mode .project-card:hover {
             box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
-        }
-        body.dark-mode .project-title {
-            color: #ffffff;
-        }
-        body.dark-mode .project-description {
-            color: #b0b0b0;
-        }
-        body.dark-mode .project-tag {
-            background: #000000;
-            color: #ffffff;
         }
     </style>
 </head>
@@ -350,7 +260,7 @@
                 </a>
                 <a href="clostra.html?from=projects" class="project-row" data-project="Clostra" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-card-inner" style="background-image: url('Bees Project.png'); background-size: cover; background-position: center;">
+                    <div class="project-card-inner" style="background-image: url('web/Bees Project.webp'); background-size: cover; background-position: center;">
                     </div>
                 </div>
                 <div class="project-description-box">
@@ -370,7 +280,7 @@
                 </a>
                 <a href="ontrack.html?from=projects" class="project-row" data-project="On Track" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-card-inner" style="background-image: url('OnTrack run.png'); background-size: cover; background-position: center;">
+                    <div class="project-card-inner" style="background-image: url('web/OnTrack run.webp'); background-size: cover; background-position: center;">
                     </div>
                 </div>
                 <div class="project-description-box">
